@@ -62,7 +62,7 @@ class _LatihanScreenState extends State<LatihanScreen> {
         Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/bg1.png"), fit: BoxFit.cover)),
+                  image: AssetImage("assets/bg2.png"), fit: BoxFit.cover)),
         ),
         SingleChildScrollView(
           padding: EdgeInsets.all(30),

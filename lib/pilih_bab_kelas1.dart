@@ -58,165 +58,174 @@ class _pilihbab1State extends State<pilihbab1> {
         ),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(30),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              'Pilih Bab Pelajaran',
-              style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 20),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            InkWell(
-              // onTap: (),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [new BoxShadow(blurRadius: 1.0)],
-                    // border: Border.all(width: 1),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                height: 75,
-                child: Row(
-                  children: <Widget>[
-                    Padding(padding: EdgeInsets.all(10)),
-                    Text('BAB1 Bilangan Cacah', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
-                     
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            InkWell(
-              // onTap: (),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [new BoxShadow(blurRadius: 1.0)],
-                    // border: Border.all(width: 1),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                height: 75,
-                child: Row(
-                  children: <Widget>[
-                    Padding(padding: EdgeInsets.all(10)),
-                    Text('BAB2 Penjumlahan Bilangan', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
-                     
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            InkWell(
-              // onTap: (),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [new BoxShadow(blurRadius: 1.0)],
-                    // border: Border.all(width: 1),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                height: 75,
-                child: Row(
-                  children: <Widget>[
-                    Padding(padding: EdgeInsets.all(10)),
-                    Text('BAB3 Pengenalan Satuan', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
-                     
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            InkWell(
-              // onTap: (),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [new BoxShadow(blurRadius: 1.0)],
-                    // border: Border.all(width: 1),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                height: 75,
-                child: Row(
-                  children: <Widget>[
-                    Padding(padding: EdgeInsets.all(10)),
-                    Text('BAB4 Bangun Ruang', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
-                     
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            InkWell(
-              // onTap: (),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [new BoxShadow(blurRadius: 1.0)],
-                    // border: Border.all(width: 1),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                height: 75,
-                child: Row(
-                  children: <Widget>[
-                    Padding(padding: EdgeInsets.all(10)),
-                    Text('BAB5 Nilai Tempat dan Penggunaan', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
-                     
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            InkWell(
-              // onTap: (),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [new BoxShadow(blurRadius: 1.0)],
-                    // border: Border.all(width: 1),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                height: 75,
-                child: Row(
-                  children: <Widget>[
-                    Padding(padding: EdgeInsets.all(10)),
-                    Text('BAB6 Pengukuran Berat', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
-                     
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            InkWell(
-              // onTap: (),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [new BoxShadow(blurRadius: 1.0)],
-                    // border: Border.all(width: 1),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                height: 75,
-                child: Row(
-                  children: <Widget>[
-                    Padding(padding: EdgeInsets.all(10)),
-                    Text('BAB7 Bangun Datar', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
-                     
-                  ],
-                ),
-              ),
-            ),
-          ],
+      body: Stack(
+        children: <Widget>[
+          Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/bg2.png"), fit: BoxFit.cover)),
         ),
+          SingleChildScrollView(
+            padding: EdgeInsets.all(30),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  'Pilih Bab Pelajaran',
+                  style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 20),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                InkWell(
+                  // onTap: (),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [new BoxShadow(blurRadius: 1.0)],
+                        // border: Border.all(width: 1),
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    height: 75,
+                    child: Row(
+                      children: <Widget>[
+                        Padding(padding: EdgeInsets.all(10)),
+                        Text('BAB1 Bilangan Cacah', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                InkWell(
+                  // onTap: (),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [new BoxShadow(blurRadius: 1.0)],
+                        // border: Border.all(width: 1),
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    height: 75,
+                    child: Row(
+                      children: <Widget>[
+                        Padding(padding: EdgeInsets.all(10)),
+                        Text('BAB2 Penjumlahan Bilangan', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                InkWell(
+                  // onTap: (),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [new BoxShadow(blurRadius: 1.0)],
+                        // border: Border.all(width: 1),
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    height: 75,
+                    child: Row(
+                      children: <Widget>[
+                        Padding(padding: EdgeInsets.all(10)),
+                        Text('BAB3 Pengenalan Satuan', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                InkWell(
+                  // onTap: (),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [new BoxShadow(blurRadius: 1.0)],
+                        // border: Border.all(width: 1),
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    height: 75,
+                    child: Row(
+                      children: <Widget>[
+                        Padding(padding: EdgeInsets.all(10)),
+                        Text('BAB4 Bangun Ruang', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                InkWell(
+                  // onTap: (),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [new BoxShadow(blurRadius: 1.0)],
+                        // border: Border.all(width: 1),
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    height: 75,
+                    child: Row(
+                      children: <Widget>[
+                        Padding(padding: EdgeInsets.all(10)),
+                        Text('BAB5 Nilai Tempat dan Penggunaan', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                InkWell(
+                  // onTap: (),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [new BoxShadow(blurRadius: 1.0)],
+                        // border: Border.all(width: 1),
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    height: 75,
+                    child: Row(
+                      children: <Widget>[
+                        Padding(padding: EdgeInsets.all(10)),
+                        Text('BAB6 Pengukuran Berat', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                InkWell(
+                  // onTap: (),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [new BoxShadow(blurRadius: 1.0)],
+                        // border: Border.all(width: 1),
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    height: 75,
+                    child: Row(
+                      children: <Widget>[
+                        Padding(padding: EdgeInsets.all(10)),
+                        Text('BAB7 Bangun Datar', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

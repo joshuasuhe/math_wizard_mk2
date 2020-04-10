@@ -323,14 +323,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       // ),
 
                       // SizedBox(height: 30.0),
-                      Container(
-                        child: Text(
-                          "DAFTAR AKUN",
-                          style: TextStyle(
-                              fontFamily: 'Poppins-Bold',
-                              fontSize: 30,
-                              color: Colors.white),
-                        ),
+                      Text(
+                        "DAFTAR AKUN",
+                        style: TextStyle(
+                            fontFamily: 'Poppins-Bold',
+                            fontSize: 30,
+                            color: Colors.white),
                       ),
                       SizedBox(
                         height: 25.0,
@@ -340,11 +338,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: 25.0,
                       ),
                       _buildUsernameTF(),
-                      SizedBox(
-                        height: 25.0,
-                      ),
-
-                      _buildKelasTF(),
                       SizedBox(
                         height: 25.0,
                       ),
