@@ -71,7 +71,15 @@ flutter:
    - assets/Final Icons/DogIcon1.png
    - assets/Final Icons/DogIcon3.png
    - assets/Final Icons/RacoonIcon1.png
-
+   - assets/img/body.png
+   - assets/img/failed.png
+   - assets/img/success.png
+   - assets/img/body.png
+   - assets/img/abacus.png
+   - assets/img/pencil.png
+   - assets/img/multiply.png
+   - assets/img/planet.jpg
+   
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

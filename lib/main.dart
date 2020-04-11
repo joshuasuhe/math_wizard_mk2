@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:math_wizard_mk2/login.dart';
 
+import 'mainPage.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -10,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Math Wizard',
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: MainPage(),
     );
   }
 }

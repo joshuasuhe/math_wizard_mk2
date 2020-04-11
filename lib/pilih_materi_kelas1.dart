@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/login.dart';
-import 'package:math_wizard_mk2/pilih_latihan_kelas2.dart';
-import 'package:math_wizard_mk2/pilih_latihan_kelas1.dart';
-import 'package:math_wizard_mk2/pilih_latihan_kelas3.dart';
-import 'package:math_wizard_mk2/pilih_latihan_kelas4.dart';
-import 'package:math_wizard_mk2/pilih_latihan_kelas5.dart';
-import 'package:math_wizard_mk2/pilih_latihan_kelas6.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/ranking.dart';
 import 'package:math_wizard_mk2/profile.dart';
+import 'package:math_wizard_mk2/pilih materi.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
 import 'package:math_wizard_mk2/category.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,9 +12,9 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class LatihanScreen extends StatefulWidget {
+class pilihmaterikelas1 extends StatefulWidget {
   @override
-  _LatihanScreenState createState() => _LatihanScreenState();
+  _pilihmaterikelas1State createState() => _pilihmaterikelas1State();
 }
 
 class listDataItem extends StatelessWidget {
@@ -28,10 +23,6 @@ class listDataItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
     return Card(
       child: Container(
         child: Row(
@@ -48,13 +39,14 @@ class listDataItem extends StatelessWidget {
   }
 }
 
-class _LatihanScreenState extends State<LatihanScreen> {
+class _pilihmaterikelas1State extends State<pilihmaterikelas1> {
+  
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.cyan,
@@ -63,7 +55,7 @@ class _LatihanScreenState extends State<LatihanScreen> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          "Latihan",
+          "Materi Kelas 1",
           style: TextStyle(fontFamily: 'Poppins-Bold'),
         ),
         centerTitle: true,
@@ -71,10 +63,10 @@ class _LatihanScreenState extends State<LatihanScreen> {
       body: Stack(
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/bg2.png"), fit: BoxFit.cover)),
-          ),
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/bg2.png"), fit: BoxFit.cover)),
+        ),
           SingleChildScrollView(
             padding: EdgeInsets.all(30),
             child: Column(
@@ -82,19 +74,19 @@ class _LatihanScreenState extends State<LatihanScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'Pilih Kelas',
+                  'Pilih Bab Pelajaran',
                   style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 20),
                 ),
                 SizedBox(
                   height: 15,
                 ),
-                InkWell(
+                 InkWell( 
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return pilihlatihankelas1();
+                      return pilihmaterikelas1bab1();
                     }));
-                  },
+                },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -105,11 +97,8 @@ class _LatihanScreenState extends State<LatihanScreen> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text(
-                          'Kelas 1',
-                          style: TextStyle(
-                              fontFamily: 'Poppins-Medium', fontSize: 15),
-                        ),
+                        Text('BAB1 Bilangan Cacah', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
                       ],
                     ),
                   ),
@@ -118,12 +107,7 @@ class _LatihanScreenState extends State<LatihanScreen> {
                   height: 15,
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return pilihlatihankelas2();
-                    }));
-                  },
+                  // onTap: (),
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -134,11 +118,8 @@ class _LatihanScreenState extends State<LatihanScreen> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text(
-                          'Kelas 2',
-                          style: TextStyle(
-                              fontFamily: 'Poppins-Medium', fontSize: 15),
-                        ),
+                        Text('BAB2 Penjumlahan Bilangan', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
                       ],
                     ),
                   ),
@@ -147,12 +128,7 @@ class _LatihanScreenState extends State<LatihanScreen> {
                   height: 15,
                 ),
                 InkWell(
-                 onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return pilihlatihankelas3();
-                    }));
-                  },
+                  // onTap: (),
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -163,11 +139,8 @@ class _LatihanScreenState extends State<LatihanScreen> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text(
-                          'Kelas 3',
-                          style: TextStyle(
-                              fontFamily: 'Poppins-Medium', fontSize: 15),
-                        ),
+                        Text('BAB3 Pengenalan Satuan', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
                       ],
                     ),
                   ),
@@ -176,12 +149,7 @@ class _LatihanScreenState extends State<LatihanScreen> {
                   height: 15,
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return pilihlatihankelas4();
-                    }));
-                  },
+                  // onTap: (),
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -192,11 +160,8 @@ class _LatihanScreenState extends State<LatihanScreen> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text(
-                          'Kelas 4',
-                          style: TextStyle(
-                              fontFamily: 'Poppins-Medium', fontSize: 15),
-                        ),
+                        Text('BAB4 Bangun Ruang', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
                       ],
                     ),
                   ),
@@ -205,12 +170,7 @@ class _LatihanScreenState extends State<LatihanScreen> {
                   height: 15,
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return pilihlatihankelas5();
-                    }));
-                  },
+                  // onTap: (),
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -221,11 +181,8 @@ class _LatihanScreenState extends State<LatihanScreen> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text(
-                          'Kelas 5',
-                          style: TextStyle(
-                              fontFamily: 'Poppins-Medium', fontSize: 15),
-                        ),
+                        Text('BAB5 Nilai Tempat dan Penggunaan', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
                       ],
                     ),
                   ),
@@ -234,12 +191,7 @@ class _LatihanScreenState extends State<LatihanScreen> {
                   height: 15,
                 ),
                 InkWell(
-                 onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return pilihlatihankelas6();
-                    }));
-                  },
+                  // onTap: (),
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -250,11 +202,29 @@ class _LatihanScreenState extends State<LatihanScreen> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text(
-                          'Kelas 6',
-                          style: TextStyle(
-                              fontFamily: 'Poppins-Medium', fontSize: 15),
-                        ),
+                        Text('BAB6 Pengukuran Berat', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                InkWell(
+                  // onTap: (),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [new BoxShadow(blurRadius: 1.0)],
+                        // border: Border.all(width: 1),
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    height: 75,
+                    child: Row(
+                      children: <Widget>[
+                        Padding(padding: EdgeInsets.all(10)),
+                        Text('BAB7 Bangun Datar', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
                       ],
                     ),
                   ),

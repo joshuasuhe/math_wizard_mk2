@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/login.dart';
-import 'package:math_wizard_mk2/pilih_materi_kelas1.dart';
-import 'package:math_wizard_mk2/pilih_materi_kelas2.dart';
-import 'package:math_wizard_mk2/pilih_materi_kelas3.dart';
-import 'package:math_wizard_mk2/pilih_materi_kelas4.dart';
-import 'package:math_wizard_mk2/pilih_materi_kelas5.dart';
-import 'package:math_wizard_mk2/pilih_materi_kelas6.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/ranking.dart';
 import 'package:math_wizard_mk2/profile.dart';
@@ -17,9 +11,9 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class MateriScreen extends StatefulWidget {
+class pilihlatihankelas2 extends StatefulWidget {
   @override
-  _MateriScreenState createState() => _MateriScreenState();
+  _pilihlatihankelas2State createState() => _pilihlatihankelas2State();
 }
 
 class listDataItem extends StatelessWidget {
@@ -44,7 +38,7 @@ class listDataItem extends StatelessWidget {
   }
 }
 
-class _MateriScreenState extends State<MateriScreen> {
+class _pilihlatihankelas2State extends State<pilihlatihankelas2> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -59,7 +53,7 @@ class _MateriScreenState extends State<MateriScreen> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          "Materi",
+          "Materi Kelas 2",
           style: TextStyle(fontFamily: 'Poppins-Bold'),
         ),
         centerTitle: true,
@@ -78,19 +72,14 @@ class _MateriScreenState extends State<MateriScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'Pilih Kelas',
+                  'Pilih Bab Pelajaran',
                   style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 20),
                 ),
                 SizedBox(
                   height: 15,
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return pilihmaterikelas1();
-                    }));
-                  },
+                  // onTap: (),
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -101,11 +90,8 @@ class _MateriScreenState extends State<MateriScreen> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text(
-                          'Kelas 1',
-                          style: TextStyle(
-                              fontFamily: 'Poppins-Medium', fontSize: 15),
-                        ),
+                        Text('BAB1 Bilangan Cacah', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
                       ],
                     ),
                   ),
@@ -114,12 +100,7 @@ class _MateriScreenState extends State<MateriScreen> {
                   height: 15,
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return pilihmaterikelas2();
-                    }));
-                  },
+                  // onTap: (),
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -130,11 +111,8 @@ class _MateriScreenState extends State<MateriScreen> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text(
-                          'Kelas 2',
-                          style: TextStyle(
-                              fontFamily: 'Poppins-Medium', fontSize: 15),
-                        ),
+                        Text('BAB2 Pengukuran Panjang & Berat', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
                       ],
                     ),
                   ),
@@ -143,12 +121,7 @@ class _MateriScreenState extends State<MateriScreen> {
                   height: 15,
                 ),
                 InkWell(
-                 onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return pilihmaterikelas3();
-                    }));
-                  },
+                  // onTap: (),
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -159,11 +132,8 @@ class _MateriScreenState extends State<MateriScreen> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text(
-                          'Kelas 3',
-                          style: TextStyle(
-                              fontFamily: 'Poppins-Medium', fontSize: 15),
-                        ),
+                        Text('BAB3 Perkalian & Pembagian', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
                       ],
                     ),
                   ),
@@ -172,12 +142,7 @@ class _MateriScreenState extends State<MateriScreen> {
                   height: 15,
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return pilihmaterikelas4();
-                    }));
-                  },
+                  // onTap: (),
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -188,69 +153,8 @@ class _MateriScreenState extends State<MateriScreen> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text(
-                          'Kelas 4',
-                          style: TextStyle(
-                              fontFamily: 'Poppins-Medium', fontSize: 15),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return pilihmaterikelas5();
-                    }));
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [new BoxShadow(blurRadius: 1.0)],
-                        // border: Border.all(width: 1),
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    height: 75,
-                    child: Row(
-                      children: <Widget>[
-                        Padding(padding: EdgeInsets.all(10)),
-                        Text(
-                          'Kelas 5',
-                          style: TextStyle(
-                              fontFamily: 'Poppins-Medium', fontSize: 15),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                InkWell(
-                 onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return pilihmaterikelas6();
-                    }));
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [new BoxShadow(blurRadius: 1.0)],
-                        // border: Border.all(width: 1),
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    height: 75,
-                    child: Row(
-                      children: <Widget>[
-                        Padding(padding: EdgeInsets.all(10)),
-                        Text(
-                          'Kelas 6',
-                          style: TextStyle(
-                              fontFamily: 'Poppins-Medium', fontSize: 15),
-                        ),
+                        Text('BAB4 Bangun Datar Sederhana', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
+                         
                       ],
                     ),
                   ),
