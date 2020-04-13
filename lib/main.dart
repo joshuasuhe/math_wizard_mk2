@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Math Wizard',
       debugShowCheckedModeBanner: false,
-      home: MainPage(),
+      home:LoginScreen(),
     );
   }
 }

@@ -12,16 +12,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
+  
+import 'package:firebase_auth/firebase_auth.dart';
 import 'contact.dart';
 import 'edit_profile.dart';
 
 class ProfileScreen extends StatefulWidget {
+  
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -287,10 +290,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: RaisedButton(
                       elevation: 5.0,
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return LoginScreen();
-                        }));
+                        _firebaseAuth.signOut();
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>LoginScreen()));
                       },
                       padding: EdgeInsets.all(15.0),
                       shape: RoundedRectangleBorder(

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "689149615491",
+    "firebase_url": "https://tes1-baa07.firebaseio.com",
+    "project_id": "tes1-baa07",
+    "storage_bucket": "tes1-baa07.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:689149615491:android:8b6c2d64b6e3b7daf46ab6",
+        "android_client_info": {
+          "package_name": "com.example.math_wizard_mk2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "689149615491-qdo0vlvr25pmlm0hc8hpd4b8gvbc3p9n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnW240PtXt8oj-998avXc2u-yflP9QHHA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "689149615491-qdo0vlvr25pmlm0hc8hpd4b8gvbc3p9n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

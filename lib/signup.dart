@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:math_wizard_mk2/auth_services.dart';
+import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,6 +32,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
   List<Kelas> _companies = Kelas.getCompanies();
   List<DropdownMenuItem<Kelas>> _dropdownMenuItems;
   Kelas _selectedKelas;
+  TextEditingController emailController = TextEditingController(text: "");
+  TextEditingController passwordController = TextEditingController(text: "");
+  TextEditingController confirmpasswordController =
+      TextEditingController(text: "");
+  final formkey = new GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -63,7 +70,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Nama',
+          'Email',
           style: TextStyle(
               color: Colors.white, fontSize: 15, fontFamily: 'Poppins-Medium'),
         ),
@@ -72,7 +79,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 60.0,
-          child: TextField(
+          child: TextFormField(
+            controller: emailController,
             keyboardType: TextInputType.text,
             style: TextStyle(fontFamily: 'Poppins-Medium', color: Colors.white),
             decoration: InputDecoration(
@@ -82,7 +90,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Icons.person,
                 color: Colors.white,
               ),
-              hintText: 'Masukan Nama',
+              hintText: 'Masukan Email',
               hintStyle: TextStyle(
                   fontFamily: 'Poppins-Medium',
                   fontSize: 15,
@@ -175,7 +183,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 60.0,
-          child: TextField(
+          child: TextFormField(
+            controller: passwordController,
             obscureText: true,
             keyboardType: TextInputType.number,
             style: TextStyle(
@@ -203,7 +212,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget _buildConfirmPasswordTF() {
     return Column(
-      
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
@@ -217,6 +225,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: confirmpasswordController,
             obscureText: true,
             keyboardType: TextInputType.number,
             style: TextStyle(
@@ -246,10 +255,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Container(
       padding: EdgeInsets.symmetric(),
       width: double.infinity,
-      
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () => print('SignUp Button Pressed'),
+        onPressed: () async {
+            try {
+              await AuthServices.signUp(
+                  emailController.text, passwordController.text);
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return LoginScreen();
+              }));
+            } catch (e) {
+              print(e);
+            }
+        },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -272,9 +290,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
@@ -364,7 +382,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(
                         height: 20.0,
                       ),
-                      _buildSignUpBtn(),
+                      _buildSignUpBtn()
                     ],
                   ),
                 ),
@@ -375,4 +393,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
   }
+
+ 
 }
