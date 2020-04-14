@@ -3,23 +3,52 @@ import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/home.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/mainPage.dart';
+import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-class LoginScreen extends StatefulWidget {
+
+class LoginScreen extends StatefulWidget {  
+  
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
+
+  
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController emailController = TextEditingController(text: "");
+  TextEditingController passwordController = TextEditingController(text: "");
   //bool _rememberMe = false;
 
-  Widget _buildUsernameTF() {
+static FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn googleSignIn = new GoogleSignIn();
+
+  Future<FirebaseUser> _signIn()async{
+    GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+    GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
+
+
+     final AuthCredential credential = GoogleAuthProvider.getCredential(
+      idToken: googleSignInAuthentication.idToken,
+      accessToken: googleSignInAuthentication.accessToken,
+    );
+    final FirebaseUser user = (await _auth.signInWithCredential(credential)).user;
+
+    print("Username: ${user.displayName}");
+    return user;
+  }
+
+
+  Widget _buildEmailTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Username',
+          'Email',
           style: TextStyle(
               fontFamily: 'Poppins-Medium', fontSize: 15, color: Colors.white),
         ),
@@ -29,6 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: emailController,
             keyboardType: TextInputType.text,
             style: TextStyle(
               color: Colors.white,
@@ -68,6 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: passwordController,
             obscureText: true,
             keyboardType: TextInputType.number,
             style: TextStyle(
@@ -144,11 +175,9 @@ class _LoginScreenState extends State<LoginScreen> {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return MainPage();
-        }));
-      },
+        onPressed: ()async {
+          await AuthServices.signIn(emailController.text, passwordController.text);
+        },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -167,6 +196,43 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
+
+Widget _buildSignInGoogleButton(){
+      return RaisedButton(
+      onPressed: ()=>_signIn().then((FirebaseUser user)=>print(user)).catchError((e)=>print(e)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40),
+      ),
+      highlightElevation: 0,
+      color:Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image(image: AssetImage("assets/google-logo.png"), height: 35.0),
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Text(
+                  'Sign in with Google',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Color(0xFF527DAA)
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+
+    );
+
+
+}
+
+
+  
 
   Widget _buildSignupBtn() {
     return GestureDetector(
@@ -205,9 +271,9 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
@@ -236,25 +302,21 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Container(
                 height: double.infinity,
-                
                 child: SingleChildScrollView(
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
                     horizontal: 40.0,
-                    vertical: 65.0,
+                    vertical: 28.0,
                   ),
-                  
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    
                     children: <Widget>[
                       Image.asset(
                         "assets/logo.png",
                         width: 175,
                         height: 175,
                       ),
-                      
-                      
+
                       // Text(
                       //   'Sign In',
                       //   style: TextStyle(
@@ -265,10 +327,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       //   ),
                       // ),
                       // SizedBox(height: 30.0),
-                      
-                      _buildUsernameTF(),
+
+                      _buildEmailTF(),
                       SizedBox(
-                        height: 25.0,
+                        height: 20.0,
                       ),
                       _buildPasswordTF(),
                       _buildForgotPasswordBtn(),
@@ -279,9 +341,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(
+                        height:20.0,
+                      ),_buildLoginBtn(),
+                      SizedBox(
                         height: 20.0,
                       ),
-                      _buildLoginBtn(),
+                      _buildSignInGoogleButton(),
                       SizedBox(
                         height: 20.0,
                       ),
