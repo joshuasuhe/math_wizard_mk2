@@ -284,35 +284,24 @@ Widget _buildSignInGoogleButton(){
                         height: 175,
                       ),
 
-                      // Text(
-                      //   'Sign In',
-                      //   style: TextStyle(
+                      // _buildEmailTF(),
+                      // SizedBox(
+                      //   height: 20.0,
+                      // ),
+                      // _buildPasswordTF(),
+                      // _buildForgotPasswordBtn(),
+                      // Container(
+                      //   child: Divider(
                       //     color: Colors.white,
-                      //     fontFamily: 'Poppins-Medium',
-                      //     fontSize: 20.0,
-                      //     fontWeight: FontWeight.bold,
+                      //     thickness: 1,
                       //   ),
                       // ),
-                      // SizedBox(height: 30.0),
-
-                      _buildEmailTF(),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      _buildPasswordTF(),
-                      _buildForgotPasswordBtn(),
-                      Container(
-                        child: Divider(
-                          color: Colors.white,
-                          thickness: 1,
-                        ),
-                      ),
-                      SizedBox(
-                        height:20.0,
-                      ),_buildLoginBtn(),
-                      SizedBox(
-                        height: 20.0,
-                      ),
+                      // SizedBox(
+                      //   height:20.0,
+                      // ),_buildLoginBtn(),
+                      // SizedBox(
+                      //   height: 20.0,
+                      // ),
                       _buildSignInGoogleButton(),
                     ],
                   ),
