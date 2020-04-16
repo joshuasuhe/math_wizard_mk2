@@ -72,7 +72,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: 15,
                     ),
                     Text(
-                      '(Nama)',
+                      'Nama',
                       style:
                           TextStyle(fontSize: 20, fontFamily: 'Poppins-Medium'),
                     ),
@@ -292,7 +292,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: RaisedButton(
                       elevation: 5.0,
                       onPressed: () {
-                        AuthProvider().logOut();                      },
+                        _signOut();
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return LoginScreen();
+                        }));
+                      },
                       padding: EdgeInsets.all(15.0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),

@@ -7,6 +7,7 @@ import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 
@@ -283,35 +284,24 @@ Widget _buildSignInGoogleButton(){
                         height: 175,
                       ),
 
-                      // Text(
-                      //   'Sign In',
-                      //   style: TextStyle(
+                      // _buildEmailTF(),
+                      // SizedBox(
+                      //   height: 20.0,
+                      // ),
+                      // _buildPasswordTF(),
+                      // _buildForgotPasswordBtn(),
+                      // Container(
+                      //   child: Divider(
                       //     color: Colors.white,
-                      //     fontFamily: 'Poppins-Medium',
-                      //     fontSize: 20.0,
-                      //     fontWeight: FontWeight.bold,
+                      //     thickness: 1,
                       //   ),
                       // ),
-                      // SizedBox(height: 30.0),
-
-                      _buildEmailTF(),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      _buildPasswordTF(),
-                      _buildForgotPasswordBtn(),
-                      Container(
-                        child: Divider(
-                          color: Colors.white,
-                          thickness: 1,
-                        ),
-                      ),
-                      SizedBox(
-                        height:20.0,
-                      ),_buildLoginBtn(),
-                      SizedBox(
-                        height: 20.0,
-                      ),
+                      // SizedBox(
+                      //   height:20.0,
+                      // ),_buildLoginBtn(),
+                      // SizedBox(
+                      //   height: 20.0,
+                      // ),
                       _buildSignInGoogleButton(),
                     ],
                   ),
