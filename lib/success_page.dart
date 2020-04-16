@@ -13,6 +13,8 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import 'mainPage.dart';
+
 class successpage extends StatefulWidget {
   @override
   _successpageState createState() => _successpageState();
@@ -86,7 +88,7 @@ class _successpageState extends State<successpage> {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return HomeScreen();
+                              return MainPage();
                             },
                           ),
                         );

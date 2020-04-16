@@ -4,6 +4,8 @@ import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -36,8 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController passwordController = TextEditingController(text: "");
   TextEditingController confirmpasswordController =
       TextEditingController(text: "");
-  final formkey = new GlobalKey<FormState>();
-
+  
   @override
   void initState() {
     _dropdownMenuItems = buildDropdownMenuItems(_companies);
@@ -64,6 +65,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
       TextStyle(color: Colors.white);
     });
   }
+
+
+
+
+
+
+
+  
 
   Widget _buildNamaTF() {
     return Column(
@@ -258,15 +267,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () async {
-            try {
-              await AuthServices.signUp(
-                  emailController.text, passwordController.text);
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return LoginScreen();
-              }));
-            } catch (e) {
-              print(e);
-            }
+          try {
+            await AuthServices.signUp(
+                emailController.text, passwordController.text);
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return LoginScreen();
+            }));
+          } catch (e) {
+            print(e);
+          }
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -286,6 +295,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -393,6 +403,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
   }
-
- 
 }
+
+
+
