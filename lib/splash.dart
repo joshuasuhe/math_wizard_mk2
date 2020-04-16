@@ -20,7 +20,8 @@ class SplashPage extends StatelessWidget {
                 Text("Loading", style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w400,
-                  fontSize: 18.0
+                  fontSize: 18.0,
+                  fontFamily: "Poppins-medium"
                 ),),
               ],
             ),

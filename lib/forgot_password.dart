@@ -6,14 +6,13 @@ import 'package:math_wizard_mk2/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class SignUpScreen extends StatefulWidget {
+class forgotpasswordScreen extends StatefulWidget {
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  _forgotpasswordState createState() => _forgotpasswordState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _forgotpasswordState extends State<forgotpasswordScreen> {
   TextEditingController emailController = TextEditingController(text: "");
-  TextEditingController passwordController = TextEditingController(text: "");
     
   Widget _buildEmailTF() {
     return Column(
@@ -52,112 +51,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _buildUsernameTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Username',
-          style: TextStyle(
-              color: Colors.white, fontSize: 15, fontFamily: 'Poppins-Medium'),
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            keyboardType: TextInputType.text,
-            style: TextStyle(fontFamily: 'Poppins-Medium', color: Colors.white),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.person,
-                color: Colors.white,
-              ),
-              hintText: 'Masukan Username',
-              hintStyle: TextStyle(
-                  fontFamily: 'Poppins-Medium',
-                  fontSize: 15,
-                  color: Colors.white54),
-            ),
-          ),
-        )
-      ],
-    );
-  }
-
-
-  Widget _buildPasswordTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Password',
-          style: TextStyle(
-              fontFamily: 'Poppins-Medium', fontSize: 15, color: Colors.white),
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextFormField(
-            controller: passwordController,
-            obscureText: true,
-            keyboardType: TextInputType.number,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'Poppins-Medium',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.lock,
-                color: Colors.white,
-              ),
-              hintText: 'Masukan Password',
-              hintStyle: TextStyle(
-                  fontFamily: 'Poppins-Medium',
-                  fontSize: 15,
-                  color: Colors.white54),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-
-  Widget _buildSignUpBtn() {
+ 
+  Widget _buildForgotPasswordBtn() {
     return Container(
       padding: EdgeInsets.symmetric(),
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () async {
-                  if(emailController.text.isEmpty || passwordController.text.isEmpty) {
-                    print("Email and password cannot be empty");
-                    return;
-                  }
-                  bool res = await AuthProvider().signUpWithEmail(emailController.text, passwordController.text);
-                  Navigator.push(context, MaterialPageRoute(builder: (context){
-                      return LoginScreen();
-                  }));
-                  if(!res) {
-                    print("sign up failed");
-            }
-
-        },
+      await AuthProvider().sendPasswordResetEmail(emailController.text);
+      
+  },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
         color: Colors.white,
         child: Text(
-          'DAFTAR',
+          'GANTI PASSWORD',
           style: TextStyle(
             color: Color(0xFF527DAA),
             letterSpacing: 1.5,
@@ -226,33 +137,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                       // SizedBox(height: 30.0),
                       Text(
-                        "DAFTAR AKUN",
+                        "GANTI PASSWORD",
                         style: TextStyle(
                             fontFamily: 'Poppins-Bold',
-                            fontSize: 30,
+                            fontSize: 25,
                             color: Colors.white),
                       ),
                       SizedBox(
                         height: 25.0,
                       ),
                       _buildEmailTF(),
-                      SizedBox(
-                        height: 25.0,
-                      ),
-                      _buildUsernameTF(),
-                      SizedBox(
-                        height: 25.0,
-                      ),
-                      //       DropdownButton(
-                      //   value: _selectedKelas,
-                      //   items: _dropdownMenuItems,
-                      //   onChanged: onChangeDropdownItem,
-                      // ),
-
-                      _buildPasswordTF(),
-                      SizedBox(
-                        height: 25.0,
-                      ),
                       SizedBox(
                         height: 25.0,
                       ),
@@ -265,7 +159,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(
                         height: 20.0,
                       ),
-                      _buildSignUpBtn()
+                      _buildForgotPasswordBtn()
                     ],
                   ),
                 ),

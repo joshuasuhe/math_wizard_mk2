@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:math_wizard_mk2/forgot_password.dart';
 import 'package:math_wizard_mk2/home.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/mainPage.dart';
@@ -9,6 +10,8 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:math_wizard_mk2/signup.dart';
+
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -111,7 +114,16 @@ class _LoginScreenState extends State<LoginScreen> {
     return Container(
       alignment: Alignment.centerRight,
       child: FlatButton(
-        onPressed: () => print('Forgot Password Button Pressed'),
+        onPressed: (){
+          Navigator.push(context,MaterialPageRoute(builder: (context){
+            return forgotpasswordScreen();
+          
+          })
+          );
+          
+        
+          },
+  
         padding: EdgeInsets.only(right: 0.0),
         child: Text(
           'Lupa Password?',
@@ -121,6 +133,43 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
+
+  
+  Widget _buildSignupBtn() {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return SignUpScreen();
+        }));
+      },
+      child: RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: 'Tidak Punya Akun? ',
+              style: TextStyle(
+                color: Color(0xFF527DAA),
+                fontSize: 15.0,
+                fontWeight: FontWeight.w400,
+                fontFamily: 'Poppins-Medium',
+              ),
+            ),
+            TextSpan(
+              text: 'Daftar Sekarang.',
+              style: TextStyle(
+                color: Color(0xFF527DAA),
+                fontWeight: FontWeight.bold,
+                fontSize: 15.0,
+                fontFamily: 'Poppins-Medium',
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
 
   // Widget _buildRememberMeCheckbox() {
   //   return Container(
@@ -177,11 +226,11 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         color: Colors.white,
         child: Text(
-          'LOGIN',
+          'LOGIN+',
           style: TextStyle(
             color: Color(0xFF527DAA),
             letterSpacing: 1.5,
-            fontSize: 18.0,
+            fontSize: 15.0,
             fontWeight: FontWeight.bold,
             fontFamily: 'Poppins-Medium',
           ),
@@ -194,7 +243,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return RaisedButton(
       onPressed: () async {
         bool res = await AuthProvider().loginWithGoogle();
-        if (!res) Text("ERROR login dengan Google akun");
+        if (!res) print("ERROR login dengan Google akun");
       },
       highlightElevation: 0,
       color: Colors.white,
@@ -213,7 +262,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Text(
                 'Sign in with Google',
                 style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 14.0,
                     color: Color(0xFF527DAA),
                     fontFamily: "Poppins-Medium"),
               ),
@@ -224,39 +273,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildSignInFacebookButton() {
-    return RaisedButton(
-      onPressed: () async {
-        bool res = await AuthProvider().loginWithGoogle();
-        if (!res) Text("ERROR login dengan Facebook akun");
-      },
-      highlightElevation: 0,
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30.0),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image(image: AssetImage("assets/facebook-logo.png"), height: 35.0),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: Text(
-                'Sign in with Facebook',
-                style: TextStyle(
-                    fontSize: 15,
-                    color: Color(0xFF527DAA),
-                    fontFamily: "Poppins-Medium"),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -309,48 +326,38 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 175,
                       ),
 
-                      // _buildEmailTF(),
-                      // SizedBox(
-                      //   height: 20.0,
-                      // ),
-                      // _buildPasswordTF(),
-                      // _buildForgotPasswordBtn(),
-                      // Container(
-                      //   child: Divider(
-                      //     color: Colors.white,
-                      //     thickness: 1,
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //   height:20.0,
-                      // ),_buildLoginBtn(),
-                      // SizedBox(
-                      //   height: 20.0,
-                      // ),
+                      _buildEmailTF(),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      _buildPasswordTF(),
+                      _buildForgotPasswordBtn(),
+                      Container(
+                        child: Divider(
+                          color: Colors.white,
+                          thickness: 1,
+                        ),
+                      ),
+                      SizedBox(
+                        height:10.0,
+                      ),_buildLoginBtn(),SizedBox(
+                        height: 5.0,
+                      ),
+                      _buildSignupBtn(),
+                      SizedBox(
+                        height: 10.0,
+                      ),
                       Container(
                       
                           padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
                           width: 500,
-                          decoration:
-                              BoxDecoration(border: Border.all(width: 1)),
                               
                           child: Column(
                             children: <Widget>[
-                              Text(
-                                "Sign In",
-                                style: TextStyle(
-                                    fontFamily: "Poppins-Bold",
-                                    fontSize: 25,
-                                    color: Colors.white),
-                              ),
                               SizedBox(
                                 height: 10,
                               ),
                               _buildSignInGoogleButton(),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              _buildSignInFacebookButton(),
                               SizedBox(
                                 height: 10,
                               ),
