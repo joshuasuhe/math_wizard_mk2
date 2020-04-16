@@ -10,28 +10,21 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-
-class LoginScreen extends StatefulWidget {  
-  
-
+class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
-
-  
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController(text: "");
   TextEditingController passwordController = TextEditingController(text: "");
-  
 
   @override
-  void initState() { 
+  void initState() {
     super.initState();
     emailController = TextEditingController(text: "");
     passwordController = TextEditingController(text: "");
   }
-
 
   Widget _buildEmailTF() {
     return Column(
@@ -165,17 +158,18 @@ class _LoginScreenState extends State<LoginScreen> {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: ()async {
-          if(emailController.text.isEmpty||passwordController.text.isEmpty){
-            AlertDialog(title:Text("Password /email kosong"),
+        onPressed: () async {
+          if (emailController.text.isEmpty || passwordController.text.isEmpty) {
+            AlertDialog(
+              title: Text("Password /email kosong"),
             );
             return;
           }
-          bool res = await AuthProvider().signInWithEmail(emailController.text,passwordController.text);
-          if(!res){
-          AlertDialog(title:Text("Login Failed"));
+          bool res = await AuthProvider()
+              .signInWithEmail(emailController.text, passwordController.text);
+          if (!res) {
+            AlertDialog(title: Text("Login Failed"));
           }
-        
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -196,44 +190,73 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-
-Widget _buildSignInGoogleButton(){
-      return RaisedButton(
-      onPressed: ()async{
+  Widget _buildSignInGoogleButton() {
+    return RaisedButton(
+      onPressed: () async {
         bool res = await AuthProvider().loginWithGoogle();
-        if(!res)
-        Text("ERROR login dengan Google akun");
+        if (!res) Text("ERROR login dengan Google akun");
       },
       highlightElevation: 0,
-      color:Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image(image: AssetImage("assets/google-logo.png"), height: 35.0),
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text(
-                  'Sign in with Google',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Color(0xFF527DAA)
-                  ),
-                ),
-              )
-            ],
-          ),
+      color: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image(image: AssetImage("assets/google-logo.png"), height: 35.0),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text(
+                'Sign in with Google',
+                style: TextStyle(
+                    fontSize: 15,
+                    color: Color(0xFF527DAA),
+                    fontFamily: "Poppins-Medium"),
+              ),
+            )
+          ],
         ),
-
+      ),
     );
+  }
 
-
-}
-
-
-  
+  Widget _buildSignInFacebookButton() {
+    return RaisedButton(
+      onPressed: () async {
+        bool res = await AuthProvider().loginWithGoogle();
+        if (!res) Text("ERROR login dengan Facebook akun");
+      },
+      highlightElevation: 0,
+      color: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image(image: AssetImage("assets/facebook-logo.png"), height: 35.0),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text(
+                'Sign in with Facebook',
+                style: TextStyle(
+                    fontSize: 15,
+                    color: Color(0xFF527DAA),
+                    fontFamily: "Poppins-Medium"),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -268,6 +291,7 @@ Widget _buildSignInGoogleButton(){
                     ),
               ),
               Container(
+                alignment: Alignment.center,
                 height: double.infinity,
                 child: SingleChildScrollView(
                   physics: AlwaysScrollableScrollPhysics(),
@@ -277,6 +301,7 @@ Widget _buildSignInGoogleButton(){
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Image.asset(
                         "assets/logo.png",
@@ -302,7 +327,35 @@ Widget _buildSignInGoogleButton(){
                       // SizedBox(
                       //   height: 20.0,
                       // ),
-                      _buildSignInGoogleButton(),
+                      Container(
+                      
+                          padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                          width: 500,
+                          decoration:
+                              BoxDecoration(border: Border.all(width: 1)),
+                              
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "Sign In",
+                                style: TextStyle(
+                                    fontFamily: "Poppins-Bold",
+                                    fontSize: 25,
+                                    color: Colors.white),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              _buildSignInGoogleButton(),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              _buildSignInFacebookButton(),
+                              SizedBox(
+                                height: 10,
+                              ),
+                            ],
+                          )),
                     ],
                   ),
                 ),
