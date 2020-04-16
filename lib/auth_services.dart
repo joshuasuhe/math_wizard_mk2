@@ -56,11 +56,3 @@ class AuthServices {
 
 static Stream<FirebaseUser> get FirebaseUserStream => _auth.onAuthStateChanged;
 }
-
-
-
-
-
-
-
-

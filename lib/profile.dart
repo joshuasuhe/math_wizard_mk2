@@ -38,6 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       idToken: googleSignInAuthentication.idToken,
       accessToken: googleSignInAuthentication.accessToken,
     );
+    
     final FirebaseUser = null;
 
 
@@ -95,7 +96,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: 15,
                     ),
                     Text(
-                      '(Nama)',
+                      'Nama',
                       style:
                           TextStyle(fontSize: 20, fontFamily: 'Poppins-Medium'),
                     ),
@@ -316,7 +317,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       elevation: 5.0,
                       onPressed: () {
                         _signOut();
-                        Navigator.push(context,MaterialPageRoute(builder: (context)=>Wrapper()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return LoginScreen();
+                        }));
                       },
                       padding: EdgeInsets.all(15.0),
                       shape: RoundedRectangleBorder(
