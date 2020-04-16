@@ -1,9 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:math_wizard_mk2/home.dart';
+import 'package:math_wizard_mk2/mainPage.dart';
 import 'package:math_wizard_mk2/login.dart';
-import 'package:provider/provider.dart';
+import 'package:math_wizard_mk2/splash.dart';
 
-import 'auth_services.dart';
-import 'wrapper.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,13 +12,27 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return StreamProvider.value(
-      value: AuthServices.FirebaseUserStream,
-          child: MaterialApp(
+    return MaterialApp(
         title: 'Math Wizard',
         debugShowCheckedModeBanner: false,
-        home:Wrapper(),
-      ),
+        home:MainScreen(),
+    );
+  }
+}
+
+
+class MainScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      stream: FirebaseAuth.instance.onAuthStateChanged,
+      builder: (context,AsyncSnapshot<FirebaseUser> snapshot) {
+        if(snapshot.connectionState == ConnectionState.waiting)
+          return SplashPage();
+        if(!snapshot.hasData || snapshot.data == null)
+          return LoginScreen();
+        return MainScreen();
+      },
     );
   }
 }

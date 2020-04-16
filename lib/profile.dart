@@ -7,6 +7,7 @@ import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/ranking.dart';
 import 'package:math_wizard_mk2/profile.dart';
 import 'package:math_wizard_mk2/ubahAvatar.dart';
+import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
 import 'package:math_wizard_mk2/category.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +16,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'contact.dart';
 import 'edit_profile.dart';
-import 'wrapper.dart';
+import 'splash.dart';
 
 class ProfileScreen extends StatefulWidget {
   
@@ -25,30 +26,6 @@ class ProfileScreen extends StatefulWidget {
 
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  
-  static FirebaseAuth _auth = FirebaseAuth.instance;
-  final GoogleSignIn googleSignIn = new GoogleSignIn();
-
-  Future<FirebaseUser> _signIn()async{
-    GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-    GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
-
-
-     final AuthCredential credential = GoogleAuthProvider.getCredential(
-      idToken: googleSignInAuthentication.idToken,
-      accessToken: googleSignInAuthentication.accessToken,
-    );
-    final FirebaseUser = null;
-
-
-    
-    return FirebaseUser;
-  }
-
-  void _signOut(){
-    googleSignIn.signOut();
-    print("user Signed Out");
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -315,9 +292,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: RaisedButton(
                       elevation: 5.0,
                       onPressed: () {
-                        _signOut();
-                        Navigator.push(context,MaterialPageRoute(builder: (context)=>Wrapper()));
-                      },
+                        AuthProvider().logOut();                      },
                       padding: EdgeInsets.all(15.0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
