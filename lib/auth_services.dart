@@ -15,6 +15,12 @@ class AuthServices {
       return null;
     }
   }
+
+  static Future<FirebaseUser> signOut() async {
+    
+  }
+
+  
 }
 
 
