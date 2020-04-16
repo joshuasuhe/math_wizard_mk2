@@ -23,24 +23,13 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController(text: "");
   TextEditingController passwordController = TextEditingController(text: "");
-  //bool _rememberMe = false;
+  
 
-static FirebaseAuth _auth = FirebaseAuth.instance;
-  final GoogleSignIn googleSignIn = new GoogleSignIn();
-
-  Future<FirebaseUser> _signIn()async{
-    GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-    GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
-
-
-     final AuthCredential credential = GoogleAuthProvider.getCredential(
-      idToken: googleSignInAuthentication.idToken,
-      accessToken: googleSignInAuthentication.accessToken,
-    );
-    final FirebaseUser user = (await _auth.signInWithCredential(credential)).user;
-
-    print("Username: ${user.displayName}");
-    return user;
+  @override
+  void initState() { 
+    super.initState();
+    emailController = TextEditingController(text: "");
+    passwordController = TextEditingController(text: "");
   }
 
 
@@ -72,7 +61,7 @@ static FirebaseAuth _auth = FirebaseAuth.instance;
                 Icons.person,
                 color: Colors.white,
               ),
-              hintText: 'Masukan Username',
+              hintText: 'Masukan Email',
               hintStyle: TextStyle(
                   fontFamily: 'Poppins-Medium',
                   fontSize: 15,
@@ -177,7 +166,16 @@ static FirebaseAuth _auth = FirebaseAuth.instance;
       child: RaisedButton(
         elevation: 5.0,
         onPressed: ()async {
-          await AuthServices.signIn(emailController.text, passwordController.text);
+          if(emailController.text.isEmpty||passwordController.text.isEmpty){
+            AlertDialog(title:Text("Password /email kosong"),
+            );
+            return;
+          }
+          bool res = await AuthProvider().signInWithEmail(emailController.text,passwordController.text);
+          if(!res){
+          AlertDialog(title:Text("Login Failed"));
+          }
+        
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -201,9 +199,11 @@ static FirebaseAuth _auth = FirebaseAuth.instance;
 
 Widget _buildSignInGoogleButton(){
       return RaisedButton(
-      onPressed: ()=>_signIn().then((FirebaseUser user)=>print(user)).catchError((e)=>print(e)),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40),
-      ),
+      onPressed: ()async{
+        bool res = await AuthProvider().loginWithGoogle();
+        if(!res)
+        Text("ERROR login dengan Google akun");
+      },
       highlightElevation: 0,
       color:Colors.white,
         child: Padding(
@@ -234,40 +234,6 @@ Widget _buildSignInGoogleButton(){
 
 
   
-
-  Widget _buildSignupBtn() {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return SignUpScreen();
-        }));
-      },
-      child: RichText(
-        text: TextSpan(
-          children: [
-            TextSpan(
-              text: 'Tidak Punya Akun? ',
-              style: TextStyle(
-                color: Color(0xFF527DAA),
-                fontSize: 15.0,
-                fontWeight: FontWeight.w400,
-                fontFamily: 'Poppins-Medium',
-              ),
-            ),
-            TextSpan(
-              text: 'Daftar Sekarang.',
-              style: TextStyle(
-                color: Color(0xFF527DAA),
-                fontWeight: FontWeight.bold,
-                fontSize: 15.0,
-                fontFamily: 'Poppins-Medium',
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -348,10 +314,6 @@ Widget _buildSignInGoogleButton(){
                         height: 20.0,
                       ),
                       _buildSignInGoogleButton(),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      _buildSignupBtn(),
                     ],
                   ),
                 ),
