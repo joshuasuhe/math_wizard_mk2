@@ -3,6 +3,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthProvider {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  GoogleSignIn googleSignIn = GoogleSignIn();
+
 
 
 //LOGIN DENGAN EMAIL
@@ -40,6 +42,8 @@ class AuthProvider {
 //LOG OUT
   Future<void> logOut() async {
     try {
+      await googleSignIn.signOut();
+    await _auth.signOut();
       await _auth.signOut();
       print("sign out berhasil");
     } catch (e) {
@@ -56,6 +60,7 @@ class AuthProvider {
       if(account == null )
         return false;
         print("login berhasil");
+        print("Username: ${account.displayName}");
       AuthResult res = await _auth.signInWithCredential(GoogleAuthProvider.getCredential(
         idToken: (await account.authentication).idToken,
         accessToken: (await account.authentication).accessToken,
@@ -68,6 +73,7 @@ class AuthProvider {
       print("Error logging with google");
       return false;
     }
+    
   }
 
 

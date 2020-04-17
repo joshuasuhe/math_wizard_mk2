@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
           height: 60.0,
           child: TextField(
             controller: emailController,
-            keyboardType: TextInputType.text,
+            keyboardType: TextInputType.emailAddress,
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'Poppins-Medium',
@@ -89,7 +89,6 @@ class _LoginScreenState extends State<LoginScreen> {
           child: TextField(
             controller: passwordController,
             obscureText: true,
-            keyboardType: TextInputType.number,
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'Poppins-Medium',
@@ -243,7 +242,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         color: Colors.white,
         child: Text(
-          'LOGIN',
+          'LOGIN.',
           style: TextStyle(
             color: Color(0xFF527DAA),
             letterSpacing: 1.5,

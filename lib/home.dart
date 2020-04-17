@@ -1,6 +1,11 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:math_wizard_mk2/database_services.dart';
 import 'package:math_wizard_mk2/latihan.dart';
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/materi.dart';
@@ -11,77 +16,93 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
+  static FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn googleSignIn = new GoogleSignIn();
+
+  String user;
+  String imagePath;
 
   @override
-
-
-
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);;
-                return Scaffold(
-                  body: Stack(children: <Widget>[
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    ;
+    return Scaffold(
+      body: Stack(children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/pattern.jpg"), fit: BoxFit.cover)),
+        ),
+        Container(
+          height: 250,
+          // decoration: BoxDecoration(
+          //     image: DecorationImage(
+          //         image: AssetImage("assets/pattern.png"), fit: BoxFit.cover)),
+          decoration: new BoxDecoration(
+            color: Colors.cyan,
+            boxShadow: [new BoxShadow(blurRadius: 10.0)],
+            // borderRadius: new BorderRadius.vertical(
+            //     bottom: new Radius.elliptical(
+            //         MediaQuery.of(context).size.width, 50.0)),
+          ),
+        ),
+        SingleChildScrollView(
+          padding: EdgeInsets.all(30),
+          child: Column(
+            children: <Widget>[
+                  Container(
+                      child: Image.asset('assets/logo.png'),
+                      height: 150,
+                    ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                  width: 350,
+                  padding: EdgeInsets.fromLTRB(30, 5, 30, 5),
+                  decoration: new BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                          color: Colors.black54,
+                          blurRadius: 5.0,
+                          // offset: Offset(0.0, 0.75)
+                        )
+                      ],
+                      // borderRadius: new BorderRadius.all(Radius.circular(15)),
+                      border: Border.all(width: 1, color: Colors.grey),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                    (imagePath != null)
+                    ?
                     Container(
+                        width: 75,
+                        height: 75,
+                         decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.black),
+                          image:DecorationImage(image: NetworkImage(imagePath),
+                          fit: BoxFit.cover),
+                          ),
+                    )
+                    :Container(
+                      width: 75,
+                      height: 75,
                       decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage("assets/pattern.jpg"), fit: BoxFit.cover)),
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.black),
+                          ),
                     ),
-                    Container(
-                      height: 250,
-                      // decoration: BoxDecoration(
-                      //     image: DecorationImage(
-                      //         image: AssetImage("assets/pattern.png"), fit: BoxFit.cover)),
-                      decoration: new BoxDecoration(
-                        color: Colors.cyan,
-                        boxShadow: [new BoxShadow(blurRadius: 10.0)],
-                        // borderRadius: new BorderRadius.vertical(
-                        //     bottom: new Radius.elliptical(
-                        //         MediaQuery.of(context).size.width, 50.0)),
-                      ),
-                    ),
-                    SingleChildScrollView(
-                      padding: EdgeInsets.all(30),
-                      child: Column(
+                   Column(
                         children: <Widget>[
-                          Container(
-                            child: Image.asset('assets/logo.png'),
-                            height: 150,
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-            
-                          Container(
-                              width: 350,
-                              padding: EdgeInsets.fromLTRB(30, 5, 30, 5),
-                              decoration: new BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: <BoxShadow>[
-                                    BoxShadow(
-                                        color: Colors.black54,
-                                        blurRadius: 5.0,
-                                        // offset: Offset(0.0, 0.75)
-                                        )
-                                  ],
-                                  // borderRadius: new BorderRadius.all(Radius.circular(15)),
-                                  border: Border.all(width: 1, color: Colors.grey),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Image.asset(
-                                    'assets/avatar1.png',
-                                    width: 75,
-                                    height: 75,
-                                  ),
-                                  Column(
-                                    children: <Widget>[
-                                      SizedBox(height: 15),
-                                      Text(
-                                        'Username:',
+                          SizedBox(height: 15),
+                          Text(
+                            '${this.user}',
                             style: TextStyle(
                                 fontSize: 20, fontFamily: 'Poppins-Medium'),
                           ),
@@ -107,6 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Text('100',
                                   style:
+                                  
                                       TextStyle(fontFamily: 'Poppins-Medium'))
                             ],
                           ),
@@ -131,7 +153,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   }));
                 },
                 child: Container(
-                  
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -210,5 +231,13 @@ class _HomeScreenState extends State<HomeScreen> {
         )
       ]),
     );
+    
+
+    
   }
+
+  Future<File>getImage()async{
+      return await ImagePicker.pickImage(source:ImageSource.gallery);
+    }
 }
+

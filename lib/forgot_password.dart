@@ -5,6 +5,7 @@ import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class forgotpasswordScreen extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class forgotpasswordScreen extends StatefulWidget {
 
 class _forgotpasswordState extends State<forgotpasswordScreen> {
   TextEditingController emailController = TextEditingController(text: "");
-    
+
   Widget _buildEmailTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +31,7 @@ class _forgotpasswordState extends State<forgotpasswordScreen> {
           height: 60.0,
           child: TextFormField(
             controller: emailController,
-            keyboardType: TextInputType.text,
+            keyboardType: TextInputType.emailAddress,
             style: TextStyle(fontFamily: 'Poppins-Medium', color: Colors.white),
             decoration: InputDecoration(
               border: InputBorder.none,
@@ -51,7 +52,6 @@ class _forgotpasswordState extends State<forgotpasswordScreen> {
     );
   }
 
- 
   Widget _buildForgotPasswordBtn() {
     return Container(
       padding: EdgeInsets.symmetric(),
@@ -59,9 +59,21 @@ class _forgotpasswordState extends State<forgotpasswordScreen> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () async {
-      await AuthProvider().sendPasswordResetEmail(emailController.text);
-      
-  },
+          await AuthProvider().sendPasswordResetEmail(emailController.text);
+          Alert(
+              context: context,
+              type: AlertType.success,
+              title: "Email sedang dikirim",
+              desc: "cek inbox email anda",
+              buttons: [
+                DialogButton(
+                    child: Text(
+                      "OK",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                    onPressed: () => Navigator.pop(context))
+              ]).show();
+        },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -80,7 +92,6 @@ class _forgotpasswordState extends State<forgotpasswordScreen> {
       ),
     );
   }
-  
 
   @override
   Widget build(BuildContext context) {

@@ -5,6 +5,7 @@ import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController emailController = TextEditingController(text: "");
   TextEditingController passwordController = TextEditingController(text: "");
-    
+
   Widget _buildEmailTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,7 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           height: 60.0,
           child: TextFormField(
             controller: emailController,
-            keyboardType: TextInputType.text,
+            keyboardType: TextInputType.emailAddress,
             style: TextStyle(fontFamily: 'Poppins-Medium', color: Colors.white),
             decoration: InputDecoration(
               border: InputBorder.none,
@@ -88,7 +89,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-
   Widget _buildPasswordTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,7 +106,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: TextFormField(
             controller: passwordController,
             obscureText: true,
-            keyboardType: TextInputType.number,
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'Poppins-Medium',
@@ -130,7 +129,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-
   Widget _buildSignUpBtn() {
     return Container(
       padding: EdgeInsets.symmetric(),
@@ -138,18 +136,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () async {
-                  if(emailController.text.isEmpty || passwordController.text.isEmpty) {
-                    print("Email and password cannot be empty");
-                    return;
-                  }
-                  bool res = await AuthProvider().signUpWithEmail(emailController.text, passwordController.text);
-                  Navigator.push(context, MaterialPageRoute(builder: (context){
-                      return LoginScreen();
-                  }));
-                  if(!res) {
-                    print("sign up failed");
-            }
-
+          if (emailController.text == '' || passwordController.text == '') {
+            Alert(
+              context: context,
+              type: AlertType.error,
+              title: "Login Gagal",
+              desc: "Email atau password masih kosong.",
+              buttons: [
+                DialogButton(
+                  child: Text(
+                    "OK",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                  width: 120,
+                )
+              ],
+            ).show();
+          }
+          bool res = await AuthProvider()
+              .signUpWithEmail(emailController.text, passwordController.text);
+          if (!res) {
+            AlertDialog(title: Text("Sign up Failed"));
+          }
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -169,7 +178,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
   }
-  
 
   @override
   Widget build(BuildContext context) {
