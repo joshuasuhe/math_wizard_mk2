@@ -11,6 +11,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:math_wizard_mk2/signup.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -19,14 +20,16 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController emailController = TextEditingController(text: "");
-  TextEditingController passwordController = TextEditingController(text: "");
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  
 
   @override
   void initState() {
     super.initState();
-    emailController = TextEditingController(text: "");
-    passwordController = TextEditingController(text: "");
+    // emailController = TextEditingController(text: "");
+    // passwordController = TextEditingController(text: "");
   }
 
   Widget _buildEmailTF() {
@@ -202,17 +205,31 @@ class _LoginScreenState extends State<LoginScreen> {
   // }
 
   Widget _buildLoginBtn() {
+    
+
     return Container(
       padding: EdgeInsets.symmetric(),
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () async {
-          if (emailController.text.isEmpty || passwordController.text.isEmpty) {
-            AlertDialog(
-              title: Text("Password /email kosong"),
-            );
-            return;
+          if (emailController.text == '' || passwordController.text == '') {
+            Alert(
+      context: context,
+      type: AlertType.error,
+      title: "Login Gagal",
+      desc: "Email atau password masih kosong.",
+      buttons: [
+        DialogButton(
+          child: Text(
+            "OK",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () => Navigator.pop(context),
+          width: 120,
+        )
+      ],
+    ).show();
           }
           bool res = await AuthProvider()
               .signInWithEmail(emailController.text, passwordController.text);
@@ -226,7 +243,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         color: Colors.white,
         child: Text(
-          'LOGIN+',
+          'LOGIN',
           style: TextStyle(
             color: Color(0xFF527DAA),
             letterSpacing: 1.5,
@@ -343,10 +360,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),_buildLoginBtn(),SizedBox(
                         height: 5.0,
                       ),
-                      _buildSignupBtn(),
                       SizedBox(
-                        height: 10.0,
+                        height:10.0,
                       ),
+                      _buildSignupBtn(),
                       Container(
                       
                           padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
@@ -354,9 +371,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               
                           child: Column(
                             children: <Widget>[
-                              SizedBox(
-                                height: 10,
-                              ),
                               _buildSignInGoogleButton(),
                               SizedBox(
                                 height: 10,
