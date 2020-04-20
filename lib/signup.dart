@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
+import 'package:math_wizard_mk2/database_services.dart';
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,6 +16,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController emailController = TextEditingController(text: "");
   TextEditingController passwordController = TextEditingController(text: "");
+  TextEditingController usernameController = TextEditingController(text: "");
 
   Widget _buildEmailTF() {
     return Column(
@@ -68,6 +70,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: usernameController,
             keyboardType: TextInputType.text,
             style: TextStyle(fontFamily: 'Poppins-Medium', color: Colors.white),
             decoration: InputDecoration(
@@ -136,11 +139,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () async {
-          if (emailController.text == '' || passwordController.text == '') {
+          if (emailController.text == '' || passwordController.text == ''||usernameController.text =='') {
             Alert(
               context: context,
               type: AlertType.error,
-              title: "Login Gagal",
+              title: "Sign up Gagal",
               desc: "Email atau password masih kosong.",
               buttons: [
                 DialogButton(
@@ -154,8 +157,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ],
             ).show();
           }
+          print(usernameController);
           bool res = await AuthProvider()
-              .signUpWithEmail(emailController.text, passwordController.text);
+              .signUpWithEmail(emailController.text, passwordController.text,usernameController.text);
           if (!res) {
             AlertDialog(title: Text("Sign up Failed"));
           }

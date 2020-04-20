@@ -1,10 +1,18 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:math_wizard_mk2/database_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:math_wizard_mk2/ubahAvatar.dart';
+import 'package:path/path.dart';
 import 'package:math_wizard_mk2/about.dart';
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
-import 'package:math_wizard_mk2/ubahAvatar.dart';
+import 'package:math_wizard_mk2/database_services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'contact.dart';
 import 'edit_profile.dart';
@@ -18,7 +26,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   
-
+String imagePath;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +34,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+
+
+
     return Scaffold(
         // appBar: AppBar(
         //   backgroundColor: Colors.cyan,
@@ -45,11 +56,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             image: DecorationImage(
                 image: AssetImage("assets/pattern.jpg"), fit: BoxFit.cover)),
       ),
-      SingleChildScrollView(
+       SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
-                height: 250.0,
+                height: 350.0,
                 width: double.infinity,
                 decoration: new BoxDecoration(
                   color: Colors.cyan,
@@ -61,32 +72,68 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      '(Nama)',
-                      style:
-                          TextStyle(fontSize: 20, fontFamily: 'Poppins-Medium'),
-                    ),
-                    Image.asset(
-                      'assets/avatar1.png',
-                      width: 100,
-                      height: 100,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return ChangeAvatar();
-                        }));
-                      },
-                      child: Text(
-                        'Ubah Avatar',
-                        style: TextStyle(
-                            fontFamily: 'Poppins-Bold', fontSize: 12),
+                   Align(
+                      alignment: Alignment.center,
+                      child: CircleAvatar(
+                        radius: 55,
+                        backgroundColor: Color(0xff476cfb),
+                        child: ClipOval(
+                          child: new SizedBox(
+                            width: 100.0,
+                            height: 100.0,
+                              child: (imagePath != null)
+                                  ? Image.network(
+                                      imagePath,
+                                      fit: BoxFit.fill,
+                                    )
+                                  : Image.asset(
+                                      "assets/avatar1.png",
+                                      fit: BoxFit.fill,
+                                    ),
+                            ),
+                        
+                        ),
                       ),
                     ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 20.0),
+                      child: IconButton(
+                          icon: Icon(FontAwesomeIcons.camera, size: 20),
+                          onPressed: () async {
+                            File file = await getImage();
+                            imagePath = await DatabasesServices.uploadImage(file);
+
+                            setState(() {
+                              
+                            });
+                          }),
+                    ),  Container(
+                        padding: EdgeInsets.symmetric(),
+                        child: RaisedButton(
+                          elevation: 5.0,
+                          onPressed: () {
+                           Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return ChangeAvatar();
+                      }));
+                          },
+                          padding: EdgeInsets.all(15.0),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          color: Colors.white,
+                          child: Text(
+                            'UBAH AVATAR',
+                            style: TextStyle(
+                              color: Color(0xFF527DAA),
+                              fontSize: 10.0,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Poppins-Medium',
+                            ),
+                          ),
+                        ),
+                      ),
+
                     SizedBox(height: 15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -113,7 +160,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     SizedBox(height: 10),
                   ],
-                )),
+                ),
+                ),
             SizedBox(
               height: 15,
             ),
@@ -318,5 +366,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       )
     ]));
+  }
+    Future<File> getImage() async {
+    return await ImagePicker.pickImage(source: ImageSource.gallery);
   }
 }

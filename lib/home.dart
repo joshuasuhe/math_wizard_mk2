@@ -235,9 +235,5 @@ class _HomeScreenState extends State<HomeScreen> {
 
     
   }
-
-  Future<File>getImage()async{
-      return await ImagePicker.pickImage(source:ImageSource.gallery);
-    }
 }
 
