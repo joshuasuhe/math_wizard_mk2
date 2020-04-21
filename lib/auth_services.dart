@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:math_wizard_mk2/database_services.dart';
@@ -5,6 +6,9 @@ import 'package:math_wizard_mk2/database_services.dart';
 class AuthProvider {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   GoogleSignIn googleSignIn = GoogleSignIn();
+  static CollectionReference userCollection = Firestore.instance.collection('Users');
+  
+
 
 //LOGIN DENGAN EMAIL
   Future<bool> signInWithEmail(String email, String password) async {
@@ -62,23 +66,40 @@ class AuthProvider {
       if (account == null) return false;
       print("login berhasil");
       print("Username: ${account.displayName}");
-      AuthResult res =
-          await _auth.signInWithCredential(GoogleAuthProvider.getCredential(
-        idToken: (await account.authentication).idToken,
-        accessToken: (await account.authentication).accessToken,
-      ));
-      if (res.user == null) return false;
-      return true;
-    } catch (e) {
-      print(e.message);
-      print("Error logging with google");
-      return false;
-    }
-  }
+      addUserGoogle(account.id,
+      displayname: account.displayName,
+      email: account.email);
+            AuthResult res =
+                await _auth.signInWithCredential(GoogleAuthProvider.getCredential(
+              idToken: (await account.authentication).idToken,
+              accessToken: (await account.authentication).accessToken,
+            ));
+            if (res.user == null) return false;
+            return true;
+          } catch (e) {
+            print(e.message);
+            print("Error logging with google");
+            return false;
+          }
+        }
+      
+      //RESET PASSWORD
+      
+        Future sendPasswordResetEmail(String email) async {
+          return _auth.sendPasswordResetEmail(email: email);
+        }
+      
+       static Future<void>addUserGoogle(String id,{String displayname,String email})async{
+         await userCollection.document(id).setData({
+                  'username': displayname,
+                  'email':email
+                  
+         });
 
-//RESET PASSWORD
+    
 
-  Future sendPasswordResetEmail(String email) async {
-    return _auth.sendPasswordResetEmail(email: email);
+
+
+  
   }
 }

@@ -174,12 +174,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ],
             ).show();
           }
-          print(usernameController);
+          else{ 
+            print(usernameController);
           bool res = await AuthProvider().signUpWithEmail(emailController.text,
               passwordController.text, usernameController.text);
-          if (!res) {
+                 Alert(
+              context: context,
+              type: AlertType.success,
+              title: "Sign up Berhasil",
+              desc: "Sekarang akun mu bisa digunakan",
+              buttons: [
+                DialogButton(
+                  child: Text(
+                    "OK",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                  width: 120,
+                )
+              ],
+            ).show();
+             Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return LoginScreen();
+                      }));
+            if (!res) {
             AlertDialog(title: Text("Sign up Failed"));
-          }
+          }}
+         
+          
           Map<String, dynamic> userData = {
             'Email': this.userEmail,
             'Username': this.userUsername,
