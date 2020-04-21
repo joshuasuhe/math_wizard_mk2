@@ -18,6 +18,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController passwordController = TextEditingController(text: "");
   TextEditingController usernameController = TextEditingController(text: "");
 
+  String userUsername;
+  String userPassword;
+  String userEmail;
+
+  crudMethods crudObj = new crudMethods();
+
   Widget _buildEmailTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,6 +39,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextFormField(
+            onChanged: (value) {
+              this.userEmail = value;
+            },
             controller: emailController,
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(fontFamily: 'Poppins-Medium', color: Colors.white),
@@ -70,6 +79,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            onChanged: (value) {
+              this.userUsername = value;
+            },
             controller: usernameController,
             keyboardType: TextInputType.text,
             style: TextStyle(fontFamily: 'Poppins-Medium', color: Colors.white),
@@ -107,6 +119,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextFormField(
+            onChanged: (value) {
+              this.userPassword = value;
+            },
             controller: passwordController,
             obscureText: true,
             style: TextStyle(
@@ -139,7 +154,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () async {
-          if (emailController.text == '' || passwordController.text == ''||usernameController.text =='') {
+          if (emailController.text == '' ||
+              passwordController.text == '' ||
+              usernameController.text == '') {
             Alert(
               context: context,
               type: AlertType.error,
@@ -158,11 +175,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ).show();
           }
           print(usernameController);
-          bool res = await AuthProvider()
-              .signUpWithEmail(emailController.text, passwordController.text,usernameController.text);
+          bool res = await AuthProvider().signUpWithEmail(emailController.text,
+              passwordController.text, usernameController.text);
           if (!res) {
             AlertDialog(title: Text("Sign up Failed"));
           }
+          Map<String, dynamic> userData = {
+            'Email': this.userEmail,
+            'Username': this.userUsername,
+            'Password': this.userPassword
+          };
+          crudObj.addData(userData);
+
+          // .then((result)
+          // {
+          //   dialogTrigger(context);
+          // }).catchError((e){
+          //   print(e);
+          // });
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(

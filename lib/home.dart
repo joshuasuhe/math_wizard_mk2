@@ -1,6 +1,7 @@
 import 'dart:io';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -18,9 +19,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   static FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = new GoogleSignIn();
+  crudMethods crudObj = new crudMethods();
 
   String user;
   String imagePath;
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: <Widget>[
                           SizedBox(height: 15),
                           Text(
-                            '${this.user}',
+                            "Nama",
                             style: TextStyle(
                                 fontSize: 20, fontFamily: 'Poppins-Medium'),
                           ),
