@@ -12,6 +12,7 @@ import 'package:image_picker/image_picker.dart';
 class DatabasesServices {
   final String uid;
   DatabasesServices({this.uid});
+  
 
   final CollectionReference userCollection =
       Firestore.instance.collection('users');
@@ -58,5 +59,7 @@ class crudMethods {
 
 
 
+
+// 
   
 }

@@ -14,19 +14,17 @@ import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:math_wizard_mk2/database_services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'contact.dart';
 import 'edit_profile.dart';
 
 class ProfileScreen extends StatefulWidget {
-  
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
-
 class _ProfileScreenState extends State<ProfileScreen> {
-  
-String imagePath;
+  String imagePath;
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +32,6 @@ String imagePath;
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-
-
 
     return Scaffold(
         // appBar: AppBar(
@@ -56,112 +52,109 @@ String imagePath;
             image: DecorationImage(
                 image: AssetImage("assets/pattern.jpg"), fit: BoxFit.cover)),
       ),
-       SingleChildScrollView(
+      SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
-                height: 350.0,
-                width: double.infinity,
-                decoration: new BoxDecoration(
-                  color: Colors.cyan,
-                  boxShadow: [new BoxShadow(blurRadius: 10.0)],
-                  // borderRadius: new BorderRadius.vertical(
-                  //     bottom: new Radius.elliptical(
-                  //         MediaQuery.of(context).size.width, 50.0)),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                   Align(
-                      alignment: Alignment.center,
-                      child: CircleAvatar(
-                        radius: 55,
-                        backgroundColor: Color(0xff476cfb),
-                        child: ClipOval(
-                          child: new SizedBox(
-                            width: 100.0,
-                            height: 100.0,
-                              child: (imagePath != null)
-                                  ? Image.network(
-                                      imagePath,
-                                      fit: BoxFit.fill,
-                                    )
-                                  : Image.asset(
-                                      "assets/avatar1.png",
-                                      fit: BoxFit.fill,
-                                    ),
-                            ),
-                        
+              height: 350.0,
+              width: double.infinity,
+              decoration: new BoxDecoration(
+                color: Colors.cyan,
+                boxShadow: [new BoxShadow(blurRadius: 10.0)],
+                // borderRadius: new BorderRadius.vertical(
+                //     bottom: new Radius.elliptical(
+                //         MediaQuery.of(context).size.width, 50.0)),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.center,
+                    child: CircleAvatar(
+                      radius: 55,
+                      backgroundColor: Color(0xff476cfb),
+                      child: ClipOval(
+                        child: new SizedBox(
+                          width: 100.0,
+                          height: 100.0,
+                          child: (imagePath != null)
+                              ? Image.network(
+                                  imagePath,
+                                  fit: BoxFit.fill,
+                                )
+                              : Image.asset(
+                                  "assets/avatar1.png",
+                                  fit: BoxFit.fill,
+                                ),
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 20.0),
-                      child: IconButton(
-                          icon: Icon(FontAwesomeIcons.camera, size: 20),
-                          onPressed: () async {
-                            File file = await getImage();
-                            imagePath = await DatabasesServices.uploadImage(file);
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 20.0),
+                    child: IconButton(
+                        icon: Icon(FontAwesomeIcons.camera, size: 20),
+                        onPressed: () async {
+                          File file = await getImage();
+                          imagePath = await DatabasesServices.uploadImage(file);
 
-                            setState(() {
-                              
-                            });
-                          }),
-                    ),  Container(
-                        padding: EdgeInsets.symmetric(),
-                        child: RaisedButton(
-                          elevation: 5.0,
-                          onPressed: () {
-                           Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return ChangeAvatar();
-                      }));
-                          },
-                          padding: EdgeInsets.all(15.0),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          color: Colors.white,
-                          child: Text(
-                            'UBAH AVATAR',
-                            style: TextStyle(
-                              color: Color(0xFF527DAA),
-                              fontSize: 10.0,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Poppins-Medium',
-                            ),
-                          ),
+                          setState(() {});
+                        }),
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(),
+                    child: RaisedButton(
+                      elevation: 5.0,
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return ChangeAvatar();
+                        }));
+                      },
+                      padding: EdgeInsets.all(15.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      color: Colors.white,
+                      child: Text(
+                        'UBAH AVATAR',
+                        style: TextStyle(
+                          color: Color(0xFF527DAA),
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Poppins-Medium',
                         ),
                       ),
-
-                    SizedBox(height: 15),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Image.asset(
-                          'assets/trophy.png',
-                          width: 20,
-                          height: 20,
-                        ),
-                        Text('100',
-                            style: TextStyle(fontFamily: 'Poppins-Medium')),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Image.asset(
-                          'assets/coin.png',
-                          width: 20,
-                          height: 20,
-                        ),
-                        Text('100',
-                            style: TextStyle(fontFamily: 'Poppins-Medium'))
-                      ],
                     ),
-                    SizedBox(height: 10),
-                  ],
-                ),
-                ),
+                  ),
+                  SizedBox(height: 15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset(
+                        'assets/trophy.png',
+                        width: 20,
+                        height: 20,
+                      ),
+                      Text('100',
+                          style: TextStyle(fontFamily: 'Poppins-Medium')),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Image.asset(
+                        'assets/coin.png',
+                        width: 20,
+                        height: 20,
+                      ),
+                      Text('100',
+                          style: TextStyle(fontFamily: 'Poppins-Medium'))
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                ],
+              ),
+            ),
             SizedBox(
               height: 15,
             ),
@@ -246,12 +239,12 @@ String imagePath;
                     height: 15,
                   ),
                   InkWell(
-                    onTap: (){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return ContactScreen();
-                        }));
-                      },
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return ContactScreen();
+                      }));
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -284,12 +277,12 @@ String imagePath;
                     height: 15,
                   ),
                   InkWell(
-                    onTap: (){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return AboutScreen();
-                        }));
-                      },
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return AboutScreen();
+                      }));
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -334,12 +327,29 @@ String imagePath;
                       elevation: 5.0,
                       onPressed: () {
                         AuthProvider().logOut();
-                      if(FirebaseUser==null){
+                        if (FirebaseUser == null) {
                           Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return LoginScreen();
-                      }));
-                      }
+                              MaterialPageRoute(builder: (context) {
+                            Alert(
+                              context: context,
+                              type: AlertType.success,
+                              title: "Log Out Berhasil",
+                              desc: "Sekarang akun sudah keluar",
+                              buttons: [
+                                DialogButton(
+                                  child: Text(
+                                    "OK",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                  onPressed: () => Navigator.pop(context),
+                                  width: 120,
+                                )
+                              ],
+                            ).show();
+                            return LoginScreen();
+                          }));
+                        }
                       },
                       padding: EdgeInsets.all(15.0),
                       shape: RoundedRectangleBorder(
@@ -367,7 +377,8 @@ String imagePath;
       )
     ]));
   }
-    Future<File> getImage() async {
+
+  Future<File> getImage() async {
     return await ImagePicker.pickImage(source: ImageSource.gallery);
   }
 }

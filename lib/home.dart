@@ -10,21 +10,17 @@ import 'package:math_wizard_mk2/database_services.dart';
 import 'package:math_wizard_mk2/latihan.dart';
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/materi.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
+   String userEmail;
+
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  static FirebaseAuth _auth = FirebaseAuth.instance;
-  final GoogleSignIn googleSignIn = new GoogleSignIn();
-  crudMethods crudObj = new crudMethods();
-
-  String user;
   String imagePath;
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +53,10 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: EdgeInsets.all(30),
           child: Column(
             children: <Widget>[
-                  Container(
-                      child: Image.asset('assets/logo.png'),
-                      height: 150,
-                    ),
+              Container(
+                child: Image.asset('assets/logo.png'),
+                height: 150,
+              ),
               SizedBox(
                 height: 20,
               ),
@@ -82,33 +78,42 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                    (imagePath != null)
-                    ?
-                    Container(
-                        width: 75,
-                        height: 75,
-                         decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.black),
-                          image:DecorationImage(image: NetworkImage(imagePath),
-                          fit: BoxFit.cover),
-                          ),
-                    )
-                    :Container(
-                      width: 75,
-                      height: 75,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.black),
-                          ),
-                    ),
-                   Column(
+                      (imagePath != null)
+                          ? Container(
+                              width: 75,
+                              height: 75,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(color: Colors.black),
+                                image: DecorationImage(
+                                    image: NetworkImage(imagePath),
+                                    fit: BoxFit.cover),
+                              ),
+                            )
+                          : Container(
+                              width: 75,
+                              height: 75,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(color: Colors.black),
+                              ),
+                            ),
+                            SizedBox(width:15),
+                      Column(
                         children: <Widget>[
                           SizedBox(height: 15),
-                          Text(
-                            "Nama",
-                            style: TextStyle(
-                                fontSize: 20, fontFamily: 'Poppins-Medium'),
+                          Container(
+                            child: StreamBuilder(
+                                stream: Firestore.instance
+                                    .collection('Users')
+                                    .snapshots(),
+                                builder: (context, snapshot) {
+                                  if (!snapshot.hasData)
+                                    return Text('Loading data.....');
+                                  
+                                  return Text(
+                                      snapshot.data.documents[0]['username'],style: TextStyle(fontFamily: "Poppins-Medium",fontSize: 15),);
+                                }),
                           ),
                           SizedBox(height: 10),
                           Row(
@@ -132,7 +137,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Text('100',
                                   style:
-                                  
                                       TextStyle(fontFamily: 'Poppins-Medium'))
                             ],
                           ),
@@ -235,9 +239,5 @@ class _HomeScreenState extends State<HomeScreen> {
         )
       ]),
     );
-    
-
-    
   }
 }
-
