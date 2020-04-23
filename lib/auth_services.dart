@@ -1,4 +1,4 @@
-
+import 'globals.dart' as globals;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -64,17 +64,17 @@ class AuthProvider {
   Future<bool> loginWithGoogle() async {
     try {
       GoogleSignIn googleSignIn = GoogleSignIn();
-      GoogleSignInAccount account = await googleSignIn.signIn();
-      if (account == null) return false;
+      globals.account = await googleSignIn.signIn();
+      if (globals.account == null) return false;
       print("login berhasil");
-      print("Username: ${account.displayName}");
-      addUserGoogle(account.id,
-      displayname: account.displayName,
-      email: account.email);
+      print("Username: ${globals.account.displayName}");
+      addUserGoogle(globals.account.id,
+      displayname: globals.account.displayName,
+      email: globals.account.email);
             AuthResult res =
                 await _auth.signInWithCredential(GoogleAuthProvider.getCredential(
-              idToken: (await account.authentication).idToken,
-              accessToken: (await account.authentication).accessToken,
+              idToken: (await globals.account.authentication).idToken,
+              accessToken: (await globals.account.authentication).accessToken,
             ));
             if (res.user == null) return false;
             return true;

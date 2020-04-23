@@ -7,16 +7,19 @@ import 'package:math_wizard_mk2/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'globals.dart' as globals;
+
 
 class SignUpScreen extends StatefulWidget {
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
+  
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController emailController = TextEditingController(text: "");
   TextEditingController passwordController = TextEditingController(text: "");
-  TextEditingController usernameController = TextEditingController(text: "");
+
 
   String userUsername;
   String userPassword;
@@ -82,7 +85,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             onChanged: (value) {
               this.userUsername = value;
             },
-            controller: usernameController,
+            controller: globals.usernameController,
             keyboardType: TextInputType.text,
             style: TextStyle(fontFamily: 'Poppins-Medium', color: Colors.white),
             decoration: InputDecoration(
@@ -156,7 +159,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         onPressed: () async {
           if (emailController.text == '' ||
               passwordController.text == '' ||
-              usernameController.text == '') {
+              globals.usernameController.text == '') {
             Alert(
               context: context,
               type: AlertType.error,
@@ -175,9 +178,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ).show();
           }
           else{ 
-            print(usernameController);
+            print(globals.usernameController);
           bool res = await AuthProvider().signUpWithEmail(emailController.text,
-              passwordController.text, usernameController.text);
+              passwordController.text, globals.usernameController.text);
                  Alert(
               context: context,
               type: AlertType.success,

@@ -17,6 +17,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'contact.dart';
 import 'edit_profile.dart';
+import 'globals.dart' as globals;
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -90,8 +91,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),
+                  Text(
+                    globals.account.displayName,
+                    style: TextStyle(fontFamily: "Poppins-Medium"),
+                  ),
                   Padding(
-                    padding: EdgeInsets.only(top: 20.0),
+                    padding: EdgeInsets.only(top: 1.0),
                     child: IconButton(
                         icon: Icon(FontAwesomeIcons.camera, size: 20),
                         onPressed: () async {
@@ -330,23 +335,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         if (FirebaseUser == null) {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            Alert(
-                              context: context,
-                              type: AlertType.success,
-                              title: "Log Out Berhasil",
-                              desc: "Sekarang akun sudah keluar",
-                              buttons: [
-                                DialogButton(
-                                  child: Text(
-                                    "OK",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
-                                  ),
-                                  onPressed: () => Navigator.pop(context),
-                                  width: 120,
-                                )
-                              ],
-                            ).show();
                             return LoginScreen();
                           }));
                         }

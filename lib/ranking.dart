@@ -8,6 +8,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:custom_switch/custom_switch.dart';
+import 'globals.dart' as globals;
 
 class RankingScreen extends StatefulWidget {
   @override
@@ -15,6 +17,7 @@ class RankingScreen extends StatefulWidget {
 }
 
 class _RankingScreenState extends State<RankingScreen> {
+  bool status = false;
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -22,19 +25,35 @@ class _RankingScreenState extends State<RankingScreen> {
       DeviceOrientation.portraitDown,
     ]);
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.cyan,
-          leading: Text(
-            "Ranking",
-            style: TextStyle(fontFamily: 'Poppins-Bold', color: Colors.cyan),
-          ),
-          title: Text(
-            "Ranking",
-            style: TextStyle(fontFamily: 'Poppins-Bold', color: Colors.black),
-          ),
-          centerTitle: true,
+      appBar: AppBar(
+        backgroundColor: Colors.cyan,
+        leading: Text(
+          "Ranking",
+          style: TextStyle(fontFamily: 'Poppins-Bold', color: Colors.cyan),
         ),
-        body: Stack(children: <Widget>[
+        title: Text(
+          "Ranking",
+          style: TextStyle(fontFamily: 'Poppins-Bold', color: Colors.white),
+        ),
+        actions: <Widget>[
+          Container(
+            child: Switch(
+                activeColor: Colors.red,
+                value: status,
+                onChanged: (value) {
+                  print("VALUE : $value");
+                  setState(() {
+                    status = value;
+                  });
+                },
+              ),
+          ),
+             
+        ],
+
+      ),
+      body: Stack(
+        children: <Widget>[
           Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
@@ -72,9 +91,8 @@ class _RankingScreenState extends State<RankingScreen> {
                           children: <Widget>[
                             SizedBox(height: 15),
                             Text(
-                              '(Nama)',
-                              style: TextStyle(
-                                  fontSize: 20, fontFamily: 'Poppins-Medium'),
+                              globals.account.displayName,
+                              style: TextStyle(fontFamily: "Poppins-Medium"),
                             ),
                             SizedBox(
                               height: 10,
@@ -83,16 +101,16 @@ class _RankingScreenState extends State<RankingScreen> {
                         ),
                         SizedBox(
                           height: 10,
-                          width: 40,
+                          width: 10,
                         ),
                         Image.asset(
                           'assets/trophy.png',
-                          width: 35,
-                          height: 35,
+                          width: 20,
+                          height: 25,
                         ),
                         Text('100',
                             style: TextStyle(
-                                fontFamily: 'Poppins-Medium', fontSize: 20)),
+                                fontFamily: 'Poppins-Medium', fontSize: 15)),
                         SizedBox(
                           width: 10,
                         ),
@@ -102,26 +120,286 @@ class _RankingScreenState extends State<RankingScreen> {
                   height: 15,
                 ),
                 Container(
-                    width: 350,
-                    height: 500,
-                    padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    decoration: new BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: <BoxShadow>[
-                          BoxShadow(
-                            color: Colors.black54,
-                            blurRadius: 5.0,
-                            // offset: Offset(0.0, 0.75)
-                          )
-                        ],
-                        // borderRadius: new BorderRadius.all(Radius.circular(15)),
-                        border: Border.all(width: 1, color: Colors.grey),
-                        borderRadius: BorderRadius.circular(10)),
-                
+                  width: 500,
+                  height: 500,
+                  padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                  decoration: new BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                        color: Colors.black54,
+                        blurRadius: 5.0,
+                        // offset: Offset(0.0, 0.75)
+                      )
+                    ],
+                    // borderRadius: new BorderRadius.all(Radius.circular(15)),
+                    border: Border.all(width: 1, color: Colors.cyan),
+                  ),
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        width: 350,
+                        height: 50,
+                        decoration: new BoxDecoration(
+                            color: Colors.cyan[100],
+                            boxShadow: <BoxShadow>[
+                              BoxShadow(
+                                  color: Colors.cyan[200], spreadRadius: 1)
+                            ],
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Image.asset("assets/gold-medal.png"),
+                            Column(
+                              children: <Widget>[
+                                SizedBox(height: 15),
+                                Text(
+                                  globals.account.displayName,
+                                  style:
+                                      TextStyle(fontFamily: "Poppins-Medium"),
+                                ),
+                              ],
+                            ),
+                            Image.asset(
+                              'assets/trophy-gold.png',
+                            ),
+                            Text('100',
+                                style: TextStyle(
+                                    fontFamily: 'Poppins-Medium',
+                                    fontSize: 15)),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                          width: 350,
+                          height: 50,
+                          decoration: new BoxDecoration(
+                              color: Colors.cyan[100],
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                    color: Colors.cyan[200], spreadRadius: 1)
+                              ],
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Image.asset("assets/silver-medal.png"),
+                              Column(
+                                children: <Widget>[
+                                  SizedBox(height: 15),
+                                  Text(
+                                    globals.account.displayName,
+                                    style:
+                                        TextStyle(fontFamily: "Poppins-Medium"),
+                                  ),
+                                ],
+                              ),
+                              Image.asset(
+                                'assets/trophy-silver.png',
+                              ),
+                              Text('90',
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins-Medium',
+                                      fontSize: 15)),
+                            ],
+                          )),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                          width: 350,
+                          height: 50,
+                          decoration: new BoxDecoration(
+                              color: Colors.cyan[100],
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                    color: Colors.cyan[200], spreadRadius: 1)
+                              ],
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Image.asset("assets/bronze-medal.png"),
+                              Column(
+                                children: <Widget>[
+                                  SizedBox(height: 15),
+                                  Text(
+                                    globals.account.displayName,
+                                    style:
+                                        TextStyle(fontFamily: "Poppins-Medium"),
+                                  ),
+                                ],
+                              ),
+                              Image.asset(
+                                'assets/trophy-bronze.png',
+                              ),
+                              Text('90',
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins-Medium',
+                                      fontSize: 15)),
+                            ],
+                          )),
+                          SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                          width: 350,
+                          height: 50,
+                          decoration: new BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                    color: Colors.cyan[200], spreadRadius: 1)
+                              ],
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Image.asset("assets/four.png"),
+                              Column(
+                                children: <Widget>[
+                                  SizedBox(height: 15),
+                                  Text(
+                                    globals.account.displayName,
+                                    style:
+                                        TextStyle(fontFamily: "Poppins-Medium"),
+                                  ),
+                                ],
+                              ),
+                              Image.asset(
+                                'assets/medal.png',
+                              ),
+                              Text('90',
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins-Medium',
+                                      fontSize: 15)),
+                            ],
+                          )),
+                            SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                          width: 350,
+                          height: 50,
+                          decoration: new BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                    color: Colors.cyan[200], spreadRadius: 1)
+                              ],
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Image.asset("assets/five.png"),
+                              Column(
+                                children: <Widget>[
+                                  SizedBox(height: 15),
+                                  Text(
+                                    globals.account.displayName,
+                                    style:
+                                        TextStyle(fontFamily: "Poppins-Medium"),
+                                  ),
+                                ],
+                              ),
+                              Image.asset(
+                                'assets/medal.png',
+                              ),
+                              Text('90',
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins-Medium',
+                                      fontSize: 15)),
+                            ],
+                          )),
+                            SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                          width: 350,
+                          height: 50,
+                          decoration: new BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                    color: Colors.cyan[200], spreadRadius: 1)
+                              ],
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Image.asset("assets/six.png"),
+                              Column(
+                                children: <Widget>[
+                                  SizedBox(height: 15),
+                                  Text(
+                                    globals.account.displayName,
+                                    style:
+                                        TextStyle(fontFamily: "Poppins-Medium"),
+                                  ),
+                                ],
+                              ),
+                              Image.asset(
+                                'assets/medal.png',
+                              ),
+                              Text('90',
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins-Medium',
+                                      fontSize: 15)),
+                            ],
+                          )),
+                          
+                            SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                          width: 350,
+                          height: 50,
+                          decoration: new BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                    color: Colors.cyan[200], spreadRadius: 1)
+                              ],
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Image.asset("assets/seven.png"),
+                              Column(
+                                children: <Widget>[
+                                  SizedBox(height: 15),
+                                  Text(
+                                    globals.account.displayName,
+                                    style:
+                                        TextStyle(fontFamily: "Poppins-Medium"),
+                                  ),
+                                ],
+                              ),
+                              Image.asset(
+                                'assets/medal.png',
+                              ),
+                              Text('90',
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins-Medium',
+                                      fontSize: 15)),
+                            ],
+                          )),
+                          
+                          
+                          
+                          
+                    ],
+                  ),
                 )
               ],
             ),
           )
-        ]));
+        ],
+      ),
+    );
   }
 }
