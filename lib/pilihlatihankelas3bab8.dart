@@ -16,9 +16,10 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class pilihlatihankelas1bab1 extends StatefulWidget {
+
+class pilihlatihankelas3bab8 extends StatefulWidget {
   @override
-  _pilihlatihankelas1bab1State createState() => _pilihlatihankelas1bab1State();
+  _pilihlatihankelas3bab8State createState() => _pilihlatihankelas3bab8State();
 }
 
 class listDataItem extends StatelessWidget {
@@ -43,7 +44,7 @@ class listDataItem extends StatelessWidget {
   }
 }
 
-class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
+class _pilihlatihankelas3bab8State extends State<pilihlatihankelas3bab8> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
@@ -55,7 +56,7 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
               onPressed: () => Navigator.of(context).pop(),
             ),
             centerTitle: true,
-            title: Text('BAB1 BilanganCacah 1-20',
+            title: Text('BAB8 Keliling & Luas',
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w600,
@@ -75,7 +76,6 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
                   Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Container(
-                        
                           child: new FittedBox(
                               child: Material(
                         color: Colors.white,
@@ -97,12 +97,12 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
                                                 left: 8.0),
                                             child: RaisedButton(
                                                 child: Text(
-                                                  "BilanganCacah 1-20 (1)",
+                                                  "Keliling & Luas (1)",
                                                   style: TextStyle(
                                                       fontSize: 26.0,
                                                       fontFamily:
                                                           'Poppins-Medium',
-                                                          color: Colors.white,
+                                                      color: Colors.white,
                                                       fontWeight:
                                                           FontWeight.bold),
                                                 ),
@@ -116,8 +116,7 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
                                                       },
                                                     ),
                                                   );
-                                                })
-                                                )
+                                                }))
                                       ]),
                                 ),
                               ),
@@ -127,11 +126,10 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
                                 child: ClipRRect(
                                   borderRadius: new BorderRadius.circular(24.0),
                                   child: Image(
-                                      fit: BoxFit.contain,
-                                      alignment: Alignment.topRight,
-                                      
-                                      image:
-                                          AssetImage("assets/img/pencil.png"),),
+                                    fit: BoxFit.contain,
+                                    alignment: Alignment.topRight,
+                                    image: AssetImage("assets/img/pencil.png"),
+                                  ),
                                 ),
                               ),
                             ]),
@@ -156,16 +154,16 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
                                           MainAxisAlignment.spaceEvenly,
                                       children: <Widget>[
                                         Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 8.0),
-                                                 child: RaisedButton(
+                                            padding: const EdgeInsets.only(
+                                                left: 8.0),
+                                            child: RaisedButton(
                                                 child: Text(
-                                                  "BilanganCacah 1-20 (2)",
+                                                  "Keliling & Luas (2)",
                                                   style: TextStyle(
                                                       fontSize: 26.0,
                                                       fontFamily:
                                                           'Poppins-Medium',
-                                                          color: Colors.white,
+                                                      color: Colors.white,
                                                       fontWeight:
                                                           FontWeight.bold),
                                                 ),
@@ -179,8 +177,7 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
                                                       },
                                                     ),
                                                   );
-                                                })
-                                        ),
+                                                })),
                                       ]),
                                 ),
                               ),
@@ -198,68 +195,7 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
                               ),
                             ]),
                       )))),
-                  Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Container(
-                          child: new FittedBox(
-                              child: Material(
-                        color: Colors.white,
-                        elevation: 14.0,
-                        borderRadius: BorderRadius.circular(24.0),
-                        shadowColor: Color(0x802196F3),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Container(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 16.0),
-                                  child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: <Widget>[
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 8.0),
-                                               child: RaisedButton(
-                                                child: Text(
-                                                  "BilanganCacah 1-20 (3)",
-                                                  style: TextStyle(
-                                                      fontSize: 26.0,
-                                                      fontFamily:
-                                                          'Poppins-Medium',
-                                                          color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                                color: Colors.cyan,
-                                                onPressed: () {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) {
-                                                        return halamankuis();
-                                                      },
-                                                    ),
-                                                  );
-                                                })
-                                        ),
-                                      ]),
-                                ),
-                              ),
-                              Container(
-                                width: 250,
-                                height: 200,
-                                child: ClipRRect(
-                                  borderRadius: new BorderRadius.circular(24.0),
-                                  child: Image(
-                                      fit: BoxFit.contain,
-                                      alignment: Alignment.topRight,
-                                      image:
-                                          AssetImage("assets/img/abacus.png")),
-                                ),
-                              ),
-                            ]),
-                      )))),
+                  
                 ]))));
   }
 }

@@ -16,9 +16,9 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class pilihlatihankelas1bab1 extends StatefulWidget {
+class pilihlatihankelas1bab6 extends StatefulWidget {
   @override
-  _pilihlatihankelas1bab1State createState() => _pilihlatihankelas1bab1State();
+  _pilihlatihankelas1bab6State createState() => _pilihlatihankelas1bab6State();
 }
 
 class listDataItem extends StatelessWidget {
@@ -43,7 +43,7 @@ class listDataItem extends StatelessWidget {
   }
 }
 
-class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
+class _pilihlatihankelas1bab6State extends State<pilihlatihankelas1bab6> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
@@ -55,7 +55,7 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
               onPressed: () => Navigator.of(context).pop(),
             ),
             centerTitle: true,
-            title: Text('BAB1 BilanganCacah 1-20',
+            title: Text('BAB6 Pengukuran Berat',
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w600,
@@ -75,7 +75,6 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
                   Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Container(
-                        
                           child: new FittedBox(
                               child: Material(
                         color: Colors.white,
@@ -97,12 +96,12 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
                                                 left: 8.0),
                                             child: RaisedButton(
                                                 child: Text(
-                                                  "BilanganCacah 1-20 (1)",
+                                                  "Pengukuran Berat (1)",
                                                   style: TextStyle(
                                                       fontSize: 26.0,
                                                       fontFamily:
                                                           'Poppins-Medium',
-                                                          color: Colors.white,
+                                                      color: Colors.white,
                                                       fontWeight:
                                                           FontWeight.bold),
                                                 ),
@@ -116,8 +115,7 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
                                                       },
                                                     ),
                                                   );
-                                                })
-                                                )
+                                                }))
                                       ]),
                                 ),
                               ),
@@ -127,11 +125,10 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
                                 child: ClipRRect(
                                   borderRadius: new BorderRadius.circular(24.0),
                                   child: Image(
-                                      fit: BoxFit.contain,
-                                      alignment: Alignment.topRight,
-                                      
-                                      image:
-                                          AssetImage("assets/img/pencil.png"),),
+                                    fit: BoxFit.contain,
+                                    alignment: Alignment.topRight,
+                                    image: AssetImage("assets/img/pencil.png"),
+                                  ),
                                 ),
                               ),
                             ]),
@@ -156,16 +153,16 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
                                           MainAxisAlignment.spaceEvenly,
                                       children: <Widget>[
                                         Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 8.0),
-                                                 child: RaisedButton(
+                                            padding: const EdgeInsets.only(
+                                                left: 8.0),
+                                            child: RaisedButton(
                                                 child: Text(
-                                                  "BilanganCacah 1-20 (2)",
+                                                  "Pengukuran Berat (2)",
                                                   style: TextStyle(
                                                       fontSize: 26.0,
                                                       fontFamily:
                                                           'Poppins-Medium',
-                                                          color: Colors.white,
+                                                      color: Colors.white,
                                                       fontWeight:
                                                           FontWeight.bold),
                                                 ),
@@ -179,8 +176,7 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
                                                       },
                                                     ),
                                                   );
-                                                })
-                                        ),
+                                                })),
                                       ]),
                                 ),
                               ),
@@ -218,16 +214,16 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
                                           MainAxisAlignment.spaceEvenly,
                                       children: <Widget>[
                                         Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 8.0),
-                                               child: RaisedButton(
+                                            padding: const EdgeInsets.only(
+                                                left: 8.0),
+                                            child: RaisedButton(
                                                 child: Text(
-                                                  "BilanganCacah 1-20 (3)",
+                                                  "Pengukuran Berat (3)",
                                                   style: TextStyle(
                                                       fontSize: 26.0,
                                                       fontFamily:
                                                           'Poppins-Medium',
-                                                          color: Colors.white,
+                                                      color: Colors.white,
                                                       fontWeight:
                                                           FontWeight.bold),
                                                 ),
@@ -241,8 +237,7 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
                                                       },
                                                     ),
                                                   );
-                                                })
-                                        ),
+                                                })),
                                       ]),
                                 ),
                               ),

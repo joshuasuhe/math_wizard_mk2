@@ -91,6 +91,8 @@ flutter:
    - assets/img/pencil.png
    - assets/img/multiply.png
    - assets/img/planet.jpg
+   - assets/img/calculator.png
+   - assets/img/notebook.png
    - assets/google-logo.png
    - assets/facebook-logo.png
    - assets/gold-medal.png

@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/login.dart';
+import 'package:math_wizard_mk2/pilihlatihankelas3bab1.dart';
+import 'package:math_wizard_mk2/pilihlatihankelas3bab2.dart';
+import 'package:math_wizard_mk2/pilihlatihankelas3bab3.dart';
+import 'package:math_wizard_mk2/pilihlatihankelas3bab4.dart';
+import 'package:math_wizard_mk2/pilihlatihankelas3bab5.dart';
+import 'package:math_wizard_mk2/pilihlatihankelas3bab6.dart';
+import 'package:math_wizard_mk2/pilihlatihankelas3bab7.dart';
+import 'package:math_wizard_mk2/pilihlatihankelas3bab8.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/ranking.dart';
 import 'package:math_wizard_mk2/profile.dart';
@@ -79,7 +87,12 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
                   height: 15,
                 ),
                 InkWell(
-                  // onTap: (),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihlatihankelas3bab1();
+                    }));
+                },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -100,7 +113,12 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
                   height: 15,
                 ),
                 InkWell(
-                  // onTap: (),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihlatihankelas3bab2();
+                    }));
+                },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -120,8 +138,13 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
                 SizedBox(
                   height: 15,
                 ),
-                InkWell(
-                  // onTap: (),
+                  InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihlatihankelas3bab3();
+                    }));
+                },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -141,8 +164,13 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
                 SizedBox(
                   height: 15,
                 ),
-                InkWell(
-                  // onTap: (),
+                  InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihlatihankelas3bab4();
+                    }));
+                },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -162,8 +190,13 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
                  SizedBox(
                   height: 15,
                 ),
-                InkWell(
-                  // onTap: (),
+                  InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihlatihankelas3bab5();
+                    }));
+                },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -183,8 +216,13 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
                  SizedBox(
                   height: 15,
                 ),
-                InkWell(
-                  // onTap: (),
+                  InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihlatihankelas3bab6();
+                    }));
+                },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -204,8 +242,13 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
                  SizedBox(
                   height: 15,
                 ),
-                InkWell(
-                  // onTap: (),
+                  InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihlatihankelas3bab7();
+                    }));
+                },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -225,8 +268,13 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
                  SizedBox(
                   height: 15,
                 ),
-                InkWell(
-                  // onTap: (),
+                  InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihlatihankelas3bab8();
+                    }));
+                },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,

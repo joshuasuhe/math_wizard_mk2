@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/login.dart';
+import 'package:math_wizard_mk2/pilihlatihankelas5bab7.dart';
+import 'package:math_wizard_mk2/pilihlatihankelas5bab1.dart';
+import 'package:math_wizard_mk2/pilihlatihankelas5bab2.dart';
+import 'package:math_wizard_mk2/pilihlatihankelas5bab3.dart';
+import 'package:math_wizard_mk2/pilihlatihankelas5bab4.dart';
+import 'package:math_wizard_mk2/pilihlatihankelas5bab5.dart';
+import 'package:math_wizard_mk2/pilihlatihankelas5bab6.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/ranking.dart';
 import 'package:math_wizard_mk2/profile.dart';
@@ -79,7 +86,12 @@ class _pilihlatihankelas5State extends State<pilihlatihankelas5> {
                   height: 15,
                 ),
                 InkWell(
-                  // onTap: (),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihlatihankelas5bab1();
+                    }));
+                },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -100,7 +112,12 @@ class _pilihlatihankelas5State extends State<pilihlatihankelas5> {
                   height: 15,
                 ),
                 InkWell(
-                  // onTap: (),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihlatihankelas5bab2();
+                    }));
+                },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -121,7 +138,12 @@ class _pilihlatihankelas5State extends State<pilihlatihankelas5> {
                   height: 15,
                 ),
                 InkWell(
-                  // onTap: (),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihlatihankelas5bab3();
+                    }));
+                },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -142,7 +164,12 @@ class _pilihlatihankelas5State extends State<pilihlatihankelas5> {
                   height: 15,
                 ),
                 InkWell(
-                  // onTap: (),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihlatihankelas5bab4();
+                    }));
+                },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -163,7 +190,12 @@ class _pilihlatihankelas5State extends State<pilihlatihankelas5> {
                   height: 15,
                 ),
                 InkWell(
-                  // onTap: (),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihlatihankelas5bab5();
+                    }));
+                },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -184,7 +216,12 @@ class _pilihlatihankelas5State extends State<pilihlatihankelas5> {
                   height: 15,
                 ),
                 InkWell(
-                  // onTap: (),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihlatihankelas5bab6();
+                    }));
+                },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -205,7 +242,12 @@ class _pilihlatihankelas5State extends State<pilihlatihankelas5> {
                   height: 15,
                 ),
                 InkWell(
-                  // onTap: (),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihlatihankelas5bab7();
+                    }));
+                },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
