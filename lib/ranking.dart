@@ -118,9 +118,17 @@ class _RankingScreenState extends State<RankingScreen> {
                           width: 20,
                           height: 25,
                         ),
-                        Text(globals.currentaccountscore,
-                            style: TextStyle(
-                                fontFamily: 'Poppins-Medium', fontSize: 15)),
+                         globals.currentemailscore == 0
+                                  ? Text(
+                                      globals.currentgooglescore.toString(),
+                                      style: TextStyle(
+                                          fontFamily: "Poppins-Medium"),
+                                    )
+                                  : Text(
+                                      globals.currentemailscore.toString(),
+                                      style: TextStyle(
+                                          fontFamily: "Poppins-Medium"),
+                                    ),
                         SizedBox(
                           width: 10,
                         ),

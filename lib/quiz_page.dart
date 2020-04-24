@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/login.dart';
@@ -18,16 +19,16 @@ class halamankuis extends StatefulWidget {
 }
 
 class _halamankuisState extends State<halamankuis> {
-  
   @override
-  
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(leading: IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-        title: Text("BilanganCacah 1-20",style: TextStyle(color: Colors.white,fontFamily: 'Poppins-Bold')),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: Text("BilanganCacah 1-20",
+            style: TextStyle(color: Colors.white, fontFamily: 'Poppins-Bold')),
         backgroundColor: Colors.cyan,
       ),
       body: Center(
@@ -41,16 +42,15 @@ class _halamankuisState extends State<halamankuis> {
           children: <Widget>[
             SizedBox(height: 20),
             CustomProgressBar(200),
-            Text("SOAL NOMOR 5",style: TextStyle(fontFamily: 'Poppins-Medium')),
+            Text("SOAL NOMOR 5",
+                style: TextStyle(fontFamily: 'Poppins-Medium')),
             Flexible(
               flex: 1,
               child: Container(
                 margin: const EdgeInsets.all(15),
                 padding: const EdgeInsets.all(3),
-                
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.black)),
-                    
               ),
             ),
             Flexible(
@@ -114,7 +114,8 @@ class _halamankuisState extends State<halamankuis> {
                 icon: Icon(Icons.navigate_next),
                 label: Text(
                   'Next',
-                  style: TextStyle(color: Colors.white,fontFamily: 'Poppins-Medium'),
+                  style: TextStyle(
+                      color: Colors.white, fontFamily: 'Poppins-Medium'),
                 ),
                 onPressed: () {
                   Navigator.push(

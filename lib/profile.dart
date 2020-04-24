@@ -147,8 +147,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         width: 20,
                         height: 20,
                       ),
-                      Text(globals.currentaccountscore,
-                          style: TextStyle(fontFamily: 'Poppins-Medium')),
+                      globals.currentemailscore == 0
+                          ? Text(
+                              globals.currentgooglescore.toString(),
+                              style: TextStyle(fontFamily: "Poppins-Medium"),
+                            )
+                          : Text(
+                              globals.currentemailscore.toString(),
+                              style: TextStyle(fontFamily: "Poppins-Medium"),
+                            ),
                       SizedBox(
                         width: 10,
                       ),
@@ -157,8 +164,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         width: 20,
                         height: 20,
                       ),
-                      Text(globals.currentaccountcoin,
-                          style: TextStyle(fontFamily: 'Poppins-Medium'))
+                      globals.currentemailscore == 0
+                          ? Text(
+                              globals.currentgooglecoin.toString(),
+                              style: TextStyle(fontFamily: "Poppins-Medium"),
+                            )
+                          : Text(
+                              globals.currentemailcoin.toString(),
+                              style: TextStyle(fontFamily: "Poppins-Medium"),
+                            ),
                     ],
                   ),
                   SizedBox(height: 10),
@@ -336,8 +350,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: RaisedButton(
                       elevation: 5.0,
                       onPressed: () {
-                        globals.currentaccountgoogle = null;
-                        globals.currentaccountemail = null;
                         AuthProvider().logOut();
                         if (FirebaseUser == null) {
                           Navigator.push(context,

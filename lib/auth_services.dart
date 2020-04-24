@@ -15,20 +15,29 @@ class AuthProvider {
   Future<bool> signInWithEmail(String email, String password) async {
     try {
       AuthResult result = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);    
+          email: email, password: password);
       FirebaseUser user = result.user;
-      
-       Firestore.instance.collection("Users")
-      .where('Email',isEqualTo:user.email).snapshots().listen((data)=>
-      data.documents.forEach((doc)=>globals.currentaccountcoin = (doc["coin"])));
-      
-      Firestore.instance.collection("Users")
-      .where('Email',isEqualTo:user.email).snapshots().listen((data)=>
-      data.documents.forEach((doc)=>globals.currentaccountscore = (doc["score"])));
 
-      Firestore.instance.collection("Users")
-      .where('Email',isEqualTo:user.email).snapshots().listen((data)=>
-      data.documents.forEach((doc)=>globals.currentaccountemail = (doc["Username"])));
+      Firestore.instance
+          .collection("Users")
+          .where('Email', isEqualTo: user.email)
+          .snapshots()
+          .listen((data) => data.documents
+              .forEach((doc) => globals.currentemailcoin = (doc["coin"])));
+
+      Firestore.instance
+          .collection("Users")
+          .where('Email', isEqualTo: user.email)
+          .snapshots()
+          .listen((data) => data.documents
+              .forEach((doc) => globals.currentemailscore = (doc["score"])));
+
+      Firestore.instance
+          .collection("Users")
+          .where('Email', isEqualTo: user.email)
+          .snapshots()
+          .listen((data) => data.documents.forEach(
+              (doc) => globals.currentaccountemail = (doc["Username"])));
 
       if (user != null)
         return true;
@@ -38,8 +47,6 @@ class AuthProvider {
       print(e.message);
       return false;
     }
-
-    
   }
 
   // BUAT AKUN DENGAN EMAIL
@@ -78,6 +85,13 @@ class AuthProvider {
       await googleSignIn.signOut();
       await _auth.signOut();
       await _auth.signOut();
+      globals.currentaccountgoogle = null;
+      globals.currentaccountemail = null;
+      globals.currentgooglecoin= 0;
+      globals.currentgooglescore=0;
+      globals.currentemailcoin= 0;
+      globals.currentemailscore=0;
+
       print("sign out berhasil");
     } catch (e) {
       print("error logging out");
@@ -96,13 +110,19 @@ class AuthProvider {
           displayname: account.displayName, email: account.email);
       globals.currentaccountgoogle = account.displayName;
 
-      Firestore.instance.collection("Users")
-      .where('Email',isEqualTo:account.email).snapshots().listen((data)=>
-      data.documents.forEach((doc)=>globals.currentaccountcoin = (doc["coin"])));
+      Firestore.instance
+          .collection("Users")
+          .where('Email', isEqualTo: account.email)
+          .snapshots()
+          .listen((data) => data.documents
+              .forEach((doc) => globals.currentgooglecoin = (doc["coin"])));
 
-      Firestore.instance.collection("Users")
-      .where('Email',isEqualTo:account.email).snapshots().listen((data)=>
-      data.documents.forEach((doc)=>globals.currentaccountscore = (doc["score"])));
+      Firestore.instance
+          .collection("Users")
+          .where('Email', isEqualTo: account.email)
+          .snapshots()
+          .listen((data) => data.documents
+              .forEach((doc) => globals.currentgooglescore = (doc["score"])));
 
       AuthResult res =
           await _auth.signInWithCredential(GoogleAuthProvider.getCredential(
@@ -125,23 +145,8 @@ class AuthProvider {
   }
 
   static Future<void> addUserGoogle(String id,
-      {String displayname, String email}) async {
-    await userCollection
-        .document(id)
-        .setData({'username': displayname, 'email': email});
-
+      {String displayname, String email, String score, String coin}) async {
+    await userCollection.document(id).setData(
+        {'Username': displayname, 'Email': email, 'score': 0, 'coin': 0});
   }
-
-
-
-
-
-
-
-
-  
 }
-
-
-
-

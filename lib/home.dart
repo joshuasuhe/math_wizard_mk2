@@ -104,16 +104,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       Column(
                         children: <Widget>[
                           SizedBox(height: 15),
-                          globals.currentaccountemail == null?
-                            Text(
-                                globals.currentaccountgoogle,
-                                style: TextStyle(fontFamily: "Poppins-Medium"),
-                              ):
-                              Text(
-                                globals.currentaccountemail,
-                                style: TextStyle(fontFamily: "Poppins-Medium"),
-                              ),
-                        
+                          globals.currentaccountemail == null
+                              ? Text(
+                                  globals.currentaccountgoogle,
+                                  style:
+                                      TextStyle(fontFamily: "Poppins-Medium"),
+                                )
+                              : Text(
+                                  globals.currentaccountemail,
+                                  style:
+                                      TextStyle(fontFamily: "Poppins-Medium"),
+                                ),
                           SizedBox(height: 10),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -123,9 +124,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                 width: 20,
                                 height: 20,
                               ),
-                              Text(globals.currentaccountscore,
-                                  style:
-                                      TextStyle(fontFamily: 'Poppins-Medium')),
+                              globals.currentemailscore == 0
+                                  ? Text(
+                                      globals.currentgooglescore.toString(),
+                                      style: TextStyle(
+                                          fontFamily: "Poppins-Medium"),
+                                    )
+                                  : Text(
+                                      globals.currentemailscore.toString(),
+                                      style: TextStyle(
+                                          fontFamily: "Poppins-Medium"),
+                                    ),
                               SizedBox(
                                 width: 10,
                               ),
@@ -134,9 +143,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                 width: 20,
                                 height: 20,
                               ),
-                              Text(globals.currentaccountcoin,
-                                  style:
-                                      TextStyle(fontFamily: 'Poppins-Medium'))
+                                globals.currentemailscore == 0
+                                  ? Text(
+                                      globals.currentgooglescore.toString(),
+                                      style: TextStyle(
+                                          fontFamily: "Poppins-Medium"),
+                                    )
+                                  : Text(
+                                      globals.currentemailscore.toString(),
+                                      style: TextStyle(
+                                          fontFamily: "Poppins-Medium"),
+                                    ),
                             ],
                           ),
                           SizedBox(height: 10),
