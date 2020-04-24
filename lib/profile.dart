@@ -147,7 +147,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         width: 20,
                         height: 20,
                       ),
-                      Text('100',
+                      Text(globals.currentaccountscore,
                           style: TextStyle(fontFamily: 'Poppins-Medium')),
                       SizedBox(
                         width: 10,
@@ -157,7 +157,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         width: 20,
                         height: 20,
                       ),
-                      Text('100',
+                      Text(globals.currentaccountcoin,
                           style: TextStyle(fontFamily: 'Poppins-Medium'))
                     ],
                   ),

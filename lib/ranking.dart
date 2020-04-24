@@ -38,19 +38,17 @@ class _RankingScreenState extends State<RankingScreen> {
         actions: <Widget>[
           Container(
             child: Switch(
-                activeColor: Colors.red,
-                value: status,
-                onChanged: (value) {
-                  print("VALUE : $value");
-                  setState(() {
-                    status = value;
-                  });
-                },
-              ),
+              activeColor: Colors.red,
+              value: status,
+              onChanged: (value) {
+                print("VALUE : $value");
+                setState(() {
+                  status = value;
+                });
+              },
+            ),
           ),
-             
         ],
-
       ),
       body: Stack(
         children: <Widget>[
@@ -87,22 +85,29 @@ class _RankingScreenState extends State<RankingScreen> {
                           width: 70,
                           height: 70,
                         ),
-                        Column(
-                          children: <Widget>[
-                            SizedBox(height: 15),
-                             globals.currentaccountemail == null?
-                            Text(
-                                globals.currentaccountgoogle,
-                                style: TextStyle(fontFamily: "Poppins-Medium"),
-                              ):
-                              Text(
-                                globals.currentaccountemail,
-                                style: TextStyle(fontFamily: "Poppins-Medium"),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Flexible(
+                          child: Column(
+                            children: <Widget>[
+                              SizedBox(height: 15),
+                              globals.currentaccountemail == null
+                                  ? Text(
+                                      globals.currentaccountgoogle,
+                                      style: TextStyle(
+                                          fontFamily: "Poppins-Medium"),
+                                    )
+                                  : Text(
+                                      globals.currentaccountemail,
+                                      style: TextStyle(
+                                          fontFamily: "Poppins-Medium"),
+                                    ),
+                              SizedBox(
+                                height: 10,
                               ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         SizedBox(
                           height: 10,
@@ -113,7 +118,7 @@ class _RankingScreenState extends State<RankingScreen> {
                           width: 20,
                           height: 25,
                         ),
-                        Text('100',
+                        Text(globals.currentaccountscore,
                             style: TextStyle(
                                 fontFamily: 'Poppins-Medium', fontSize: 15)),
                         SizedBox(
@@ -160,7 +165,7 @@ class _RankingScreenState extends State<RankingScreen> {
                               children: <Widget>[
                                 SizedBox(height: 15),
                                 Text(
-                                   "tes",
+                                  "tes",
                                   style:
                                       TextStyle(fontFamily: "Poppins-Medium"),
                                 ),
@@ -197,7 +202,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                 children: <Widget>[
                                   SizedBox(height: 15),
                                   Text(
-                                     "tes",
+                                    "tes",
                                     style:
                                         TextStyle(fontFamily: "Poppins-Medium"),
                                   ),
@@ -233,7 +238,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                 children: <Widget>[
                                   SizedBox(height: 15),
                                   Text(
-                                     "tes",
+                                    "tes",
                                     style:
                                         TextStyle(fontFamily: "Poppins-Medium"),
                                   ),
@@ -248,7 +253,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                       fontSize: 15)),
                             ],
                           )),
-                          SizedBox(
+                      SizedBox(
                         height: 15,
                       ),
                       Container(
@@ -284,7 +289,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                       fontSize: 15)),
                             ],
                           )),
-                            SizedBox(
+                      SizedBox(
                         height: 15,
                       ),
                       Container(
@@ -305,7 +310,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                 children: <Widget>[
                                   SizedBox(height: 15),
                                   Text(
-                                     "tes",
+                                    "tes",
                                     style:
                                         TextStyle(fontFamily: "Poppins-Medium"),
                                   ),
@@ -320,7 +325,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                       fontSize: 15)),
                             ],
                           )),
-                            SizedBox(
+                      SizedBox(
                         height: 15,
                       ),
                       Container(
@@ -341,7 +346,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                 children: <Widget>[
                                   SizedBox(height: 15),
                                   Text(
-                                     "tes",
+                                    "tes",
                                     style:
                                         TextStyle(fontFamily: "Poppins-Medium"),
                                   ),
@@ -356,8 +361,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                       fontSize: 15)),
                             ],
                           )),
-                          
-                            SizedBox(
+                      SizedBox(
                         height: 15,
                       ),
                       Container(
@@ -378,7 +382,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                 children: <Widget>[
                                   SizedBox(height: 15),
                                   Text(
-                                     "tes",
+                                    "tes",
                                     style:
                                         TextStyle(fontFamily: "Poppins-Medium"),
                                   ),
@@ -393,10 +397,6 @@ class _RankingScreenState extends State<RankingScreen> {
                                       fontSize: 15)),
                             ],
                           )),
-                          
-                          
-                          
-                          
                     ],
                   ),
                 )

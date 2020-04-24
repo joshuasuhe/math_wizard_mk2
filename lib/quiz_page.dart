@@ -47,8 +47,10 @@ class _halamankuisState extends State<halamankuis> {
               child: Container(
                 margin: const EdgeInsets.all(15),
                 padding: const EdgeInsets.all(3),
+                
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.black)),
+                    
               ),
             ),
             Flexible(

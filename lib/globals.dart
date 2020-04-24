@@ -9,3 +9,5 @@ String currentaccountgoogle;
 String currentaccountemail;
 String currentaccountpassword;
 String currentaccount;
+String currentaccountscore;
+String currentaccountcoin;

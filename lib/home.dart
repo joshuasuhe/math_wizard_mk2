@@ -123,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 width: 20,
                                 height: 20,
                               ),
-                              Text('100',
+                              Text(globals.currentaccountscore,
                                   style:
                                       TextStyle(fontFamily: 'Poppins-Medium')),
                               SizedBox(
@@ -134,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 width: 20,
                                 height: 20,
                               ),
-                              Text('100',
+                              Text(globals.currentaccountcoin,
                                   style:
                                       TextStyle(fontFamily: 'Poppins-Medium'))
                             ],

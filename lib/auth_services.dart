@@ -20,6 +20,14 @@ class AuthProvider {
       
        Firestore.instance.collection("Users")
       .where('Email',isEqualTo:user.email).snapshots().listen((data)=>
+      data.documents.forEach((doc)=>globals.currentaccountcoin = (doc["coin"])));
+      
+      Firestore.instance.collection("Users")
+      .where('Email',isEqualTo:user.email).snapshots().listen((data)=>
+      data.documents.forEach((doc)=>globals.currentaccountscore = (doc["score"])));
+
+      Firestore.instance.collection("Users")
+      .where('Email',isEqualTo:user.email).snapshots().listen((data)=>
       data.documents.forEach((doc)=>globals.currentaccountemail = (doc["Username"])));
 
       if (user != null)
@@ -87,6 +95,15 @@ class AuthProvider {
       addUserGoogle(account.id,
           displayname: account.displayName, email: account.email);
       globals.currentaccountgoogle = account.displayName;
+
+      Firestore.instance.collection("Users")
+      .where('Email',isEqualTo:account.email).snapshots().listen((data)=>
+      data.documents.forEach((doc)=>globals.currentaccountcoin = (doc["coin"])));
+
+      Firestore.instance.collection("Users")
+      .where('Email',isEqualTo:account.email).snapshots().listen((data)=>
+      data.documents.forEach((doc)=>globals.currentaccountscore = (doc["score"])));
+
       AuthResult res =
           await _auth.signInWithCredential(GoogleAuthProvider.getCredential(
         idToken: (await account.authentication).idToken,
