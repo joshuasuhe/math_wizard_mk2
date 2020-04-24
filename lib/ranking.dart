@@ -90,10 +90,15 @@ class _RankingScreenState extends State<RankingScreen> {
                         Column(
                           children: <Widget>[
                             SizedBox(height: 15),
+                             globals.currentaccountemail == null?
                             Text(
-                              globals.account.displayName,
-                              style: TextStyle(fontFamily: "Poppins-Medium"),
-                            ),
+                                globals.currentaccountgoogle,
+                                style: TextStyle(fontFamily: "Poppins-Medium"),
+                              ):
+                              Text(
+                                globals.currentaccountemail,
+                                style: TextStyle(fontFamily: "Poppins-Medium"),
+                              ),
                             SizedBox(
                               height: 10,
                             ),
@@ -155,7 +160,7 @@ class _RankingScreenState extends State<RankingScreen> {
                               children: <Widget>[
                                 SizedBox(height: 15),
                                 Text(
-                                  globals.account.displayName,
+                                   "tes",
                                   style:
                                       TextStyle(fontFamily: "Poppins-Medium"),
                                 ),
@@ -192,7 +197,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                 children: <Widget>[
                                   SizedBox(height: 15),
                                   Text(
-                                    globals.account.displayName,
+                                     "tes",
                                     style:
                                         TextStyle(fontFamily: "Poppins-Medium"),
                                   ),
@@ -228,7 +233,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                 children: <Widget>[
                                   SizedBox(height: 15),
                                   Text(
-                                    globals.account.displayName,
+                                     "tes",
                                     style:
                                         TextStyle(fontFamily: "Poppins-Medium"),
                                   ),
@@ -264,7 +269,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                 children: <Widget>[
                                   SizedBox(height: 15),
                                   Text(
-                                    globals.account.displayName,
+                                    "tes",
                                     style:
                                         TextStyle(fontFamily: "Poppins-Medium"),
                                   ),
@@ -300,7 +305,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                 children: <Widget>[
                                   SizedBox(height: 15),
                                   Text(
-                                    globals.account.displayName,
+                                     "tes",
                                     style:
                                         TextStyle(fontFamily: "Poppins-Medium"),
                                   ),
@@ -336,7 +341,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                 children: <Widget>[
                                   SizedBox(height: 15),
                                   Text(
-                                    globals.account.displayName,
+                                     "tes",
                                     style:
                                         TextStyle(fontFamily: "Poppins-Medium"),
                                   ),
@@ -373,7 +378,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                 children: <Widget>[
                                   SizedBox(height: 15),
                                   Text(
-                                    globals.account.displayName,
+                                     "tes",
                                     style:
                                         TextStyle(fontFamily: "Poppins-Medium"),
                                   ),

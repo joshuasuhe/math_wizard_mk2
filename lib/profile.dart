@@ -91,10 +91,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),
-                  Text(
-                    globals.account.displayName,
-                    style: TextStyle(fontFamily: "Poppins-Medium"),
-                  ),
+                  globals.currentaccountemail == null
+                      ? Text(
+                          globals.currentaccountgoogle,
+                          style: TextStyle(fontFamily: "Poppins-Medium"),
+                        )
+                      : Text(
+                          globals.currentaccountemail,
+                          style: TextStyle(fontFamily: "Poppins-Medium"),
+                        ),
                   Padding(
                     padding: EdgeInsets.only(top: 1.0),
                     child: IconButton(
@@ -331,6 +336,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: RaisedButton(
                       elevation: 5.0,
                       onPressed: () {
+                        globals.currentaccountgoogle = null;
+                        globals.currentaccountemail = null;
                         AuthProvider().logOut();
                         if (FirebaseUser == null) {
                           Navigator.push(context,

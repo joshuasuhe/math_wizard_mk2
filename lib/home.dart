@@ -13,12 +13,10 @@ import 'package:math_wizard_mk2/latihan.dart';
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/materi.dart';
 
-class HomeScreen extends StatefulWidget {  
+class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
-
 }
-
 
 class _HomeScreenState extends State<HomeScreen> {
   String imagePath;
@@ -102,11 +100,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                 border: Border.all(color: Colors.black),
                               ),
                             ),
-                            SizedBox(width:15),
+                      SizedBox(width: 15),
                       Column(
                         children: <Widget>[
                           SizedBox(height: 15),
-                    Text(globals.account.displayName,style: TextStyle(fontFamily: "Poppins-Medium"),),
+                          globals.currentaccountemail == null?
+                            Text(
+                                globals.currentaccountgoogle,
+                                style: TextStyle(fontFamily: "Poppins-Medium"),
+                              ):
+                              Text(
+                                globals.currentaccountemail,
+                                style: TextStyle(fontFamily: "Poppins-Medium"),
+                              ),
+                        
                           SizedBox(height: 10),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -177,12 +184,6 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 15,
               ),
-
-              /////////////////////////////////////
-              ///
-              ///           LATIHAN
-              ///
-              //////////////////////////////////////
               GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {

@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:math_wizard_mk2/database_services.dart';
 import 'package:math_wizard_mk2/forgot_password.dart';
 import 'package:math_wizard_mk2/home.dart';
 import 'package:math_wizard_mk2/signup.dart';
@@ -12,7 +14,7 @@ import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-
+import 'globals.dart' as globals;
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -22,8 +24,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  String name= " ";
 
-  
 
   @override
   void initState() {
@@ -116,16 +118,11 @@ class _LoginScreenState extends State<LoginScreen> {
     return Container(
       alignment: Alignment.centerRight,
       child: FlatButton(
-        onPressed: (){
-          Navigator.push(context,MaterialPageRoute(builder: (context){
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
             return forgotpasswordScreen();
-          
-          })
-          );
-          
-        
-          },
-  
+          }));
+        },
         padding: EdgeInsets.only(right: 0.0),
         child: Text(
           'Lupa Password?',
@@ -136,8 +133,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-
-  
   Widget _buildSignupBtn() {
     return GestureDetector(
       onTap: () {
@@ -172,7 +167,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-
   // Widget _buildRememberMeCheckbox() {
   //   return Container(
   //     height: 20.0,
@@ -204,8 +198,6 @@ class _LoginScreenState extends State<LoginScreen> {
   // }
 
   Widget _buildLoginBtn() {
-    
-
     return Container(
       padding: EdgeInsets.symmetric(),
       width: double.infinity,
@@ -214,27 +206,33 @@ class _LoginScreenState extends State<LoginScreen> {
         onPressed: () async {
           if (emailController.text == '' || passwordController.text == '') {
             Alert(
-      context: context,
-      type: AlertType.error,
-      title: "Login Gagal",
-      desc: "Email atau password masih kosong.",
-      buttons: [
-        DialogButton(
-          child: Text(
-            "OK",
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          ),
-          onPressed: () => Navigator.pop(context),
-          width: 120,
-        )
-      ],
-    ).show();
+              context: context,
+              type: AlertType.error,
+              title: "Login Gagal",
+              desc: "Email atau password masih kosong.",
+              buttons: [
+                DialogButton(
+                  child: Text(
+                    "OK",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                  width: 120,
+                )
+              ],
+            ).show();
           }
           bool res = await AuthProvider()
               .signInWithEmail(emailController.text, passwordController.text);
           if (!res) {
             AlertDialog(title: Text("Login Failed"));
           }
+
+
+                    
+                    
+              
+          
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -289,8 +287,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -341,7 +337,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 175,
                         height: 175,
                       ),
-
                       _buildEmailTF(),
                       SizedBox(
                         height: 20.0,
@@ -355,19 +350,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(
-                        height:10.0,
-                      ),_buildLoginBtn(),SizedBox(
+                        height: 10.0,
+                      ),
+                      _buildLoginBtn(),
+                      SizedBox(
                         height: 5.0,
                       ),
                       SizedBox(
-                        height:10.0,
+                        height: 10.0,
                       ),
                       _buildSignupBtn(),
                       Container(
-                      
                           padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
                           width: 500,
-                              
                           child: Column(
                             children: <Widget>[
                               _buildSignInGoogleButton(),

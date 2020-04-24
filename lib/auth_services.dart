@@ -8,16 +8,20 @@ import 'package:math_wizard_mk2/database_services.dart';
 class AuthProvider {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   GoogleSignIn googleSignIn = GoogleSignIn();
-  static CollectionReference userCollection = Firestore.instance.collection('Users');
-  
-
+  static CollectionReference userCollection =
+      Firestore.instance.collection('Users');
 
 //LOGIN DENGAN EMAIL
   Future<bool> signInWithEmail(String email, String password) async {
     try {
       AuthResult result = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
+          email: email, password: password);    
       FirebaseUser user = result.user;
+      
+       Firestore.instance.collection("Users")
+      .where('Email',isEqualTo:user.email).snapshots().listen((data)=>
+      data.documents.forEach((doc)=>globals.currentaccountemail = (doc["Username"])));
+
       if (user != null)
         return true;
       else
@@ -26,6 +30,8 @@ class AuthProvider {
       print(e.message);
       return false;
     }
+
+    
   }
 
   // BUAT AKUN DENGAN EMAIL
@@ -37,6 +43,16 @@ class AuthProvider {
       FirebaseUser user = result.user;
 
       await DatabasesServices(uid: user.uid).createuser(username);
+
+      // StreamBuilder(
+      //       stream: Firestore.instance.collection('Users')
+      //               .snapshots(),
+      //                builder: (context, snapshot) {
+      //                while (snapshot.data.documents[i]!=username)
+      //                		return Text('Loading data.....');
+      //                 return Text(
+      //                          snapshot.data.documents[0]['username'],style: TextStyle(fontFamily: "Poppins-Medium",fontSize: 15),);
+      //                           });
 
       if (user != null)
         return true;
@@ -64,48 +80,51 @@ class AuthProvider {
   Future<bool> loginWithGoogle() async {
     try {
       GoogleSignIn googleSignIn = GoogleSignIn();
-      globals.account = await googleSignIn.signIn();
-      if (globals.account == null) return false;
+      GoogleSignInAccount account = await googleSignIn.signIn();
+      if (account == null) return false;
       print("login berhasil");
-      print("Username: ${globals.account.displayName}");
-      addUserGoogle(globals.account.id,
-      displayname: globals.account.displayName,
-      email: globals.account.email);
-            AuthResult res =
-                await _auth.signInWithCredential(GoogleAuthProvider.getCredential(
-              idToken: (await globals.account.authentication).idToken,
-              accessToken: (await globals.account.authentication).accessToken,
-            ));
-            if (res.user == null) return false;
-            return true;
-          } catch (e) {
-            print(e.message);
-            print("Error logging with google");
-            return false;
-          }
-        }
-      
-      //RESET PASSWORD
-      
-        Future sendPasswordResetEmail(String email) async {
-          return _auth.sendPasswordResetEmail(email: email);
-        }
-      
-       static Future<void>addUserGoogle(String id,{String displayname,String email})async{
-         await userCollection.document(id).setData({
-                  'username': displayname,
-                  'email':email
-                  
-         });
+      print("Username: ${account.displayName}");
+      addUserGoogle(account.id,
+          displayname: account.displayName, email: account.email);
+      globals.currentaccountgoogle = account.displayName;
+      AuthResult res =
+          await _auth.signInWithCredential(GoogleAuthProvider.getCredential(
+        idToken: (await account.authentication).idToken,
+        accessToken: (await account.authentication).accessToken,
+      ));
+      if (res.user == null) return false;
+      return true;
+    } catch (e) {
+      print(e.message);
+      print("Error logging with google");
+      return false;
+    }
+  }
 
+  //RESET PASSWORD
 
-         
+  Future sendPasswordResetEmail(String email) async {
+    return _auth.sendPasswordResetEmail(email: email);
+  }
 
+  static Future<void> addUserGoogle(String id,
+      {String displayname, String email}) async {
+    await userCollection
+        .document(id)
+        .setData({'username': displayname, 'email': email});
 
-
-  
   }
 
 
 
+
+
+
+
+
+  
 }
+
+
+
+

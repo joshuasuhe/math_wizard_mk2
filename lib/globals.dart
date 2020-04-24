@@ -5,5 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 
 
-GoogleSignInAccount account;
-TextEditingController usernameController;
+String currentaccountgoogle;
+String currentaccountemail;
+String currentaccountpassword;
+String currentaccount;
