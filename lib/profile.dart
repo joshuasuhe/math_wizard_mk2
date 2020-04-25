@@ -142,37 +142,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Image.asset(
-                        'assets/trophy.png',
-                        width: 20,
-                        height: 20,
-                      ),
-                      globals.currentemailscore == 0
-                          ? Text(
-                              globals.currentgooglescore.toString(),
-                              style: TextStyle(fontFamily: "Poppins-Medium"),
-                            )
-                          : Text(
-                              globals.currentemailscore.toString(),
-                              style: TextStyle(fontFamily: "Poppins-Medium"),
-                            ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Image.asset(
-                        'assets/coin.png',
-                        width: 20,
-                        height: 20,
-                      ),
-                      globals.currentemailscore == 0
-                          ? Text(
-                              globals.currentgooglecoin.toString(),
-                              style: TextStyle(fontFamily: "Poppins-Medium"),
-                            )
-                          : Text(
-                              globals.currentemailcoin.toString(),
-                              style: TextStyle(fontFamily: "Poppins-Medium"),
-                            ),
+                                                   Image.asset(
+                                'assets/trophy.png',
+                                width: 20,
+                                height: 20,
+                              ),
+                              globals.currentemailscore == null
+                                  ? Text(
+                                      globals.currentgooglescore.toString(),
+                                      style: TextStyle(
+                                          fontFamily: "Poppins-Medium"),
+                                    )
+                                  : Text(
+                                      globals.currentemailscore.toString(),
+                                      style: TextStyle(
+                                          fontFamily: "Poppins-Medium"),
+                                    ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Image.asset(
+                                'assets/coin.png',
+                                width: 20,
+                                height: 20,
+                              ),
+                                globals.currentemailcoin == null
+                                  ? Text(
+                                      globals.currentgooglecoin.toString(),
+                                      style: TextStyle(
+                                          fontFamily: "Poppins-Medium"),
+                                    )
+                                  : Text(
+                                      globals.currentemailcoin.toString(),
+                                      style: TextStyle(
+                                          fontFamily: "Poppins-Medium"),
+                                    ),
                     ],
                   ),
                   SizedBox(height: 10),

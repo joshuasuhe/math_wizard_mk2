@@ -124,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 width: 20,
                                 height: 20,
                               ),
-                              globals.currentemailscore == 0
+                              globals.currentemailscore == null
                                   ? Text(
                                       globals.currentgooglescore.toString(),
                                       style: TextStyle(
@@ -143,14 +143,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                 width: 20,
                                 height: 20,
                               ),
-                                globals.currentemailscore == 0
+                                globals.currentemailcoin == null
                                   ? Text(
-                                      globals.currentgooglescore.toString(),
+                                      globals.currentgooglecoin.toString(),
                                       style: TextStyle(
                                           fontFamily: "Poppins-Medium"),
                                     )
                                   : Text(
-                                      globals.currentemailscore.toString(),
+                                      globals.currentemailcoin.toString(),
                                       style: TextStyle(
                                           fontFamily: "Poppins-Medium"),
                                     ),

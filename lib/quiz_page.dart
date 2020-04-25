@@ -19,6 +19,9 @@ class halamankuis extends StatefulWidget {
 }
 
 class _halamankuisState extends State<halamankuis> {
+
+  // final docRef =Firestore.instance.collection('Kurikulum').snapshots();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,6 +132,10 @@ class _halamankuisState extends State<halamankuis> {
                 },
               ),
             ),
+    Row(children: <Widget>[
+      // new Text(docRef.toString())
+    ],)
+            
           ],
         ),
       )),

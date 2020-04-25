@@ -118,7 +118,7 @@ class _RankingScreenState extends State<RankingScreen> {
                           width: 20,
                           height: 25,
                         ),
-                         globals.currentemailscore == 0
+                         globals.currentemailscore == null
                                   ? Text(
                                       globals.currentgooglescore.toString(),
                                       style: TextStyle(

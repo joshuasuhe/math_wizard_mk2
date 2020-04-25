@@ -38,6 +38,9 @@ class AuthProvider {
           .snapshots()
           .listen((data) => data.documents.forEach(
               (doc) => globals.currentaccountemail = (doc["Username"])));
+              globals.currentgooglecoin = null;
+              globals.currentgooglescore =null;
+              globals.currentaccountgoogle = null;
 
       if (user != null)
         return true;
@@ -109,6 +112,9 @@ class AuthProvider {
       addUserGoogle(account.id,
           displayname: account.displayName, email: account.email);
       globals.currentaccountgoogle = account.displayName;
+      globals.currentemailcoin = null;
+      globals.currentemailscore = null;
+      globals.currentaccountemail =null;
 
       Firestore.instance
           .collection("Users")
@@ -148,5 +154,6 @@ class AuthProvider {
       {String displayname, String email, String score, String coin}) async {
     await userCollection.document(id).setData(
         {'Username': displayname, 'Email': email, 'score': 0, 'coin': 0});
+        
   }
 }

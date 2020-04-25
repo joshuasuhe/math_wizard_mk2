@@ -320,6 +320,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
               ),
               Container(
+                
                 alignment: Alignment.center,
                 height: double.infinity,
                 child: SingleChildScrollView(

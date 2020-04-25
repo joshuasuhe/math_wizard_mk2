@@ -23,8 +23,10 @@ class MateriScreen extends StatefulWidget {
 }
 
 class listDataItem extends StatelessWidget {
+  
   String itemName;
   listDataItem(this.itemName);
+
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +53,8 @@ class _MateriScreenState extends State<MateriScreen> {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
+  
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.cyan,
@@ -91,7 +95,9 @@ class _MateriScreenState extends State<MateriScreen> {
                       return pilihmaterikelas1();
                     }));
                   },
-                  child: Container(
+                child: Container(
+
+
                     decoration: BoxDecoration(
                         color: Colors.white,
                         boxShadow: [new BoxShadow(blurRadius: 1.0)],
