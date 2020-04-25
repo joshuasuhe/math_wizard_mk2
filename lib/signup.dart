@@ -21,8 +21,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   String userUsername;
   String userPassword;
   String userEmail;
-  String userScore ="0";
-  String userCoin ="0";
+  int userScore = 0;
+  int userCoin = 0;
 
   crudMethods crudObj = new crudMethods();
 
