@@ -113,8 +113,8 @@ class _RankingScreenState extends State<RankingScreen> {
                       children: [
                         Image.asset(
                           'assets/avatar1.png',
-                          width: 70,
-                          height: 70,
+                          width: 55,
+                          height: 55,
                         ),
                         SizedBox(
                           width: 5,
@@ -125,11 +125,13 @@ class _RankingScreenState extends State<RankingScreen> {
                                   globals.currentaccountgoogle,
                                   style:
                                       TextStyle(fontFamily: "Poppins-Medium"),
+                                  overflow: TextOverflow.ellipsis,
                                 )
                               : Text(
                                   globals.currentaccountemail,
                                   style:
                                       TextStyle(fontFamily: "Poppins-Medium"),
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                         ),
                         SizedBox(
@@ -138,8 +140,8 @@ class _RankingScreenState extends State<RankingScreen> {
                         ),
                         Image.asset(
                           'assets/trophy.png',
-                          width: 20,
-                          height: 25,
+                          width: 45,
+                          height: 45,
                         ),
                         globals.currentemailscore == null
                             ? Text(
@@ -156,18 +158,22 @@ class _RankingScreenState extends State<RankingScreen> {
                       ],
                     )),
                 SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 Container(
                   child: StreamBuilder(
-                    stream: Firestore.instance.collection("Users").snapshots(),
+                    stream: Firestore.instance
+                        .collection("Users")
+                        .orderBy("score", descending: true)
+                        .snapshots(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return Text('Loading Data..');
                       }
                       return Container(
+                        height: 450,
                         width: 350,
-                        padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                        padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
                         decoration: new BoxDecoration(
                             color: Colors.white,
                             boxShadow: <BoxShadow>[
@@ -182,117 +188,146 @@ class _RankingScreenState extends State<RankingScreen> {
                             borderRadius: BorderRadius.circular(10)),
                         child: Column(
                           children: <Widget>[
+                            Text(
+                              "Top 5",
+                              style: TextStyle(
+                                  fontFamily: "Poppins-Medium", fontSize: 30),
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
                             Row(
                               children: <Widget>[
-                                Text("1.",
-                                    style: TextStyle(
-                                        fontFamily: "Poppins-Medium")),
-                                SizedBox(
-                                  width: 5,
+                                Image.asset(
+                                  'assets/gold-medal.png',
+                                  width: 65,
+                                  height: 65,
                                 ),
                                 Expanded(
                                   child: Text(
                                       snapshot.data.documents[0]['Username'],
+                                      overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
-                                          fontFamily: "Poppins-Medium")),
+                                          fontFamily: "Poppins-Medium",
+                                          fontSize: 18)),
                                 ),
-                                SizedBox(
-                                  width: 120,
-                                ),
+                                // SizedBox(
+                                //   width: 50,
+                                // ),
                                 Image.asset(
                                   'assets/trophy.png',
-                                  width: 20,
-                                  height: 25,
+                                  width: 65,
+                                  height: 65,
                                 ),
                                 Text(
                                   snapshot.data.documents[0]['score']
                                       .toString(),
-                                  style:
-                                      TextStyle(fontFamily: "Poppins-Medium"),
+                                  style: TextStyle(
+                                      fontFamily: "Poppins-Medium",
+                                      fontSize: 18),
                                 ),
                               ],
                             ),
+                            Divider(
+                              color: Colors.grey,
+                              thickness: 1,
+                            ),
                             Row(
                               children: <Widget>[
-                                Text("2.",
-                                    style: TextStyle(
-                                        fontFamily: "Poppins-Medium")),
-                                SizedBox(
-                                  width: 5,
+                                Image.asset(
+                                  'assets/silver-medal.png',
+                                  width: 60,
+                                  height: 60,
                                 ),
                                 Expanded(
                                   child: Text(
                                       snapshot.data.documents[1]['Username'],
+                                      overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
-                                          fontFamily: "Poppins-Medium")),
+                                          fontFamily: "Poppins-Medium", fontSize: 16)),
                                 ),
-                                SizedBox(
-                                  width: 120,
-                                ),
+                                // SizedBox(
+                                //   width: 100,
+                                // ),
                                 Image.asset(
                                   'assets/trophy.png',
-                                  width: 20,
-                                  height: 25,
+                                  width: 60,
+                                  height: 60,
                                 ),
                                 Text(
                                   snapshot.data.documents[1]['score']
                                       .toString(),
                                   style:
-                                      TextStyle(fontFamily: "Poppins-Medium"),
+                                      TextStyle(fontFamily: "Poppins-Medium", fontSize: 16),
                                 ),
                               ],
                             ),
+                            Divider(
+                              color: Colors.grey,
+                              thickness: 1,
+                            ),
                             Row(
                               children: <Widget>[
-                                Text("3.",
-                                    style: TextStyle(
-                                        fontFamily: "Poppins-Medium")),
-                                SizedBox(
-                                  width: 5,
+                                Image.asset(
+                                  'assets/bronze-medal.png',
+                                  width: 55,
+                                  height: 55,
                                 ),
                                 Expanded(
                                   child: Text(
                                       snapshot.data.documents[2]['Username'],
+                                      overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
-                                          fontFamily: "Poppins-Medium")),
+                                          fontFamily: "Poppins-Medium", fontSize: 14)),
                                 ),
-                                SizedBox(
-                                  width: 120,
-                                ),
+                                // SizedBox(
+                                //   width: 100,
+                                // ),
                                 Image.asset(
                                   'assets/trophy.png',
-                                  width: 20,
-                                  height: 25,
+                                  width: 55,
+                                  height: 55,
                                 ),
                                 Text(
                                   snapshot.data.documents[2]['score']
                                       .toString(),
                                   style:
-                                      TextStyle(fontFamily: "Poppins-Medium"),
+                                      TextStyle(fontFamily: "Poppins-Medium", fontSize: 14),
                                 ),
                               ],
                             ),
+                            Divider(
+                              color: Colors.grey,
+                              thickness: 1,
+                            ),
                             Row(
                               children: <Widget>[
-                                Text("4.",
-                                    style: TextStyle(
-                                        fontFamily: "Poppins-Medium")),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Image.asset(
+                                  'assets/four.png',
+                                  width: 45,
+                                  height: 45,
+                                ),
                                 SizedBox(
                                   width: 5,
                                 ),
                                 Expanded(
                                   child: Text(
                                       snapshot.data.documents[3]['Username'],
+                                      overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           fontFamily: "Poppins-Medium")),
                                 ),
-                                SizedBox(
-                                  width: 120,
-                                ),
+                                // SizedBox(
+                                //   width: 100,
+                                // ),
                                 Image.asset(
                                   'assets/trophy.png',
-                                  width: 20,
-                                  height: 25,
+                                  width: 50,
+                                  height: 50,
                                 ),
                                 Text(
                                   snapshot.data.documents[3]['score']
@@ -302,28 +337,37 @@ class _RankingScreenState extends State<RankingScreen> {
                                 ),
                               ],
                             ),
+                            Divider(
+                              color: Colors.grey,
+                              thickness: 1,
+                            ),
                             Row(
-                              
                               children: <Widget>[
-                                Text("5.",
-                                    style: TextStyle(
-                                        fontFamily: "Poppins-Medium")),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Image.asset(
+                                  'assets/five.png',
+                                  width: 45,
+                                  height: 45,
+                                ),
                                 SizedBox(
                                   width: 5,
                                 ),
                                 Expanded(
                                   child: Text(
                                       snapshot.data.documents[4]['Username'],
+                                      overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           fontFamily: "Poppins-Medium")),
                                 ),
-                                SizedBox(
-                                  width: 120,
-                                ),
+                                // SizedBox(
+                                //   width: 100,
+                                // ),
                                 Image.asset(
                                   'assets/trophy.png',
-                                  width: 20,
-                                  height: 25,
+                                  width: 50,
+                                  height: 50,
                                 ),
                                 Text(
                                   snapshot.data.documents[4]['score']
