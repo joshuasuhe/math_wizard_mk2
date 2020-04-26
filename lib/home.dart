@@ -4,12 +4,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:math_wizard_mk2/pilih_kelas.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'globals.dart' as globals;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:math_wizard_mk2/database_services.dart';
-import 'package:math_wizard_mk2/latihan.dart';
+import 'package:math_wizard_mk2/kelas1/pilih_bab_kelas1.dart';
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/materi.dart';
 

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:math_wizard_mk2/latihan.dart';
-import 'package:math_wizard_mk2/login.dart';
+import 'package:flutter/services.dart';import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/materi.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/ranking.dart';

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:math_wizard_mk2/Kelas1/pilihmaterikelas1.dart';
 import 'package:math_wizard_mk2/login.dart';
-import 'package:math_wizard_mk2/pilih_materi_kelas2.dart';
-import 'package:math_wizard_mk2/pilih_materi_kelas3.dart';
-import 'package:math_wizard_mk2/pilih_materi_kelas4.dart';
-import 'package:math_wizard_mk2/pilih_materi_kelas5.dart';
-import 'package:math_wizard_mk2/pilih_materi_kelas6.dart';
+import 'package:math_wizard_mk2/pilih_latihan_kelas2.dart';
+import 'package:math_wizard_mk2/Kelas1/pilih_bab_kelas1.dart';
+import 'package:math_wizard_mk2/pilih_latihan_kelas3.dart';
+import 'package:math_wizard_mk2/pilih_latihan_kelas4.dart';
+import 'package:math_wizard_mk2/pilih_latihan_kelas5.dart';
+import 'package:math_wizard_mk2/pilih_latihan_kelas6.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/ranking.dart';
 import 'package:math_wizard_mk2/profile.dart';
@@ -17,19 +17,21 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class MateriScreen extends StatefulWidget {
+class LatihanScreen extends StatefulWidget {
   @override
-  _MateriScreenState createState() => _MateriScreenState();
+  _LatihanScreenState createState() => _LatihanScreenState();
 }
 
 class listDataItem extends StatelessWidget {
-  
   String itemName;
   listDataItem(this.itemName);
 
-
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return Card(
       child: Container(
         child: Row(
@@ -46,15 +48,13 @@ class listDataItem extends StatelessWidget {
   }
 }
 
-class _MateriScreenState extends State<MateriScreen> {
+class _LatihanScreenState extends State<LatihanScreen> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
-
-  
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.cyan,
@@ -63,7 +63,7 @@ class _MateriScreenState extends State<MateriScreen> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          "Materi",
+          "Latihan",
           style: TextStyle(fontFamily: 'Poppins-Bold'),
         ),
         centerTitle: true,
@@ -71,10 +71,10 @@ class _MateriScreenState extends State<MateriScreen> {
       body: Stack(
         children: <Widget>[
           Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/bg2.png"), fit: BoxFit.cover)),
-        ),
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/bg2.png"), fit: BoxFit.cover)),
+          ),
           SingleChildScrollView(
             padding: EdgeInsets.all(30),
             child: Column(
@@ -92,12 +92,10 @@ class _MateriScreenState extends State<MateriScreen> {
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return pilihmaterikelas1();
+                      return pilihlatihankelas1();
                     }));
                   },
-                child: Container(
-
-
+                  child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
                         boxShadow: [new BoxShadow(blurRadius: 1.0)],
@@ -123,7 +121,7 @@ class _MateriScreenState extends State<MateriScreen> {
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return pilihmaterikelas2();
+                      return pilihlatihankelas2();
                     }));
                   },
                   child: Container(
@@ -152,7 +150,7 @@ class _MateriScreenState extends State<MateriScreen> {
                  onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return pilihmaterikelas3();
+                      return pilihlatihankelas3();
                     }));
                   },
                   child: Container(
@@ -181,7 +179,7 @@ class _MateriScreenState extends State<MateriScreen> {
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return pilihmaterikelas4();
+                      return pilihlatihankelas4();
                     }));
                   },
                   child: Container(
@@ -210,7 +208,7 @@ class _MateriScreenState extends State<MateriScreen> {
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return pilihmaterikelas5();
+                      return pilihlatihankelas5();
                     }));
                   },
                   child: Container(
@@ -239,7 +237,7 @@ class _MateriScreenState extends State<MateriScreen> {
                  onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return pilihmaterikelas6();
+                      return pilihlatihankelas6();
                     }));
                   },
                   child: Container(
