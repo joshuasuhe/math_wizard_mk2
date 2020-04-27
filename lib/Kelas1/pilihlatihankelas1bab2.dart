@@ -88,6 +88,8 @@ class _pilihlatihankelas1bab2State extends State<pilihlatihankelas1bab2> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Container(
+                                height: 200,
+                                width: 200,
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 16.0),
                                   child: Column(
@@ -98,6 +100,11 @@ class _pilihlatihankelas1bab2State extends State<pilihlatihankelas1bab2> {
                                             padding: const EdgeInsets.only(
                                                 left: 8.0),
                                             child: RaisedButton(
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      new BorderRadius.circular(
+                                                          18.0),
+                                                ),
                                                 child: StreamBuilder(
                                                     stream: Firestore.instance
                                                         .collection("Kurikulum")
@@ -114,6 +121,8 @@ class _pilihlatihankelas1bab2State extends State<pilihlatihankelas1bab2> {
                                                         snapshot.data
                                                                 .documents[0]
                                                             ['sub1'],
+                                                        textAlign:
+                                                            TextAlign.center,
                                                         style: TextStyle(
                                                             fontFamily:
                                                                 "Poppins-Medium",
@@ -143,7 +152,7 @@ class _pilihlatihankelas1bab2State extends State<pilihlatihankelas1bab2> {
                                   child: Image(
                                     fit: BoxFit.contain,
                                     alignment: Alignment.topRight,
-                                    image: AssetImage("assets/img/pencil.png"),
+                                    image: AssetImage("assets/img/brackets.png"),
                                   ),
                                 ),
                               ),
@@ -162,6 +171,8 @@ class _pilihlatihankelas1bab2State extends State<pilihlatihankelas1bab2> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Container(
+                                width: 200,
+                                height: 200,
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 16.0),
                                   child: Column(
@@ -172,6 +183,11 @@ class _pilihlatihankelas1bab2State extends State<pilihlatihankelas1bab2> {
                                             padding: const EdgeInsets.only(
                                                 left: 8.0),
                                             child: RaisedButton(
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      new BorderRadius.circular(
+                                                          18.0),
+                                                ),
                                                 child: StreamBuilder(
                                                     stream: Firestore.instance
                                                         .collection("Kurikulum")
@@ -188,6 +204,8 @@ class _pilihlatihankelas1bab2State extends State<pilihlatihankelas1bab2> {
                                                         snapshot.data
                                                                 .documents[0]
                                                             ['sub2'],
+                                                        textAlign:
+                                                            TextAlign.center,
                                                         style: TextStyle(
                                                             fontFamily:
                                                                 "Poppins-Medium",
@@ -218,7 +236,7 @@ class _pilihlatihankelas1bab2State extends State<pilihlatihankelas1bab2> {
                                       fit: BoxFit.contain,
                                       alignment: Alignment.topRight,
                                       image: AssetImage(
-                                          "assets/img/multiply.png")),
+                                          "assets/img/plus.png")),
                                 ),
                               ),
                             ]),
@@ -236,6 +254,8 @@ class _pilihlatihankelas1bab2State extends State<pilihlatihankelas1bab2> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Container(
+                                width: 200,
+                                height: 200,
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 16.0),
                                   child: Column(
@@ -246,6 +266,11 @@ class _pilihlatihankelas1bab2State extends State<pilihlatihankelas1bab2> {
                                             padding: const EdgeInsets.only(
                                                 left: 8.0),
                                             child: RaisedButton(
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      new BorderRadius.circular(
+                                                          18.0),
+                                                ),
                                                 child: StreamBuilder(
                                                     stream: Firestore.instance
                                                         .collection("Kurikulum")
@@ -262,10 +287,12 @@ class _pilihlatihankelas1bab2State extends State<pilihlatihankelas1bab2> {
                                                         snapshot.data
                                                                 .documents[0]
                                                             ['sub3'],
+                                                        textAlign:
+                                                            TextAlign.center,
                                                         style: TextStyle(
                                                             fontFamily:
                                                                 "Poppins-Medium",
-                                                                color: Colors.white,
+                                                            color: Colors.white,
                                                             fontSize: 20),
                                                       );
                                                     }),
@@ -292,7 +319,7 @@ class _pilihlatihankelas1bab2State extends State<pilihlatihankelas1bab2> {
                                       fit: BoxFit.contain,
                                       alignment: Alignment.topRight,
                                       image:
-                                          AssetImage("assets/img/abacus.png")),
+                                          AssetImage("assets/img/equal.png")),
                                 ),
                               ),
                             ]),

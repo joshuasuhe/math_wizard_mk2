@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
@@ -53,11 +54,20 @@ class _pilihlatihankelas5bab3State extends State<pilihlatihankelas5bab3> {
               onPressed: () => Navigator.of(context).pop(),
             ),
             centerTitle: true,
-            title: Text('BAB3 Luas Bangun Datar Sederhana',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Poppins-Bold')),
+            
+      title: StreamBuilder(
+                  stream:
+                      Firestore.instance.collection("Kurikulum")
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) return Text('Loading data.....');
+                    return Text(
+                      snapshot.data.documents[2]
+                          ['BAB3'],
+                      style:
+                          TextStyle(fontFamily: "Poppins-bold", fontSize: 13),
+                    );
+                  }),
             flexibleSpace: Container(
               decoration: BoxDecoration(color: Colors.cyan),
             )),
@@ -82,7 +92,10 @@ class _pilihlatihankelas5bab3State extends State<pilihlatihankelas5bab3> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Container(
+                    
+                                   Container(
+                                width: 200,
+                                height: 200,
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 16.0),
                                   child: Column(
@@ -93,16 +106,36 @@ class _pilihlatihankelas5bab3State extends State<pilihlatihankelas5bab3> {
                                             padding: const EdgeInsets.only(
                                                 left: 8.0),
                                             child: RaisedButton(
-                                                child: Text(
-                                                  "Luas Bangun Datar Sederhana (1)",
-                                                  style: TextStyle(
-                                                      fontSize: 26.0,
-                                                      fontFamily:
-                                                          'Poppins-Medium',
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      new BorderRadius.circular(
+                                                          18.0),
                                                 ),
+                                                child: StreamBuilder(
+                                                    stream: Firestore.instance
+                                                        .collection("Kurikulum")
+                                                        .document('Kelas 5')
+                                                        .collection(
+                                                            "BAB3 Luas Bangun Datar Sederhana")
+                                                        .snapshots(),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      if (!snapshot.hasData)
+                                                        return Text(
+                                                            'Loading data.....');
+                                                      return Text(
+                                                        snapshot.data
+                                                                .documents[0]
+                                                            ['sub1'],
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                "Poppins-Medium",
+                                                            color: Colors.white,
+                                                            fontSize: 20),
+                                                      );
+                                                    }),
                                                 color: Colors.cyan,
                                                 onPressed: () {
                                                   Navigator.push(
@@ -125,7 +158,7 @@ class _pilihlatihankelas5bab3State extends State<pilihlatihankelas5bab3> {
                                   child: Image(
                                     fit: BoxFit.contain,
                                     alignment: Alignment.topRight,
-                                    image: AssetImage("assets/img/pencil.png"),
+                                    image: AssetImage("assets/img/brackets.png"),
                                   ),
                                 ),
                               ),
@@ -143,7 +176,9 @@ class _pilihlatihankelas5bab3State extends State<pilihlatihankelas5bab3> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Container(
+    Container(
+                                width: 200,
+                                height: 200,
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 16.0),
                                   child: Column(
@@ -154,16 +189,36 @@ class _pilihlatihankelas5bab3State extends State<pilihlatihankelas5bab3> {
                                             padding: const EdgeInsets.only(
                                                 left: 8.0),
                                             child: RaisedButton(
-                                                child: Text(
-                                                  "Luas Bangun Datar Sederhana (2)",
-                                                  style: TextStyle(
-                                                      fontSize: 26.0,
-                                                      fontFamily:
-                                                          'Poppins-Medium',
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      new BorderRadius.circular(
+                                                          18.0),
                                                 ),
+                                                child: StreamBuilder(
+                                                    stream: Firestore.instance
+                                                        .collection("Kurikulum")
+                                                        .document('Kelas 5')
+                                                        .collection(
+                                                            "BAB3 Luas Bangun Datar Sederhana")
+                                                        .snapshots(),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      if (!snapshot.hasData)
+                                                        return Text(
+                                                            'Loading data.....');
+                                                      return Text(
+                                                        snapshot.data
+                                                                .documents[0]
+                                                            ['sub2'],
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                "Poppins-Medium",
+                                                            color: Colors.white,
+                                                            fontSize: 20),
+                                                      );
+                                                    }),
                                                 color: Colors.cyan,
                                                 onPressed: () {
                                                   Navigator.push(
@@ -187,7 +242,7 @@ class _pilihlatihankelas5bab3State extends State<pilihlatihankelas5bab3> {
                                       fit: BoxFit.contain,
                                       alignment: Alignment.topRight,
                                       image: AssetImage(
-                                          "assets/img/multiply.png")),
+                                          "assets/img/angle.png")),
                                 ),
                               ),
                             ]),

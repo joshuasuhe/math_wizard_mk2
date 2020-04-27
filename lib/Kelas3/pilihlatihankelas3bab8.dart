@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
 
 class pilihlatihankelas3bab8 extends StatefulWidget {
   @override
@@ -54,11 +54,15 @@ class _pilihlatihankelas3bab8State extends State<pilihlatihankelas3bab8> {
               onPressed: () => Navigator.of(context).pop(),
             ),
             centerTitle: true,
-            title: Text('BAB8 Keliling & Luas',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Poppins-Bold')),
+            title: StreamBuilder(
+                stream: Firestore.instance.collection("Kurikulum").snapshots(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) return Text('Loading data.....');
+                  return Text(
+                    snapshot.data.documents[4]['BAB8'],
+                    style: TextStyle(fontFamily: "Poppins-bold", fontSize: 11),
+                  );
+                }),
             flexibleSpace: Container(
               decoration: BoxDecoration(color: Colors.cyan),
             )),
@@ -84,6 +88,8 @@ class _pilihlatihankelas3bab8State extends State<pilihlatihankelas3bab8> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Container(
+                                width: 200,
+                                height: 200,
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 16.0),
                                   child: Column(
@@ -94,16 +100,36 @@ class _pilihlatihankelas3bab8State extends State<pilihlatihankelas3bab8> {
                                             padding: const EdgeInsets.only(
                                                 left: 8.0),
                                             child: RaisedButton(
-                                                child: Text(
-                                                  "Keliling & Luas (1)",
-                                                  style: TextStyle(
-                                                      fontSize: 26.0,
-                                                      fontFamily:
-                                                          'Poppins-Medium',
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      new BorderRadius.circular(
+                                                          18.0),
                                                 ),
+                                                child: StreamBuilder(
+                                                    stream: Firestore.instance
+                                                        .collection("Kurikulum")
+                                                        .document('Kelas3')
+                                                        .collection(
+                                                            "BAB8 Keliling Luas Persegi dan Persegi panjang")
+                                                        .snapshots(),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      if (!snapshot.hasData)
+                                                        return Text(
+                                                            'Loading data.....');
+                                                      return Text(
+                                                        snapshot.data
+                                                                .documents[0]
+                                                            ['sub1'],
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                "Poppins-Medium",
+                                                            color: Colors.white,
+                                                            fontSize: 20),
+                                                      );
+                                                    }),
                                                 color: Colors.cyan,
                                                 onPressed: () {
                                                   Navigator.push(
@@ -126,7 +152,7 @@ class _pilihlatihankelas3bab8State extends State<pilihlatihankelas3bab8> {
                                   child: Image(
                                     fit: BoxFit.contain,
                                     alignment: Alignment.topRight,
-                                    image: AssetImage("assets/img/pencil.png"),
+                                    image: AssetImage("assets/img/cube.png"),
                                   ),
                                 ),
                               ),
@@ -145,6 +171,8 @@ class _pilihlatihankelas3bab8State extends State<pilihlatihankelas3bab8> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Container(
+                                width: 200,
+                                height: 200,
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 16.0),
                                   child: Column(
@@ -155,16 +183,36 @@ class _pilihlatihankelas3bab8State extends State<pilihlatihankelas3bab8> {
                                             padding: const EdgeInsets.only(
                                                 left: 8.0),
                                             child: RaisedButton(
-                                                child: Text(
-                                                  "Keliling & Luas (2)",
-                                                  style: TextStyle(
-                                                      fontSize: 26.0,
-                                                      fontFamily:
-                                                          'Poppins-Medium',
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      new BorderRadius.circular(
+                                                          18.0),
                                                 ),
+                                                child: StreamBuilder(
+                                                    stream: Firestore.instance
+                                                        .collection("Kurikulum")
+                                                        .document('Kelas3')
+                                                        .collection(
+                                                            "BAB8 Keliling Luas Persegi dan Persegi panjang")
+                                                        .snapshots(),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      if (!snapshot.hasData)
+                                                        return Text(
+                                                            'Loading data.....');
+                                                      return Text(
+                                                        snapshot.data
+                                                                .documents[0]
+                                                            ['sub2'],
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                "Poppins-Medium",
+                                                            color: Colors.white,
+                                                            fontSize: 20),
+                                                      );
+                                                    }),
                                                 color: Colors.cyan,
                                                 onPressed: () {
                                                   Navigator.push(
@@ -188,12 +236,11 @@ class _pilihlatihankelas3bab8State extends State<pilihlatihankelas3bab8> {
                                       fit: BoxFit.contain,
                                       alignment: Alignment.topRight,
                                       image: AssetImage(
-                                          "assets/img/multiply.png")),
+                                          "assets/img/calculator.png")),
                                 ),
                               ),
                             ]),
                       )))),
-                  
                 ]))));
   }
 }

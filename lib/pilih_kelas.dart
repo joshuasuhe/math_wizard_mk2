@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/login.dart';
-import 'package:math_wizard_mk2/pilih_latihan_kelas2.dart';
 import 'package:math_wizard_mk2/Kelas1/pilih_bab_kelas1.dart';
-import 'package:math_wizard_mk2/pilih_latihan_kelas3.dart';
-import 'package:math_wizard_mk2/pilih_latihan_kelas4.dart';
-import 'package:math_wizard_mk2/pilih_latihan_kelas5.dart';
-import 'package:math_wizard_mk2/pilih_latihan_kelas6.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/ranking.dart';
 import 'package:math_wizard_mk2/profile.dart';
@@ -16,6 +11,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+import 'Kelas2/pilih_latihan_kelas2.dart';
+import 'Kelas3/pilih_latihan_kelas3.dart';
+import 'Kelas4/pilih_latihan_kelas4.dart';
+import 'Kelas5/pilih_latihan_kelas5.dart';
+import 'Kelas6/pilih_latihan_kelas6.dart';
 
 class LatihanScreen extends StatefulWidget {
   @override

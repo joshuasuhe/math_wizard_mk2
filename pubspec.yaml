@@ -85,14 +85,43 @@ flutter:
    - assets/Final Icons/DogIcon3.png
    - assets/Final Icons/RacoonIcon1.png
    - assets/img/body.png
+   - assets/img/angle.png
+   - assets/img/axis.png
+   - assets/img/brackets.png
+   - assets/img/brackets-1.png
+   - assets/img/calculator-1.png
+   - assets/img/compass.png
+   - assets/img/cone.png
+   - assets/img/cube.png
+   - assets/img/cylinder.png
+   - assets/img/division.png
+   - assets/img/empty-set.png
+   - assets/img/equal.png
+   - assets/img/equation.png
+   - assets/img/function.png
+   - assets/img/gravity.png
+   - assets/img/maths.png
+   - assets/img/minus.png
+   - assets/img/plus.png
+   - assets/img/percentage.png
+   - assets/img/pi.png
+   - assets/img/pie-chart.png
+   - assets/img/protractor.png
+   - assets/img/pyramid.png
+   - assets/img/set-square.png
+   - assets/img/square-root.png
+   - assets/img/sphere.png
+   - assets/img/triangle.png
    - assets/img/failed.png
    - assets/img/success.png
+   - assets/img/infinity.png
    - assets/img/body.png
    - assets/img/abacus.png
    - assets/img/pencil.png
    - assets/img/multiply.png
    - assets/img/planet.jpg
    - assets/img/calculator.png
+   - assets/img/panel.png
    - assets/img/notebook.png
    - assets/google-logo.png
    - assets/facebook-logo.png

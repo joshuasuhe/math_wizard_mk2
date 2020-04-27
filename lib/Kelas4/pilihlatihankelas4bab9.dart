@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
@@ -53,11 +54,19 @@ class _pilihlatihankelas4bab9State extends State<pilihlatihankelas4bab9> {
               onPressed: () => Navigator.of(context).pop(),
             ),
             centerTitle: true,
-            title: Text('BAB9 Bangun Ruang & Datar',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Poppins-Bold')),
+          title: StreamBuilder(
+                  stream:
+                      Firestore.instance.collection("Kurikulum")
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) return Text('Loading data.....');
+                    return Text(
+                      snapshot.data.documents[5]
+                          ['BAB9'],
+                      style:
+                          TextStyle(fontFamily: "Poppins-bold", fontSize: 15),
+                    );
+                  }),
             flexibleSpace: Container(
               decoration: BoxDecoration(color: Colors.cyan),
             )),
@@ -82,7 +91,10 @@ class _pilihlatihankelas4bab9State extends State<pilihlatihankelas4bab9> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Container(
+                             
+                                   Container(
+                                width: 200,
+                                height: 200,
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 16.0),
                                   child: Column(
@@ -93,16 +105,36 @@ class _pilihlatihankelas4bab9State extends State<pilihlatihankelas4bab9> {
                                             padding: const EdgeInsets.only(
                                                 left: 8.0),
                                             child: RaisedButton(
-                                                child: Text(
-                                                  "Bangun Ruang & Datar (1)",
-                                                  style: TextStyle(
-                                                      fontSize: 26.0,
-                                                      fontFamily:
-                                                          'Poppins-Medium',
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      new BorderRadius.circular(
+                                                          18.0),
                                                 ),
+                                                child: StreamBuilder(
+                                                    stream: Firestore.instance
+                                                        .collection("Kurikulum")
+                                                        .document('kelas 4')
+                                                        .collection(
+                                                            "BAB9 Bangun Ruang dan Bangun Datar")
+                                                        .snapshots(),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      if (!snapshot.hasData)
+                                                        return Text(
+                                                            'Loading data.....');
+                                                      return Text(
+                                                        snapshot.data
+                                                                .documents[0]
+                                                            ['sub1'],
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                "Poppins-Medium",
+                                                            color: Colors.white,
+                                                            fontSize: 20),
+                                                      );
+                                                    }),
                                                 color: Colors.cyan,
                                                 onPressed: () {
                                                   Navigator.push(
@@ -125,7 +157,7 @@ class _pilihlatihankelas4bab9State extends State<pilihlatihankelas4bab9> {
                                   child: Image(
                                     fit: BoxFit.contain,
                                     alignment: Alignment.topRight,
-                                    image: AssetImage("assets/img/pencil.png"),
+                                    image: AssetImage("assets/img/cone.png"),
                                   ),
                                 ),
                               ),
@@ -143,7 +175,9 @@ class _pilihlatihankelas4bab9State extends State<pilihlatihankelas4bab9> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Container(
+                                    Container(
+                                width: 200,
+                                height: 200,
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 16.0),
                                   child: Column(
@@ -154,16 +188,36 @@ class _pilihlatihankelas4bab9State extends State<pilihlatihankelas4bab9> {
                                             padding: const EdgeInsets.only(
                                                 left: 8.0),
                                             child: RaisedButton(
-                                                child: Text(
-                                                  "Bangun Ruang & Datar (2)",
-                                                  style: TextStyle(
-                                                      fontSize: 26.0,
-                                                      fontFamily:
-                                                          'Poppins-Medium',
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      new BorderRadius.circular(
+                                                          18.0),
                                                 ),
+                                                child: StreamBuilder(
+                                                    stream: Firestore.instance
+                                                        .collection("Kurikulum")
+                                                        .document('kelas 4')
+                                                        .collection(
+                                                            "BAB9 Bangun Ruang dan Bangun Datar")
+                                                        .snapshots(),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      if (!snapshot.hasData)
+                                                        return Text(
+                                                            'Loading data.....');
+                                                      return Text(
+                                                        snapshot.data
+                                                                .documents[0]
+                                                            ['sub2'],
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                "Poppins-Medium",
+                                                            color: Colors.white,
+                                                            fontSize: 20),
+                                                      );
+                                                    }),
                                                 color: Colors.cyan,
                                                 onPressed: () {
                                                   Navigator.push(
@@ -187,7 +241,7 @@ class _pilihlatihankelas4bab9State extends State<pilihlatihankelas4bab9> {
                                       fit: BoxFit.contain,
                                       alignment: Alignment.topRight,
                                       image: AssetImage(
-                                          "assets/img/multiply.png")),
+                                          "assets/img/pyramid.png")),
                                 ),
                               ),
                             ]),
@@ -204,7 +258,9 @@ class _pilihlatihankelas4bab9State extends State<pilihlatihankelas4bab9> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Container(
+                                      Container(
+                                width: 200,
+                                height: 200,
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 16.0),
                                   child: Column(
@@ -215,16 +271,36 @@ class _pilihlatihankelas4bab9State extends State<pilihlatihankelas4bab9> {
                                             padding: const EdgeInsets.only(
                                                 left: 8.0),
                                             child: RaisedButton(
-                                                child: Text(
-                                                  "Bangun Ruang & Datar (3)",
-                                                  style: TextStyle(
-                                                      fontSize: 26.0,
-                                                      fontFamily:
-                                                          'Poppins-Medium',
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      new BorderRadius.circular(
+                                                          18.0),
                                                 ),
+                                                child: StreamBuilder(
+                                                    stream: Firestore.instance
+                                                        .collection("Kurikulum")
+                                                        .document('kelas 4')
+                                                        .collection(
+                                                            "BAB9 Bangun Ruang dan Bangun Datar")
+                                                        .snapshots(),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      if (!snapshot.hasData)
+                                                        return Text(
+                                                            'Loading data.....');
+                                                      return Text(
+                                                        snapshot.data
+                                                                .documents[0]
+                                                            ['sub3'],
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                "Poppins-Medium",
+                                                            color: Colors.white,
+                                                            fontSize: 20),
+                                                      );
+                                                    }),
                                                 color: Colors.cyan,
                                                 onPressed: () {
                                                   Navigator.push(
@@ -248,7 +324,7 @@ class _pilihlatihankelas4bab9State extends State<pilihlatihankelas4bab9> {
                                       fit: BoxFit.contain,
                                       alignment: Alignment.topRight,
                                       image: AssetImage(
-                                          "assets/img/abacus.png")),
+                                          "assets/img/sphere.png")),
                                 ),
                               ),
                             ]),

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
@@ -53,11 +54,19 @@ class _pilihlatihankelas4bab8State extends State<pilihlatihankelas4bab8> {
               onPressed: () => Navigator.of(context).pop(),
             ),
             centerTitle: true,
-            title: Text('BAB8 Bilangan Romawi',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Poppins-Bold')),
+             title: StreamBuilder(
+                  stream:
+                      Firestore.instance.collection("Kurikulum")
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) return Text('Loading data.....');
+                    return Text(
+                      snapshot.data.documents[5]
+                          ['BAB8'],
+                      style:
+                          TextStyle(fontFamily: "Poppins-bold", fontSize: 15),
+                    );
+                  }),
             flexibleSpace: Container(
               decoration: BoxDecoration(color: Colors.cyan),
             )),
@@ -82,7 +91,9 @@ class _pilihlatihankelas4bab8State extends State<pilihlatihankelas4bab8> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Container(
+                                Container(
+                                width: 200,
+                                height: 200,
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 16.0),
                                   child: Column(
@@ -93,16 +104,36 @@ class _pilihlatihankelas4bab8State extends State<pilihlatihankelas4bab8> {
                                             padding: const EdgeInsets.only(
                                                 left: 8.0),
                                             child: RaisedButton(
-                                                child: Text(
-                                                  "Bilangan Romawi (1)",
-                                                  style: TextStyle(
-                                                      fontSize: 26.0,
-                                                      fontFamily:
-                                                          'Poppins-Medium',
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      new BorderRadius.circular(
+                                                          18.0),
                                                 ),
+                                                child: StreamBuilder(
+                                                    stream: Firestore.instance
+                                                        .collection("Kurikulum")
+                                                        .document('kelas 4')
+                                                        .collection(
+                                                            "BAB8 Bilangan Romawi")
+                                                        .snapshots(),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      if (!snapshot.hasData)
+                                                        return Text(
+                                                            'Loading data.....');
+                                                      return Text(
+                                                        snapshot.data
+                                                                .documents[0]
+                                                            ['sub1'],
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                "Poppins-Medium",
+                                                            color: Colors.white,
+                                                            fontSize: 20),
+                                                      );
+                                                    }),
                                                 color: Colors.cyan,
                                                 onPressed: () {
                                                   Navigator.push(
@@ -143,7 +174,9 @@ class _pilihlatihankelas4bab8State extends State<pilihlatihankelas4bab8> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Container(
+  Container(
+                                width: 200,
+                                height: 200,
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 16.0),
                                   child: Column(
@@ -154,16 +187,36 @@ class _pilihlatihankelas4bab8State extends State<pilihlatihankelas4bab8> {
                                             padding: const EdgeInsets.only(
                                                 left: 8.0),
                                             child: RaisedButton(
-                                                child: Text(
-                                                  "Bilangan Romawi (2)",
-                                                  style: TextStyle(
-                                                      fontSize: 26.0,
-                                                      fontFamily:
-                                                          'Poppins-Medium',
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      new BorderRadius.circular(
+                                                          18.0),
                                                 ),
+                                                child: StreamBuilder(
+                                                    stream: Firestore.instance
+                                                        .collection("Kurikulum")
+                                                        .document('kelas 4')
+                                                        .collection(
+                                                            "BAB8 Bilangan Romawi")
+                                                        .snapshots(),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      if (!snapshot.hasData)
+                                                        return Text(
+                                                            'Loading data.....');
+                                                      return Text(
+                                                        snapshot.data
+                                                                .documents[0]
+                                                            ['sub2'],
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                "Poppins-Medium",
+                                                            color: Colors.white,
+                                                            fontSize: 20),
+                                                      );
+                                                    }),
                                                 color: Colors.cyan,
                                                 onPressed: () {
                                                   Navigator.push(
@@ -187,7 +240,7 @@ class _pilihlatihankelas4bab8State extends State<pilihlatihankelas4bab8> {
                                       fit: BoxFit.contain,
                                       alignment: Alignment.topRight,
                                       image: AssetImage(
-                                          "assets/img/multiply.png")),
+                                          "assets/img/pi.png")),
                                 ),
                               ),
                             ]),

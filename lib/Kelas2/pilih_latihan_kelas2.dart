@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/login.dart';
-import 'package:math_wizard_mk2/pilihlatihankelas2bab4.dart';
-import 'package:math_wizard_mk2/pilihlatihankelas2bab3.dart';
-import 'package:math_wizard_mk2/pilihlatihankelas2bab2.dart';
-import 'package:math_wizard_mk2/pilihlatihankelas2bab1.dart';
+import 'package:math_wizard_mk2/Kelas2/pilihlatihankelas2bab4.dart';
+import 'package:math_wizard_mk2/Kelas2/pilihlatihankelas2bab3.dart';
+import 'package:math_wizard_mk2/Kelas2/pilihlatihankelas2bab2.dart';
+import 'package:math_wizard_mk2/Kelas2/pilihlatihankelas2bab1.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/ranking.dart';
 import 'package:math_wizard_mk2/profile.dart';
@@ -79,11 +80,12 @@ class _pilihlatihankelas2State extends State<pilihlatihankelas2> {
                   'Pilih Bab Pelajaran',
                   style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 20),
                 ),
+
                 SizedBox(
                   height: 15,
                 ),
-                InkWell(
-                onTap: () {
+                InkWell( 
+                  onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return pilihlatihankelas2bab1();
@@ -99,16 +101,30 @@ class _pilihlatihankelas2State extends State<pilihlatihankelas2> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text('BAB1 Bilangan Cacah', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
-                         
+                        Container(
+              child: StreamBuilder(
+                  stream:
+                      Firestore.instance.collection("Kurikulum")
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) return Text('Loading data.....');
+                    return Text(
+                      snapshot.data.documents[1]
+                          ['BAB1'],
+                      style:
+                          TextStyle(fontFamily: "Poppins-Medium", fontSize: 15),
+                    );
+                  }),
+            ), 
                       ],
                     ),
                   ),
                 ),
+
                 SizedBox(
                   height: 15,
                 ),
-                InkWell(
+                InkWell( 
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -125,16 +141,32 @@ class _pilihlatihankelas2State extends State<pilihlatihankelas2> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text('BAB2 Pengukuran Panjang & Berat', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
-                         
+                        Container(
+              child: StreamBuilder(
+                  stream:
+                      Firestore.instance.collection("Kurikulum")
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) return Text('Loading data.....');
+                    return Text(
+                      snapshot.data.documents[1]
+                          ['BAB2'],
+                      style:
+                          TextStyle(fontFamily: "Poppins-Medium", fontSize: 13),
+                    );
+                  }),
+            ), 
                       ],
                     ),
                   ),
                 ),
+
+
+
                 SizedBox(
                   height: 15,
                 ),
-                InkWell(
+                InkWell( 
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -151,16 +183,30 @@ class _pilihlatihankelas2State extends State<pilihlatihankelas2> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text('BAB3 Perkalian & Pembagian', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
-                         
+                        Container(
+              child: StreamBuilder(
+                  stream:
+                      Firestore.instance.collection("Kurikulum")
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) return Text('Loading data.....');
+                    return Text(
+                      snapshot.data.documents[1]
+                          ['BAB3'],
+                      style:
+                          TextStyle(fontFamily: "Poppins-Medium", fontSize: 15),
+                    );
+                  }),
+            ), 
                       ],
                     ),
                   ),
                 ),
+
                 SizedBox(
                   height: 15,
                 ),
-                InkWell(
+                InkWell( 
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -177,8 +223,21 @@ class _pilihlatihankelas2State extends State<pilihlatihankelas2> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text('BAB4 Bangun Datar Sederhana', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
-                         
+                        Container(
+              child: StreamBuilder(
+                  stream:
+                      Firestore.instance.collection("Kurikulum")
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) return Text('Loading data.....');
+                    return Text(
+                      snapshot.data.documents[1]
+                          ['BAB4'],
+                      style:
+                          TextStyle(fontFamily: "Poppins-Medium", fontSize: 15),
+                    );
+                  }),
+            ), 
                       ],
                     ),
                   ),
