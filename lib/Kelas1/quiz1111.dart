@@ -17,13 +17,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:math_wizard_mk2/globals.dart' as globals;
+
 
 class Quiz1111 extends StatefulWidget {
+  
   @override
+  
   _Quiz1111State createState() => _Quiz1111State();
+        
+
 }
 
 class _Quiz1111State extends State<Quiz1111> {
+  
+
   Map<String, Color> btnColor = {
     "salah1": Colors.cyan[50],
     "salah2": Colors.red[300],
@@ -57,6 +65,7 @@ class _Quiz1111State extends State<Quiz1111> {
     setState(() {
       btnColor["benar1"] = btnColor["benar2"];
       btnColor["salah1"] = btnColor["salah2"];
+      globals.currentbenar =globals.currentbenar+1;
       Timer(Duration(seconds: 2), () {
         Navigator.push(
           context,
@@ -95,7 +104,7 @@ class _Quiz1111State extends State<Quiz1111> {
             Text("SOAL NOMOR 1",
                 style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 20)),
             Container(
-              height: 350,
+              height: 200,
               width: 350,
               margin: const EdgeInsets.all(15),
               padding: const EdgeInsets.all(3),
@@ -109,7 +118,7 @@ class _Quiz1111State extends State<Quiz1111> {
                   ///          SOAL          ///
                   //////////////////////////////
                   Text(
-                    "Lambang bilangan tujuh adalah..",
+                    "Lambang bilangan tujuh adalah...",
                     style:
                         TextStyle(fontFamily: "Poppins-Medium", fontSize: 18),
                     textAlign: TextAlign.center,

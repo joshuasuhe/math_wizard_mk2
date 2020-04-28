@@ -17,6 +17,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:math_wizard_mk2/globals.dart' as globals;
+
 
 class Quiz1112 extends StatefulWidget {
   @override
@@ -46,7 +48,7 @@ class _Quiz1112State extends State<Quiz1112> {
         context,
         MaterialPageRoute(
           builder: (context) {
-            return Quiz1112();
+            return successpage();
           },
         ),
       );
@@ -57,12 +59,13 @@ class _Quiz1112State extends State<Quiz1112> {
     setState(() {
       btnColor["benar1"] = btnColor["benar2"];
       btnColor["salah1"] = btnColor["salah2"];
+      globals.currentbenar =globals.currentbenar+1;
       Timer(Duration(seconds: 2), () {
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) {
-              return Quiz1112();
+              return successpage();
             },
           ),
         );
@@ -95,7 +98,7 @@ class _Quiz1112State extends State<Quiz1112> {
             Text("SOAL NOMOR 2",
                 style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 20)),
             Container(
-              height: 350,
+              height: 200,
               width: 350,
               margin: const EdgeInsets.all(15),
               padding: const EdgeInsets.all(3),
@@ -129,7 +132,7 @@ class _Quiz1112State extends State<Quiz1112> {
                     children: <Widget>[
                       MaterialButton(
                         onPressed: () {
-                          jawabanBenar();
+                          jawabanSalah();
                         },
                         child: Text(option1.toString(),
                             textAlign: TextAlign.center),
@@ -145,7 +148,7 @@ class _Quiz1112State extends State<Quiz1112> {
                       ),
                       MaterialButton(
                         onPressed: () {
-                          jawabanSalah();
+                          jawabanBenar();
                         },
                         child: Text(option2.toString(),
                             textAlign: TextAlign.center),

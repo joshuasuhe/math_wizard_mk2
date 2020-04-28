@@ -4,7 +4,6 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:math_wizard_mk2/Kelas1/quiz1112.dart';
-import 'package:random_string/random_string.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/signup.dart';
@@ -17,6 +16,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:random_string/random_string.dart';
 
 class halamankuis extends StatefulWidget {
   @override
@@ -91,12 +91,12 @@ class _halamankuisState extends State<halamankuis> {
         )),
         child: Column(
           children: <Widget>[
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Text("SOAL NOMOR 1",
                 style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 20)),
             Container(
-              height: 350,
-              width: 350,
+              height: 200,
+              width: 200,
               margin: const EdgeInsets.all(15),
               padding: const EdgeInsets.all(3),
               decoration:
@@ -109,7 +109,7 @@ class _halamankuisState extends State<halamankuis> {
                   ///          SOAL          ///
                   //////////////////////////////
                   Text(
-                    "Lambang bilangan tujuh adalah..",
+                    "Lambang bilangan tujuh adalah...",
                     style:
                         TextStyle(fontFamily: "Poppins-Medium", fontSize: 18),
                     textAlign: TextAlign.center,

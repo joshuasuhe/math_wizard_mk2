@@ -12,15 +12,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:math_wizard_mk2/globals.dart' as globals;
+
 
 import 'mainPage.dart';
 
 class successpage extends StatefulWidget {
   @override
   _successpageState createState() => _successpageState();
+
+ 
 }
 
 class _successpageState extends State<successpage> {
+      
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -61,6 +67,7 @@ class _successpageState extends State<successpage> {
                             color: Colors.white, fontFamily: 'Poppins-Medium'),
                       ),
                       onPressed: () {
+                        globals.currentbenar = 0;
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -86,10 +93,10 @@ class _successpageState extends State<successpage> {
                           child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
-                                const ListTile(
+                                ListTile(
                                   leading: Icon(Icons.grade, size: 50),
-                                  title: Text(
-                                    'Nilai:100',
+                                  title: Text('nilai:'+
+                                    globals.currentbenar.toString(),
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontFamily: 'Poppins-Medium'),
