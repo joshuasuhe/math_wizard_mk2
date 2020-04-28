@@ -18,12 +18,12 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class halamankuis extends StatefulWidget {
+class Quiz1111 extends StatefulWidget {
   @override
-  _halamankuisState createState() => _halamankuisState();
+  _Quiz1111State createState() => _Quiz1111State();
 }
 
-class _halamankuisState extends State<halamankuis> {
+class _Quiz1111State extends State<Quiz1111> {
   Map<String, Color> btnColor = {
     "salah1": Colors.cyan[50],
     "salah2": Colors.red[300],

@@ -51,29 +51,6 @@ class _successpageState extends State<successpage> {
               ),
               Stack(children: [
                 Align(
-                    alignment: Alignment(0, 0.5),
-                    child: RaisedButton.icon(
-                      color: Colors.redAccent,
-                      icon: Icon(Icons.replay),
-                      label: Text(
-                        'try again',
-                        style: TextStyle(
-                            color: Colors.white, fontFamily: 'Poppins-Medium'),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return halamankuis();
-                            },
-                          ),
-                        );
-                      },
-                    ))
-              ]),
-              Stack(children: [
-                Align(
                     alignment: Alignment(0, 0.7),
                     child: RaisedButton.icon(
                       color: Colors.blueAccent,

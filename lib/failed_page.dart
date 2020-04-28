@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:math_wizard_mk2/mainPage.dart';
 
 void main(
 ) => runApp(MyApp());
@@ -40,22 +41,19 @@ class MyApp extends StatelessWidget {
                   ),
                   Stack(children: [
                     Align(
-                        alignment: Alignment(0, 0.5),
-                        child: RaisedButton.icon(
-                          color: Colors.redAccent,
-                          icon: Icon(Icons.replay),
-                          label: Text('try again'),
-                          onPressed: () {},
-                        ))
-                  ]),
-                  Stack(children: [
-                    Align(
                         alignment: Alignment(0, 0.7),
                         child: RaisedButton.icon(
                           color: Colors.blueAccent,
                           icon: Icon(Icons.home),
                           label: Text('Home'),
-                          onPressed: () {},
+                          onPressed: () {Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return MainPage();
+                            },
+                          ),
+                        );},
                         ))
                   ]),
                   Stack(children: [

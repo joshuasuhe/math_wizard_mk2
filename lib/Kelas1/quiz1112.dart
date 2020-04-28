@@ -18,23 +18,23 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class halamankuis extends StatefulWidget {
+class Quiz1112 extends StatefulWidget {
   @override
-  _halamankuisState createState() => _halamankuisState();
+  _Quiz1112State createState() => _Quiz1112State();
 }
 
-class _halamankuisState extends State<halamankuis> {
+class _Quiz1112State extends State<Quiz1112> {
+  
   Map<String, Color> btnColor = {
     "salah1": Colors.cyan[50],
     "salah2": Colors.red[300],
     "benar1": Colors.cyan[50],
     "benar2": Colors.green[300],
   };
-
   var random = new Random();
-  int option1 = 7;
-  int option2 = randomBetween(5, 6);
-  int option3 = randomBetween(8, 9);
+  int option1 = randomBetween(11, 14);
+  int option2 = randomBetween(15, 15);
+  int option3 = randomBetween(16, 19);
 
   void jawabanSalah() {
     setState(() {
@@ -92,7 +92,7 @@ class _halamankuisState extends State<halamankuis> {
         child: Column(
           children: <Widget>[
             SizedBox(height: 20),
-            Text("SOAL NOMOR 1",
+            Text("SOAL NOMOR 2",
                 style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 20)),
             Container(
               height: 350,
@@ -109,7 +109,7 @@ class _halamankuisState extends State<halamankuis> {
                   ///          SOAL          ///
                   //////////////////////////////
                   Text(
-                    "Lambang bilangan tujuh adalah..",
+                    "Angka lima belas dilambangkan dengan..",
                     style:
                         TextStyle(fontFamily: "Poppins-Medium", fontSize: 18),
                     textAlign: TextAlign.center,
@@ -136,7 +136,7 @@ class _halamankuisState extends State<halamankuis> {
                         padding: EdgeInsets.all(5),
                         minWidth: 300,
                         height: 50,
-                        color: btnColor["benar1"],
+                        color: btnColor["salah1"],
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                       ),
@@ -152,7 +152,7 @@ class _halamankuisState extends State<halamankuis> {
                         padding: EdgeInsets.all(5),
                         minWidth: 300,
                         height: 50,
-                        color: btnColor["salah1"],
+                        color: btnColor["benar1"],
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                       ),
