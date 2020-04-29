@@ -38,9 +38,16 @@ class AuthProvider {
           .snapshots()
           .listen((data) => data.documents.forEach(
               (doc) => globals.currentaccountemail = (doc["Username"])));
-              globals.currentgooglecoin = null;
-              globals.currentgooglescore =null;
-              globals.currentaccountgoogle = null;
+      globals.currentgooglecoin = null;
+      globals.currentgooglescore = null;
+      globals.currentaccountgoogle = null;
+
+      Firestore.instance
+          .collection("Users")
+          .where('Email', isEqualTo: user.email)
+          .snapshots()
+          .listen((data) => data.documents
+              .forEach((doc) => globals.currentidaccount = (doc.documentID)));
 
       if (user != null)
         return true;
@@ -90,10 +97,10 @@ class AuthProvider {
       await _auth.signOut();
       globals.currentaccountgoogle = null;
       globals.currentaccountemail = null;
-      globals.currentgooglecoin= 0;
+      globals.currentgooglecoin = 0;
       globals.currentgooglescore = 0;
-      globals.currentemailcoin= 0;
-      globals.currentemailscore=0;
+      globals.currentemailcoin = 0;
+      globals.currentemailscore = 0;
 
       print("sign out berhasil");
     } catch (e) {
@@ -114,7 +121,24 @@ class AuthProvider {
       globals.currentaccountgoogle = account.displayName;
       globals.currentemailcoin = null;
       globals.currentemailscore = null;
-      globals.currentaccountemail =null;
+      globals.currentaccountemail = null;
+
+           Firestore.instance
+          .collection("Users")
+          .where('Email', isEqualTo: account.email)
+          .snapshots()
+          .listen((data) => data.documents.forEach(
+              (doc) => globals.currentaccountgoogle = (doc["Username"])));
+              globals.currentemailcoin = null;
+              globals.currentemailscore =null;
+              globals.currentaccountemail = null;
+
+      Firestore.instance
+          .collection("Users")
+          .where('Email', isEqualTo: account.email)
+          .snapshots()
+          .listen((data) => data.documents
+              .forEach((doc) => globals.currentidaccount = (doc.documentID)));
 
       Firestore.instance
           .collection("Users")
@@ -154,6 +178,12 @@ class AuthProvider {
       {String displayname, String email, String score, String coin}) async {
     await userCollection.document(id).setData(
         {'Username': displayname, 'Email': email, 'score': 0, 'coin': 0});
-        
+  }
+
+  static Future<void> updateUser(String id,
+      {String displayname}) async {
+    await userCollection
+        .document(id)
+        .setData({'Username': displayname}, merge: true);
   }
 }

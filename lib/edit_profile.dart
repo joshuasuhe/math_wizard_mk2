@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:math_wizard_mk2/login.dart';
-import 'package:math_wizard_mk2/materi.dart';
-import 'package:math_wizard_mk2/signup.dart';
-import 'package:math_wizard_mk2/ranking.dart';
-import 'package:math_wizard_mk2/profile.dart';
+import 'package:math_wizard_mk2/database_services.dart';
+import 'package:math_wizard_mk2/main.dart';
+import 'package:math_wizard_mk2/mainPage.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
-import 'package:math_wizard_mk2/category.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'globals.dart' as globals;
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:math_wizard_mk2/auth_services.dart';
 
 class EditProfileScreen extends StatefulWidget {
   @override
   _EditProfileScreenState createState() => _EditProfileScreenState();
 }
 
-
-
-
 class _EditProfileScreenState extends State<EditProfileScreen> {
+  TextEditingController usernameController = TextEditingController(text: "");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +23,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         backgroundColor: Colors.cyan,
         leading: new IconButton(
           icon: new Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () =>
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return MainScreen();
+          })),
         ),
         title: Text(
           "Ubah Profil",
@@ -69,6 +67,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         decoration: kBoxDecorationStyle,
                         height: 40.0,
                         child: TextField(
+                          controller: usernameController,
                           keyboardType: TextInputType.text,
                           style: TextStyle(
                             fontFamily: 'Poppins-Medium',
@@ -78,68 +77,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             contentPadding:
                                 EdgeInsets.only(left: 10, bottom: 7),
                             hintText: 'Masukan Nama Baru',
-                            hintStyle: TextStyle(
-                                fontFamily: 'Poppins-Medium',
-                                fontSize: 12,
-                                color: Colors.black38),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Text(
-                        "Password Baru",
-                        style: TextStyle(fontFamily: "Poppins-Medium"),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        decoration: kBoxDecorationStyle,
-                        height: 40.0,
-                        child: TextField(
-                          keyboardType: TextInputType.number,
-                          style: TextStyle(
-                            fontFamily: 'Poppins-Medium',
-                          ),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding:
-                                EdgeInsets.only(left: 10, bottom: 7),
-                            hintText: 'Masukan Password Baru',
-                            hintStyle: TextStyle(
-                                fontFamily: 'Poppins-Medium',
-                                fontSize: 12,
-                                color: Colors.black38),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Text(
-                        "Ulangi Password Baru",
-                        style: TextStyle(fontFamily: "Poppins-Medium"),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        decoration: kBoxDecorationStyle,
-                        height: 40.0,
-                        child: TextField(
-                          keyboardType: TextInputType.number,
-                          style: TextStyle(
-                            fontFamily: 'Poppins-Medium',
-                          ),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding:
-                                EdgeInsets.only(left: 10, bottom: 7),
-                            hintText: 'Masukan Kembali Password Baru',
                             hintStyle: TextStyle(
                                 fontFamily: 'Poppins-Medium',
                                 fontSize: 12,
@@ -166,7 +103,58 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         child: RaisedButton(
                           elevation: 5.0,
                           onPressed: () {
-                            Navigator.of(context).pop();
+                            Alert(
+                              context: context,
+                              type: AlertType.info,
+                              title: "Profil akan diganti",
+                              desc: "Apakah setuju profil diganti?",
+                              buttons: [
+                                DialogButton(
+                                  child: Text(
+                                    "YA",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                  onPressed: () {
+                                    AuthProvider.updateUser(
+                                        globals.currentidaccount,
+                                        displayname: usernameController.text,
+);
+                                    Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: 'Profil sudah diganti',
+                                        buttons: [
+                                          DialogButton(
+                                              child: Text(
+                                                "oke",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        "Poppins-Medium",
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return EditProfileScreen();
+                                                }));
+                                              })
+                                        ]).show();
+                                  },
+                                  width: 120,
+                                ),
+                                DialogButton(
+                                  child: Text(
+                                    "Tidak",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                  onPressed: () => Navigator.pop(context),
+                                  width: 120,
+                                )
+                              ],
+                            ).show();
                           },
                           padding: EdgeInsets.all(15.0),
                           shape: RoundedRectangleBorder(
