@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:math_wizard_mk2/Kelas1/quiz1112.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:random_string/random_string.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/login.dart';
@@ -19,23 +20,15 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:math_wizard_mk2/globals.dart' as globals;
 
-
 class Quiz1111 extends StatefulWidget {
-  
   @override
-  
   _Quiz1111State createState() => _Quiz1111State();
-        
-
 }
 
 class _Quiz1111State extends State<Quiz1111> {
-  
-
   Map<String, Color> btnColor = {
-    "salah1": Colors.cyan[50],
+    "option": Colors.cyan[50],
     "salah2": Colors.red[300],
-    "benar1": Colors.cyan[50],
     "benar2": Colors.green[300],
   };
 
@@ -45,28 +38,32 @@ class _Quiz1111State extends State<Quiz1111> {
   int option3 = randomBetween(8, 9);
 
   void jawabanSalah() {
+    // showSimpleNotification(
+    //   Text("Jawaban Salah!"),
+    //   background: Colors.red[300],
+    // );
     setState(() {
-      btnColor["benar1"] = btnColor["benar2"];
-      btnColor["salah1"] = btnColor["salah2"];
-    });
-    Timer(Duration(seconds: 2), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            return Quiz1112();
-          },
-        ),
-      );
+      Timer(Duration(seconds: 1), () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return Quiz1112();
+            },
+          ),
+        );
+      });
     });
   }
 
   void jawabanBenar() {
+    // showSimpleNotification(
+    //   Text("Jawaban Benar!"),
+    //   background: Colors.green,
+    // );
     setState(() {
-      btnColor["benar1"] = btnColor["benar2"];
-      btnColor["salah1"] = btnColor["salah2"];
-      globals.currentbenar =globals.currentbenar+1;
-      Timer(Duration(seconds: 2), () {
+      globals.currentbenar = globals.currentbenar + 1;
+      Timer(Duration(seconds: 1), () {
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -145,7 +142,7 @@ class _Quiz1111State extends State<Quiz1111> {
                         padding: EdgeInsets.all(5),
                         minWidth: 300,
                         height: 50,
-                        color: btnColor["benar1"],
+                        color: btnColor["option"],
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                       ),
@@ -161,7 +158,7 @@ class _Quiz1111State extends State<Quiz1111> {
                         padding: EdgeInsets.all(5),
                         minWidth: 300,
                         height: 50,
-                        color: btnColor["salah1"],
+                        color: btnColor["option"],
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                       ),
@@ -177,7 +174,7 @@ class _Quiz1111State extends State<Quiz1111> {
                         padding: EdgeInsets.all(5),
                         minWidth: 300,
                         height: 50,
-                        color: btnColor["salah1"],
+                        color: btnColor["option"],
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                       ),

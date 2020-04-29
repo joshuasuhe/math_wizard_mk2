@@ -91,7 +91,7 @@ class AuthProvider {
       globals.currentaccountgoogle = null;
       globals.currentaccountemail = null;
       globals.currentgooglecoin= 0;
-      globals.currentgooglescore=0;
+      globals.currentgooglescore = 0;
       globals.currentemailcoin= 0;
       globals.currentemailscore=0;
 

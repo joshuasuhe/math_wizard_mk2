@@ -11,6 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:math_wizard_mk2/globals.dart' as globals;
 
 class MainPage extends StatefulWidget {
   @override
@@ -23,6 +24,7 @@ class _MainPageState extends State<MainPage> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      globals.currentbenar = 0;
     });
   }
 

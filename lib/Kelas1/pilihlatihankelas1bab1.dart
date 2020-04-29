@@ -26,6 +26,7 @@ class pilihlatihankelas1bab1 extends StatefulWidget {
 class listDataItem extends StatelessWidget {
   String itemName;
   listDataItem(this.itemName);
+  
 
   @override
   Widget build(BuildContext context) {
@@ -222,7 +223,7 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz1111();
                                                       },
                                                     ),
                                                   );
@@ -301,12 +302,12 @@ class _pilihlatihankelas1bab1State extends State<pilihlatihankelas1bab1> {
                                                     }),
                                                 color: Colors.cyan,
                                                 onPressed: () {
-                                                  globals.currentbenar =0;
+                                                  globals.currentbenar = 0;
                                                   Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz1111();
                                                       },
                                                     ),
                                                   );

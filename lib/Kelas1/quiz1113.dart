@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:math_wizard_mk2/Kelas1/quiz1112.dart';
-import 'package:math_wizard_mk2/Kelas1/quiz1113.dart';
+import 'package:math_wizard_mk2/Kelas1/quiz1114.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:random_string/random_string.dart';
 import 'package:flutter/services.dart';
@@ -21,21 +20,23 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:math_wizard_mk2/globals.dart' as globals;
 
-class Quiz1112 extends StatefulWidget {
+class Quiz1113 extends StatefulWidget {
   @override
-  _Quiz1112State createState() => _Quiz1112State();
+  _Quiz1113State createState() => _Quiz1113State();
 }
 
-class _Quiz1112State extends State<Quiz1112> {
+class _Quiz1113State extends State<Quiz1113> {
   Map<String, Color> btnColor = {
     "option": Colors.cyan[50],
     "salah2": Colors.red[300],
     "benar2": Colors.green[300],
   };
+
   var random = new Random();
-  int option1 = randomBetween(11, 14);
-  int option2 = randomBetween(15, 15);
-  int option3 = randomBetween(16, 19);
+  int x = randomBetween(6, 8);
+  String option1 = "Enam";
+  String option2 = "Tujuh";
+  String option3 = "Delapan";
 
   void jawabanSalah() {
     // showSimpleNotification(
@@ -48,7 +49,7 @@ class _Quiz1112State extends State<Quiz1112> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return Quiz1113();
+              return Quiz1114();
             },
           ),
         );
@@ -68,7 +69,7 @@ class _Quiz1112State extends State<Quiz1112> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return Quiz1113();
+              return Quiz1114();
             },
           ),
         );
@@ -98,7 +99,7 @@ class _Quiz1112State extends State<Quiz1112> {
         child: Column(
           children: <Widget>[
             SizedBox(height: 20),
-            Text("SOAL NOMOR 2",
+            Text("SOAL NOMOR 3",
                 style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 20)),
             Container(
               height: 200,
@@ -115,7 +116,13 @@ class _Quiz1112State extends State<Quiz1112> {
                   ///          SOAL          ///
                   //////////////////////////////
                   Text(
-                    "Angka lima belas dilambangkan dengan..",
+                    x.toString(),
+                    style:
+                        TextStyle(fontFamily: "Poppins-Medium", fontSize: 18),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    ",lambang bilangan diatas dibaca...",
                     style:
                         TextStyle(fontFamily: "Poppins-Medium", fontSize: 18),
                     textAlign: TextAlign.center,
@@ -133,12 +140,18 @@ class _Quiz1112State extends State<Quiz1112> {
                       borderRadius: new BorderRadius.circular(8.0)),
                   child: Column(
                     children: <Widget>[
+                      //////////////////////////////
+                      ///         OPTION 1       ///
+                      //////////////////////////////
                       MaterialButton(
                         onPressed: () {
-                          jawabanSalah();
+                          if (x == 7 || x == 8) {
+                            jawabanSalah();
+                          } else {
+                            jawabanBenar();
+                          }
                         },
-                        child: Text(option1.toString(),
-                            textAlign: TextAlign.center),
+                        child: Text(option1, textAlign: TextAlign.center),
                         padding: EdgeInsets.all(5),
                         minWidth: 300,
                         height: 50,
@@ -149,12 +162,19 @@ class _Quiz1112State extends State<Quiz1112> {
                       SizedBox(
                         height: 15,
                       ),
+
+                      //////////////////////////////
+                      ///         OPTION 2       ///
+                      //////////////////////////////
                       MaterialButton(
                         onPressed: () {
-                          jawabanBenar();
+                          if (x == 6 || x == 8) {
+                            jawabanSalah();
+                          } else {
+                            jawabanBenar();
+                          }
                         },
-                        child: Text(option2.toString(),
-                            textAlign: TextAlign.center),
+                        child: Text(option2, textAlign: TextAlign.center),
                         padding: EdgeInsets.all(5),
                         minWidth: 300,
                         height: 50,
@@ -165,12 +185,19 @@ class _Quiz1112State extends State<Quiz1112> {
                       SizedBox(
                         height: 15,
                       ),
+
+                      //////////////////////////////
+                      ///         OPTION 3       ///
+                      //////////////////////////////
                       MaterialButton(
                         onPressed: () {
-                          jawabanSalah();
+                          if (x == 6 || x == 7) {
+                            jawabanSalah();
+                          } else {
+                            jawabanBenar();
+                          }
                         },
-                        child: Text(option3.toString(),
-                            textAlign: TextAlign.center),
+                        child: Text(option3, textAlign: TextAlign.center),
                         padding: EdgeInsets.all(5),
                         minWidth: 300,
                         height: 50,

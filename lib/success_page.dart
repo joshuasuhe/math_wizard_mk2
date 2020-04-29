@@ -14,19 +14,14 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:math_wizard_mk2/globals.dart' as globals;
 
-
 import 'mainPage.dart';
 
 class successpage extends StatefulWidget {
   @override
   _successpageState createState() => _successpageState();
-
- 
 }
 
 class _successpageState extends State<successpage> {
-      
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -67,6 +62,10 @@ class _successpageState extends State<successpage> {
                             color: Colors.white, fontFamily: 'Poppins-Medium'),
                       ),
                       onPressed: () {
+                        // globals.currentgooglescore = globals.currentgooglescore + (globals.currentbenar*2);
+                        // globals.currentgooglecoin = globals.currentgooglecoin + (globals.currentbenar*2);
+                        // globals.currentemailscore = globals.currentemailscore + (globals.currentbenar*2);
+                        // globals.currentemailcoin = globals.currentemailcoin + (globals.currentbenar*2);
                         globals.currentbenar = 0;
                         Navigator.push(
                           context,
@@ -95,8 +94,31 @@ class _successpageState extends State<successpage> {
                               children: <Widget>[
                                 ListTile(
                                   leading: Icon(Icons.grade, size: 50),
-                                  title: Text('nilai:'+
-                                    globals.currentbenar.toString(),
+                                  title: Text(
+                                    'Nilai:' +
+                                        (globals.currentbenar * 20).toString(),
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'Poppins-Medium'),
+                                  ),
+                                ),
+                                ListTile(
+                                  leading: Image.asset('assets/trophy.png',
+                                width: 50,
+                                height: 50,),
+                                  title: Text(
+                                    '+' + (globals.currentbenar * 2).toString(),
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'Poppins-Medium'),
+                                  ),
+                                ),
+                                ListTile(
+                                  leading: Image.asset('assets/coin.png',
+                                width: 50,
+                                height: 50,),
+                                  title: Text(
+                                    '+' + (globals.currentbenar * 2).toString(),
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontFamily: 'Poppins-Medium'),
