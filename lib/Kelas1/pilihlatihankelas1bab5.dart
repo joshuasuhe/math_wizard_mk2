@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:math_wizard_mk2/Kelas1/quiz1511.dart';
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/ranking.dart';
@@ -137,7 +138,7 @@ class _pilihlatihankelas1bab5State extends State<pilihlatihankelas1bab5> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz1511();
                                                       },
                                                     ),
                                                   );
@@ -216,7 +217,7 @@ class _pilihlatihankelas1bab5State extends State<pilihlatihankelas1bab5> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz1511();
                                                       },
                                                     ),
                                                   );
@@ -296,7 +297,7 @@ class _pilihlatihankelas1bab5State extends State<pilihlatihankelas1bab5> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz1511();
                                                       },
                                                     ),
                                                   );

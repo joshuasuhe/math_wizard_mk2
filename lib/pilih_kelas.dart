@@ -11,7 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
+import 'globals.dart' as globals;
 import 'Kelas2/pilih_latihan_kelas2.dart';
 import 'Kelas3/pilih_latihan_kelas3.dart';
 import 'Kelas4/pilih_latihan_kelas4.dart';
@@ -57,6 +57,7 @@ class _LatihanScreenState extends State<LatihanScreen> {
       DeviceOrientation.portraitDown,
     ]);
     return Scaffold(
+      
       appBar: AppBar(
         backgroundColor: Colors.cyan,
         leading: new IconButton(

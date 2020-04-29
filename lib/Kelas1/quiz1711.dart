@@ -3,9 +3,10 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:math_wizard_mk2/Kelas1/Quiz1115.dart';
-import 'package:math_wizard_mk2/Kelas1/quiz1113.dart';
-import 'package:math_wizard_mk2/failed_page.dart';
+import 'package:math_wizard_mk2/Kelas1/quiz1112.dart';
+import 'package:math_wizard_mk2/Kelas1/quiz1512.dart';
+import 'package:math_wizard_mk2/Kelas1/quiz1612.dart';
+import 'package:math_wizard_mk2/Kelas1/quiz1712.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:random_string/random_string.dart';
 import 'package:flutter/services.dart';
@@ -22,21 +23,22 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:math_wizard_mk2/globals.dart' as globals;
 
-class Quiz1115 extends StatefulWidget {
+class Quiz1711 extends StatefulWidget {
   @override
-  _Quiz1115State createState() => _Quiz1115State();
+  _Quiz1711State createState() => _Quiz1711State();
 }
 
-class _Quiz1115State extends State<Quiz1115> {
+class _Quiz1711State extends State<Quiz1711> {
   Map<String, Color> btnColor = {
     "option": Colors.cyan[50],
     "salah2": Colors.red[300],
     "benar2": Colors.green[300],
   };
+
   var random = new Random();
-  int option1 = randomBetween(7, 9);
-  int option2 = randomBetween(11, 12);
-  int option3 = randomBetween(10, 10);
+  int option1 = 7;
+  int option2 = randomBetween(5, 6);
+  int option3 = randomBetween(8, 9);
 
   void jawabanSalah() {
     // showSimpleNotification(
@@ -45,25 +47,14 @@ class _Quiz1115State extends State<Quiz1115> {
     // );
     setState(() {
       Timer(Duration(seconds: 1), () {
-        if (globals.currentbenar >= 3) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return successpage();
-              },
-            ),
-          );
-        } else {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return failedpage();
-              },
-            ),
-          );
-        }
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return Quiz1712();
+            },
+          ),
+        );
       });
     });
   }
@@ -71,30 +62,19 @@ class _Quiz1115State extends State<Quiz1115> {
   void jawabanBenar() {
     // showSimpleNotification(
     //   Text("Jawaban Benar!"),
-    //   background: Colors.green[300],
+    //   background: Colors.green,
     // );
     setState(() {
       globals.currentbenar = globals.currentbenar + 1;
       Timer(Duration(seconds: 1), () {
-        if (globals.currentbenar >= 3) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return successpage();
-              },
-            ),
-          );
-        } else {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return failedpage();
-              },
-            ),
-          );
-        };
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return Quiz1712();
+            },
+          ),
+        );
       });
     });
   }
@@ -121,10 +101,10 @@ class _Quiz1115State extends State<Quiz1115> {
         child: Column(
           children: <Widget>[
             SizedBox(height: 20),
-            Text("SOAL NOMOR 5",
+            Text("SOAL NOMOR 1",
                 style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 20)),
             Container(
-              height: 250,
+              height: 275,
               width: 350,
               margin: const EdgeInsets.all(15),
               padding: const EdgeInsets.all(3),
@@ -138,9 +118,12 @@ class _Quiz1115State extends State<Quiz1115> {
                   ///          SOAL          ///
                   //////////////////////////////
                   Image.network(
-                      "https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/SOAL%2FKelas1%2FBAB1-Bilangan%20Cacah%201-20%2Fsub1%2Fsoal5.PNG?alt=media&token=71e5cb61-3b19-4632-839f-58addeb70a94"),
+                    "https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/SOAL%2FKelas1%2FBAB7_Bangun%20Datar%2Fsub1%2Fsoal1-5.png?alt=media&token=d0e9f01c-46e8-467b-8cab-f951a56ee514",
+                    height: 200,
+                    width: 200,
+                  ),
                   Text(
-                    "Jumlah buah stroberi pada gambar adalah..",
+                    "Bangun segi empat ditunjukan oleh gambar...",
                     style:
                         TextStyle(fontFamily: "Poppins-Medium", fontSize: 18),
                     textAlign: TextAlign.center,
@@ -160,41 +143,40 @@ class _Quiz1115State extends State<Quiz1115> {
                     children: <Widget>[
                       MaterialButton(
                         onPressed: () {
-                          jawabanSalah();
-                        },
-                        child: Text(option1.toString(),
-                            textAlign: TextAlign.center),
-                        padding: EdgeInsets.all(5),
-                        minWidth: 300,
-                        height: 50,
-                        color: btnColor["option"],
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      MaterialButton(
-                        onPressed: () {
-                          jawabanSalah();
-                        },
-                        child: Text(option2.toString(),
-                            textAlign: TextAlign.center),
-                        padding: EdgeInsets.all(5),
-                        minWidth: 300,
-                        height: 50,
-                        color: btnColor["option"],
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      MaterialButton(
-                        onPressed: () {
                           jawabanBenar();
                         },
-                        child: Text(option3.toString(),
+                        child: Text("A dan E",
+                            textAlign: TextAlign.center),
+                        padding: EdgeInsets.all(5),
+                        minWidth: 300,
+                        height: 50,
+                        color: btnColor["option"],
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      MaterialButton(
+                        onPressed: () {
+                          jawabanSalah();
+                        },
+                        child: Text("A dan C", textAlign: TextAlign.center),
+                        padding: EdgeInsets.all(5),
+                        minWidth: 300,
+                        height: 50,
+                        color: btnColor["option"],
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      MaterialButton(
+                        onPressed: () {
+                          jawabanSalah();
+                        },
+                        child: Text("A dan D",
                             textAlign: TextAlign.center),
                         padding: EdgeInsets.all(5),
                         minWidth: 300,

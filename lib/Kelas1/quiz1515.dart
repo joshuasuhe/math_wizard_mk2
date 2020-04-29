@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:math_wizard_mk2/Kelas1/Quiz1115.dart';
+import 'package:math_wizard_mk2/Kelas1/Quiz1515.dart';
 import 'package:math_wizard_mk2/Kelas1/quiz1113.dart';
 import 'package:math_wizard_mk2/failed_page.dart';
 import 'package:overlay_support/overlay_support.dart';
@@ -22,12 +22,12 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:math_wizard_mk2/globals.dart' as globals;
 
-class Quiz1115 extends StatefulWidget {
+class Quiz1515 extends StatefulWidget {
   @override
-  _Quiz1115State createState() => _Quiz1115State();
+  _Quiz1515State createState() => _Quiz1515State();
 }
 
-class _Quiz1115State extends State<Quiz1115> {
+class _Quiz1515State extends State<Quiz1515> {
   Map<String, Color> btnColor = {
     "option": Colors.cyan[50],
     "salah2": Colors.red[300],
@@ -137,10 +137,14 @@ class _Quiz1115State extends State<Quiz1115> {
                   //////////////////////////////
                   ///          SOAL          ///
                   //////////////////////////////
-                  Image.network(
-                      "https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/SOAL%2FKelas1%2FBAB1-Bilangan%20Cacah%201-20%2Fsub1%2Fsoal5.PNG?alt=media&token=71e5cb61-3b19-4632-839f-58addeb70a94"),
                   Text(
-                    "Jumlah buah stroberi pada gambar adalah..",
+                    "49 ... dari 51",
+                    style:
+                        TextStyle(fontFamily: "Poppins-Medium", fontSize: 18),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    "Titik-titik diatas seharusnya diisi dengan..",
                     style:
                         TextStyle(fontFamily: "Poppins-Medium", fontSize: 18),
                     textAlign: TextAlign.center,
@@ -162,23 +166,7 @@ class _Quiz1115State extends State<Quiz1115> {
                         onPressed: () {
                           jawabanSalah();
                         },
-                        child: Text(option1.toString(),
-                            textAlign: TextAlign.center),
-                        padding: EdgeInsets.all(5),
-                        minWidth: 300,
-                        height: 50,
-                        color: btnColor["option"],
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      MaterialButton(
-                        onPressed: () {
-                          jawabanSalah();
-                        },
-                        child: Text(option2.toString(),
+                        child: Text("Lebih banyak",
                             textAlign: TextAlign.center),
                         padding: EdgeInsets.all(5),
                         minWidth: 300,
@@ -194,7 +182,23 @@ class _Quiz1115State extends State<Quiz1115> {
                         onPressed: () {
                           jawabanBenar();
                         },
-                        child: Text(option3.toString(),
+                        child: Text("Lebih sedikit",
+                            textAlign: TextAlign.center),
+                        padding: EdgeInsets.all(5),
+                        minWidth: 300,
+                        height: 50,
+                        color: btnColor["option"],
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      MaterialButton(
+                        onPressed: () {
+                          jawabanSalah();
+                        },
+                        child: Text("Sama dengan",
                             textAlign: TextAlign.center),
                         padding: EdgeInsets.all(5),
                         minWidth: 300,
