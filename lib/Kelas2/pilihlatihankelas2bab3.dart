@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:math_wizard_mk2/Kelas2/quiz2311.dart';
+import 'package:math_wizard_mk2/Kelas2/quiz2321.dart';
+import 'package:math_wizard_mk2/Kelas2/quiz2331.dart';
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/ranking.dart';
@@ -136,7 +139,7 @@ class _pilihlatihankelas2bab3State extends State<pilihlatihankelas2bab3> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz2311();
                                                       },
                                                     ),
                                                   );
@@ -217,7 +220,7 @@ class _pilihlatihankelas2bab3State extends State<pilihlatihankelas2bab3> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz2321();
                                                       },
                                                     ),
                                                   );
@@ -284,7 +287,7 @@ class _pilihlatihankelas2bab3State extends State<pilihlatihankelas2bab3> {
                                                       return Text(
                                                         snapshot.data
                                                                 .documents[0]
-                                                            ['sub1'],
+                                                            ['sub3'],
                                                         style: TextStyle(
                                                             fontFamily:
                                                                 "Poppins-Medium",
@@ -298,7 +301,7 @@ class _pilihlatihankelas2bab3State extends State<pilihlatihankelas2bab3> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz2331();
                                                       },
                                                     ),
                                                   );
