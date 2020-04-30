@@ -1,30 +1,8 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:math_wizard_mk2/Kelas1/quiz1112.dart';
-import 'package:math_wizard_mk2/Kelas1/quiz1114.dart';
-import 'package:math_wizard_mk2/Kelas1/quiz1514.dart';
-import 'package:math_wizard_mk2/Kelas1/quiz1614.dart';
-import 'package:math_wizard_mk2/Kelas1/quiz1714.dart';
-import 'package:math_wizard_mk2/Kelas2/quiz2114.dart';
-import 'package:math_wizard_mk2/Kelas2/quiz2124.dart';
-import 'package:math_wizard_mk2/Kelas2/quiz2134.dart';
 import 'package:math_wizard_mk2/Kelas2/quiz2214.dart';
-import 'package:overlay_support/overlay_support.dart';
 import 'package:random_string/random_string.dart';
-import 'package:flutter/services.dart';
-import 'package:math_wizard_mk2/login.dart';
-import 'package:math_wizard_mk2/signup.dart';
-import 'package:math_wizard_mk2/ranking.dart';
-import 'package:math_wizard_mk2/profile.dart';
-import 'package:math_wizard_mk2/utilities/constants.dart';
-import 'package:math_wizard_mk2/category.dart';
-import 'package:math_wizard_mk2/success_page.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:math_wizard_mk2/globals.dart' as globals;
 
 class Quiz2213 extends StatefulWidget {

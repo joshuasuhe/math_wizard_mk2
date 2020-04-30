@@ -1,32 +1,8 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:math_wizard_mk2/Kelas1/quiz1113.dart';
-import 'package:math_wizard_mk2/Kelas1/quiz1115.dart';
-import 'package:math_wizard_mk2/Kelas1/quiz1515.dart';
-import 'package:math_wizard_mk2/Kelas1/quiz1615.dart';
-import 'package:math_wizard_mk2/Kelas1/quiz1715.dart';
-import 'package:math_wizard_mk2/Kelas2/quiz2115.dart';
-import 'package:math_wizard_mk2/Kelas2/quiz2125.dart';
-import 'package:math_wizard_mk2/Kelas2/quiz2135.dart';
-import 'package:math_wizard_mk2/Kelas2/quiz2215.dart';
-import 'package:math_wizard_mk2/Kelas2/quiz2315.dart';
 import 'package:math_wizard_mk2/Kelas2/quiz2335.dart';
-import 'package:overlay_support/overlay_support.dart';
 import 'package:random_string/random_string.dart';
-import 'package:flutter/services.dart';
-import 'package:math_wizard_mk2/login.dart';
-import 'package:math_wizard_mk2/signup.dart';
-import 'package:math_wizard_mk2/ranking.dart';
-import 'package:math_wizard_mk2/profile.dart';
-import 'package:math_wizard_mk2/utilities/constants.dart';
-import 'package:math_wizard_mk2/category.dart';
-import 'package:math_wizard_mk2/success_page.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:math_wizard_mk2/globals.dart' as globals;
 
 class Quiz2334 extends StatefulWidget {
