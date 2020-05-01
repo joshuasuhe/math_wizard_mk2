@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:math_wizard_mk2/Kelas3/quiz3311.dart';
+import 'package:math_wizard_mk2/Kelas3/quiz3321.dart';
+import 'package:math_wizard_mk2/Kelas3/quiz3331.dart';
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/ranking.dart';
@@ -141,7 +144,7 @@ class _pilihlatihankelas3bab3State extends State<pilihlatihankelas3bab3> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz3311();
                                                       },
                                                     ),
                                                   );
@@ -224,7 +227,7 @@ class _pilihlatihankelas3bab3State extends State<pilihlatihankelas3bab3> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz3321();
                                                       },
                                                     ),
                                                   );
@@ -307,7 +310,7 @@ class _pilihlatihankelas3bab3State extends State<pilihlatihankelas3bab3> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz3331();
                                                       },
                                                     ),
                                                   );

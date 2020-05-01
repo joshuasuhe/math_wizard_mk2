@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:math_wizard_mk2/Kelas3/quiz3411.dart';
+import 'package:math_wizard_mk2/Kelas3/quiz3421.dart';
+import 'package:math_wizard_mk2/Kelas3/quiz3431.dart';
+import 'package:math_wizard_mk2/Kelas3/quiz3441.dart';
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/ranking.dart';
@@ -141,7 +145,7 @@ class _pilihlatihankelas3bab4State extends State<pilihlatihankelas3bab4> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz3411();
                                                       },
                                                     ),
                                                   );
@@ -224,7 +228,7 @@ class _pilihlatihankelas3bab4State extends State<pilihlatihankelas3bab4> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz3421();
                                                       },
                                                     ),
                                                   );
@@ -307,7 +311,7 @@ class _pilihlatihankelas3bab4State extends State<pilihlatihankelas3bab4> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz3431();
                                                       },
                                                     ),
                                                   );
@@ -390,7 +394,7 @@ class _pilihlatihankelas3bab4State extends State<pilihlatihankelas3bab4> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz3441();
                                                       },
                                                     ),
                                                   );
