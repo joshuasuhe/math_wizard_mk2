@@ -1,26 +1,27 @@
 import 'dart:async';
 import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:math_wizard_mk2/Kelas3/quiz3442.dart';
+import 'package:math_wizard_mk2/failed_page.dart';
 import 'package:random_string/random_string.dart';
+import 'package:math_wizard_mk2/success_page.dart';
 import 'package:math_wizard_mk2/globals.dart' as globals;
 
-class Quiz3441 extends StatefulWidget {
+class Quiz3815 extends StatefulWidget {
   @override
-  _Quiz3441State createState() => _Quiz3441State();
+  _Quiz3815State createState() => _Quiz3815State();
 }
 
-class _Quiz3441State extends State<Quiz3441> {
+class _Quiz3815State extends State<Quiz3815> {
   Map<String, Color> btnColor = {
     "option": Colors.cyan[50],
     "salah2": Colors.red[300],
     "benar2": Colors.green[300],
   };
-
   var random = new Random();
   num var1 = randomBetween(1, 10);
   num var2 = randomBetween(1, 10);
-
+  num var4 = randomBetween(1, 10);
   String option1;
   String option2;
   String option3;
@@ -32,14 +33,25 @@ class _Quiz3441State extends State<Quiz3441> {
     // );
     setState(() {
       Timer(Duration(seconds: 1), () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return Quiz3442();
-            },
-          ),
-        );
+        if (globals.currentbenar >= 3) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return successpage();
+              },
+            ),
+          );
+        } else {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return failedpage();
+              },
+            ),
+          );
+        }
       });
     });
   }
@@ -47,29 +59,42 @@ class _Quiz3441State extends State<Quiz3441> {
   void jawabanBenar() {
     // showSimpleNotification(
     //   Text("Jawaban Benar!"),
-    //   background: Colors.green,
+    //   background: Colors.green[300],
     // );
     setState(() {
       globals.currentbenar = globals.currentbenar + 1;
       Timer(Duration(seconds: 1), () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return Quiz3442();
-            },
-          ),
-        );
+        if (globals.currentbenar >= 3) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return successpage();
+              },
+            ),
+          );
+        } else {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return failedpage();
+              },
+            ),
+          );
+        }
+        ;
       });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-   List<String> soal = ["Jika pecahan uang di atas ditukarkan ke uang dua ribuan. Maka akan menjadi"];
-    option1 = "25 lembar";
-    option2 = "15 lembar";
-    option3 = "20 lembar";
+    num var3 = var1 * var2 / var4;
+   List<String> soal = ["Bangun yang memiliki empat buah sisi sama panjang adalah …"];
+    option1 = "Persegi";
+    option2 = "Layang-layang";
+    option3 = "Segitiga";
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -90,10 +115,10 @@ class _Quiz3441State extends State<Quiz3441> {
         child: Column(
           children: <Widget>[
             SizedBox(height: 20),
-            Text("SOAL NOMOR 1",
+            Text("SOAL NOMOR 5",
                 style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 20)),
             Container(
-              height: 300,
+              height: 275,
               width: 350,
               margin: const EdgeInsets.all(15),
               padding: const EdgeInsets.all(3),
@@ -106,7 +131,6 @@ class _Quiz3441State extends State<Quiz3441> {
                   //////////////////////////////
                   ///          SOAL          ///
                   //////////////////////////////
-                  Image.network("https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/SOAL%2FKelas3%2FBAB4_Uang%2Fsub4%2Fsoal1.png?alt=media&token=939a7f0c-4bc7-41c0-96d0-686e2893f680", height: 200, width: 200),
                   Text(
                     soal.join(" "),
                     style:
@@ -128,9 +152,9 @@ class _Quiz3441State extends State<Quiz3441> {
                     children: <Widget>[
                       MaterialButton(
                         onPressed: () {
-                          jawabanSalah();
+                          jawabanBenar();
                         },
-                        child: Text(option2,
+                        child: Text(option1,
                             textAlign: TextAlign.center),
                         padding: EdgeInsets.all(5),
                         minWidth: 300,
@@ -144,9 +168,9 @@ class _Quiz3441State extends State<Quiz3441> {
                       ),
                       MaterialButton(
                         onPressed: () {
-                          jawabanBenar();
+                          jawabanSalah();
                         },
-                        child: Text(option1,
+                        child: Text(option2,
                             textAlign: TextAlign.center),
                         padding: EdgeInsets.all(5),
                         minWidth: 300,

@@ -15,6 +15,9 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import 'Bab 6/Bab 7/quiz3711.dart';
+import 'Bab 6/Bab 7/quiz3721.dart';
+
 class pilihlatihankelas3bab7 extends StatefulWidget {
   @override
   _pilihlatihankelas3bab7State createState() => _pilihlatihankelas3bab7State();
@@ -140,7 +143,7 @@ class _pilihlatihankelas3bab7State extends State<pilihlatihankelas3bab7> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz3711();
                                                       },
                                                     ),
                                                   );
@@ -223,7 +226,7 @@ class _pilihlatihankelas3bab7State extends State<pilihlatihankelas3bab7> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz3721();
                                                       },
                                                     ),
                                                   );

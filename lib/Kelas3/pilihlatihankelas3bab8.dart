@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:math_wizard_mk2/Kelas3/Bab%206/Bab%208/quiz3811.dart';
+import 'package:math_wizard_mk2/Kelas3/Bab%206/Bab%208/quiz3821.dart';
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/ranking.dart';
@@ -14,6 +16,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
 
 class pilihlatihankelas3bab8 extends StatefulWidget {
   @override
@@ -136,7 +139,7 @@ class _pilihlatihankelas3bab8State extends State<pilihlatihankelas3bab8> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz3811();
                                                       },
                                                     ),
                                                   );
@@ -219,7 +222,7 @@ class _pilihlatihankelas3bab8State extends State<pilihlatihankelas3bab8> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz3821();
                                                       },
                                                     ),
                                                   );

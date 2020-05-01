@@ -1,16 +1,18 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:math_wizard_mk2/Kelas3/quiz3442.dart';
+import 'package:math_wizard_mk2/Kelas3/Bab%206/Bab%207/quiz3712.dart';
+import 'package:math_wizard_mk2/Kelas3/Bab%206/quiz3622.dart';
+import 'package:math_wizard_mk2/Kelas3/quiz3522.dart';
 import 'package:random_string/random_string.dart';
 import 'package:math_wizard_mk2/globals.dart' as globals;
 
-class Quiz3441 extends StatefulWidget {
+class Quiz3711 extends StatefulWidget {
   @override
-  _Quiz3441State createState() => _Quiz3441State();
+  _Quiz3711State createState() => _Quiz3711State();
 }
 
-class _Quiz3441State extends State<Quiz3441> {
+class _Quiz3711State extends State<Quiz3711> {
   Map<String, Color> btnColor = {
     "option": Colors.cyan[50],
     "salah2": Colors.red[300],
@@ -36,7 +38,7 @@ class _Quiz3441State extends State<Quiz3441> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return Quiz3442();
+              return Quiz3712();
             },
           ),
         );
@@ -56,7 +58,7 @@ class _Quiz3441State extends State<Quiz3441> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return Quiz3442();
+              return Quiz3712();
             },
           ),
         );
@@ -66,10 +68,10 @@ class _Quiz3441State extends State<Quiz3441> {
 
   @override
   Widget build(BuildContext context) {
-   List<String> soal = ["Jika pecahan uang di atas ditukarkan ke uang dua ribuan. Maka akan menjadi"];
-    option1 = "25 lembar";
-    option2 = "15 lembar";
-    option3 = "20 lembar";
+   List<String> soal = ["Bangun datar yang tidak memiliki sudut adalah bangun …"];
+    option1 = "Lingkaran";
+    option2 = "Trapesium";
+    option3 = "Persegi";
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -106,7 +108,6 @@ class _Quiz3441State extends State<Quiz3441> {
                   //////////////////////////////
                   ///          SOAL          ///
                   //////////////////////////////
-                  Image.network("https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/SOAL%2FKelas3%2FBAB4_Uang%2Fsub4%2Fsoal1.png?alt=media&token=939a7f0c-4bc7-41c0-96d0-686e2893f680", height: 200, width: 200),
                   Text(
                     soal.join(" "),
                     style:
@@ -130,6 +131,22 @@ class _Quiz3441State extends State<Quiz3441> {
                         onPressed: () {
                           jawabanSalah();
                         },
+                        child: Text(option3,
+                            textAlign: TextAlign.center),
+                        padding: EdgeInsets.all(5),
+                        minWidth: 300,
+                        height: 50,
+                        color: btnColor["option"],
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      MaterialButton(
+                        onPressed: () {
+                          jawabanSalah();
+                        },
                         child: Text(option2,
                             textAlign: TextAlign.center),
                         padding: EdgeInsets.all(5),
@@ -147,22 +164,6 @@ class _Quiz3441State extends State<Quiz3441> {
                           jawabanBenar();
                         },
                         child: Text(option1,
-                            textAlign: TextAlign.center),
-                        padding: EdgeInsets.all(5),
-                        minWidth: 300,
-                        height: 50,
-                        color: btnColor["option"],
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      MaterialButton(
-                        onPressed: () {
-                          jawabanSalah();
-                        },
-                        child: Text(option3,
                             textAlign: TextAlign.center),
                         padding: EdgeInsets.all(5),
                         minWidth: 300,

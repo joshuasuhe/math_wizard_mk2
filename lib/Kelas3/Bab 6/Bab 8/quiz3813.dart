@@ -1,16 +1,21 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:math_wizard_mk2/Kelas3/quiz3442.dart';
+import 'package:math_wizard_mk2/Kelas3/Bab%206/Bab%207/quiz3714.dart';
+import 'package:math_wizard_mk2/Kelas3/Bab%206/Bab%207/quiz3724.dart';
+import 'package:math_wizard_mk2/Kelas3/Bab%206/Bab%208/quiz3814.dart';
+import 'package:math_wizard_mk2/Kelas3/Bab%206/quiz3614.dart';
+import 'package:math_wizard_mk2/Kelas3/Bab%206/quiz3624.dart';
+import 'package:math_wizard_mk2/Kelas3/quiz3514.dart';
 import 'package:random_string/random_string.dart';
 import 'package:math_wizard_mk2/globals.dart' as globals;
 
-class Quiz3441 extends StatefulWidget {
+class Quiz3813 extends StatefulWidget {
   @override
-  _Quiz3441State createState() => _Quiz3441State();
+  _Quiz3813State createState() => _Quiz3813State();
 }
 
-class _Quiz3441State extends State<Quiz3441> {
+class _Quiz3813State extends State<Quiz3813> {
   Map<String, Color> btnColor = {
     "option": Colors.cyan[50],
     "salah2": Colors.red[300],
@@ -20,7 +25,7 @@ class _Quiz3441State extends State<Quiz3441> {
   var random = new Random();
   num var1 = randomBetween(1, 10);
   num var2 = randomBetween(1, 10);
-
+  num var4 = randomBetween(1, 10);
   String option1;
   String option2;
   String option3;
@@ -36,7 +41,7 @@ class _Quiz3441State extends State<Quiz3441> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return Quiz3442();
+              return Quiz3814();
             },
           ),
         );
@@ -47,7 +52,7 @@ class _Quiz3441State extends State<Quiz3441> {
   void jawabanBenar() {
     // showSimpleNotification(
     //   Text("Jawaban Benar!"),
-    //   background: Colors.green,
+    //   background: Colors.green[300],
     // );
     setState(() {
       globals.currentbenar = globals.currentbenar + 1;
@@ -56,7 +61,7 @@ class _Quiz3441State extends State<Quiz3441> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return Quiz3442();
+              return Quiz3814();
             },
           ),
         );
@@ -66,10 +71,11 @@ class _Quiz3441State extends State<Quiz3441> {
 
   @override
   Widget build(BuildContext context) {
-   List<String> soal = ["Jika pecahan uang di atas ditukarkan ke uang dua ribuan. Maka akan menjadi"];
-    option1 = "25 lembar";
-    option2 = "15 lembar";
-    option3 = "20 lembar";
+    num var3 = var1 * var2 * var4;
+   List<String> soal = ["Rumus mencari luas persegi adalah …."];
+    option1 = "Luas = Panjang X Sisi";
+    option2 = "Luas = Sisi X Sisi";
+    option3 = "Luas = 4 X Sisi";
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -90,10 +96,10 @@ class _Quiz3441State extends State<Quiz3441> {
         child: Column(
           children: <Widget>[
             SizedBox(height: 20),
-            Text("SOAL NOMOR 1",
+            Text("SOAL NOMOR 3",
                 style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 20)),
             Container(
-              height: 300,
+              height: 275,
               width: 350,
               margin: const EdgeInsets.all(15),
               padding: const EdgeInsets.all(3),
@@ -106,13 +112,10 @@ class _Quiz3441State extends State<Quiz3441> {
                   //////////////////////////////
                   ///          SOAL          ///
                   //////////////////////////////
-                  Image.network("https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/SOAL%2FKelas3%2FBAB4_Uang%2Fsub4%2Fsoal1.png?alt=media&token=939a7f0c-4bc7-41c0-96d0-686e2893f680", height: 200, width: 200),
-                  Text(
-                    soal.join(" "),
-                    style:
+                  Text( soal.join(" "), style:
                         TextStyle(fontFamily: "Poppins-Medium", fontSize: 18),
                     textAlign: TextAlign.center,
-                  )
+                  ),
                 ],
               ),
             ),
@@ -126,12 +129,14 @@ class _Quiz3441State extends State<Quiz3441> {
                       borderRadius: new BorderRadius.circular(8.0)),
                   child: Column(
                     children: <Widget>[
+                      //////////////////////////////
+                      ///         OPTION 1       ///
+                      //////////////////////////////
                       MaterialButton(
                         onPressed: () {
-                          jawabanSalah();
+                            jawabanSalah();
                         },
-                        child: Text(option2,
-                            textAlign: TextAlign.center),
+                        child: Text(option2, textAlign: TextAlign.center),
                         padding: EdgeInsets.all(5),
                         minWidth: 300,
                         height: 50,
@@ -142,12 +147,15 @@ class _Quiz3441State extends State<Quiz3441> {
                       SizedBox(
                         height: 15,
                       ),
+
+                      //////////////////////////////
+                      ///         OPTION 2       ///
+                      //////////////////////////////
                       MaterialButton(
                         onPressed: () {
-                          jawabanBenar();
+                            jawabanBenar();
                         },
-                        child: Text(option1,
-                            textAlign: TextAlign.center),
+                        child: Text(option1, textAlign: TextAlign.center),
                         padding: EdgeInsets.all(5),
                         minWidth: 300,
                         height: 50,
@@ -158,12 +166,15 @@ class _Quiz3441State extends State<Quiz3441> {
                       SizedBox(
                         height: 15,
                       ),
+
+                      //////////////////////////////
+                      ///         OPTION 3       ///
+                      //////////////////////////////
                       MaterialButton(
                         onPressed: () {
-                          jawabanSalah();
+                            jawabanSalah();
                         },
-                        child: Text(option3,
-                            textAlign: TextAlign.center),
+                        child: Text(option3, textAlign: TextAlign.center),
                         padding: EdgeInsets.all(5),
                         minWidth: 300,
                         height: 50,

@@ -15,6 +15,10 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import 'Bab 6/quiz3611.dart';
+import 'Bab 6/quiz3621.dart';
+import 'Bab 6/quiz3631.dart';
+
 class pilihlatihankelas3bab6 extends StatefulWidget {
   @override
   _pilihlatihankelas3bab6State createState() => _pilihlatihankelas3bab6State();
@@ -140,7 +144,7 @@ class _pilihlatihankelas3bab6State extends State<pilihlatihankelas3bab6> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz3611();
                                                       },
                                                     ),
                                                   );
@@ -225,7 +229,7 @@ class _pilihlatihankelas3bab6State extends State<pilihlatihankelas3bab6> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz3621();
                                                       },
                                                     ),
                                                   );
@@ -308,7 +312,7 @@ class _pilihlatihankelas3bab6State extends State<pilihlatihankelas3bab6> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz3631();
                                                       },
                                                     ),
                                                   );

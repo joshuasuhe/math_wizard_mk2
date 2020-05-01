@@ -1,16 +1,20 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:math_wizard_mk2/Kelas3/quiz3442.dart';
+import 'package:math_wizard_mk2/Kelas3/Bab%206/Bab%207/quiz3712.dart';
+import 'package:math_wizard_mk2/Kelas3/Bab%206/Bab%207/quiz3722.dart';
+import 'package:math_wizard_mk2/Kelas3/Bab%206/Bab%208/quiz3812.dart';
+import 'package:math_wizard_mk2/Kelas3/Bab%206/quiz3622.dart';
+import 'package:math_wizard_mk2/Kelas3/quiz3522.dart';
 import 'package:random_string/random_string.dart';
 import 'package:math_wizard_mk2/globals.dart' as globals;
 
-class Quiz3441 extends StatefulWidget {
+class Quiz3811 extends StatefulWidget {
   @override
-  _Quiz3441State createState() => _Quiz3441State();
+  _Quiz3811State createState() => _Quiz3811State();
 }
 
-class _Quiz3441State extends State<Quiz3441> {
+class _Quiz3811State extends State<Quiz3811> {
   Map<String, Color> btnColor = {
     "option": Colors.cyan[50],
     "salah2": Colors.red[300],
@@ -36,7 +40,7 @@ class _Quiz3441State extends State<Quiz3441> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return Quiz3442();
+              return Quiz3812();
             },
           ),
         );
@@ -56,7 +60,7 @@ class _Quiz3441State extends State<Quiz3441> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return Quiz3442();
+              return Quiz3812();
             },
           ),
         );
@@ -66,10 +70,10 @@ class _Quiz3441State extends State<Quiz3441> {
 
   @override
   Widget build(BuildContext context) {
-   List<String> soal = ["Jika pecahan uang di atas ditukarkan ke uang dua ribuan. Maka akan menjadi"];
-    option1 = "25 lembar";
-    option2 = "15 lembar";
-    option3 = "20 lembar";
+   List<String> soal = ["Rumus mencari keliling persegi adalah …"];
+    option1 = "Keliling = 4 X sisi";
+    option2 = "Keliling = 2 X sisi";
+    option3 = "Keliling = sisi X sisi";
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -106,7 +110,6 @@ class _Quiz3441State extends State<Quiz3441> {
                   //////////////////////////////
                   ///          SOAL          ///
                   //////////////////////////////
-                  Image.network("https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/SOAL%2FKelas3%2FBAB4_Uang%2Fsub4%2Fsoal1.png?alt=media&token=939a7f0c-4bc7-41c0-96d0-686e2893f680", height: 200, width: 200),
                   Text(
                     soal.join(" "),
                     style:
@@ -130,7 +133,7 @@ class _Quiz3441State extends State<Quiz3441> {
                         onPressed: () {
                           jawabanSalah();
                         },
-                        child: Text(option2,
+                        child: Text(option3,
                             textAlign: TextAlign.center),
                         padding: EdgeInsets.all(5),
                         minWidth: 300,
@@ -162,7 +165,7 @@ class _Quiz3441State extends State<Quiz3441> {
                         onPressed: () {
                           jawabanSalah();
                         },
-                        child: Text(option3,
+                        child: Text(option2,
                             textAlign: TextAlign.center),
                         padding: EdgeInsets.all(5),
                         minWidth: 300,

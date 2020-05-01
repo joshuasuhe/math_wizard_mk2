@@ -3,17 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:math_wizard_mk2/login.dart';
-import 'package:math_wizard_mk2/signup.dart';
-import 'package:math_wizard_mk2/ranking.dart';
-import 'package:math_wizard_mk2/profile.dart';
-import 'package:math_wizard_mk2/quiz_page.dart';
-import 'package:math_wizard_mk2/utilities/constants.dart';
-import 'package:math_wizard_mk2/category.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:math_wizard_mk2/Kelas3/quiz3511.dart';
+import 'package:math_wizard_mk2/Kelas3/quiz3521.dart';
 
 class pilihlatihankelas3bab5 extends StatefulWidget {
   @override
@@ -142,7 +133,7 @@ class _pilihlatihankelas3bab5State extends State<pilihlatihankelas3bab5> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz3511();
                                                       },
                                                     ),
                                                   );
@@ -226,7 +217,7 @@ class _pilihlatihankelas3bab5State extends State<pilihlatihankelas3bab5> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return halamankuis();
+                                                        return Quiz3521();
                                                       },
                                                     ),
                                                   );
