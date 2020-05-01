@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:math_wizard_mk2/home.dart';
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/main.dart';
@@ -63,10 +64,24 @@ class _successpageState extends State<successpage> {
                             color: Colors.white, fontFamily: 'Poppins-Medium'),
                       ),
                       onPressed: () {
-                        // globals.currentgooglescore = globals.currentgooglescore + (globals.currentbenar*2);
-                        // globals.currentgooglecoin = globals.currentgooglecoin + (globals.currentbenar*2);
-                        // globals.currentemailscore = globals.currentemailscore + (globals.currentbenar*2);
-                        // globals.currentemailcoin = globals.currentemailcoin + (globals.currentbenar*2);
+                        if (globals.currentemailscore == null) {
+                          globals.currentgooglescore =(globals.currentgooglescore +(globals.currentbenar * 2));
+                          globals.currentgooglecoin = (globals.currentgooglecoin+(globals.currentbenar*2));
+                          AuthProvider.updateUserscorecoin(
+                            globals.currentidaccount,
+                            score: globals.currentgooglescore.toString(),
+                            coin: globals.currentgooglecoin.toString()
+                          );
+                        } else {
+                          globals.currentemailscore =(globals.currentemailscore +(globals.currentbenar * 2));
+                          globals.currentemailcoin = (globals.currentemailcoin +(globals.currentbenar * 2));
+                          AuthProvider.updateUserscorecoin(
+                            globals.currentidaccount,
+                            score: globals.currentemailscore.toString(),
+                            coin: globals.currentemailcoin.toString()
+                          );
+                        }
+
                         globals.currentbenar = 0;
                         Navigator.push(
                           context,
@@ -104,9 +119,11 @@ class _successpageState extends State<successpage> {
                                   ),
                                 ),
                                 ListTile(
-                                  leading: Image.asset('assets/trophy.png',
-                                width: 50,
-                                height: 50,),
+                                  leading: Image.asset(
+                                    'assets/trophy.png',
+                                    width: 50,
+                                    height: 50,
+                                  ),
                                   title: Text(
                                     '+' + (globals.currentbenar * 2).toString(),
                                     style: TextStyle(
@@ -115,9 +132,11 @@ class _successpageState extends State<successpage> {
                                   ),
                                 ),
                                 ListTile(
-                                  leading: Image.asset('assets/coin.png',
-                                width: 50,
-                                height: 50,),
+                                  leading: Image.asset(
+                                    'assets/coin.png',
+                                    width: 50,
+                                    height: 50,
+                                  ),
                                   title: Text(
                                     '+' + (globals.currentbenar * 2).toString(),
                                     style: TextStyle(

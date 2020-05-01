@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:math_wizard_mk2/home.dart';
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/main.dart';
@@ -62,15 +63,28 @@ class _failedpageState extends State<failedpage> {
                             color: Colors.white, fontFamily: 'Poppins-Medium'),
                       ),
                       onPressed: () {
-                        // globals.currentgooglescore =
-                        //     globals.currentgooglescore +
-                        //         (globals.currentbenar * 2);
-                        // globals.currentgooglecoin = globals.currentgooglecoin +
-                        //     (globals.currentbenar * 2);
-                        // globals.currentemailscore = globals.currentemailscore +
-                        //     (globals.currentbenar * 2);
-                        // globals.currentemailcoin = globals.currentemailcoin +
-                        //     (globals.currentbenar * 2);
+                        if (globals.currentemailscore == null) {
+                          globals.currentgooglescore =
+                              (globals.currentgooglescore +
+                                  (globals.currentbenar * 2));
+                          globals.currentgooglecoin =
+                              (globals.currentgooglecoin +
+                                  (globals.currentbenar * 2));
+                          AuthProvider.updateUserscorecoin(
+                              globals.currentidaccount,
+                              score: globals.currentgooglescore.toString(),
+                              coin: globals.currentgooglecoin.toString());
+                        } else {
+                          globals.currentemailscore =
+                              (globals.currentemailscore +
+                                  (globals.currentbenar * 2));
+                          globals.currentemailcoin = (globals.currentemailcoin +
+                              (globals.currentbenar * 2));
+                          AuthProvider.updateUserscorecoin(
+                              globals.currentidaccount,
+                              score: globals.currentemailscore.toString(),
+                              coin: globals.currentemailcoin.toString());
+                        }
                         globals.currentbenar = 0;
                         Navigator.push(
                           context,

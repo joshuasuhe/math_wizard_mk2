@@ -88,8 +88,6 @@ class AuthProvider {
 
       globals.currentaccountgoogle = null;
       globals.currentaccountemail = null;
-      globals.currentgooglecoin = 0;
-      globals.currentgooglescore = 0;
       globals.currentemailcoin = 0;
       globals.currentemailscore = 0;
 
@@ -185,4 +183,13 @@ class AuthProvider {
         .document(id)
         .setData({'Username': displayname}, merge: true);
   }
+
+  static Future<void> updateUserscorecoin(String id,
+      {String score, String coin}) async {
+    await userCollection
+        .document(id)
+        .setData({'score': score, 'coin': coin}, merge: true);
+  }
+
+
 }

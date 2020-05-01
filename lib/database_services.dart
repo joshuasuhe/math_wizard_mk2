@@ -58,10 +58,6 @@ class crudMethods {
     return await Firestore.instance.collection('Users').getDocuments();
   }
 
-  Future<void> editScore(userdata) async{
-    Firestore.instance.collection('Users').document().updateData({'score':currentemailscore});
-  }
-
 
 
 
