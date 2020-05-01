@@ -69,16 +69,6 @@ class AuthProvider {
 
       await DatabasesServices(uid: user.uid).createuser(username);
 
-      // StreamBuilder(
-      //       stream: Firestore.instance.collection('Users')
-      //               .snapshots(),
-      //                builder: (context, snapshot) {
-      //                while (snapshot.data.documents[i]!=username)
-      //                		return Text('Loading data.....');
-      //                 return Text(
-      //                          snapshot.data.documents[0]['username'],style: TextStyle(fontFamily: "Poppins-Medium",fontSize: 15),);
-      //                           });
-
       if (user != null)
         return true;
       else
@@ -95,6 +85,7 @@ class AuthProvider {
       await googleSignIn.signOut();
       await _auth.signOut();
       await _auth.signOut();
+
       globals.currentaccountgoogle = null;
       globals.currentaccountemail = null;
       globals.currentgooglecoin = 0;
@@ -110,28 +101,47 @@ class AuthProvider {
 
 //LOGIN GOOGLE
   Future<bool> loginWithGoogle() async {
+    GoogleSignIn googleSignIn = GoogleSignIn();
+    GoogleSignInAccount account = await googleSignIn.signIn();
+
+    Firestore.instance
+        .collection("Users")
+        .where('Email', isEqualTo: account.email)
+        .snapshots()
+        .listen((data) => data.documents
+            .forEach((doc) => globals.currentgooglescore = (doc["score"])));
+
+    Firestore.instance
+        .collection("Users")
+        .where('Email', isEqualTo: account.email)
+        .snapshots()
+        .listen((data) => data.documents
+            .forEach((doc) => globals.currentgooglecoin = (doc["coin"])));
+
+    Firestore.instance
+        .collection("Users")
+        .where('Email', isEqualTo: account.email)
+        .snapshots()
+        .listen((data) => data.documents.forEach(
+            (doc) => globals.currentaccountgoogle = (doc["Username"])));
+
     try {
       GoogleSignIn googleSignIn = GoogleSignIn();
       GoogleSignInAccount account = await googleSignIn.signIn();
       if (account == null) return false;
+
       print("login berhasil");
       print("Username: ${account.displayName}");
       addUserGoogle(account.id,
-          displayname: account.displayName, email: account.email);
+          displayname: account.displayName,
+          email: account.email,
+          score: globals.currentgooglescore.toString(),
+          coin: globals.currentgooglecoin.toString());
       globals.currentaccountgoogle = account.displayName;
+
       globals.currentemailcoin = null;
       globals.currentemailscore = null;
       globals.currentaccountemail = null;
-
-           Firestore.instance
-          .collection("Users")
-          .where('Email', isEqualTo: account.email)
-          .snapshots()
-          .listen((data) => data.documents.forEach(
-              (doc) => globals.currentaccountgoogle = (doc["Username"])));
-              globals.currentemailcoin = null;
-              globals.currentemailscore =null;
-              globals.currentaccountemail = null;
 
       Firestore.instance
           .collection("Users")
@@ -139,20 +149,6 @@ class AuthProvider {
           .snapshots()
           .listen((data) => data.documents
               .forEach((doc) => globals.currentidaccount = (doc.documentID)));
-
-      Firestore.instance
-          .collection("Users")
-          .where('Email', isEqualTo: account.email)
-          .snapshots()
-          .listen((data) => data.documents
-              .forEach((doc) => globals.currentgooglecoin = (doc["coin"])));
-
-      Firestore.instance
-          .collection("Users")
-          .where('Email', isEqualTo: account.email)
-          .snapshots()
-          .listen((data) => data.documents
-              .forEach((doc) => globals.currentgooglescore = (doc["score"])));
 
       AuthResult res =
           await _auth.signInWithCredential(GoogleAuthProvider.getCredential(
@@ -176,12 +172,15 @@ class AuthProvider {
 
   static Future<void> addUserGoogle(String id,
       {String displayname, String email, String score, String coin}) async {
-    await userCollection.document(id).setData(
-        {'Username': displayname, 'Email': email, 'score': 0, 'coin': 0});
+    await userCollection.document(id).setData({
+      'Username': displayname,
+      'Email': email,
+      'score': globals.currentgooglescore,
+      'coin': globals.currentgooglecoin
+    });
   }
 
-  static Future<void> updateUser(String id,
-      {String displayname}) async {
+  static Future<void> updateUser(String id, {String displayname}) async {
     await userCollection
         .document(id)
         .setData({'Username': displayname}, merge: true);

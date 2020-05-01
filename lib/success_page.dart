@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/home.dart';
 import 'package:math_wizard_mk2/login.dart';
+import 'package:math_wizard_mk2/main.dart';
 import 'package:math_wizard_mk2/quiz_page.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/ranking.dart';
@@ -71,7 +72,7 @@ class _successpageState extends State<successpage> {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return MainPage();
+                              return MainScreen();
                             },
                           ),
                         );

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:math_wizard_mk2/database_services.dart';
 import 'package:math_wizard_mk2/login.dart';
+import 'package:math_wizard_mk2/main.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_auth/firebase_auth.dart';

@@ -24,8 +24,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  String name= " ";
-
+  String name = " ";
 
   @override
   void initState() {
@@ -227,12 +226,6 @@ class _LoginScreenState extends State<LoginScreen> {
           if (!res) {
             AlertDialog(title: Text("Login Failed"));
           }
-
-
-                    
-                    
-              
-          
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -240,7 +233,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         color: Colors.white,
         child: Text(
-          'LOGIN',
+          'LOGIN.',
           style: TextStyle(
             color: Color(0xFF527DAA),
             letterSpacing: 1.5,
@@ -320,7 +313,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
               ),
               Container(
-                
                 alignment: Alignment.center,
                 height: double.infinity,
                 child: SingleChildScrollView(
