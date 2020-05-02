@@ -219,7 +219,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
             'Username': this.userUsername,
             'Password': this.userPassword,
             'coin' : this.userCoin,
-            'score' : this.userScore
+            'score' : this.userScore,
+            'image':'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8',
           };
           crudObj.addData(userData);
 

@@ -23,15 +23,6 @@ class DatabasesServices {
     return await userCollection.document(uid).setData({'name': username});
   }
 
-  static Future<String> uploadImage(File imageFile) async {
-    String fileName = basename(imageFile.path);
-
-    StorageReference ref = FirebaseStorage.instance.ref().child(fileName);
-    StorageUploadTask task = ref.putFile(imageFile);
-    StorageTaskSnapshot snapshot = await task.onComplete;
-
-    return await snapshot.ref.getDownloadURL();
-  }
 }
 
 class crudMethods {

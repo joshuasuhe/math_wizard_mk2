@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      (imagePath != null)
+                      (globals.currentimageemail == null)
                           ? Container(
                               width: 75,
                               height: 75,
@@ -89,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 shape: BoxShape.circle,
                                 border: Border.all(color: Colors.black),
                                 image: DecorationImage(
-                                    image: NetworkImage(imagePath),
+                                    image: NetworkImage(globals.currentimagegoogle),
                                     fit: BoxFit.cover),
                               ),
                             )
@@ -99,6 +99,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border: Border.all(color: Colors.black),
+                                 image: DecorationImage(
+                                    image: NetworkImage(globals.currentimageemail),
+                                    fit: BoxFit.cover),
                               ),
                             ),
                       SizedBox(width: 15),

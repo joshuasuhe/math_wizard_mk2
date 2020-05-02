@@ -66,20 +66,6 @@ class _RankingScreenState extends State<RankingScreen> {
           "Ranking",
           style: TextStyle(fontFamily: 'Poppins-Bold', color: Colors.white),
         ),
-        actions: <Widget>[
-          Container(
-            child: Switch(
-              activeColor: Colors.red,
-              value: status,
-              onChanged: (value) {
-                print("VALUE : $value");
-                setState(() {
-                  status = value;
-                });
-              },
-            ),
-          ),
-        ],
       ),
       body: Stack(
         children: <Widget>[

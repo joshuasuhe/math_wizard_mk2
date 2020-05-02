@@ -1,32 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'globals.dart' as globals;
 
 class ChangeAvatar extends StatefulWidget {
   @override
   _ChangeAvatarState createState() => _ChangeAvatarState();
 }
-
-Widget gridSection = new Expanded(
-  flex: 1,
-  child: new GridView.count(
-      crossAxisCount: 3,
-      childAspectRatio: 1.0,
-      shrinkWrap: true,
-      mainAxisSpacing: 2.0,
-      crossAxisSpacing: 2.0,
-      padding: const EdgeInsets.all(4.0),
-      children: <String>[
-        'assets/Final Icons/CatIcon1.png',
-        'assets/Final Icons/CatIcon3.png',
-        'assets/Final Icons/CatIcon2.png',
-        'assets/Final Icons/CatIcon4.png',
-        'assets/Final Icons/DogIcon1.png',
-        'assets/Final Icons/DogIcon3.png',
-        'assets/Final Icons/RacoonIcon1.png',
-      ].map((String url) {
-        return new GridTile(child: new Image.network(url, fit: BoxFit.cover));
-      }).toList()),
-);
 
 class _ChangeAvatarState extends State<ChangeAvatar> {
   
@@ -75,39 +54,18 @@ class _ChangeAvatarState extends State<ChangeAvatar> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          Image.asset(
-                            'assets/Final Icons/CatIcon1.png',
+                          Image.network(
+                            'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8',
                             width: 100,
                             height: 100,
                           ),
-                          Image.asset(
-                            'assets/Final Icons/CatIcon2.png',
+                          Image.network(
+                            'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon2.png?alt=media&token=f535aa8c-2e6b-46c3-9176-d003a1ff17b5',
                             width: 100,
                             height: 100,
                           ),
-                          Image.asset(
-                            'assets/Final Icons/CatIcon3.png',
-                            width: 100,
-                            height: 100,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Image.asset(
-                            'assets/Final Icons/CatIcon4.png',
-                            width: 100,
-                            height: 100,
-                          ),
-                          Image.asset(
-                            'assets/Final Icons/DogIcon1.png',
-                            width: 100,
-                            height: 100,
-                          ),
-                          Image.asset(
-                            'assets/Final Icons/DogIcon3.png',
+                          Image.network(
+                            'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon3.png?alt=media&token=664cda7a-7ee7-46e3-833f-d88f63710835',
                             width: 100,
                             height: 100,
                           ),
@@ -117,8 +75,29 @@ class _ChangeAvatarState extends State<ChangeAvatar> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          Image.asset(
-                            'assets/Final Icons/RacoonIcon1.png',
+                          Image.network(
+                            'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon4.png?alt=media&token=b200c426-18dc-4c79-873c-6b272b6b4885',
+                            width: 100,
+                            height: 100,
+                          ),
+                          Image.network(
+                            'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FDogIcon1.png?alt=media&token=cc97ec7a-24bd-406a-bc66-f2b5622e963d',
+                            width: 100,
+                            height: 100,
+                          ),
+                          Image.network(
+                            'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FDogIcon2.png?alt=media&token=4126a792-9ac2-489f-96d1-c10b4843a762',
+                            width: 100,
+                            height: 100,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Image.network(
+                            'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FDogIcon3.png?alt=media&token=fece9732-3576-47a3-a91c-31d56dd94fcb',
                             width: 100,
                             height: 100,
                           ),

@@ -11,8 +11,7 @@ class AuthProvider {
   static CollectionReference userCollection =
       Firestore.instance.collection('Users');
 
-//LOGIN DENGAN EMAIL
-  Future<bool> signInWithEmail(String email, String password) async {
+Future<bool> signInWithEmail(String email, String password) async {
     try {
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
@@ -41,6 +40,9 @@ class AuthProvider {
       globals.currentgooglecoin = null;
       globals.currentgooglescore = null;
       globals.currentaccountgoogle = null;
+        globals.currentimageemail =
+          'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
+  
 
       Firestore.instance
           .collection("Users")
@@ -88,6 +90,12 @@ class AuthProvider {
 
       globals.currentaccountgoogle = null;
       globals.currentaccountemail = null;
+      globals.currentimagegoogle =
+          'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
+      globals.currentimageemail =
+          'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
+      globals.currentgooglecoin = 0;
+      globals.currentgooglescore = 0;
       globals.currentemailcoin = 0;
       globals.currentemailscore = 0;
 
@@ -101,6 +109,14 @@ class AuthProvider {
   Future<bool> loginWithGoogle() async {
     GoogleSignIn googleSignIn = GoogleSignIn();
     GoogleSignInAccount account = await googleSignIn.signIn();
+
+    globals.currentimagegoogle =
+        'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
+    globals.currentgooglecoin = 0;
+    globals.currentgooglescore = 0;
+    globals.currentemailcoin = null;
+    globals.currentemailscore = null;
+    globals.currentaccountemail = null;
 
     Firestore.instance
         .collection("Users")
@@ -120,6 +136,13 @@ class AuthProvider {
         .collection("Users")
         .where('Email', isEqualTo: account.email)
         .snapshots()
+        .listen((data) => data.documents
+            .forEach((doc) => globals.currentimagegoogle = (doc["image"])));
+
+    Firestore.instance
+        .collection("Users")
+        .where('Email', isEqualTo: account.email)
+        .snapshots()
         .listen((data) => data.documents.forEach(
             (doc) => globals.currentaccountgoogle = (doc["Username"])));
 
@@ -134,7 +157,8 @@ class AuthProvider {
           displayname: account.displayName,
           email: account.email,
           score: globals.currentgooglescore.toString(),
-          coin: globals.currentgooglecoin.toString());
+          coin: globals.currentgooglecoin.toString(),
+          image: globals.currentimagegoogle);
       globals.currentaccountgoogle = account.displayName;
 
       globals.currentemailcoin = null;
@@ -169,12 +193,17 @@ class AuthProvider {
   }
 
   static Future<void> addUserGoogle(String id,
-      {String displayname, String email, String score, String coin}) async {
+      {String displayname,
+      String email,
+      String score,
+      String coin,
+      String image}) async {
     await userCollection.document(id).setData({
       'Username': displayname,
       'Email': email,
       'score': globals.currentgooglescore,
-      'coin': globals.currentgooglecoin
+      'coin': globals.currentgooglecoin,
+      'image': globals.currentimagegoogle
     });
   }
 
@@ -191,5 +220,7 @@ class AuthProvider {
         .setData({'score': score, 'coin': coin}, merge: true);
   }
 
-
+  static updateUserimage(String id, {String image}) async {
+    await userCollection.document(id).setData({'image': image}, merge: true);
+  }
 }

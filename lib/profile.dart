@@ -78,13 +78,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: new SizedBox(
                           width: 100.0,
                           height: 100.0,
-                          child: (imagePath != null)
+                          child: (globals.currentimageemail == null)
                               ? Image.network(
-                                  imagePath,
+                                  globals.currentimagegoogle,
                                   fit: BoxFit.fill,
                                 )
-                              : Image.asset(
-                                  "assets/avatar1.png",
+                              : Image.network(
+                                  globals.currentimageemail,
                                   fit: BoxFit.fill,
                                 ),
                         ),
@@ -100,17 +100,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           globals.currentaccountemail,
                           style: TextStyle(fontFamily: "Poppins-Medium"),
                         ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 1.0),
-                    child: IconButton(
-                        icon: Icon(FontAwesomeIcons.camera, size: 20),
-                        onPressed: () async {
-                          File file = await getImage();
-                          imagePath = await DatabasesServices.uploadImage(file);
-
-                          setState(() {});
-                        }),
-                  ),
                   Container(
                     padding: EdgeInsets.symmetric(),
                     child: RaisedButton(
