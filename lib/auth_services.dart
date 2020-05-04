@@ -156,8 +156,8 @@ Future<bool> signInWithEmail(String email, String password) async {
       addUserGoogle(account.id,
           displayname: account.displayName,
           email: account.email,
-          score: globals.currentgooglescore.toString(),
-          coin: globals.currentgooglecoin.toString(),
+          score: globals.currentgooglescore,
+          coin: globals.currentgooglecoin,
           image: globals.currentimagegoogle);
       globals.currentaccountgoogle = account.displayName;
 
@@ -195,8 +195,8 @@ Future<bool> signInWithEmail(String email, String password) async {
   static Future<void> addUserGoogle(String id,
       {String displayname,
       String email,
-      String score,
-      String coin,
+      int score,
+      int coin,
       String image}) async {
     await userCollection.document(id).setData({
       'Username': displayname,
@@ -214,7 +214,7 @@ Future<bool> signInWithEmail(String email, String password) async {
   }
 
   static Future<void> updateUserscorecoin(String id,
-      {String score, String coin}) async {
+      {int score, int coin}) async {
     await userCollection
         .document(id)
         .setData({'score': score, 'coin': coin}, merge: true);

@@ -69,16 +69,16 @@ class _successpageState extends State<successpage> {
                           globals.currentgooglecoin = (globals.currentgooglecoin+(globals.currentbenar*2));
                           AuthProvider.updateUserscorecoin(
                             globals.currentidaccount,
-                            score: globals.currentgooglescore.toString(),
-                            coin: globals.currentgooglecoin.toString()
+                            score: globals.currentgooglescore,
+                            coin: globals.currentgooglecoin
                           );
                         } else {
                           globals.currentemailscore =(globals.currentemailscore +(globals.currentbenar * 2));
                           globals.currentemailcoin = (globals.currentemailcoin +(globals.currentbenar * 2));
                           AuthProvider.updateUserscorecoin(
                             globals.currentidaccount,
-                            score: globals.currentemailscore.toString(),
-                            coin: globals.currentemailcoin.toString()
+                            score: globals.currentemailscore,
+                            coin: globals.currentemailcoin
                           );
                         }
 
