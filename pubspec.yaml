@@ -42,7 +42,8 @@ dependencies:
   auto_size_text: ^2.0.0+2
   material_design_icons_flutter: 4.0.5045
   flutter_custom_clippers: ^0.1.6
-
+  url_launcher: ^3.0.3
+  flutter_signin_button: ^1.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

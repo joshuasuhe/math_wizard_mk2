@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/materi.dart';
 import 'package:math_wizard_mk2/signup.dart';
@@ -11,7 +13,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactScreen extends StatefulWidget {
   @override
@@ -37,18 +39,104 @@ class _ContactScreenState extends State<ContactScreen> {
       body: Stack(
         children: <Widget>[
           Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/bg2.png"), fit: BoxFit.cover)),
-        ),
-        SingleChildScrollView(
-          padding: EdgeInsets.all(30),
-          child: Column(
-            children: <Widget>[
-
-            ],
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/bg2.png"), fit: BoxFit.cover)),
           ),
-        )
+          SingleChildScrollView(
+            padding: EdgeInsets.all(30),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [new BoxShadow(blurRadius: 3.0)],
+                      borderRadius: BorderRadius.all(Radius.circular(15))),
+                  height: 75,
+                  width: 350,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(padding: EdgeInsets.all(10)),
+                      IconButton(
+                        // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
+                        icon: FaIcon(FontAwesomeIcons.facebook),
+                      ),
+                      GestureDetector(
+                          child: Text("Facebook",
+                              style: TextStyle(
+                                  fontFamily: "Poppins-Bold",
+                                  fontSize: 18,
+                                  decoration: TextDecoration.underline,
+                                  color: Colors.blue)),
+                          onTap: () {
+                            launch(
+                                "https://m.me/joshuasuherlan");
+                          })
+                    ],
+                  ),
+                ),
+                SizedBox(height:15),
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [new BoxShadow(blurRadius: 3.0)],
+                      borderRadius: BorderRadius.all(Radius.circular(15))),
+                  height: 75,
+                  width: 350,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(padding: EdgeInsets.all(10)),
+                      IconButton(
+                        // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
+                        icon: FaIcon(FontAwesomeIcons.instagram),
+                      ),
+                      GestureDetector(
+                          child: Text("Instagram",
+                              style: TextStyle(
+                                  fontFamily: "Poppins-Bold",
+                                  fontSize: 18,
+                                  decoration: TextDecoration.underline,
+                                  color: Colors.blue)),
+                          onTap: () {
+                            launch(
+                                "https://www.instagram.com/joshuasuhe/?hl=en");
+                          })
+                    ],
+                  ),
+                ),
+                SizedBox(height:15),
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [new BoxShadow(blurRadius: 3.0)],
+                      borderRadius: BorderRadius.all(Radius.circular(15))),
+                  height: 75,
+                  width: 350,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(padding: EdgeInsets.all(10)),
+                      IconButton(
+                        // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
+                        icon: FaIcon(FontAwesomeIcons.whatsapp),
+                      ),
+                      GestureDetector(
+                        
+                          child: Text("Whatsapp",
+                              style: TextStyle(
+                                  fontFamily: "Poppins-Bold",
+                                  fontSize: 18,
+                                  decoration: TextDecoration.underline,
+                                  color: Colors.blue)),
+                          onTap: () {
+                            launch(
+                                "whatsapp://send?phone=6282219330563");
+                          })
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );

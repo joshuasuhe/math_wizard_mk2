@@ -69,6 +69,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  SizedBox(height:15),
+                  globals.currentaccountemail == null
+                      ? Text(
+                          globals.currentaccountgoogle,
+                          style: TextStyle(fontFamily: "Poppins-Medium", fontSize: 22),
+                        )
+                      : Text(
+                          globals.currentaccountemail,
+                          style: TextStyle(fontFamily: "Poppins-Medium", fontSize: 22),
+                        ),
+                        SizedBox(height:15),
                   Align(
                     alignment: Alignment.center,
                     child: CircleAvatar(
@@ -76,8 +87,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       backgroundColor: Color(0xff476cfb),
                       child: ClipOval(
                         child: new SizedBox(
-                          width: 100.0,
-                          height: 100.0,
+                          width: 150.0,
+                          height: 150.0,
                           child: (globals.currentimageemail == null)
                               ? Image.network(
                                   globals.currentimagegoogle,
@@ -91,15 +102,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),
-                  globals.currentaccountemail == null
-                      ? Text(
-                          globals.currentaccountgoogle,
-                          style: TextStyle(fontFamily: "Poppins-Medium"),
-                        )
-                      : Text(
-                          globals.currentaccountemail,
-                          style: TextStyle(fontFamily: "Poppins-Medium"),
-                        ),
+                  SizedBox(height:10),
                   Container(
                     padding: EdgeInsets.symmetric(),
                     child: RaisedButton(
@@ -133,38 +136,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     children: <Widget>[
                                                    Image.asset(
                                 'assets/trophy.png',
-                                width: 20,
-                                height: 20,
+                                width: 40,
+                                height: 40,
                               ),
                               globals.currentemailscore == null
                                   ? Text(
                                       globals.currentgooglescore.toString(),
                                       style: TextStyle(
-                                          fontFamily: "Poppins-Medium"),
+                                          fontFamily: "Poppins-Medium", fontSize: 18),
                                     )
                                   : Text(
                                       globals.currentemailscore.toString(),
                                       style: TextStyle(
-                                          fontFamily: "Poppins-Medium"),
+                                          fontFamily: "Poppins-Medium", fontSize: 18),
                                     ),
                               SizedBox(
                                 width: 10,
                               ),
                               Image.asset(
                                 'assets/coin.png',
-                                width: 20,
-                                height: 20,
+                                width: 40,
+                                height: 40,
                               ),
                                 globals.currentemailcoin == null
                                   ? Text(
                                       globals.currentgooglecoin.toString(),
                                       style: TextStyle(
-                                          fontFamily: "Poppins-Medium"),
+                                          fontFamily: "Poppins-Medium", fontSize: 18),
                                     )
                                   : Text(
                                       globals.currentemailcoin.toString(),
                                       style: TextStyle(
-                                          fontFamily: "Poppins-Medium"),
+                                          fontFamily: "Poppins-Medium", fontSize: 18),
                                     ),
                     ],
                   ),
@@ -178,44 +181,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Container(
               child: Column(
                 children: <Widget>[
-                  Container(
-                    height: 75,
-                    width: 350,
-                    padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [new BoxShadow(blurRadius: 3.0)],
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'Penyelesaian',
-                          style: TextStyle(fontFamily: 'Poppins-Medium'),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        LinearPercentIndicator(
-                          width: 300,
-                          animation: true,
-                          lineHeight: 15.0,
-                          animationDuration: 2500,
-                          percent: 0.8,
-                          center: Text(
-                            "80.0%",
-                            style: TextStyle(
-                                fontFamily: 'Poppins-Medium', fontSize: 10),
-                          ),
-                          linearStrokeCap: LinearStrokeCap.roundAll,
-                          progressColor: Colors.green,
-                        ),
-                      ],
-                    ),
-                  ),
+                  // Container(
+                  //   height: 75,
+                  //   width: 350,
+                  //   padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                  //   decoration: BoxDecoration(
+                  //       color: Colors.white,
+                  //       boxShadow: [new BoxShadow(blurRadius: 3.0)],
+                  //       borderRadius: BorderRadius.all(Radius.circular(15))),
+                  //   child: Column(
+                  //     crossAxisAlignment: CrossAxisAlignment.center,
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     children: <Widget>[
+                  //       Text(
+                  //         'Penyelesaian',
+                  //         style: TextStyle(fontFamily: 'Poppins-Medium'),
+                  //       ),
+                  //       SizedBox(
+                  //         height: 5,
+                  //       ),
+                  //       LinearPercentIndicator(
+                  //         width: 300,
+                  //         animation: true,
+                  //         lineHeight: 15.0,
+                  //         animationDuration: 2500,
+                  //         percent: 0.8,
+                  //         center: Text(
+                  //           "80.0%",
+                  //           style: TextStyle(
+                  //               fontFamily: 'Poppins-Medium', fontSize: 10),
+                  //         ),
+                  //         linearStrokeCap: LinearStrokeCap.roundAll,
+                  //         progressColor: Colors.green,
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   SizedBox(
-                    height: 15,
+                    height: 10,
                   ),
                   InkWell(
                     onTap: () {
