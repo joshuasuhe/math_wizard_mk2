@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/Kelas1/quiz1611.dart';
+import 'package:math_wizard_mk2/Kelas1/quiz1621.dart';
+import 'package:math_wizard_mk2/Kelas1/quiz1631.dart';
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/ranking.dart';
@@ -215,7 +217,7 @@ class _pilihlatihankelas1bab6State extends State<pilihlatihankelas1bab6> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return Quiz1611();
+                                                        return Quiz1621();
                                                       },
                                                     ),
                                                   );
@@ -295,7 +297,7 @@ class _pilihlatihankelas1bab6State extends State<pilihlatihankelas1bab6> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return Quiz1611();
+                                                        return Quiz1631();
                                                       },
                                                     ),
                                                   );
