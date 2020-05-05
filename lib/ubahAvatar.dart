@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:math_wizard_mk2/main.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'globals.dart' as globals;
 
 class ChangeAvatar extends StatefulWidget {
@@ -76,13 +77,261 @@ class _ChangeAvatarState extends State<ChangeAvatar> {
                         children: <Widget>[
                           InkWell(
                               onTap: () {
-                                AuthProvider.updateUserimage(
-                                    globals.currentidaccount,
-                                    image: gambar1);
-                                  if (globals.currentimageemail == null) {
-                                  globals.currentimagegoogle = gambar1;
+                                if (globals.currentimageemail == null) {
+                                  if (globals.currentimagegoogle == gambar1) {
+                                    Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: 'Profil picture sudah diganti',
+                                        buttons: [
+                                          DialogButton(
+                                              child: Text(
+                                                "oke",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        "Poppins-Medium",
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return ChangeAvatar();
+                                                }));
+                                              })
+                                        ]).show();
+                                  } else {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.info,
+                                      title: "Profil picture akan diganti",
+                                      desc:
+                                          "penggantian profil picture membutuhkan 100 Coin,Setuju?",
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "YA",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            if (globals.currentgooglecoin <
+                                                100) {
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.error,
+                                                  title: 'Coin tidak cukup',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            } else {
+                                              AuthProvider.updateUserimage(
+                                                  globals.currentidaccount,
+                                                  image: gambar1);
+                                              globals.currentgooglecoin =
+                                                  (globals.currentgooglecoin -
+                                                      100);
+                                              AuthProvider.updateUserscorecoin(
+                                                  globals.currentidaccount,
+                                                  coin: globals
+                                                      .currentgooglecoin,score:globals.currentgooglescore);
+                                              if (globals.currentimageemail ==
+                                                  null) {
+                                                globals.currentimagegoogle =
+                                                    gambar1;
+                                              } else {
+                                                globals.currentimageemail =
+                                                    gambar1;
+                                              }
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.success,
+                                                  title:
+                                                      'Profil picture sudah diganti',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            }
+                                          },
+                                          width: 120,
+                                        ),
+                                        DialogButton(
+                                          child: Text(
+                                            "Tidak",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          width: 120,
+                                        )
+                                      ],
+                                    ).show();
+                                  }
                                 } else {
-                                  globals.currentimageemail = gambar1;
+                                  if (globals.currentimageemail == gambar1) {
+                                      Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: 'Profil picture sudah diganti',
+                                        buttons: [
+                                          DialogButton(
+                                              child: Text(
+                                                "oke",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        "Poppins-Medium",
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return ChangeAvatar();
+                                                }));
+                                              })
+                                        ]).show();
+
+                                  } else {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.info,
+                                      title: "Profil picture akan diganti",
+                                      desc:
+                                          "penggantian profil picture membutuhkan 100 Coin,Setuju?",
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "YA",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            if (globals.currentemailcoin <
+                                                100) {
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.error,
+                                                  title: 'Coin tidak cukup',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            } else {
+                                              AuthProvider.updateUserimage(
+                                                  globals.currentidaccount,
+                                                  image: gambar1);
+                                              globals.currentemailcoin =
+                                                  (globals.currentemailcoin -
+                                                      100);
+                                              AuthProvider.updateUserscorecoin(
+                                                  globals.currentidaccount,
+                                                  coin: globals
+                                                      .currentemailcoin,score: globals.currentemailscore);
+                                              if (globals.currentimageemail ==
+                                                  null) {
+                                                globals.currentimagegoogle =
+                                                    gambar1;
+                                              } else {
+                                                globals.currentimageemail =
+                                                    gambar1;
+                                              }
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.success,
+                                                  title:
+                                                      'Profil picture sudah diganti',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            }
+                                          },
+                                          width: 120,
+                                        ),
+                                        DialogButton(
+                                          child: Text(
+                                            "Tidak",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          width: 120,
+                                        )
+                                      ],
+                                    ).show();
+                                  }
                                 }
                               },
                               child: Container(
@@ -94,13 +343,261 @@ class _ChangeAvatarState extends State<ChangeAvatar> {
                               )),
                           InkWell(
                               onTap: () {
-                                AuthProvider.updateUserimage(
-                                    globals.currentidaccount,
-                                    image: gambar2);
-                                   if (globals.currentimageemail == null) {
-                                  globals.currentimagegoogle = gambar2;
+                                if (globals.currentimageemail == null) {
+                                  if (globals.currentimagegoogle == gambar2) {
+                                    Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: 'Profil picture sudah diganti',
+                                        buttons: [
+                                          DialogButton(
+                                              child: Text(
+                                                "oke",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        "Poppins-Medium",
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return ChangeAvatar();
+                                                }));
+                                              })
+                                        ]).show();
+                                  } else {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.info,
+                                      title: "Profil picture akan diganti",
+                                      desc:
+                                          "penggantian profil picture membutuhkan 100 Coin,Setuju?",
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "YA",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            if (globals.currentgooglecoin <
+                                                100) {
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.error,
+                                                  title: 'Coin tidak cukup',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            } else {
+                                              AuthProvider.updateUserimage(
+                                                  globals.currentidaccount,
+                                                  image: gambar2);
+                                              globals.currentgooglecoin =
+                                                  (globals.currentgooglecoin -
+                                                      100);
+                                              AuthProvider.updateUserscorecoin(
+                                                  globals.currentidaccount,
+                                                  coin: globals
+                                                      .currentgooglecoin,score:globals.currentgooglescore);
+                                              if (globals.currentimageemail ==
+                                                  null) {
+                                                globals.currentimagegoogle =
+                                                    gambar2;
+                                              } else {
+                                                globals.currentimageemail =
+                                                    gambar2;
+                                              }
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.success,
+                                                  title:
+                                                      'Profil picture sudah diganti',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            }
+                                          },
+                                          width: 120,
+                                        ),
+                                        DialogButton(
+                                          child: Text(
+                                            "Tidak",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          width: 120,
+                                        )
+                                      ],
+                                    ).show();
+                                  }
                                 } else {
-                                  globals.currentimageemail = gambar2;
+                                  if (globals.currentimageemail == gambar2) {
+                                      Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: 'Profil picture sudah diganti',
+                                        buttons: [
+                                          DialogButton(
+                                              child: Text(
+                                                "oke",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        "Poppins-Medium",
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return ChangeAvatar();
+                                                }));
+                                              })
+                                        ]).show();
+
+                                  } else {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.info,
+                                      title: "Profil picture akan diganti",
+                                      desc:
+                                          "penggantian profil picture membutuhkan 100 Coin,Setuju?",
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "YA",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            if (globals.currentemailcoin <
+                                                100) {
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.error,
+                                                  title: 'Coin tidak cukup',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            } else {
+                                              AuthProvider.updateUserimage(
+                                                  globals.currentidaccount,
+                                                  image: gambar2);
+                                              globals.currentemailcoin =
+                                                  (globals.currentemailcoin -
+                                                      100);
+                                              AuthProvider.updateUserscorecoin(
+                                                  globals.currentidaccount,
+                                                  coin: globals
+                                                      .currentemailcoin,score: globals.currentemailscore);
+                                              if (globals.currentimageemail ==
+                                                  null) {
+                                                globals.currentimagegoogle =
+                                                    gambar2;
+                                              } else {
+                                                globals.currentimageemail =
+                                                    gambar2;
+                                              }
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.success,
+                                                  title:
+                                                      'Profil picture sudah diganti',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            }
+                                          },
+                                          width: 120,
+                                        ),
+                                        DialogButton(
+                                          child: Text(
+                                            "Tidak",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          width: 120,
+                                        )
+                                      ],
+                                    ).show();
+                                  }
                                 }
                               },
                               child: Container(
@@ -112,13 +609,261 @@ class _ChangeAvatarState extends State<ChangeAvatar> {
                               )),
                           InkWell(
                               onTap: () {
-                                AuthProvider.updateUserimage(
-                                    globals.currentidaccount,
-                                    image: gambar3);
-                                   if (globals.currentimageemail == null) {
-                                  globals.currentimagegoogle = gambar3;
+                                if (globals.currentimageemail == null) {
+                                  if (globals.currentimagegoogle == gambar3) {
+                                    Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: 'Profil picture sudah diganti',
+                                        buttons: [
+                                          DialogButton(
+                                              child: Text(
+                                                "oke",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        "Poppins-Medium",
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return ChangeAvatar();
+                                                }));
+                                              })
+                                        ]).show();
+                                  } else {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.info,
+                                      title: "Profil picture akan diganti",
+                                      desc:
+                                          "penggantian profil picture membutuhkan 100 Coin,Setuju?",
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "YA",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            if (globals.currentgooglecoin <
+                                                100) {
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.error,
+                                                  title: 'Coin tidak cukup',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            } else {
+                                              AuthProvider.updateUserimage(
+                                                  globals.currentidaccount,
+                                                  image: gambar3);
+                                              globals.currentgooglecoin =
+                                                  (globals.currentgooglecoin -
+                                                      100);
+                                              AuthProvider.updateUserscorecoin(
+                                                  globals.currentidaccount,
+                                                  coin: globals
+                                                      .currentgooglecoin,score:globals.currentgooglescore);
+                                              if (globals.currentimageemail ==
+                                                  null) {
+                                                globals.currentimagegoogle =
+                                                    gambar3;
+                                              } else {
+                                                globals.currentimageemail =
+                                                    gambar3;
+                                              }
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.success,
+                                                  title:
+                                                      'Profil picture sudah diganti',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            }
+                                          },
+                                          width: 120,
+                                        ),
+                                        DialogButton(
+                                          child: Text(
+                                            "Tidak",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          width: 120,
+                                        )
+                                      ],
+                                    ).show();
+                                  }
                                 } else {
-                                  globals.currentimageemail = gambar3;
+                                  if (globals.currentimageemail == gambar3) {
+                                      Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: 'Profil picture sudah diganti',
+                                        buttons: [
+                                          DialogButton(
+                                              child: Text(
+                                                "oke",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        "Poppins-Medium",
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return ChangeAvatar();
+                                                }));
+                                              })
+                                        ]).show();
+
+                                  } else {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.info,
+                                      title: "Profil picture akan diganti",
+                                      desc:
+                                          "penggantian profil picture membutuhkan 100 Coin,Setuju?",
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "YA",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            if (globals.currentemailcoin <
+                                                100) {
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.error,
+                                                  title: 'Coin tidak cukup',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            } else {
+                                              AuthProvider.updateUserimage(
+                                                  globals.currentidaccount,
+                                                  image: gambar3);
+                                              globals.currentemailcoin =
+                                                  (globals.currentemailcoin -
+                                                      100);
+                                              AuthProvider.updateUserscorecoin(
+                                                  globals.currentidaccount,
+                                                  coin: globals
+                                                      .currentemailcoin,score: globals.currentemailscore);
+                                              if (globals.currentimageemail ==
+                                                  null) {
+                                                globals.currentimagegoogle =
+                                                    gambar3;
+                                              } else {
+                                                globals.currentimageemail =
+                                                    gambar3;
+                                              }
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.success,
+                                                  title:
+                                                      'Profil picture sudah diganti',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            }
+                                          },
+                                          width: 120,
+                                        ),
+                                        DialogButton(
+                                          child: Text(
+                                            "Tidak",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          width: 120,
+                                        )
+                                      ],
+                                    ).show();
+                                  }
                                 }
                               },
                               child: Container(
@@ -136,13 +881,261 @@ class _ChangeAvatarState extends State<ChangeAvatar> {
                         children: <Widget>[
                           InkWell(
                               onTap: () {
-                                AuthProvider.updateUserimage(
-                                    globals.currentidaccount,
-                                    image: gambar4);
-                                   if (globals.currentimageemail == null) {
-                                  globals.currentimagegoogle = gambar4;
+                                if (globals.currentimageemail == null) {
+                                  if (globals.currentimagegoogle == gambar4) {
+                                    Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: 'Profil picture sudah diganti',
+                                        buttons: [
+                                          DialogButton(
+                                              child: Text(
+                                                "oke",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        "Poppins-Medium",
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return ChangeAvatar();
+                                                }));
+                                              })
+                                        ]).show();
+                                  } else {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.info,
+                                      title: "Profil picture akan diganti",
+                                      desc:
+                                          "penggantian profil picture membutuhkan 100 Coin,Setuju?",
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "YA",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            if (globals.currentgooglecoin <
+                                                100) {
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.error,
+                                                  title: 'Coin tidak cukup',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            } else {
+                                              AuthProvider.updateUserimage(
+                                                  globals.currentidaccount,
+                                                  image: gambar4);
+                                              globals.currentgooglecoin =
+                                                  (globals.currentgooglecoin -
+                                                      100);
+                                              AuthProvider.updateUserscorecoin(
+                                                  globals.currentidaccount,
+                                                  coin: globals
+                                                      .currentgooglecoin,score:globals.currentgooglescore);
+                                              if (globals.currentimageemail ==
+                                                  null) {
+                                                globals.currentimagegoogle =
+                                                    gambar4;
+                                              } else {
+                                                globals.currentimageemail =
+                                                    gambar4;
+                                              }
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.success,
+                                                  title:
+                                                      'Profil picture sudah diganti',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            }
+                                          },
+                                          width: 120,
+                                        ),
+                                        DialogButton(
+                                          child: Text(
+                                            "Tidak",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          width: 120,
+                                        )
+                                      ],
+                                    ).show();
+                                  }
                                 } else {
-                                  globals.currentimageemail = gambar4;
+                                  if (globals.currentimageemail == gambar4) {
+                                      Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: 'Profil picture sudah diganti',
+                                        buttons: [
+                                          DialogButton(
+                                              child: Text(
+                                                "oke",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        "Poppins-Medium",
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return ChangeAvatar();
+                                                }));
+                                              })
+                                        ]).show();
+
+                                  } else {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.info,
+                                      title: "Profil picture akan diganti",
+                                      desc:
+                                          "penggantian profil picture membutuhkan 100 Coin,Setuju?",
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "YA",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            if (globals.currentemailcoin <
+                                                100) {
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.error,
+                                                  title: 'Coin tidak cukup',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            } else {
+                                              AuthProvider.updateUserimage(
+                                                  globals.currentidaccount,
+                                                  image: gambar4);
+                                              globals.currentemailcoin =
+                                                  (globals.currentemailcoin -
+                                                      100);
+                                              AuthProvider.updateUserscorecoin(
+                                                  globals.currentidaccount,
+                                                  coin: globals
+                                                      .currentemailcoin,score: globals.currentemailscore);
+                                              if (globals.currentimageemail ==
+                                                  null) {
+                                                globals.currentimagegoogle =
+                                                    gambar4;
+                                              } else {
+                                                globals.currentimageemail =
+                                                    gambar4;
+                                              }
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.success,
+                                                  title:
+                                                      'Profil picture sudah diganti',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            }
+                                          },
+                                          width: 120,
+                                        ),
+                                        DialogButton(
+                                          child: Text(
+                                            "Tidak",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          width: 120,
+                                        )
+                                      ],
+                                    ).show();
+                                  }
                                 }
                               },
                               child: Container(
@@ -154,13 +1147,261 @@ class _ChangeAvatarState extends State<ChangeAvatar> {
                               )),
                           InkWell(
                               onTap: () {
-                                AuthProvider.updateUserimage(
-                                    globals.currentidaccount,
-                                    image: gambar5);
-                                  if (globals.currentimageemail == null) {
-                                  globals.currentimagegoogle = gambar5;
+                                if (globals.currentimageemail == null) {
+                                  if (globals.currentimagegoogle == gambar5) {
+                                    Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: 'Profil picture sudah diganti',
+                                        buttons: [
+                                          DialogButton(
+                                              child: Text(
+                                                "oke",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        "Poppins-Medium",
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return ChangeAvatar();
+                                                }));
+                                              })
+                                        ]).show();
+                                  } else {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.info,
+                                      title: "Profil picture akan diganti",
+                                      desc:
+                                          "penggantian profil picture membutuhkan 100 Coin,Setuju?",
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "YA",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            if (globals.currentgooglecoin <
+                                                100) {
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.error,
+                                                  title: 'Coin tidak cukup',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            } else {
+                                              AuthProvider.updateUserimage(
+                                                  globals.currentidaccount,
+                                                  image: gambar5);
+                                              globals.currentgooglecoin =
+                                                  (globals.currentgooglecoin -
+                                                      100);
+                                              AuthProvider.updateUserscorecoin(
+                                                  globals.currentidaccount,
+                                                  coin: globals
+                                                      .currentgooglecoin,score:globals.currentgooglescore);
+                                              if (globals.currentimageemail ==
+                                                  null) {
+                                                globals.currentimagegoogle =
+                                                    gambar5;
+                                              } else {
+                                                globals.currentimageemail =
+                                                    gambar5;
+                                              }
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.success,
+                                                  title:
+                                                      'Profil picture sudah diganti',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            }
+                                          },
+                                          width: 120,
+                                        ),
+                                        DialogButton(
+                                          child: Text(
+                                            "Tidak",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          width: 120,
+                                        )
+                                      ],
+                                    ).show();
+                                  }
                                 } else {
-                                  globals.currentimageemail = gambar5;
+                                  if (globals.currentimageemail == gambar5) {
+                                      Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: 'Profil picture sudah diganti',
+                                        buttons: [
+                                          DialogButton(
+                                              child: Text(
+                                                "oke",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        "Poppins-Medium",
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return ChangeAvatar();
+                                                }));
+                                              })
+                                        ]).show();
+
+                                  } else {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.info,
+                                      title: "Profil picture akan diganti",
+                                      desc:
+                                          "penggantian profil picture membutuhkan 100 Coin,Setuju?",
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "YA",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            if (globals.currentemailcoin <
+                                                100) {
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.error,
+                                                  title: 'Coin tidak cukup',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            } else {
+                                              AuthProvider.updateUserimage(
+                                                  globals.currentidaccount,
+                                                  image: gambar5);
+                                              globals.currentemailcoin =
+                                                  (globals.currentemailcoin -
+                                                      100);
+                                              AuthProvider.updateUserscorecoin(
+                                                  globals.currentidaccount,
+                                                  coin: globals
+                                                      .currentemailcoin,score: globals.currentemailscore);
+                                              if (globals.currentimageemail ==
+                                                  null) {
+                                                globals.currentimagegoogle =
+                                                    gambar5;
+                                              } else {
+                                                globals.currentimageemail =
+                                                    gambar5;
+                                              }
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.success,
+                                                  title:
+                                                      'Profil picture sudah diganti',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            }
+                                          },
+                                          width: 120,
+                                        ),
+                                        DialogButton(
+                                          child: Text(
+                                            "Tidak",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          width: 120,
+                                        )
+                                      ],
+                                    ).show();
+                                  }
                                 }
                               },
                               child: Container(
@@ -172,13 +1413,261 @@ class _ChangeAvatarState extends State<ChangeAvatar> {
                               )),
                           InkWell(
                               onTap: () {
-                                AuthProvider.updateUserimage(
-                                    globals.currentidaccount,
-                                    image: gambar6);
-                                   if (globals.currentimageemail == null) {
-                                  globals.currentimagegoogle = gambar6;
+                                if (globals.currentimageemail == null) {
+                                  if (globals.currentimagegoogle == gambar6) {
+                                    Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: 'Profil picture sudah diganti',
+                                        buttons: [
+                                          DialogButton(
+                                              child: Text(
+                                                "oke",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        "Poppins-Medium",
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return ChangeAvatar();
+                                                }));
+                                              })
+                                        ]).show();
+                                  } else {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.info,
+                                      title: "Profil picture akan diganti",
+                                      desc:
+                                          "penggantian profil picture membutuhkan 100 Coin,Setuju?",
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "YA",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            if (globals.currentgooglecoin <
+                                                100) {
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.error,
+                                                  title: 'Coin tidak cukup',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            } else {
+                                              AuthProvider.updateUserimage(
+                                                  globals.currentidaccount,
+                                                  image: gambar6);
+                                              globals.currentgooglecoin =
+                                                  (globals.currentgooglecoin -
+                                                      100);
+                                              AuthProvider.updateUserscorecoin(
+                                                  globals.currentidaccount,
+                                                  coin: globals
+                                                      .currentgooglecoin,score:globals.currentgooglescore);
+                                              if (globals.currentimageemail ==
+                                                  null) {
+                                                globals.currentimagegoogle =
+                                                    gambar6;
+                                              } else {
+                                                globals.currentimageemail =
+                                                    gambar6;
+                                              }
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.success,
+                                                  title:
+                                                      'Profil picture sudah diganti',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            }
+                                          },
+                                          width: 120,
+                                        ),
+                                        DialogButton(
+                                          child: Text(
+                                            "Tidak",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          width: 120,
+                                        )
+                                      ],
+                                    ).show();
+                                  }
                                 } else {
-                                  globals.currentimageemail = gambar6;
+                                  if (globals.currentimageemail == gambar6) {
+                                      Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: 'Profil picture sudah diganti',
+                                        buttons: [
+                                          DialogButton(
+                                              child: Text(
+                                                "oke",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        "Poppins-Medium",
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return ChangeAvatar();
+                                                }));
+                                              })
+                                        ]).show();
+
+                                  } else {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.info,
+                                      title: "Profil picture akan diganti",
+                                      desc:
+                                          "penggantian profil picture membutuhkan 100 Coin,Setuju?",
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "YA",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            if (globals.currentemailcoin <
+                                                100) {
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.error,
+                                                  title: 'Coin tidak cukup',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            } else {
+                                              AuthProvider.updateUserimage(
+                                                  globals.currentidaccount,
+                                                  image: gambar6);
+                                              globals.currentemailcoin =
+                                                  (globals.currentemailcoin -
+                                                      100);
+                                              AuthProvider.updateUserscorecoin(
+                                                  globals.currentidaccount,
+                                                  coin: globals
+                                                      .currentemailcoin,score: globals.currentemailscore);
+                                              if (globals.currentimageemail ==
+                                                  null) {
+                                                globals.currentimagegoogle =
+                                                    gambar6;
+                                              } else {
+                                                globals.currentimageemail =
+                                                    gambar6;
+                                              }
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.success,
+                                                  title:
+                                                      'Profil picture sudah diganti',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            }
+                                          },
+                                          width: 120,
+                                        ),
+                                        DialogButton(
+                                          child: Text(
+                                            "Tidak",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          width: 120,
+                                        )
+                                      ],
+                                    ).show();
+                                  }
                                 }
                               },
                               child: Container(
@@ -196,13 +1685,261 @@ class _ChangeAvatarState extends State<ChangeAvatar> {
                         children: <Widget>[
                           InkWell(
                               onTap: () {
-                                AuthProvider.updateUserimage(
-                                    globals.currentidaccount,
-                                    image: gambar7);
                                 if (globals.currentimageemail == null) {
-                                  globals.currentimagegoogle = gambar7;
+                                  if (globals.currentimagegoogle == gambar7) {
+                                    Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: 'Profil picture sudah diganti',
+                                        buttons: [
+                                          DialogButton(
+                                              child: Text(
+                                                "oke",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        "Poppins-Medium",
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return ChangeAvatar();
+                                                }));
+                                              })
+                                        ]).show();
+                                  } else {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.info,
+                                      title: "Profil picture akan diganti",
+                                      desc:
+                                          "penggantian profil picture membutuhkan 100 Coin,Setuju?",
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "YA",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            if (globals.currentgooglecoin <
+                                                100) {
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.error,
+                                                  title: 'Coin tidak cukup',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            } else {
+                                              AuthProvider.updateUserimage(
+                                                  globals.currentidaccount,
+                                                  image: gambar7);
+                                              globals.currentgooglecoin =
+                                                  (globals.currentgooglecoin -
+                                                      100);
+                                              AuthProvider.updateUserscorecoin(
+                                                  globals.currentidaccount,
+                                                  coin: globals
+                                                      .currentgooglecoin,score:globals.currentgooglescore);
+                                              if (globals.currentimageemail ==
+                                                  null) {
+                                                globals.currentimagegoogle =
+                                                    gambar7;
+                                              } else {
+                                                globals.currentimageemail =
+                                                    gambar7;
+                                              }
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.success,
+                                                  title:
+                                                      'Profil picture sudah diganti',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            }
+                                          },
+                                          width: 120,
+                                        ),
+                                        DialogButton(
+                                          child: Text(
+                                            "Tidak",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          width: 120,
+                                        )
+                                      ],
+                                    ).show();
+                                  }
                                 } else {
-                                  globals.currentimageemail = gambar7;
+                                  if (globals.currentimageemail == gambar7) {
+                                      Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: 'Profil picture sudah diganti',
+                                        buttons: [
+                                          DialogButton(
+                                              child: Text(
+                                                "oke",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        "Poppins-Medium",
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return ChangeAvatar();
+                                                }));
+                                              })
+                                        ]).show();
+
+                                  } else {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.info,
+                                      title: "Profil picture akan diganti",
+                                      desc:
+                                          "penggantian profil picture membutuhkan 100 Coin,Setuju?",
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "YA",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            if (globals.currentemailcoin <
+                                                100) {
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.error,
+                                                  title: 'Coin tidak cukup',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            } else {
+                                              AuthProvider.updateUserimage(
+                                                  globals.currentidaccount,
+                                                  image: gambar7);
+                                              globals.currentemailcoin =
+                                                  (globals.currentemailcoin -
+                                                      100);
+                                              AuthProvider.updateUserscorecoin(
+                                                  globals.currentidaccount,
+                                                  coin: globals
+                                                      .currentemailcoin,score: globals.currentemailscore);
+                                              if (globals.currentimageemail ==
+                                                  null) {
+                                                globals.currentimagegoogle =
+                                                    gambar7;
+                                              } else {
+                                                globals.currentimageemail =
+                                                    gambar7;
+                                              }
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.success,
+                                                  title:
+                                                      'Profil picture sudah diganti',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            }
+                                          },
+                                          width: 120,
+                                        ),
+                                        DialogButton(
+                                          child: Text(
+                                            "Tidak",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          width: 120,
+                                        )
+                                      ],
+                                    ).show();
+                                  }
                                 }
                               },
                               child: Container(
@@ -213,15 +1950,263 @@ class _ChangeAvatarState extends State<ChangeAvatar> {
                                 ),
                               )),
                           InkWell(
-                              onTap: () {
-                                AuthProvider.updateUserimage(
-                                    globals.currentidaccount,
-                                    image: gambar8);
-                               if (globals.currentimageemail == null) {
-                                  globals.currentimagegoogle = gambar8;
+                              onTap: (){
+                                if (globals.currentimageemail == null) {
+                                  if (globals.currentimagegoogle == gambar8) {
+                                    Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: 'Profil picture sudah diganti',
+                                        buttons: [
+                                          DialogButton(
+                                              child: Text(
+                                                "oke",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        "Poppins-Medium",
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return ChangeAvatar();
+                                                }));
+                                              })
+                                        ]).show();
+                                  } else {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.info,
+                                      title: "Profil picture akan diganti",
+                                      desc:
+                                          "penggantian profil picture membutuhkan 100 Coin,Setuju?",
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "YA",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            if (globals.currentgooglecoin <
+                                                100) {
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.error,
+                                                  title: 'Coin tidak cukup',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            } else {
+                                              AuthProvider.updateUserimage(
+                                                  globals.currentidaccount,
+                                                  image: gambar8);
+                                              globals.currentgooglecoin =
+                                                  (globals.currentgooglecoin -
+                                                      100);
+                                              AuthProvider.updateUserscorecoin(
+                                                  globals.currentidaccount,
+                                                  coin: globals
+                                                      .currentgooglecoin,score:globals.currentgooglescore);
+                                              if (globals.currentimageemail ==
+                                                  null) {
+                                                globals.currentimagegoogle =
+                                                    gambar8;
+                                              } else {
+                                                globals.currentimageemail =
+                                                    gambar8;
+                                              }
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.success,
+                                                  title:
+                                                      'Profil picture sudah diganti',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            }
+                                          },
+                                          width: 120,
+                                        ),
+                                        DialogButton(
+                                          child: Text(
+                                            "Tidak",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          width: 120,
+                                        )
+                                      ],
+                                    ).show();
+                                  }
                                 } else {
-                                  globals.currentimageemail = gambar8;
-                                } 
+                                  if (globals.currentimageemail == gambar8) {
+                                      Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: 'Profil picture sudah diganti',
+                                        buttons: [
+                                          DialogButton(
+                                              child: Text(
+                                                "oke",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        "Poppins-Medium",
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return ChangeAvatar();
+                                                }));
+                                              })
+                                        ]).show();
+
+                                  } else {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.info,
+                                      title: "Profil picture akan diganti",
+                                      desc:
+                                          "penggantian profil picture membutuhkan 100 Coin,Setuju?",
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "YA",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            if (globals.currentemailcoin <
+                                                100) {
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.error,
+                                                  title: 'Coin tidak cukup',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            } else {
+                                              AuthProvider.updateUserimage(
+                                                  globals.currentidaccount,
+                                                  image: gambar8);
+                                              globals.currentemailcoin =
+                                                  (globals.currentemailcoin -
+                                                      100);
+                                              AuthProvider.updateUserscorecoin(
+                                                  globals.currentidaccount,
+                                                  coin: globals
+                                                      .currentemailcoin,score: globals.currentemailscore);
+                                              if (globals.currentimageemail ==
+                                                  null) {
+                                                globals.currentimagegoogle =
+                                                    gambar8;
+                                              } else {
+                                                globals.currentimageemail =
+                                                    gambar8;
+                                              }
+                                              Alert(
+                                                  context: context,
+                                                  type: AlertType.success,
+                                                  title:
+                                                      'Profil picture sudah diganti',
+                                                  buttons: [
+                                                    DialogButton(
+                                                        child: Text(
+                                                          "oke",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Poppins-Medium",
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
+                                                            return ChangeAvatar();
+                                                          }));
+                                                        })
+                                                  ]).show();
+                                            }
+                                          },
+                                          width: 120,
+                                        ),
+                                        DialogButton(
+                                          child: Text(
+                                            "Tidak",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          width: 120,
+                                        )
+                                      ],
+                                    ).show();
+                                  }
+                                }
                               },
                               child: Container(
                                 child: Image.network(

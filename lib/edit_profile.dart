@@ -117,9 +117,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   ),
                                   onPressed: () {
                                     AuthProvider.updateUser(
-                                        globals.currentidaccount,
-                                        displayname: usernameController.text,
-);
+                                      globals.currentidaccount,
+                                      displayname: usernameController.text,
+                                    );
                                     Alert(
                                         context: context,
                                         type: AlertType.success,

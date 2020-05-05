@@ -13,6 +13,11 @@ class AuthProvider {
 
 Future<bool> signInWithEmail(String email, String password) async {
     try {
+             globals.currentimageemail =
+          'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
+   globals.currentgooglecoin = null;
+      globals.currentgooglescore = null;
+      globals.currentaccountgoogle = null;
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
@@ -31,6 +36,13 @@ Future<bool> signInWithEmail(String email, String password) async {
           .listen((data) => data.documents
               .forEach((doc) => globals.currentemailscore = (doc["score"])));
 
+              Firestore.instance
+        .collection("Users")
+        .where('Email', isEqualTo: user.email)
+        .snapshots()
+        .listen((data) => data.documents
+            .forEach((doc) => globals.currentimageemail = (doc["image"])));
+
       Firestore.instance
           .collection("Users")
           .where('Email', isEqualTo: user.email)
@@ -40,9 +52,7 @@ Future<bool> signInWithEmail(String email, String password) async {
       globals.currentgooglecoin = null;
       globals.currentgooglescore = null;
       globals.currentaccountgoogle = null;
-        globals.currentimageemail =
-          'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
-  
+ 
 
       Firestore.instance
           .collection("Users")
@@ -90,11 +100,9 @@ Future<bool> signInWithEmail(String email, String password) async {
 
       globals.currentaccountgoogle = null;
       globals.currentaccountemail = null;
-      globals.currentimagegoogle =
-          'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
-      globals.currentimageemail =
-          'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
-      globals.currentgooglecoin = 0;
+      globals.currentimagegoogle =null;
+      globals.currentimageemail =null;
+            globals.currentgooglecoin = 0;
       globals.currentgooglescore = 0;
       globals.currentemailcoin = 0;
       globals.currentemailscore = 0;
