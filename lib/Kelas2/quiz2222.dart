@@ -69,12 +69,12 @@ class _Quiz2222State extends State<Quiz2222> {
     option1 = "06.00";
     option2 = "12.30";
     option3 = "11.30";
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: Container(),
+          centerTitle: true,
         title: Text("Latihan",
             style: TextStyle(color: Colors.white, fontFamily: 'Poppins-Bold')),
         backgroundColor: Colors.cyan,
@@ -202,6 +202,6 @@ class _Quiz2222State extends State<Quiz2222> {
           ],
         ),
       )),
-    );
+    ));
   }
 }

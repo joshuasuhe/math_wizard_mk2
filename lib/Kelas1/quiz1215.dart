@@ -92,12 +92,12 @@ class _Quiz1215State extends State<Quiz1215> {
   @override
   Widget build(BuildContext context) {
     List<String> soal = [var1.toString(), "+", var2.toString()];
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: Container(),
+          centerTitle: true,
         title: Text("Latihan",
             style: TextStyle(color: Colors.white, fontFamily: 'Poppins-Bold')),
         backgroundColor: Colors.cyan,
@@ -225,6 +225,6 @@ class _Quiz1215State extends State<Quiz1215> {
           ],
         ),
       )),
-    );
+    ));
   }
 }

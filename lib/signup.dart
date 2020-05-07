@@ -7,6 +7,7 @@ import 'package:math_wizard_mk2/main.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:password_strength/password_strength.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -176,20 +177,47 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 )
               ],
             ).show();
-          }
-          else{ 
+          } 
+          // else if (length < 6) {
+          //   Alert(
+              
+          //     context: context,
+          //     type: AlertType.error,
+          //     title: "Sign up Gagal",
+          //     desc: "Password harus minimal 6 karakter",
+          //     buttons: [
+          //       DialogButton(
+          //         child: Text(
+          //           "OK",
+          //           style: TextStyle(color: Colors.white, fontSize: 20),
+          //         ),
+          //         onPressed: () => Navigator.pop(context),
+          //         width: 120,
+          //       )
+          //     ],
+          //   ).show();
+          //   print(password);
+          //   print(length);
+          // } 
+          else {
             print(usernameController);
-          bool res = await AuthProvider().signUpWithEmail(emailController.text,
-              passwordController.text, usernameController.text);
-              
-              
+            bool res = await AuthProvider().signUpWithEmail(
+                emailController.text,
+                passwordController.text,
+                usernameController.text);
 
+            Map<String, dynamic> userData = {
+              'Email': this.userEmail,
+              'Username': this.userUsername,
+              'Password': this.userPassword,
+              'coin': this.userCoin,
+              'score': this.userScore,
+              'image':
+                  'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8',
+            };
+            crudObj.addData(userData);
 
-
-
-
-
-                 Alert(
+            Alert(
               context: context,
               type: AlertType.success,
               title: "Sign up Berhasil",
@@ -205,24 +233,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 )
               ],
             ).show();
-             Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return LoginScreen();
-                      }));
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return LoginScreen();
+            }));
             if (!res) {
-            AlertDialog(title: Text("Sign up Failed"));
-          }}
-         
-          
-          Map<String, dynamic> userData = {
-            'Email': this.userEmail,
-            'Username': this.userUsername,
-            'Password': this.userPassword,
-            'coin' : this.userCoin,
-            'score' : this.userScore,
-            'image':'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8',
-          };
-          crudObj.addData(userData);
+              AlertDialog(title: Text("Sign up Failed"));
+            }
+          }
 
           // .then((result)
           // {
