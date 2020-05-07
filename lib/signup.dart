@@ -8,6 +8,7 @@ import 'package:math_wizard_mk2/main.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:password_strength/password_strength.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class SignUpScreen extends StatefulWidget {

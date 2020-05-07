@@ -71,12 +71,12 @@ class _Quiz3512State extends State<Quiz3512> {
     option1 = "Mistar";
     option2 = "Timbangan beras";
     option3 = "Neraca";
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: Container(),
+          centerTitle: true,
         title: Text("Latihan",
             style: TextStyle(color: Colors.white, fontFamily: 'Poppins-Bold')),
         backgroundColor: Colors.cyan,
@@ -203,6 +203,6 @@ class _Quiz3512State extends State<Quiz3512> {
           ],
         ),
       )),
-    );
+    ));
   }
 }

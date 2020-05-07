@@ -79,12 +79,12 @@ class _Quiz3433State extends State<Quiz3433> {
     option1 = var3* 1000;
     option2 = (var3+1)*1000;
     option3 = (var3-1)*1000;
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: Container(),
+          centerTitle: true,
         title: Text("Latihan",
             style: TextStyle(color: Colors.white, fontFamily: 'Poppins-Bold')),
         backgroundColor: Colors.cyan,
@@ -218,6 +218,6 @@ class _Quiz3433State extends State<Quiz3433> {
           ],
         ),
       )),
-    );
+    ));
   }
 }

@@ -64,12 +64,12 @@ class _Quiz1131State extends State<Quiz1131> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: Container(),
+          centerTitle: true,
         title: Text("Latihan",
             style: TextStyle(color: Colors.white, fontFamily: 'Poppins-Bold')),
         backgroundColor: Colors.cyan,
@@ -200,6 +200,6 @@ class _Quiz1131State extends State<Quiz1131> {
           ],
         ),
       )),
-    );
+    ));
   }
 }

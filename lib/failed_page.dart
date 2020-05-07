@@ -1,21 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
-import 'package:math_wizard_mk2/home.dart';
-import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/main.dart';
-import 'package:math_wizard_mk2/quiz_page.dart';
-import 'package:math_wizard_mk2/signup.dart';
-import 'package:math_wizard_mk2/ranking.dart';
-import 'package:math_wizard_mk2/profile.dart';
-import 'package:math_wizard_mk2/utilities/constants.dart';
-import 'package:math_wizard_mk2/category.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:math_wizard_mk2/globals.dart' as globals;
-import 'mainPage.dart';
 
 class failedpage extends StatefulWidget {
   @override
@@ -26,9 +12,12 @@ class _failedpageState extends State<failedpage> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
+     return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: Container(),
+          centerTitle: true,
         title: Text(
           'Nilai',
           style: TextStyle(fontFamily: "Poppins-Bold"),
@@ -152,6 +141,6 @@ class _failedpageState extends State<failedpage> {
               ]),
             ])),
       ),
-    );
+    ));
   }
 }
