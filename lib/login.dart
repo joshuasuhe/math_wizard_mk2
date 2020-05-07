@@ -220,6 +220,28 @@ class _LoginScreenState extends State<LoginScreen> {
                 )
               ],
             ).show();
+          }else if(Firestore.instance
+                  .collection("Users")
+                  .where('Username', isEqualTo: emailController.text) != null ||Firestore.instance
+                  .collection("Users")
+                  .where('Password', isEqualTo: passwordController.text) != null ){
+             Alert(
+              context: context,
+              type: AlertType.error,
+              title: "Login Gagal",
+              desc: "Email atau password salah.",
+              buttons: [
+                DialogButton(
+                  child: Text(
+                    "OK",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                  width: 120,
+                )
+              ],
+            ).show();
+
           }
           bool res = await AuthProvider()
               .signInWithEmail(emailController.text, passwordController.text);

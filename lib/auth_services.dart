@@ -73,6 +73,7 @@ Future<bool> signInWithEmail(String email, String password) async {
 
   // BUAT AKUN DENGAN EMAIL
   Future<bool> signUpWithEmail(
+    
       String email, String password, String username) async {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(

@@ -16,6 +16,7 @@ import 'package:math_wizard_mk2/globals.dart' as globals;
 class MainPage extends StatefulWidget {
   @override
   _MainPageState createState() => _MainPageState();
+  
 }
 
 class _MainPageState extends State<MainPage> {

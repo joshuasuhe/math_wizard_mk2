@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
@@ -15,17 +16,23 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController(text: "");
   TextEditingController passwordController = TextEditingController(text: "");
   TextEditingController usernameController = TextEditingController(text: "");
-
+  static String pattern =
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+  RegExp regExp = new RegExp(pattern);
   String userUsername;
   String userPassword;
   String userEmail;
   int userScore = 0;
   int userCoin = 0;
+  
 
   crudMethods crudObj = new crudMethods();
+  
+
 
   Widget _buildEmailTF() {
     return Column(
@@ -164,7 +171,64 @@ class _SignUpScreenState extends State<SignUpScreen> {
               context: context,
               type: AlertType.error,
               title: "Sign up Gagal",
-              desc: "Email atau password masih kosong.",
+              desc: "Email atau password atau username masih kosong.",
+              buttons: [
+                DialogButton(
+                  child: Text(
+                    "OK",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                  width: 120,
+                )
+              ],
+            ).show();
+          } else if (passwordController.text.length <= 6) {
+            Alert(
+              context: context,
+              type: AlertType.error,
+              title: "Sign up Gagal",
+              desc: "Password harus lebih dari 6 karakter",
+              buttons: [
+                DialogButton(
+                  child: Text(
+                    "OK",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                  width: 120,
+                )
+              ],
+            ).show();
+          } else if (!regExp.hasMatch(emailController.text)) {
+            Alert(
+              context: context,
+              type: AlertType.error,
+              title: "Sign up Gagal",
+              desc: "Email tidak valid",
+              buttons: [
+                DialogButton(
+                  child: Text(
+                    "OK",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                  width: 120,
+                )
+              ],
+            ).show();
+            
+          }
+          
+           else if (Firestore.instance
+                  .collection("Users")
+                  .where('Email', isEqualTo: emailController.text) != null 
+           ) {
+            Alert(
+              context: context,
+              type: AlertType.error,
+              title: "Sign up Gagal",
+              desc: "Email sudah terdaftar",
               buttons: [
                 DialogButton(
                   child: Text(
@@ -177,19 +241,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ],
             ).show();
           }
-          else{ 
+          else if (Firestore.instance
+                  .collection("Users")
+                  .where('Username', isEqualTo: usernameController.text) != null 
+           ) {
+            Alert(
+              context: context,
+              type: AlertType.error,
+              title: "Sign up Gagal",
+              desc: "username sudah terdaftar",
+              buttons: [
+                DialogButton(
+                  child: Text(
+                    "OK",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                  width: 120,
+                )
+              ],
+            ).show();
+          } else {
             print(usernameController);
-          bool res = await AuthProvider().signUpWithEmail(emailController.text,
-              passwordController.text, usernameController.text);
-              
-              
+            bool res = await AuthProvider().signUpWithEmail(
+                emailController.text,
+                passwordController.text,
+                usernameController.text);
 
-
-
-
-
-
-                 Alert(
+            Alert(
               context: context,
               type: AlertType.success,
               title: "Sign up Berhasil",
@@ -205,31 +284,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 )
               ],
             ).show();
-             Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return LoginScreen();
-                      }));
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return LoginScreen();
+            }));
             if (!res) {
-            AlertDialog(title: Text("Sign up Failed"));
-          }}
-         
-          
-          Map<String, dynamic> userData = {
-            'Email': this.userEmail,
-            'Username': this.userUsername,
-            'Password': this.userPassword,
-            'coin' : this.userCoin,
-            'score' : this.userScore,
-            'image':'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8',
-          };
-          crudObj.addData(userData);
-
-          // .then((result)
-          // {
-          //   dialogTrigger(context);
-          // }).catchError((e){
-          //   print(e);
-          // });
+              AlertDialog(title: Text("Sign up Failed"));
+            }
+            Map<String, dynamic> userData = {
+              'Email': this.userEmail,
+              'Username': this.userUsername,
+              'Password': this.userPassword,
+              'coin': this.userCoin,
+              'score': this.userScore,
+              'image':
+                  'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8',
+            };
+            crudObj.addData(userData);
+          }
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
