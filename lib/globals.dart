@@ -11,6 +11,7 @@ String currentaccountpassword;
 String currentidaccount;
 String currentimageemail;
 String currentimagegoogle;
+String newemail;
 int addedscore;
 int addedcoin;
 int currentbenar;

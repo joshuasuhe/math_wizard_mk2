@@ -23,31 +23,7 @@ class RankingScreen extends StatefulWidget {
 class _RankingScreenState extends State<RankingScreen> {
   bool status = false;
 
-  List<Users> UserList = [];
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
 
-  //   DatabaseReference UserRef =
-  //       FirebaseDatabase.instance.reference().child("Users");
-  //   UserRef.once().then((DataSnapshot snap) {
-  //     var KEYS = snap.value.keys;
-  //     var DATA = snap.value;
-
-  //     UserList.clear();
-  //     for (var individualKey in KEYS) {
-  //       Users users = new Users(
-  //           DATA[individualKey]['Username'], DATA[individualKey]['score']);
-
-  //       UserList.add(users);
-  //     }
-
-  //     setState(() {
-  //       print('Length : $UserList.length');
-  //     });
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
