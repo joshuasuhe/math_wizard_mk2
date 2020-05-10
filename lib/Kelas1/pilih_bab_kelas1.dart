@@ -191,7 +191,7 @@ class _pilihlatihankelas1State extends State<pilihlatihankelas1> {
                       snapshot.data.documents[0]
                           ['BAB3'],
                       style:
-                          TextStyle(fontFamily: "Poppins-Medium", fontSize: 13),
+                          TextStyle(fontFamily: "Poppins-Medium", fontSize: 12),
                     );
                   }),
             ),]

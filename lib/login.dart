@@ -318,7 +318,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: WillPopScope(
-        onWillPop: onWillPop,
+          onWillPop: () =>SystemNavigator.pop(),
           child: Stack(
             children: <Widget>[
               Container(
@@ -402,15 +402,5 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-  Future<bool> onWillPop() {
-    
-    DateTime now = DateTime.now();
-    if (currentBackPressTime == null || 
-        now.difference(currentBackPressTime) > Duration(seconds: 2)) {
-      currentBackPressTime = now;
-      Fluttertoast.showToast(msg: 'double tap to exit');
-      return Future.value(false);
-    }
-    return Future.value(true);
-  }
+
 }
