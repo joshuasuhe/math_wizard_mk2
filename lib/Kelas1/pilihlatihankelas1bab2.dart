@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/Kelas1/quiz1211.dart';
 import 'package:math_wizard_mk2/Kelas1/quiz1221.dart';
 import 'package:math_wizard_mk2/Kelas1/quiz1231.dart';

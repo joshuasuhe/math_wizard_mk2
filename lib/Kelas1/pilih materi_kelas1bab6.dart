@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class pilihmaterikelas1bab1 extends StatefulWidget {
+class pilihmaterikelas1bab6 extends StatefulWidget {
   @override
-  _pilihmaterikelas1bab1State createState() => _pilihmaterikelas1bab1State();
+  _pilihmaterikelas1bab6State createState() => _pilihmaterikelas1bab6State();
 }
 
 class listDataItem extends StatelessWidget {
@@ -28,7 +30,7 @@ class listDataItem extends StatelessWidget {
   }
 }
 
-class _pilihmaterikelas1bab1State extends State<pilihmaterikelas1bab1> {
+class _pilihmaterikelas1bab6State extends State<pilihmaterikelas1bab6> {
   
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class _pilihmaterikelas1bab1State extends State<pilihmaterikelas1bab1> {
           appBar: AppBar(
           leading: Container(),
           centerTitle: true,
-          title: Text("Bab 1 - Bilangan Cacah 1-20",
+          title: Text("Bab 6 - Pengukuran Berat",
               style:
                   TextStyle(color: Colors.white, fontFamily: 'Poppins-Bold')),
           backgroundColor: Colors.cyan,
@@ -49,16 +51,10 @@ class _pilihmaterikelas1bab1State extends State<pilihmaterikelas1bab1> {
                 child: Column(
                 children: <Widget>[
  
-                  Image.network('https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Materi%2FKelas%201%2FBab1_BilanganCacah%2FBilangan1sd5.PNG?alt=media&token=f5575338-a5a1-4db1-b0b4-0cd5e2a4a7ed',
+                  Image.network('https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Materi%2FKelas%201%2FBab6_PengukuranBerat%2FMengukurBeratBenda.PNG?alt=media&token=b0a33f4d-44b7-49bf-8363-56f07f9e5a1b',
                      fit: BoxFit.cover),
  
-                  Image.network('https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Materi%2FKelas%201%2FBab1_BilanganCacah%2FBilangan6sd10.PNG?alt=media&token=4e415def-16d5-49f3-a9fd-bd0d737664d7',
-                      fit: BoxFit.cover),
-
-                  Image.network('https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Materi%2FKelas%201%2FBab1_BilanganCacah%2FBilangan11sd16.PNG?alt=media&token=bbf41ddb-6ede-4ed6-a939-d134ae50543c',
-                      fit: BoxFit.cover),
-
-                  Image.network('https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Materi%2FKelas%201%2FBab1_BilanganCacah%2FBilangan17sd20.PNG?alt=media&token=ce96eac4-5911-42a8-bd12-c8c42c535167',
+                  Image.network('https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Materi%2FKelas%201%2FBab6_PengukuranBerat%2FPerbandinganBerat.PNG?alt=media&token=9636c49c-8e02-42e9-a44e-09cc30911e81',
                       fit: BoxFit.cover),
                 ],
               ),

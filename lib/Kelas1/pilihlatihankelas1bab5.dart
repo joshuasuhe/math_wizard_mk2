@@ -6,17 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/Kelas1/quiz1511.dart';
 import 'package:math_wizard_mk2/Kelas1/quiz1521.dart';
 import 'package:math_wizard_mk2/Kelas1/quiz1531.dart';
-import 'package:math_wizard_mk2/login.dart';
-import 'package:math_wizard_mk2/signup.dart';
-import 'package:math_wizard_mk2/ranking.dart';
-import 'package:math_wizard_mk2/profile.dart';
-import 'package:math_wizard_mk2/quiz_page.dart';
-import 'package:math_wizard_mk2/utilities/constants.dart';
-import 'package:math_wizard_mk2/category.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class pilihlatihankelas1bab5 extends StatefulWidget {
   @override
