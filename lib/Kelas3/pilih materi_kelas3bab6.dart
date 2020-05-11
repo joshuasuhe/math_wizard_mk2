@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-class pilihmaterikelas1bab5 extends StatefulWidget {
+class pilihmaterikelas3bab6 extends StatefulWidget {
   @override
-  _pilihmaterikelas1bab5State createState() => _pilihmaterikelas1bab5State();
+  _pilihmaterikelas3bab6State createState() => _pilihmaterikelas3bab6State();
 }
 
 class listDataItem extends StatelessWidget {
@@ -30,7 +28,7 @@ class listDataItem extends StatelessWidget {
   }
 }
 
-class _pilihmaterikelas1bab5State extends State<pilihmaterikelas1bab5> {
+class _pilihmaterikelas3bab6State extends State<pilihmaterikelas3bab6> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
@@ -40,7 +38,7 @@ class _pilihmaterikelas1bab5State extends State<pilihmaterikelas1bab5> {
             appBar: AppBar(
               leading: Container(),
               centerTitle: true,
-              title: Text("Bab 5 - Nilai Tempat\n   dan Penggunaan",
+              title: Text("Bab 6 - Pecahan",
                   style: TextStyle(
                       color: Colors.white, fontFamily: 'Poppins-Bold')),
               backgroundColor: Colors.cyan,
@@ -50,16 +48,16 @@ class _pilihmaterikelas1bab5State extends State<pilihmaterikelas1bab5> {
                 child: Column(
                   children: <Widget>[
                     Image.network(
-                        'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Materi%2FKelas%201%2FBab5_NilaiTempat%26Pengguna%2FBilanganBanyakBenda.PNG?alt=media&token=f7722ad7-3266-403e-8bea-7da5ef42a2af',
+                        'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Materi%2FKelas%203%2FBab6_Pecahan%2FMengenalPecahan.PNG?alt=media&token=5ffa5221-f1e8-48a8-b187-da9c0d59e561',
                         fit: BoxFit.cover),
                     Image.network(
-                        'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Materi%2FKelas%201%2FBab5_NilaiTempat%26Pengguna%2FPenetuanNilaiTempat.PNG?alt=media&token=c7ae2be0-cfa4-454b-89ed-ccf40e5af14d',
+                        'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Materi%2FKelas%203%2FBab6_Pecahan%2FPerbandinganGarisBilangan.PNG?alt=media&token=16517f08-7d87-4720-8a8e-8f26a5dca64a',
                         fit: BoxFit.cover),
                     Image.network(
-                        'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Materi%2FKelas%201%2FBab5_NilaiTempat%26Pengguna%2FPenulisanJumlahPuluhan.PNG?alt=media&token=e093c3cf-8255-4154-b709-46530ab3ab5b',
+                        'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Materi%2FKelas%203%2FBab6_Pecahan%2FPerbandinganPecahan.PNG?alt=media&token=50d29d60-ddcb-4498-996f-367386ddbe65',
                         fit: BoxFit.cover),
                     Image.network(
-                        'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Materi%2FKelas%201%2FBab5_NilaiTempat%26Pengguna%2FMengurutkanBilangan.PNG?alt=media&token=7232bd18-cc44-4d79-b8ab-3540d866a310',
+                        'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Materi%2FKelas%203%2FBab6_Pecahan%2FOperasiPecahan.PNG?alt=media&token=36950ac0-859e-490b-b8cc-072d507381ba',
                         fit: BoxFit.cover),
                   ],
                 ),

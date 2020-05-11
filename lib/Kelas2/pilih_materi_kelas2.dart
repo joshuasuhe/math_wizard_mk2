@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:math_wizard_mk2/login.dart';
-import 'package:math_wizard_mk2/signup.dart';
-import 'package:math_wizard_mk2/ranking.dart';
-import 'package:math_wizard_mk2/profile.dart';
-import 'package:math_wizard_mk2/utilities/constants.dart';
-import 'package:math_wizard_mk2/category.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:math_wizard_mk2/Kelas2/pilih%20materi_kelas2bab1.dart';
+import 'package:math_wizard_mk2/Kelas2/pilih%20materi_kelas2bab2.dart';
+import 'package:math_wizard_mk2/Kelas2/pilih%20materi_kelas2bab3.dart';
+import 'package:math_wizard_mk2/Kelas2/pilih%20materi_kelas2bab4.dart';
 
 class pilihmaterikelas2 extends StatefulWidget {
   @override
@@ -42,9 +37,9 @@ class _pilihmaterikelas2State extends State<pilihmaterikelas2> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.cyan,
@@ -61,10 +56,10 @@ class _pilihmaterikelas2State extends State<pilihmaterikelas2> {
       body: Stack(
         children: <Widget>[
           Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/bg2.png"), fit: BoxFit.cover)),
-        ),
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/bg2.png"), fit: BoxFit.cover)),
+          ),
           SingleChildScrollView(
             padding: EdgeInsets.all(30),
             child: Column(
@@ -79,7 +74,12 @@ class _pilihmaterikelas2State extends State<pilihmaterikelas2> {
                   height: 15,
                 ),
                 InkWell(
-                  // onTap: (),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihmaterikelas2bab1();
+                    }));
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -90,8 +90,22 @@ class _pilihmaterikelas2State extends State<pilihmaterikelas2> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text('BAB1 Bilangan Cacah', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
-                         
+                        Container(
+                          child: StreamBuilder(
+                              stream: Firestore.instance
+                                  .collection("Kurikulum")
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (!snapshot.hasData)
+                                  return Text('Loading data.....');
+                                return Text(
+                                  snapshot.data.documents[1]['BAB1'],
+                                  style: TextStyle(
+                                      fontFamily: "Poppins-Medium",
+                                      fontSize: 15),
+                                );
+                              }),
+                        ),
                       ],
                     ),
                   ),
@@ -100,7 +114,12 @@ class _pilihmaterikelas2State extends State<pilihmaterikelas2> {
                   height: 15,
                 ),
                 InkWell(
-                  // onTap: (),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihmaterikelas2bab2();
+                    }));
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -111,8 +130,22 @@ class _pilihmaterikelas2State extends State<pilihmaterikelas2> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text('BAB2 Pengukuran Panjang & Berat', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
-                         
+                        Container(
+                          child: StreamBuilder(
+                              stream: Firestore.instance
+                                  .collection("Kurikulum")
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (!snapshot.hasData)
+                                  return Text('Loading data.....');
+                                return Text(
+                                  snapshot.data.documents[1]['BAB2'],
+                                  style: TextStyle(
+                                      fontFamily: "Poppins-Medium",
+                                      fontSize: 13),
+                                );
+                              }),
+                        ),
                       ],
                     ),
                   ),
@@ -121,7 +154,12 @@ class _pilihmaterikelas2State extends State<pilihmaterikelas2> {
                   height: 15,
                 ),
                 InkWell(
-                  // onTap: (),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihmaterikelas2bab3();
+                    }));
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -132,8 +170,22 @@ class _pilihmaterikelas2State extends State<pilihmaterikelas2> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text('BAB3 Perkalian & Pembagian', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
-                         
+                        Container(
+                          child: StreamBuilder(
+                              stream: Firestore.instance
+                                  .collection("Kurikulum")
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (!snapshot.hasData)
+                                  return Text('Loading data.....');
+                                return Text(
+                                  snapshot.data.documents[1]['BAB3'],
+                                  style: TextStyle(
+                                      fontFamily: "Poppins-Medium",
+                                      fontSize: 15),
+                                );
+                              }),
+                        ),
                       ],
                     ),
                   ),
@@ -142,7 +194,12 @@ class _pilihmaterikelas2State extends State<pilihmaterikelas2> {
                   height: 15,
                 ),
                 InkWell(
-                  // onTap: (),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return pilihmaterikelas2bab4();
+                    }));
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -153,8 +210,22 @@ class _pilihmaterikelas2State extends State<pilihmaterikelas2> {
                     child: Row(
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
-                        Text('BAB4 Bangun Datar Sederhana', style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 15),),
-                         
+                        Container(
+                          child: StreamBuilder(
+                              stream: Firestore.instance
+                                  .collection("Kurikulum")
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (!snapshot.hasData)
+                                  return Text('Loading data.....');
+                                return Text(
+                                  snapshot.data.documents[1]['BAB4'],
+                                  style: TextStyle(
+                                      fontFamily: "Poppins-Medium",
+                                      fontSize: 15),
+                                );
+                              }),
+                        ),
                       ],
                     ),
                   ),

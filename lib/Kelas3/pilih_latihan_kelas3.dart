@@ -51,9 +51,9 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.cyan,
@@ -70,10 +70,10 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
       body: Stack(
         children: <Widget>[
           Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/bg2.png"), fit: BoxFit.cover)),
-        ),
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/bg2.png"), fit: BoxFit.cover)),
+          ),
           SingleChildScrollView(
             padding: EdgeInsets.all(30),
             child: Column(
@@ -84,17 +84,16 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
                   'Pilih Bab Pelajaran',
                   style: TextStyle(fontFamily: 'Poppins-Medium', fontSize: 20),
                 ),
-
                 SizedBox(
                   height: 15,
                 ),
-                InkWell( 
+                InkWell(
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return pilihlatihankelas3bab1();
                     }));
-                },
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -106,34 +105,35 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
                         Container(
-              child: StreamBuilder(
-                  stream:
-                      Firestore.instance.collection("Kurikulum")
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) return Text('Loading data.....');
-                    return Text(
-                      snapshot.data.documents[4]
-                          ['BAB1'],
-                      style:
-                          TextStyle(fontFamily: "Poppins-Medium", fontSize: 15),
-                    );
-                  }),
-            ), 
+                          child: StreamBuilder(
+                              stream: Firestore.instance
+                                  .collection("Kurikulum")
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (!snapshot.hasData)
+                                  return Text('Loading data.....');
+                                return Text(
+                                  snapshot.data.documents[4]['BAB1'],
+                                  style: TextStyle(
+                                      fontFamily: "Poppins-Medium",
+                                      fontSize: 15),
+                                );
+                              }),
+                        ),
                       ],
                     ),
                   ),
                 ),
-                     SizedBox(
+                SizedBox(
                   height: 15,
                 ),
-                InkWell( 
+                InkWell(
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return pilihlatihankelas3bab2();
                     }));
-                },
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -145,34 +145,35 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
                         Container(
-              child: StreamBuilder(
-                  stream:
-                      Firestore.instance.collection("Kurikulum")
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) return Text('Loading data.....');
-                    return Text(
-                      snapshot.data.documents[4]
-                          ['BAB2'],
-                      style:
-                          TextStyle(fontFamily: "Poppins-Medium", fontSize: 14),
-                    );
-                  }),
-            ), 
+                          child: StreamBuilder(
+                              stream: Firestore.instance
+                                  .collection("Kurikulum")
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (!snapshot.hasData)
+                                  return Text('Loading data.....');
+                                return Text(
+                                  snapshot.data.documents[4]['BAB2'],
+                                  style: TextStyle(
+                                      fontFamily: "Poppins-Medium",
+                                      fontSize: 14),
+                                );
+                              }),
+                        ),
                       ],
                     ),
                   ),
                 ),
-    SizedBox(
+                SizedBox(
                   height: 15,
                 ),
-                InkWell( 
+                InkWell(
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return pilihlatihankelas3bab3();
                     }));
-                },
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -184,34 +185,35 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
                         Container(
-              child: StreamBuilder(
-                  stream:
-                      Firestore.instance.collection("Kurikulum")
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) return Text('Loading data.....');
-                    return Text(
-                      snapshot.data.documents[4]
-                          ['BAB3'],
-                      style:
-                          TextStyle(fontFamily: "Poppins-Medium", fontSize: 15),
-                    );
-                  }),
-            ), 
+                          child: StreamBuilder(
+                              stream: Firestore.instance
+                                  .collection("Kurikulum")
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (!snapshot.hasData)
+                                  return Text('Loading data.....');
+                                return Text(
+                                  snapshot.data.documents[4]['BAB3'],
+                                  style: TextStyle(
+                                      fontFamily: "Poppins-Medium",
+                                      fontSize: 15),
+                                );
+                              }),
+                        ),
                       ],
                     ),
                   ),
                 ),
-        SizedBox(
+                SizedBox(
                   height: 15,
                 ),
-                InkWell( 
+                InkWell(
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return pilihlatihankelas3bab4();
                     }));
-                },
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -223,34 +225,35 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
                         Container(
-              child: StreamBuilder(
-                  stream:
-                      Firestore.instance.collection("Kurikulum")
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) return Text('Loading data.....');
-                    return Text(
-                      snapshot.data.documents[4]
-                          ['BAB4'],
-                      style:
-                          TextStyle(fontFamily: "Poppins-Medium", fontSize: 15),
-                    );
-                  }),
-            ), 
+                          child: StreamBuilder(
+                              stream: Firestore.instance
+                                  .collection("Kurikulum")
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (!snapshot.hasData)
+                                  return Text('Loading data.....');
+                                return Text(
+                                  snapshot.data.documents[4]['BAB4'],
+                                  style: TextStyle(
+                                      fontFamily: "Poppins-Medium",
+                                      fontSize: 15),
+                                );
+                              }),
+                        ),
                       ],
                     ),
                   ),
                 ),
-                     SizedBox(
+                SizedBox(
                   height: 15,
                 ),
-                InkWell( 
+                InkWell(
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return pilihlatihankelas3bab5();
                     }));
-                },
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -262,34 +265,35 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
                         Container(
-              child: StreamBuilder(
-                  stream:
-                      Firestore.instance.collection("Kurikulum")
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) return Text('Loading data.....');
-                    return Text(
-                      snapshot.data.documents[4]
-                          ['BAB5'],
-                      style:
-                          TextStyle(fontFamily: "Poppins-Medium", fontSize: 14),
-                    );
-                  }),
-            ), 
+                          child: StreamBuilder(
+                              stream: Firestore.instance
+                                  .collection("Kurikulum")
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (!snapshot.hasData)
+                                  return Text('Loading data.....');
+                                return Text(
+                                  snapshot.data.documents[4]['BAB5'],
+                                  style: TextStyle(
+                                      fontFamily: "Poppins-Medium",
+                                      fontSize: 14),
+                                );
+                              }),
+                        ),
                       ],
                     ),
                   ),
                 ),
-                    SizedBox(
+                SizedBox(
                   height: 15,
                 ),
-                InkWell( 
+                InkWell(
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return pilihlatihankelas3bab6();
                     }));
-                },
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -301,34 +305,35 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
                         Container(
-              child: StreamBuilder(
-                  stream:
-                      Firestore.instance.collection("Kurikulum")
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) return Text('Loading data.....');
-                    return Text(
-                      snapshot.data.documents[4]
-                          ['BAB6'],
-                      style:
-                          TextStyle(fontFamily: "Poppins-Medium", fontSize: 15),
-                    );
-                  }),
-            ), 
+                          child: StreamBuilder(
+                              stream: Firestore.instance
+                                  .collection("Kurikulum")
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (!snapshot.hasData)
+                                  return Text('Loading data.....');
+                                return Text(
+                                  snapshot.data.documents[4]['BAB6'],
+                                  style: TextStyle(
+                                      fontFamily: "Poppins-Medium",
+                                      fontSize: 15),
+                                );
+                              }),
+                        ),
                       ],
                     ),
                   ),
                 ),
-                     SizedBox(
+                SizedBox(
                   height: 15,
                 ),
-                InkWell( 
+                InkWell(
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return pilihlatihankelas3bab7();
                     }));
-                },
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -340,34 +345,35 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
                         Container(
-              child: StreamBuilder(
-                  stream:
-                      Firestore.instance.collection("Kurikulum")
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) return Text('Loading data.....');
-                    return Text(
-                      snapshot.data.documents[4]
-                          ['BAB7'],
-                      style:
-                          TextStyle(fontFamily: "Poppins-Medium", fontSize: 15),
-                    );
-                  }),
-            ), 
+                          child: StreamBuilder(
+                              stream: Firestore.instance
+                                  .collection("Kurikulum")
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (!snapshot.hasData)
+                                  return Text('Loading data.....');
+                                return Text(
+                                  snapshot.data.documents[4]['BAB7'],
+                                  style: TextStyle(
+                                      fontFamily: "Poppins-Medium",
+                                      fontSize: 15),
+                                );
+                              }),
+                        ),
                       ],
                     ),
                   ),
                 ),
-                   SizedBox(
+                SizedBox(
                   height: 15,
                 ),
-                InkWell( 
+                InkWell(
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return pilihlatihankelas3bab8();
                     }));
-                },
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -379,20 +385,21 @@ class _pilihlatihankelas3State extends State<pilihlatihankelas3> {
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10)),
                         Container(
-              child: StreamBuilder(
-                  stream:
-                      Firestore.instance.collection("Kurikulum")
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) return Text('Loading data.....');
-                    return Text(
-                      snapshot.data.documents[4]
-                          ['BAB8'],
-                      style:
-                          TextStyle(fontFamily: "Poppins-Medium", fontSize: 11.5),
-                    );
-                  }),
-            ), 
+                          child: StreamBuilder(
+                              stream: Firestore.instance
+                                  .collection("Kurikulum")
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (!snapshot.hasData)
+                                  return Text('Loading data.....');
+                                return Text(
+                                  snapshot.data.documents[4]['BAB8'],
+                                  style: TextStyle(
+                                      fontFamily: "Poppins-Medium",
+                                      fontSize: 11.5),
+                                );
+                              }),
+                        ),
                       ],
                     ),
                   ),
