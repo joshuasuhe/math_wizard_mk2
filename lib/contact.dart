@@ -70,7 +70,7 @@ class _ContactScreenState extends State<ContactScreen> {
                                   color: Colors.blue)),
                           onTap: () {
                             launch(
-                                "https://m.me/joshuasuherlan");
+                                "https://m.me/105365054516262?fbclid=IwAR1X5zjgtq2LztgoF7QUs7CB8ANzYEYoaCqMi-JG7mcRZEl-5RFaqtva6DE");
                           })
                     ],
                   ),
@@ -99,7 +99,7 @@ class _ContactScreenState extends State<ContactScreen> {
                                   color: Colors.blue)),
                           onTap: () {
                             launch(
-                                "https://www.instagram.com/joshuasuhe/?hl=en");
+                                "https://www.instagram.com/math_wizard_/?hl=id");
                           })
                     ],
                   ),
