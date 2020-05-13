@@ -14,9 +14,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'globals.dart' as globals;
 import 'Kelas2/pilih_latihan_kelas2.dart';
 import 'Kelas3/pilih_latihan_kelas3.dart';
-import 'Kelas4/pilih_latihan_kelas4.dart';
-import 'Kelas5/pilih_latihan_kelas5.dart';
-import 'Kelas6/pilih_latihan_kelas6.dart';
+
 
 class LatihanScreen extends StatefulWidget {
   @override
@@ -173,94 +171,7 @@ class _LatihanScreenState extends State<LatihanScreen> {
                       ],
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return pilihlatihankelas4();
-                    }));
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [new BoxShadow(blurRadius: 1.0)],
-                        // border: Border.all(width: 1),
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    height: 75,
-                    child: Row(
-                      children: <Widget>[
-                        Padding(padding: EdgeInsets.all(10)),
-                        Text(
-                          'Kelas 4',
-                          style: TextStyle(
-                              fontFamily: 'Poppins-Medium', fontSize: 15),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return pilihlatihankelas5();
-                    }));
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [new BoxShadow(blurRadius: 1.0)],
-                        // border: Border.all(width: 1),
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    height: 75,
-                    child: Row(
-                      children: <Widget>[
-                        Padding(padding: EdgeInsets.all(10)),
-                        Text(
-                          'Kelas 5',
-                          style: TextStyle(
-                              fontFamily: 'Poppins-Medium', fontSize: 15),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                InkWell(
-                 onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return pilihlatihankelas6();
-                    }));
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [new BoxShadow(blurRadius: 1.0)],
-                        // border: Border.all(width: 1),
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    height: 75,
-                    child: Row(
-                      children: <Widget>[
-                        Padding(padding: EdgeInsets.all(10)),
-                        Text(
-                          'Kelas 6',
-                          style: TextStyle(
-                              fontFamily: 'Poppins-Medium', fontSize: 15),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                ),         
               ],
             ),
           ),

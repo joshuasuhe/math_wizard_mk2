@@ -1,18 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:math_wizard_mk2/database_services.dart';
 import 'package:math_wizard_mk2/forgot_password.dart';
 import 'package:math_wizard_mk2/home.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/mainPage.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'globals.dart' as globals;
@@ -259,7 +254,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         color: Colors.white,
         child: Text(
-          'LOGIN.',
+          'LOGIN',
           style: TextStyle(
             color: Color(0xFF527DAA),
             letterSpacing: 1.5,
