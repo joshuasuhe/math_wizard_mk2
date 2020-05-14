@@ -19,3 +19,4 @@ int currentgooglescore ;
 int currentgooglecoin ;
 int currentemailscore;
 int currentemailcoin;
+bool eror;

@@ -12,6 +12,8 @@ import 'package:math_wizard_mk2/signup.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'globals.dart' as globals;
 
+
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -165,35 +167,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  // Widget _buildRememberMeCheckbox() {
-  //   return Container(
-  //     height: 20.0,
-  //     child: Row(
-  //       children: <Widget>[
-  //         Theme(
-  //           data: ThemeData(unselectedWidgetColor: Colors.white),
-  //           child: Checkbox(
-  //             value: _rememberMe,
-  //             checkColor: Colors.green,
-  //             activeColor: Colors.white,
-  //             onChanged: (value) {
-  //               setState(() {
-  //                 _rememberMe = value;
-  //               });
-  //             },
-  //           ),
-  //         ),
-  //         Text(
-  //           'Remember me',
-  //           style: TextStyle(
-  //               fontFamily: 'Poppins-Medium',
-  //               fontSize: 15,
-  //               color: Colors.white),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 
   Widget _buildLoginBtn() {
     return Container(
@@ -219,11 +192,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 )
               ],
             ).show();
-          }else if(Firestore.instance
-                  .collection("Users")
-                  .where('Username', isEqualTo: emailController.text) != null ||Firestore.instance
-                  .collection("Users")
-                  .where('Password', isEqualTo: passwordController.text) != null ){
+          }else {
+          }
+          bool res = await AuthProvider()
+              .signInWithEmail(emailController.text, passwordController.text);
+              if(globals.eror == true ){
              Alert(
               context: context,
               type: AlertType.error,
@@ -240,10 +213,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 )
               ],
             ).show();
-
-          }
-          bool res = await AuthProvider()
-              .signInWithEmail(emailController.text, passwordController.text);
+              }
           if (!res) {
             AlertDialog(title: Text("Login Failed"));
           }

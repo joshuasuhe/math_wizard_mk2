@@ -8,12 +8,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class forgotpasswordScreen extends StatefulWidget {
+
   @override
   _forgotpasswordState createState() => _forgotpasswordState();
 }
 
 class _forgotpasswordState extends State<forgotpasswordScreen> {
   TextEditingController emailController = TextEditingController(text: "");
+  static String pattern =
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+  RegExp regExp = new RegExp(pattern);
 
   Widget _buildEmailTF() {
     return Column(
@@ -59,20 +63,60 @@ class _forgotpasswordState extends State<forgotpasswordScreen> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () async {
-          await AuthProvider().sendPasswordResetEmail(emailController.text);
-          Alert(
+          if (emailController.text == '') {
+            Alert(
               context: context,
-              type: AlertType.success,
-              title: "Email sedang dikirim",
-              desc: "cek inbox email anda",
+              type: AlertType.error,
+              title: "Sign up Gagal",
+              desc: "Email  kosong.",
               buttons: [
                 DialogButton(
-                    child: Text(
-                      "OK",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                    onPressed: () => Navigator.pop(context))
-              ]).show();
+                  child: Text(
+                    "OK",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                  width: 120,
+                )
+              ],
+            ).show();
+          }else if (!regExp.hasMatch(emailController.text)) {
+            Alert(
+              context: context,
+              type: AlertType.error,
+              title: "Sign up Gagal",
+              desc: "Email tidak valid",
+              buttons: [
+                DialogButton(
+                  child: Text(
+                    "OK",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                  width: 120,
+                )
+              ],
+            ).show();
+            
+          } 
+          
+          
+          else {
+            await AuthProvider().sendPasswordResetEmail(emailController.text);
+            Alert(
+                context: context,
+                type: AlertType.success,
+                title: "Email sedang dikirim",
+                desc: "cek inbox email anda",
+                buttons: [
+                  DialogButton(
+                      child: Text(
+                        "OK",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      onPressed: () => Navigator.pop(context))
+                ]).show();
+          }
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(

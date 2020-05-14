@@ -1,3 +1,11 @@
+
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'package:math_wizard_mk2/login.dart';
+import 'package:math_wizard_mk2/signup.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'globals.dart' as globals;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,11 +19,11 @@ class AuthProvider {
   static CollectionReference userCollection =
       Firestore.instance.collection('Users');
 
-Future<bool> signInWithEmail(String email, String password) async {
+  Future<bool> signInWithEmail(String email, String password) async {
     try {
-             globals.currentimageemail =
+      globals.currentimageemail =
           'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
-   globals.currentgooglecoin = null;
+      globals.currentgooglecoin = null;
       globals.currentgooglescore = null;
       globals.currentaccountgoogle = null;
       AuthResult result = await _auth.signInWithEmailAndPassword(
@@ -36,12 +44,12 @@ Future<bool> signInWithEmail(String email, String password) async {
           .listen((data) => data.documents
               .forEach((doc) => globals.currentemailscore = (doc["score"])));
 
-              Firestore.instance
-        .collection("Users")
-        .where('Email', isEqualTo: user.email)
-        .snapshots()
-        .listen((data) => data.documents
-            .forEach((doc) => globals.currentimageemail = (doc["image"])));
+      Firestore.instance
+          .collection("Users")
+          .where('Email', isEqualTo: user.email)
+          .snapshots()
+          .listen((data) => data.documents
+              .forEach((doc) => globals.currentimageemail = (doc["image"])));
 
       Firestore.instance
           .collection("Users")
@@ -52,7 +60,6 @@ Future<bool> signInWithEmail(String email, String password) async {
       globals.currentgooglecoin = null;
       globals.currentgooglescore = null;
       globals.currentaccountgoogle = null;
- 
 
       Firestore.instance
           .collection("Users")
@@ -60,20 +67,27 @@ Future<bool> signInWithEmail(String email, String password) async {
           .snapshots()
           .listen((data) => data.documents
               .forEach((doc) => globals.currentidaccount = (doc.documentID)));
+      
+       globals.eror=false;
 
       if (user != null)
         return true;
       else
         return false;
-    } catch (e) {
-      print(e.message);
+    } catch (SignUpEror) {
+     if (SignUpEror is PlatformException) {
+        if (SignUpEror.code =='ERROR_USER_NOT_FOUND'||SignUpEror.code =='ERROR_WRONG_PASSWORD' ) {
+         
+         globals.eror = true;
+           
+        }
+      }
       return false;
     }
   }
 
   // BUAT AKUN DENGAN EMAIL
   Future<bool> signUpWithEmail(
-    
       String email, String password, String username) async {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
@@ -81,15 +95,21 @@ Future<bool> signInWithEmail(String email, String password) async {
       FirebaseUser user = result.user;
 
       await DatabasesServices(uid: user.uid).createuser(username);
-
-        
+       globals.eror=false;
 
       if (user != null)
         return true;
       else
         return false;
-    } catch (e) {
-      print(e.message);
+    } catch (SignUpEror) {
+     
+      if (SignUpEror is PlatformException) {
+        if (SignUpEror.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
+         
+         globals.eror = true;
+           
+        }
+      }
       return false;
     }
   }
@@ -103,9 +123,9 @@ Future<bool> signInWithEmail(String email, String password) async {
 
       globals.currentaccountgoogle = null;
       globals.currentaccountemail = null;
-      globals.currentimagegoogle =null;
-      globals.currentimageemail =null;
-            globals.currentgooglecoin = 0;
+      globals.currentimagegoogle = null;
+      globals.currentimageemail = null;
+      globals.currentgooglecoin = 0;
       globals.currentgooglescore = 0;
       globals.currentemailcoin = 0;
       globals.currentemailscore = 0;
@@ -234,4 +254,5 @@ Future<bool> signInWithEmail(String email, String password) async {
   static updateUserimage(String id, {String image}) async {
     await userCollection.document(id).setData({'image': image}, merge: true);
   }
+
 }

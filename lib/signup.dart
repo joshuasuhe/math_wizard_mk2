@@ -10,6 +10,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:password_strength/password_strength.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'globals.dart' as globals;
+
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -28,7 +30,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   String userEmail;
   int userScore = 0;
   int userCoin = 0;
-  
 
   crudMethods crudObj = new crudMethods();
   
@@ -220,27 +221,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
             
           }
           
-           else if (Firestore.instance
-                  .collection("Users")
-                  .where('Email', isEqualTo: emailController.text) != null 
-           ) {
-            Alert(
-              context: context,
-              type: AlertType.error,
-              title: "Sign up Gagal",
-              desc: "Email sudah terdaftar",
-              buttons: [
-                DialogButton(
-                  child: Text(
-                    "OK",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  onPressed: () => Navigator.pop(context),
-                  width: 120,
-                )
-              ],
-            ).show();
-          }
           else if (Firestore.instance
                   .collection("Users")
                   .where('Username', isEqualTo: usernameController.text) != null 
@@ -267,12 +247,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 emailController.text,
                 passwordController.text,
                 usernameController.text);
-
-            Alert(
+                if(globals.eror == true){
+                     Alert(
               context: context,
-              type: AlertType.success,
-              title: "Sign up Berhasil",
-              desc: "Sekarang akun mu bisa digunakan",
+              type: AlertType.error,
+              title: "Sign up Gagal",
+              desc: "Email sudah terdaftar",
               buttons: [
                 DialogButton(
                   child: Text(
@@ -284,9 +264,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 )
               ],
             ).show();
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
+
+                }else{
+                    Alert(
+              context: context,
+              type: AlertType.success,
+              title: "Sign up Berhasil",
+              desc: "Sekarang akun mu bisa digunakan",
+              buttons: [
+                DialogButton(
+                  child: Text(
+                    "OK",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  onPressed: () =>  Navigator.push(context, MaterialPageRoute(builder: (context) {
               return LoginScreen();
-            }));
+            })),
+                  width: 120,
+                )
+              ],
+            ).show();
+           
             if (!res) {
               AlertDialog(title: Text("Sign up Failed"));
             }
@@ -300,6 +298,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8',
             };
             crudObj.addData(userData);
+
+                }
+
+
+          
           }
         },
         padding: EdgeInsets.all(15.0),
