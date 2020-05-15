@@ -266,7 +266,7 @@ class _pilihmaterikelas3State extends State<pilihmaterikelas3> {
                                   snapshot.data.documents[4]['BAB5'],
                                   style: TextStyle(
                                       fontFamily: "Poppins-Medium",
-                                      fontSize: 15),
+                                      fontSize: 13),
                                 );
                               }),
                         ),
