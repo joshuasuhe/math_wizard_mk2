@@ -223,7 +223,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           
           else if (Firestore.instance
                   .collection("Users")
-                  .where('Username', isEqualTo: usernameController.text) != null 
+                  .where('Username', isEqualTo: usernameController.text) == null 
            ) {
             Alert(
               context: context,
