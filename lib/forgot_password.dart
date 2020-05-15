@@ -67,7 +67,7 @@ class _forgotpasswordState extends State<forgotpasswordScreen> {
             Alert(
               context: context,
               type: AlertType.error,
-              title: "Sign up Gagal",
+              title: "Ganti password Gagal",
               desc: "Email  kosong.",
               buttons: [
                 DialogButton(
@@ -84,7 +84,7 @@ class _forgotpasswordState extends State<forgotpasswordScreen> {
             Alert(
               context: context,
               type: AlertType.error,
-              title: "Sign up Gagal",
+              title: "Ganti password Gagal",
               desc: "Email tidak valid",
               buttons: [
                 DialogButton(
@@ -156,17 +156,7 @@ class _forgotpasswordState extends State<forgotpasswordScreen> {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/bg.png'), fit: BoxFit.cover)
-                    // gradient: LinearGradient(
-                    //   begin: Alignment.topCenter,
-                    //   end: Alignment.bottomCenter,
-                    //   colors: [
-                    //     Color(0xFF73AEF5),
-                    //     Color(0xFF61A4F1),
-                    //     Color(0xFF478DE0),
-                    //     Color(0xFF398AE5),
-                    //   ],
-                    //   stops: [0.1, 0.4, 0.7, 0.9],
-                    // ),
+                  
                     ),
               ),
               Container(
@@ -180,17 +170,7 @@ class _forgotpasswordState extends State<forgotpasswordScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      // Text(
-                      //   'Sign In',
-                      //   style: TextStyle(
-                      //     color: Colors.white,
-                      //     fontFamily: 'Poppins-Medium',
-                      //     fontSize: 20.0,
-                      //     fontWeight: FontWeight.bold,
-                      //   ),
-                      // ),
-
-                      // SizedBox(height: 30.0),
+                   
                       Text(
                         "GANTI PASSWORD",
                         style: TextStyle(
