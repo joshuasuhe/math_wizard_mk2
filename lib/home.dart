@@ -22,8 +22,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String imagePath;
-  // final logingoogle = _buildSignInGoogleButton();
-  // final loginemail = _buildLoginBtn();
+
   bool isPressed = false;
 
   @override

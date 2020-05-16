@@ -12,7 +12,6 @@ import 'package:password_strength/password_strength.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'globals.dart' as globals;
 
-
 class SignUpScreen extends StatefulWidget {
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
@@ -32,8 +31,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   int userCoin = 0;
 
   crudMethods crudObj = new crudMethods();
-  
-
 
   Widget _buildEmailTF() {
     return Column(
@@ -218,13 +215,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 )
               ],
             ).show();
-            
-          }
-          
-          else if (Firestore.instance
+          } else if (Firestore.instance
                   .collection("Users")
-                  .where('Username', isEqualTo: usernameController.text) == null 
-           ) {
+                  .where('Username', isEqualTo: usernameController.text) ==
+              null) {
             Alert(
               context: context,
               type: AlertType.error,
@@ -247,62 +241,62 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 emailController.text,
                 passwordController.text,
                 usernameController.text);
-                if(globals.eror == true){
-                     Alert(
-              context: context,
-              type: AlertType.error,
-              title: "Sign up Gagal",
-              desc: "Email sudah terdaftar",
-              buttons: [
-                DialogButton(
-                  child: Text(
-                    "OK",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  onPressed: () => Navigator.pop(context),
-                  width: 120,
-                )
-              ],
-            ).show();
+            if (globals.eror == true) {
+              Alert(
+                context: context,
+                type: AlertType.error,
+                title: "Sign up Gagal",
+                desc: "Email sudah terdaftar",
+                buttons: [
+                  DialogButton(
+                    child: Text(
+                      "OK",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                    onPressed: () => Navigator.pop(context),
+                    width: 120,
+                  )
+                ],
+              ).show();
+            } else {
+              Alert(
+                context: context,
+                type: AlertType.success,
+                title: "Sign up Berhasil",
+                desc: "Sekarang akun mu bisa digunakan",
+                buttons: [
+                  DialogButton(
+                    child: Text(
+                      "OK",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                    onPressed: () async {
+                      AuthProvider().signInWithEmail(
+                          emailController.text, passwordController.text);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return MainScreen();
+                      }));
+                    },
+                    width: 120,
+                  )
+                ],
+              ).show();
 
-                }else{
-                    Alert(
-              context: context,
-              type: AlertType.success,
-              title: "Sign up Berhasil",
-              desc: "Sekarang akun mu bisa digunakan",
-              buttons: [
-                DialogButton(
-                  child: Text(
-                    "OK",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  onPressed: () =>  Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return LoginScreen();
-            })),
-                  width: 120,
-                )
-              ],
-            ).show();
-           
-            if (!res) {
-              AlertDialog(title: Text("Sign up Failed"));
+              if (!res) {
+                AlertDialog(title: Text("Sign up Failed"));
+              }
+              Map<String, dynamic> userData = {
+                'Email': this.userEmail,
+                'Username': this.userUsername,
+                'Password': this.userPassword,
+                'coin': this.userCoin,
+                'score': this.userScore,
+                'image':
+                    'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8',
+              };
+              crudObj.addData(userData);
             }
-            Map<String, dynamic> userData = {
-              'Email': this.userEmail,
-              'Username': this.userUsername,
-              'Password': this.userPassword,
-              'coin': this.userCoin,
-              'score': this.userScore,
-              'image':
-                  'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8',
-            };
-            crudObj.addData(userData);
-
-                }
-
-
-          
           }
         },
         padding: EdgeInsets.all(15.0),
