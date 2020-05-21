@@ -116,31 +116,57 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                         color: Colors.white, fontSize: 20),
                                   ),
                                   onPressed: () {
-                                    AuthProvider.updateUser(
-                                      globals.currentidaccount,
-                                      displayname: usernameController.text,
-                                    );
-                                    Alert(
+                                    if (usernameController.text == '') {
+                                      Alert(
                                         context: context,
-                                        type: AlertType.success,
-                                        title: 'Profil sudah diganti',
+                                        type: AlertType.error,
+                                        title: "Ganti profil Gagal",
+                                        desc: "username  kosong.",
                                         buttons: [
                                           DialogButton(
-                                              child: Text(
-                                                "oke",
-                                                style: TextStyle(
-                                                    fontFamily:
-                                                        "Poppins-Medium",
-                                                    color: Colors.white),
-                                              ),
-                                              onPressed: () {
+                                            child: Text(
+                                              "OK",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20),
+                                            ),
+                                            onPressed: () =>
                                                 Navigator.push(context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) {
-                                                  return EditProfileScreen();
-                                                }));
-                                              })
-                                        ]).show();
+                                                      MaterialPageRoute(
+                                                          builder: (context) {
+                                                    return EditProfileScreen();
+                                                  })),
+                                            width: 120,
+                                          )
+                                        ],
+                                      ).show();
+                                    } else {
+                                      AuthProvider.updateUser(
+                                        globals.currentidaccount,
+                                        displayname: usernameController.text,
+                                      );
+                                      Alert(
+                                          context: context,
+                                          type: AlertType.success,
+                                          title: 'Profil sudah diganti',
+                                          buttons: [
+                                            DialogButton(
+                                                child: Text(
+                                                  "oke",
+                                                  style: TextStyle(
+                                                      fontFamily:
+                                                          "Poppins-Medium",
+                                                      color: Colors.white),
+                                                ),
+                                                onPressed: () {
+                                                  Navigator.push(context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) {
+                                                    return EditProfileScreen();
+                                                  }));
+                                                })
+                                          ]).show();
+                                    }
                                   },
                                   width: 120,
                                 ),

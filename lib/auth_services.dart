@@ -1,8 +1,5 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -16,20 +13,24 @@ import 'package:math_wizard_mk2/database_services.dart';
 class AuthProvider {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   GoogleSignIn googleSignIn = GoogleSignIn();
-  static CollectionReference userCollection =
-      Firestore.instance.collection('Users');
+  static CollectionReference userCollection = Firestore.instance.collection('Users');
 
+//fungsi dengan email 
   Future<bool> signInWithEmail(String email, String password) async {
     try {
+      //me-null kan variable globals dari akun google
       globals.currentimageemail =
           'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
       globals.currentgooglecoin = null;
       globals.currentgooglescore = null;
       globals.currentaccountgoogle = null;
+
+      //login dengan email membutuhkan email dan password
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
 
+      
       Firestore.instance
           .collection("Users")
           .where('Email', isEqualTo: user.email)
@@ -141,6 +142,7 @@ class AuthProvider {
     GoogleSignIn googleSignIn = GoogleSignIn();
     GoogleSignInAccount account = await googleSignIn.signIn();
 
+    //untuk pertama kali login dengan akun google
     globals.currentimagegoogle =
         'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
     globals.currentgooglecoin = 0;
@@ -148,7 +150,9 @@ class AuthProvider {
     globals.currentemailcoin = null;
     globals.currentemailscore = null;
     globals.currentaccountemail = null;
+    globals.currentaccountgoogle =account.displayName;
 
+    //sudah pernah login dengan akun google
     Firestore.instance
         .collection("Users")
         .where('Email', isEqualTo: account.email)
@@ -184,13 +188,13 @@ class AuthProvider {
 
       print("login berhasil");
       print("Username: ${account.displayName}");
+      //memasukkan data ke dalam database 
       addUserGoogle(account.id,
-          displayname: account.displayName,
+          displayname: globals.currentaccountgoogle,
           email: account.email,
           score: globals.currentgooglescore,
           coin: globals.currentgooglecoin,
           image: globals.currentimagegoogle);
-      globals.currentaccountgoogle = account.displayName;
 
       globals.currentemailcoin = null;
       globals.currentemailscore = null;
@@ -223,6 +227,7 @@ class AuthProvider {
     return _auth.sendPasswordResetEmail(email: email);
   }
 
+//fungsi memasukkan data user google ke database
   static Future<void> addUserGoogle(String id,
       {String displayname,
       String email,
@@ -237,20 +242,21 @@ class AuthProvider {
       'image': globals.currentimagegoogle
     });
   }
-
+//update nama user
   static Future<void> updateUser(String id, {String displayname}) async {
     await userCollection
         .document(id)
         .setData({'Username': displayname}, merge: true);
   }
 
+//update coin dan score user
   static Future<void> updateUserscorecoin(String id,
       {int score, int coin}) async {
     await userCollection
         .document(id)
         .setData({'score': score, 'coin': coin}, merge: true);
   }
-
+//update gambar user
   static updateUserimage(String id, {String image}) async {
     await userCollection.document(id).setData({'image': image}, merge: true);
   }
