@@ -1,18 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/forgot_password.dart';
-import 'package:math_wizard_mk2/home.dart';
 import 'package:math_wizard_mk2/signup.dart';
-import 'package:math_wizard_mk2/mainPage.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
-import 'package:math_wizard_mk2/auth_services.dart';
-import 'package:math_wizard_mk2/signup.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'globals.dart' as globals;
-
-
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -20,18 +13,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  String name = " ";
-  DateTime currentBackPressTime;
-
 
   @override
   void initState() {
     super.initState();
-    // emailController = TextEditingController(text: "");
-    // passwordController = TextEditingController(text: "");
   }
 
   Widget _buildEmailTF() {
@@ -167,7 +154,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-
   Widget _buildLoginBtn() {
     return Container(
       padding: EdgeInsets.symmetric(),
@@ -192,12 +178,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 )
               ],
             ).show();
-          }else {
-          }
+          } else {}
           bool res = await AuthProvider()
               .signInWithEmail(emailController.text, passwordController.text);
-              if(globals.eror == true ){
-             Alert(
+          if (globals.eror == true) {
+            Alert(
               context: context,
               type: AlertType.error,
               title: "Login Gagal",
@@ -213,7 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 )
               ],
             ).show();
-              }
+          }
           if (!res) {
             AlertDialog(title: Text("Login Failed"));
           }
@@ -271,8 +256,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -283,7 +266,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: WillPopScope(
-          onWillPop: () =>SystemNavigator.pop(),
+          onWillPop: () => SystemNavigator.pop(),
           child: Stack(
             children: <Widget>[
               Container(
@@ -291,19 +274,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/bg.png'), fit: BoxFit.cover)
-                    // gradient: LinearGradient(
-                    //   begin: Alignment.topCenter,
-                    //   end: Alignment.bottomCenter,
-                    //   colors: [
-                    //     Color(0xFF73AEF5),
-                    //     Color(0xFF61A4F1),
-                    //     Color(0xFF478DE0),
-                    //     Color(0xFF398AE5),
-                    //   ],
-                    //   stops: [0.1, 0.4, 0.7, 0.9],
-                    // ),
-                    ),
+                        image: AssetImage('assets/bg.png'), fit: BoxFit.cover)),
               ),
               Container(
                 alignment: Alignment.center,
@@ -367,5 +338,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
 }

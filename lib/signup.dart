@@ -3,12 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:math_wizard_mk2/database_services.dart';
-import 'package:math_wizard_mk2/login.dart';
 import 'package:math_wizard_mk2/main.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:password_strength/password_strength.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'globals.dart' as globals;
 
@@ -215,27 +211,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 )
               ],
             ).show();
-          } else if (Firestore.instance
-                  .collection("Users")
-                  .where('Username', isEqualTo: usernameController.text) ==
-              null) {
-            Alert(
-              context: context,
-              type: AlertType.error,
-              title: "Sign up Gagal",
-              desc: "username sudah terdaftar",
-              buttons: [
-                DialogButton(
-                  child: Text(
-                    "OK",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  onPressed: () => Navigator.pop(context),
-                  width: 120,
-                )
-              ],
-            ).show();
-          } else {
+          }  else {
             print(usernameController);
             bool res = await AuthProvider().signUpWithEmail(
                 emailController.text,

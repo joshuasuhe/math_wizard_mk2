@@ -1,12 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:math_wizard_mk2/login.dart';
-import 'package:math_wizard_mk2/signup.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 import 'globals.dart' as globals;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:math_wizard_mk2/database_services.dart';
 
@@ -15,7 +10,7 @@ class AuthProvider {
   GoogleSignIn googleSignIn = GoogleSignIn();
   static CollectionReference userCollection = Firestore.instance.collection('Users');
 
-//fungsi dengan email 
+//fungsi login dengan email 
   Future<bool> signInWithEmail(String email, String password) async {
     try {
       //me-null kan variable globals dari akun google
@@ -25,12 +20,13 @@ class AuthProvider {
       globals.currentgooglescore = null;
       globals.currentaccountgoogle = null;
 
+
       //login dengan email membutuhkan email dan password
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
 
-      
+      //mencari nilai coin di firebase
       Firestore.instance
           .collection("Users")
           .where('Email', isEqualTo: user.email)
@@ -38,6 +34,7 @@ class AuthProvider {
           .listen((data) => data.documents
               .forEach((doc) => globals.currentemailcoin = (doc["coin"])));
 
+      //mencari nilai score di firebase
       Firestore.instance
           .collection("Users")
           .where('Email', isEqualTo: user.email)
@@ -45,6 +42,7 @@ class AuthProvider {
           .listen((data) => data.documents
               .forEach((doc) => globals.currentemailscore = (doc["score"])));
 
+      //mencari nilai image di firebase
       Firestore.instance
           .collection("Users")
           .where('Email', isEqualTo: user.email)
@@ -52,16 +50,17 @@ class AuthProvider {
           .listen((data) => data.documents
               .forEach((doc) => globals.currentimageemail = (doc["image"])));
 
+      //mencari nilai username di firebase
       Firestore.instance
           .collection("Users")
           .where('Email', isEqualTo: user.email)
           .snapshots()
           .listen((data) => data.documents.forEach(
               (doc) => globals.currentaccountemail = (doc["Username"])));
-      globals.currentgooglecoin = null;
-      globals.currentgooglescore = null;
-      globals.currentaccountgoogle = null;
 
+      
+
+      //mencari nilai documentID di firebase
       Firestore.instance
           .collection("Users")
           .where('Email', isEqualTo: user.email)
@@ -95,7 +94,6 @@ class AuthProvider {
           email: email, password: password);
       FirebaseUser user = result.user;
 
-      await DatabasesServices(uid: user.uid).createuser(username);
        globals.eror=false;
 
       if (user != null)
@@ -120,7 +118,7 @@ class AuthProvider {
     try {
       await googleSignIn.signOut();
       await _auth.signOut();
-      await _auth.signOut();
+  
 
       globals.currentaccountgoogle = null;
       globals.currentaccountemail = null;
@@ -153,6 +151,7 @@ class AuthProvider {
     globals.currentaccountgoogle =account.displayName;
 
     //sudah pernah login dengan akun google
+    //mencari nilai score
     Firestore.instance
         .collection("Users")
         .where('Email', isEqualTo: account.email)
@@ -160,6 +159,7 @@ class AuthProvider {
         .listen((data) => data.documents
             .forEach((doc) => globals.currentgooglescore = (doc["score"])));
 
+    //mencari nilai coin
     Firestore.instance
         .collection("Users")
         .where('Email', isEqualTo: account.email)
@@ -167,6 +167,7 @@ class AuthProvider {
         .listen((data) => data.documents
             .forEach((doc) => globals.currentgooglecoin = (doc["coin"])));
 
+    //mencari nilai image
     Firestore.instance
         .collection("Users")
         .where('Email', isEqualTo: account.email)
@@ -174,6 +175,7 @@ class AuthProvider {
         .listen((data) => data.documents
             .forEach((doc) => globals.currentimagegoogle = (doc["image"])));
 
+    //mencari nilai username
     Firestore.instance
         .collection("Users")
         .where('Email', isEqualTo: account.email)
@@ -188,6 +190,8 @@ class AuthProvider {
 
       print("login berhasil");
       print("Username: ${account.displayName}");
+
+
       //memasukkan data ke dalam database 
       addUserGoogle(account.id,
           displayname: globals.currentaccountgoogle,
@@ -196,10 +200,8 @@ class AuthProvider {
           coin: globals.currentgooglecoin,
           image: globals.currentimagegoogle);
 
-      globals.currentemailcoin = null;
-      globals.currentemailscore = null;
-      globals.currentaccountemail = null;
 
+      // mencari id document
       Firestore.instance
           .collection("Users")
           .where('Email', isEqualTo: account.email)
@@ -257,7 +259,7 @@ class AuthProvider {
         .setData({'score': score, 'coin': coin}, merge: true);
   }
 //update gambar user
-  static updateUserimage(String id, {String image}) async {
+  static Future<void> updateUserimage(String id, {String image}) async {
     await userCollection.document(id).setData({'image': image}, merge: true);
   }
 

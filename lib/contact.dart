@@ -58,7 +58,6 @@ class _ContactScreenState extends State<ContactScreen> {
                     children: <Widget>[
                       Padding(padding: EdgeInsets.all(10)),
                       IconButton(
-                        // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
                         icon: FaIcon(FontAwesomeIcons.facebook),
                       ),
                       GestureDetector(
@@ -87,7 +86,6 @@ class _ContactScreenState extends State<ContactScreen> {
                     children: <Widget>[
                       Padding(padding: EdgeInsets.all(10)),
                       IconButton(
-                        // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
                         icon: FaIcon(FontAwesomeIcons.instagram),
                       ),
                       GestureDetector(
@@ -116,7 +114,6 @@ class _ContactScreenState extends State<ContactScreen> {
                     children: <Widget>[
                       Padding(padding: EdgeInsets.all(10)),
                       IconButton(
-                        // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
                         icon: FaIcon(FontAwesomeIcons.whatsapp),
                       ),
                       GestureDetector(

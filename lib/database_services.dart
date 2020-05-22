@@ -14,15 +14,6 @@ class DatabasesServices {
   final String uid;
   DatabasesServices({this.uid});
   
-
-  final CollectionReference userCollection =
-      Firestore.instance.collection('users');
-
-//SIMPAN USERNAME DI DATABASE USER
-  Future createuser(String username) async {
-    return await userCollection.document(uid).setData({'name': username});
-  }
-
 }
 
 class crudMethods {
@@ -35,15 +26,10 @@ class crudMethods {
   }
 
   Future<void> addData(userData) async {
-    // if (isLoggedIn()) {
       Firestore.instance.collection('Users').add(userData).catchError((e) {
         print(e);
       });
-    // }
-    // else
-    // {
-    //   print("Must Login");
-    // }
+  
   }
   getData()async{
     return await Firestore.instance.collection('Users').getDocuments();

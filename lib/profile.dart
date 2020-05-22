@@ -35,18 +35,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     ]);
 
     return Scaffold(
-        // appBar: AppBar(
-        //   backgroundColor: Colors.cyan,
-        //   leading: Text(
-        //     "Profil",
-        //     style: TextStyle(fontFamily: 'Poppins-Bold', color: Colors.cyan),
-        //   ),
-        //   title: Text(
-        //     "Profil",
-        //     style: TextStyle(fontFamily: 'Poppins-Bold', color: Colors.black),
-        //   ),
-        //   centerTitle: true,
-        // ),
+   
         body: Stack(children: <Widget>[
       Container(
         decoration: BoxDecoration(
@@ -181,42 +170,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Container(
               child: Column(
                 children: <Widget>[
-                  // Container(
-                  //   height: 75,
-                  //   width: 350,
-                  //   padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                  //   decoration: BoxDecoration(
-                  //       color: Colors.white,
-                  //       boxShadow: [new BoxShadow(blurRadius: 3.0)],
-                  //       borderRadius: BorderRadius.all(Radius.circular(15))),
-                  //   child: Column(
-                  //     crossAxisAlignment: CrossAxisAlignment.center,
-                  //     mainAxisAlignment: MainAxisAlignment.center,
-                  //     children: <Widget>[
-                  //       Text(
-                  //         'Penyelesaian',
-                  //         style: TextStyle(fontFamily: 'Poppins-Medium'),
-                  //       ),
-                  //       SizedBox(
-                  //         height: 5,
-                  //       ),
-                  //       LinearPercentIndicator(
-                  //         width: 300,
-                  //         animation: true,
-                  //         lineHeight: 15.0,
-                  //         animationDuration: 2500,
-                  //         percent: 0.8,
-                  //         center: Text(
-                  //           "80.0%",
-                  //           style: TextStyle(
-                  //               fontFamily: 'Poppins-Medium', fontSize: 10),
-                  //         ),
-                  //         linearStrokeCap: LinearStrokeCap.roundAll,
-                  //         progressColor: Colors.green,
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
+               
                   SizedBox(
                     height: 10,
                   ),

@@ -100,7 +100,6 @@ class _forgotpasswordState extends State<forgotpasswordScreen> {
             
           } 
           
-          
           else {
             await AuthProvider().sendPasswordResetEmail(emailController.text);
             Alert(
