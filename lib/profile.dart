@@ -335,7 +335,4 @@ class _ProfileScreenState extends State<ProfileScreen> {
     ]));
   }
 
-  Future<File> getImage() async {
-    return await ImagePicker.pickImage(source: ImageSource.gallery);
-  }
 }

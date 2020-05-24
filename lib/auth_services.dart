@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'globals.dart' as globals;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -14,11 +15,10 @@ class AuthProvider {
   Future<bool> signInWithEmail(String email, String password) async {
     try {
       //me-null kan variable globals dari akun google
-      globals.currentimageemail =
-          'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
-      globals.currentgooglecoin = null;
-      globals.currentgooglescore = null;
-      globals.currentaccountgoogle = null;
+     globals.currentaccountgoogle = 'null' ;
+      globals.currentimagegoogle = 'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
+      globals.currentgooglescore= 0 ;
+      globals.currentgooglecoin = 0 ;
 
 
       //login dengan email membutuhkan email dan password
@@ -26,13 +26,16 @@ class AuthProvider {
           email: email, password: password);
       FirebaseUser user = result.user;
 
+     
       //mencari nilai coin di firebase
       Firestore.instance
           .collection("Users")
           .where('Email', isEqualTo: user.email)
           .snapshots()
           .listen((data) => data.documents
-              .forEach((doc) => globals.currentemailcoin = (doc["coin"])));
+              .forEach((doc) => globals.currentemailcoin = (doc["coin"])
+              ));
+              
 
       //mencari nilai score di firebase
       Firestore.instance
@@ -58,7 +61,9 @@ class AuthProvider {
           .listen((data) => data.documents.forEach(
               (doc) => globals.currentaccountemail = (doc["Username"])));
 
-      
+           globals.currentgooglecoin = null;
+      globals.currentgooglescore = null;
+      globals.currentaccountgoogle = null;
 
       //mencari nilai documentID di firebase
       Firestore.instance
@@ -120,14 +125,18 @@ class AuthProvider {
       await _auth.signOut();
   
 
-      globals.currentaccountgoogle = null;
-      globals.currentaccountemail = null;
-      globals.currentimagegoogle = null;
-      globals.currentimageemail = null;
-      globals.currentgooglecoin = 0;
-      globals.currentgooglescore = 0;
-      globals.currentemailcoin = 0;
-      globals.currentemailscore = 0;
+      globals.currentaccountgoogle = 'null' ;
+      globals.currentaccountemail = 'null';
+      globals.currentaccountpassword = 'null';
+      globals.currentidaccount = 'null';
+      globals.currentimageemail = 'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
+      globals.currentimagegoogle = 'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
+      globals.currentbenar =0 ;
+      globals.currentgooglescore= 0 ;
+      globals.currentgooglecoin = 0 ;
+      globals.currentemailscore= 0 ;
+      globals.currentemailcoin= 0 ;
+      globals.eror = false;
 
       print("sign out berhasil");
     } catch (e) {
@@ -222,6 +231,8 @@ class AuthProvider {
       return false;
     }
   }
+
+  
 
   //RESET PASSWORD
 

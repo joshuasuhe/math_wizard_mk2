@@ -21,9 +21,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String imagePath;
 
-  bool isPressed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    ;
+
     return Scaffold(
       body:RefreshIndicator( onRefresh: refreshList,child:  Stack(children: <Widget>[
               Container(
@@ -41,15 +39,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Container(
                 height: 250,
-                // decoration: BoxDecoration(
-                //     image: DecorationImage(
-                //         image: AssetImage("assets/pattern.png"), fit: BoxFit.cover)),
+               
                 decoration: new BoxDecoration(
                   color: Colors.cyan,
                   boxShadow: [new BoxShadow(blurRadius: 10.0)],
-                  // borderRadius: new BorderRadius.vertical(
-                  //     bottom: new Radius.elliptical(
-                  //         MediaQuery.of(context).size.width, 50.0)),
+             
                 ),
               ),
               SingleChildScrollView(
@@ -72,10 +66,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               BoxShadow(
                                 color: Colors.black54,
                                 blurRadius: 5.0,
-                                // offset: Offset(0.0, 0.75)
                               )
                             ],
-                            // borderRadius: new BorderRadius.all(Radius.circular(15)),
                             border: Border.all(width: 1, color: Colors.grey),
                             borderRadius: BorderRadius.circular(10)),
                         child: Row(

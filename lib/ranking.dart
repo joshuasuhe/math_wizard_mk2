@@ -71,11 +71,29 @@ class _RankingScreenState extends State<RankingScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Image.asset(
-                          'assets/avatar1.png',
-                          width: 55,
-                          height: 55,
-                        ),
+                       (globals.currentimageemail == null)
+                                ? Container(
+                                    width: 55,
+                                    height: 55,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(color: Colors.black),
+                                      image: DecorationImage(
+                                          image: NetworkImage(globals.currentimagegoogle),
+                                          fit: BoxFit.cover),
+                                    ),
+                                  )
+                                : Container(
+                                    width: 55,
+                                    height:55,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(color: Colors.black),
+                                       image: DecorationImage(
+                                          image: NetworkImage(globals.currentimageemail),
+                                          fit: BoxFit.cover),
+                                    ),
+                                  ),
                         SizedBox(
                           width: 5,
                         ),
