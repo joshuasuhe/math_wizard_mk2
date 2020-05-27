@@ -1,9 +1,5 @@
 library my_prj.globals;
 
-
-
-
-
 String currentaccountgoogle = 'null' ;
 String currentaccountemail = 'null';
 String currentaccountpassword = 'null';

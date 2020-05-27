@@ -301,12 +301,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       elevation: 5.0,
                       onPressed: () {
                         AuthProvider().logOut();
-                        if (FirebaseUser == null) {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return LoginScreen();
-                          }));
-                        }
+                    Alert(
+              context: context,
+              type: AlertType.success,
+              title: "Signout Berhasil",
+              buttons: [
+                DialogButton(
+                  child: Text(
+                    "OK",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  onPressed: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                    return LoginScreen();
+                  })),
+                  width: 120,
+                )
+              ],
+            ).show();
+                        
                       },
                       padding: EdgeInsets.all(15.0),
                       shape: RoundedRectangleBorder(

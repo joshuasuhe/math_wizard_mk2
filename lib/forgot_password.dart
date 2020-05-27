@@ -6,6 +6,7 @@ import 'package:math_wizard_mk2/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'globals.dart' as globals;
 
 class forgotpasswordScreen extends StatefulWidget {
 
@@ -102,7 +103,27 @@ class _forgotpasswordState extends State<forgotpasswordScreen> {
           
           else {
             await AuthProvider().sendPasswordResetEmail(emailController.text);
-            Alert(
+            if(globals.eror==true){
+                  Alert(
+              context: context,
+              type: AlertType.error,
+              title: "Ganti password Gagal",
+              desc: "Email tidak terdaftar",
+              buttons: [
+                DialogButton(
+                  child: Text(
+                    "OK",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                  width: 120,
+                )
+              ],
+            ).show();
+
+            }else{
+
+               Alert(
                 context: context,
                 type: AlertType.success,
                 title: "Email sedang dikirim",
@@ -115,6 +136,8 @@ class _forgotpasswordState extends State<forgotpasswordScreen> {
                       ),
                       onPressed: () => Navigator.pop(context))
                 ]).show();
+            }
+           
           }
         },
         padding: EdgeInsets.all(15.0),

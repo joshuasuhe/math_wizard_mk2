@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:math_wizard_mk2/main.dart';
 import 'package:math_wizard_mk2/globals.dart' as globals;
+import 'package:math_wizard_mk2/mainPage.dart';
 
 class failedpage extends StatefulWidget {
   @override
@@ -79,7 +80,7 @@ class _failedpageState extends State<failedpage> {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return MainScreen();
+                              return MainPage();
                             },
                           ),
                         );
