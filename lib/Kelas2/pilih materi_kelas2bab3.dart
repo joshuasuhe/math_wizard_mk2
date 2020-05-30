@@ -35,6 +35,7 @@ class _pilihmaterikelas2bab3State extends State<pilihmaterikelas2bab3> {
         SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
           leading: Container(),
