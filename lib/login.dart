@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/forgot_password.dart';
+import 'package:math_wizard_mk2/mainPage.dart';
 import 'package:math_wizard_mk2/signup.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
@@ -181,6 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
           } else {}
           bool res = await AuthProvider()
               .signInWithEmail(emailController.text, passwordController.text);
+
           if (globals.eror == true) {
             Alert(
               context: context,
@@ -198,7 +200,28 @@ class _LoginScreenState extends State<LoginScreen> {
                 )
               ],
             ).show();
+          } else {
+            Alert(
+              context: context,
+              type: AlertType.success,
+              title: "Login Berhasil",
+              desc: "Selamat Datang!",
+              buttons: [
+                DialogButton(
+                  child: Text(
+                    "OK",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  onPressed: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                    return MainPage();
+                  })),
+                  width: 120,
+                )
+              ],
+            ).show();
           }
+
           if (!res) {
             AlertDialog(title: Text("Login Failed"));
           }
@@ -227,6 +250,9 @@ class _LoginScreenState extends State<LoginScreen> {
       onPressed: () async {
         bool res = await AuthProvider().loginWithGoogle();
         if (!res) print("ERROR login dengan Google akun");
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return MainPage();
+        }));
       },
       highlightElevation: 0,
       color: Colors.white,

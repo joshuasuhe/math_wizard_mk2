@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'globals.dart' as globals;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -9,33 +8,32 @@ import 'package:math_wizard_mk2/database_services.dart';
 class AuthProvider {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   GoogleSignIn googleSignIn = GoogleSignIn();
-  static CollectionReference userCollection = Firestore.instance.collection('Users');
+  static CollectionReference userCollection =
+      Firestore.instance.collection('Users');
 
-//fungsi login dengan email 
+//fungsi login dengan email
   Future<bool> signInWithEmail(String email, String password) async {
     try {
       //me-null kan variable globals dari akun google
-     globals.currentaccountgoogle = 'null' ;
-      globals.currentimagegoogle = 'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
-      globals.currentgooglescore= 0 ;
-      globals.currentgooglecoin = 0 ;
-
+      globals.currentimageemail =
+          'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
+      globals.currentgooglecoin = null;
+      globals.currentgooglescore = null;
+      globals.currentaccountgoogle = null;
+  
 
       //login dengan email membutuhkan email dan password
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
 
-     
       //mencari nilai coin di firebase
       Firestore.instance
           .collection("Users")
           .where('Email', isEqualTo: user.email)
           .snapshots()
           .listen((data) => data.documents
-              .forEach((doc) => globals.currentemailcoin = (doc["coin"])
-              ));
-              
+              .forEach((doc) => globals.currentemailcoin = (doc["coin"])));
 
       //mencari nilai score di firebase
       Firestore.instance
@@ -61,10 +59,6 @@ class AuthProvider {
           .listen((data) => data.documents.forEach(
               (doc) => globals.currentaccountemail = (doc["Username"])));
 
-           globals.currentgooglecoin = null;
-      globals.currentgooglescore = null;
-      globals.currentaccountgoogle = null;
-
       //mencari nilai documentID di firebase
       Firestore.instance
           .collection("Users")
@@ -72,19 +66,18 @@ class AuthProvider {
           .snapshots()
           .listen((data) => data.documents
               .forEach((doc) => globals.currentidaccount = (doc.documentID)));
-      
-       globals.eror=false;
+
+      globals.eror = false;
 
       if (user != null)
         return true;
       else
         return false;
     } catch (SignUpEror) {
-     if (SignUpEror is PlatformException) {
-        if (SignUpEror.code =='ERROR_USER_NOT_FOUND'||SignUpEror.code =='ERROR_WRONG_PASSWORD' ) {
-         
-         globals.eror = true;
-           
+      if (SignUpEror is PlatformException) {
+        if (SignUpEror.code == 'ERROR_USER_NOT_FOUND' ||
+            SignUpEror.code == 'ERROR_WRONG_PASSWORD') {
+          globals.eror = true;
         }
       }
       return false;
@@ -99,19 +92,16 @@ class AuthProvider {
           email: email, password: password);
       FirebaseUser user = result.user;
 
-       globals.eror=false;
+      globals.eror = false;
 
       if (user != null)
         return true;
       else
         return false;
     } catch (SignUpEror) {
-     
       if (SignUpEror is PlatformException) {
         if (SignUpEror.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
-         
-         globals.eror = true;
-           
+          globals.eror = true;
         }
       }
       return false;
@@ -123,19 +113,20 @@ class AuthProvider {
     try {
       await googleSignIn.signOut();
       await _auth.signOut();
-  
 
-      globals.currentaccountgoogle = 'null' ;
+      globals.currentaccountgoogle = 'null';
       globals.currentaccountemail = 'null';
       globals.currentaccountpassword = 'null';
       globals.currentidaccount = 'null';
-      globals.currentimageemail = 'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
-      globals.currentimagegoogle = 'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
-      globals.currentbenar =0 ;
-      globals.currentgooglescore= 0 ;
-      globals.currentgooglecoin = 0 ;
-      globals.currentemailscore= 0 ;
-      globals.currentemailcoin= 0 ;
+      globals.currentimageemail =
+          'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
+      globals.currentimagegoogle =
+          'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
+      globals.currentbenar = 0;
+      globals.currentgooglescore = 0;
+      globals.currentgooglecoin = 0;
+      globals.currentemailscore = 0;
+      globals.currentemailcoin = 0;
       globals.eror = false;
 
       print("sign out berhasil");
@@ -157,7 +148,8 @@ class AuthProvider {
     globals.currentemailcoin = null;
     globals.currentemailscore = null;
     globals.currentaccountemail = null;
-    globals.currentaccountgoogle =account.displayName;
+    globals.currentimageemail= null;
+    globals.currentaccountgoogle = account.displayName;
 
     //sudah pernah login dengan akun google
     //mencari nilai score
@@ -200,15 +192,13 @@ class AuthProvider {
       print("login berhasil");
       print("Username: ${account.displayName}");
 
-
-      //memasukkan data ke dalam database 
+      //memasukkan data ke dalam database
       addUserGoogle(account.id,
           displayname: globals.currentaccountgoogle,
           email: account.email,
           score: globals.currentgooglescore,
           coin: globals.currentgooglecoin,
           image: globals.currentimagegoogle);
-
 
       // mencari id document
       Firestore.instance
@@ -232,12 +222,20 @@ class AuthProvider {
     }
   }
 
-  
-
   //RESET PASSWORD
 
-  Future sendPasswordResetEmail(String email) async {
-    return _auth.sendPasswordResetEmail(email: email);
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+
+      globals.eror = false;
+    } catch (SignUpEror) {
+      if (SignUpEror is PlatformException) {
+        if (SignUpEror.code == 'ERROR_USER_NOT_FOUND') {
+          globals.eror = true;
+        }
+      }
+    }
   }
 
 //fungsi memasukkan data user google ke database
@@ -255,6 +253,7 @@ class AuthProvider {
       'image': globals.currentimagegoogle
     });
   }
+
 //update nama user
   static Future<void> updateUser(String id, {String displayname}) async {
     await userCollection
@@ -269,9 +268,9 @@ class AuthProvider {
         .document(id)
         .setData({'score': score, 'coin': coin}, merge: true);
   }
+
 //update gambar user
   static Future<void> updateUserimage(String id, {String image}) async {
     await userCollection.document(id).setData({'image': image}, merge: true);
   }
-
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:math_wizard_mk2/main.dart';
+import 'package:math_wizard_mk2/mainPage.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'globals.dart' as globals;
 
@@ -40,7 +41,7 @@ class _ChangeAvatarState extends State<ChangeAvatar> {
           icon: new Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () =>
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return MainScreen();
+            return MainPage();
           })),
         ),
         title: Text(

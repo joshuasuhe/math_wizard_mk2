@@ -25,7 +25,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           icon: new Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () =>
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return MainScreen();
+            return MainPage();
           })),
         ),
         title: Text(

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:math_wizard_mk2/database_services.dart';
 import 'package:math_wizard_mk2/main.dart';
+import 'package:math_wizard_mk2/mainPage.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'globals.dart' as globals;
@@ -251,7 +252,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           emailController.text, passwordController.text);
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return MainScreen();
+                        return MainPage();
                       }));
                     },
                     width: 120,
@@ -313,17 +314,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/bg.png'), fit: BoxFit.cover)
-                    // gradient: LinearGradient(
-                    //   begin: Alignment.topCenter,
-                    //   end: Alignment.bottomCenter,
-                    //   colors: [
-                    //     Color(0xFF73AEF5),
-                    //     Color(0xFF61A4F1),
-                    //     Color(0xFF478DE0),
-                    //     Color(0xFF398AE5),
-                    //   ],
-                    //   stops: [0.1, 0.4, 0.7, 0.9],
-                    // ),
+           
                     ),
               ),
               Container(
@@ -337,17 +328,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      // Text(
-                      //   'Sign In',
-                      //   style: TextStyle(
-                      //     color: Colors.white,
-                      //     fontFamily: 'Poppins-Medium',
-                      //     fontSize: 20.0,
-                      //     fontWeight: FontWeight.bold,
-                      //   ),
-                      // ),
-
-                      // SizedBox(height: 30.0),
                       Text(
                         "DAFTAR AKUN",
                         style: TextStyle(
