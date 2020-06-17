@@ -71,7 +71,7 @@ class _RankingScreenState extends State<RankingScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                       (globals.currentimageemail == null)
+                       (globals.currentimageemail == null)//menampilkan profil picture akun google
                                 ? Container(
                                     width: 55,
                                     height: 55,
@@ -83,7 +83,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                           fit: BoxFit.cover),
                                     ),
                                   )
-                                : Container(
+                                : Container( //menampilkan profil picture akun email
                                     width: 55,
                                     height:55,
                                     decoration: BoxDecoration(
@@ -139,7 +139,7 @@ class _RankingScreenState extends State<RankingScreen> {
                   height: 20,
                 ),
                 Container(
-                  child: StreamBuilder(
+                  child: StreamBuilder(//mencari data di dalam firebase dengan urutan score dari besar ke kecil
                     stream: Firestore.instance
                         .collection("Users")
                         .orderBy("score", descending: true)
@@ -182,7 +182,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                 ),
                                 Expanded(
                                   child: Text(
-                                      snapshot.data.documents[0]['Username'],
+                                      snapshot.data.documents[0]['Username'],//username dengan score terbesar
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           fontFamily: "Poppins-Medium",
@@ -195,7 +195,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                   height: 65,
                                 ),
                                 Text(
-                                  snapshot.data.documents[0]['score']
+                                  snapshot.data.documents[0]['score']//jumlah score terbesar
                                       .toString(),
                                   style: TextStyle(
                                       fontFamily: "Poppins-Medium",
@@ -216,7 +216,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                 ),
                                 Expanded(
                                   child: Text(
-                                      snapshot.data.documents[1]['Username'],
+                                      snapshot.data.documents[1]['Username'],//username dengan score terbesar kedua
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           fontFamily: "Poppins-Medium", fontSize: 16)),
@@ -228,7 +228,7 @@ class _RankingScreenState extends State<RankingScreen> {
                                   height: 60,
                                 ),
                                 Text(
-                                  snapshot.data.documents[1]['score']
+                                  snapshot.data.documents[1]['score']//jumlah score terbesar kedua 
                                       .toString(),
                                   style:
                                       TextStyle(fontFamily: "Poppins-Medium", fontSize: 16),

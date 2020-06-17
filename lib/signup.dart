@@ -1,13 +1,23 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_wizard_mk2/auth_services.dart';
 import 'package:math_wizard_mk2/database_services.dart';
-import 'package:math_wizard_mk2/main.dart';
 import 'package:math_wizard_mk2/mainPage.dart';
 import 'package:math_wizard_mk2/utilities/constants.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'globals.dart' as globals;
+import 'package:convert/convert.dart';
+import 'package:crypto/crypto.dart' as crypto;
+
+///Enkripsi Password
+generateMd5(String data) {
+  var content = new Utf8Encoder().convert(data);
+  var md5 = crypto.md5;
+  var digest = md5.convert(content);
+  return hex.encode(digest.bytes);
+}
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -266,7 +276,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Map<String, dynamic> userData = {
                 'Email': this.userEmail,
                 'Username': this.userUsername,
-                'Password': this.userPassword,
+                'Password': generateMd5(this.userPassword),
                 'coin': this.userCoin,
                 'score': this.userScore,
                 'image':

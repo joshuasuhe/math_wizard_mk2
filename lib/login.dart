@@ -14,6 +14,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  //texteditingcontroller untuk mendapat nilai yang dimasukkan oleh user
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -22,6 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
   }
 
+//textfield email 
   Widget _buildEmailTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ],
     );
   }
-
+//textfield password
   Widget _buildPasswordTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,6 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+//tombol lupa password
   Widget _buildForgotPasswordBtn() {
     return Container(
       alignment: Alignment.centerRight,
@@ -121,6 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+//tombol daftar
   Widget _buildSignupBtn() {
     return GestureDetector(
       onTap: () {
@@ -155,6 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+//tombol login
   Widget _buildLoginBtn() {
     return Container(
       padding: EdgeInsets.symmetric(),
@@ -179,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 )
               ],
             ).show();
-          } else {}
+          } else {
           bool res = await AuthProvider()
               .signInWithEmail(emailController.text, passwordController.text);
 
@@ -225,6 +230,7 @@ class _LoginScreenState extends State<LoginScreen> {
           if (!res) {
             AlertDialog(title: Text("Login Failed"));
           }
+          }
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -245,6 +251,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+//tombol sign in dengan akun google
   Widget _buildSignInGoogleButton() {
     return RaisedButton(
       onPressed: () async {

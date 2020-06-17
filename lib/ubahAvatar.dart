@@ -12,6 +12,7 @@ class ChangeAvatar extends StatefulWidget {
 }
 
 class _ChangeAvatarState extends State<ChangeAvatar> {
+  //menginisialisasikan url profil picture dengan String
   String gambar1 =
       'https://firebasestorage.googleapis.com/v0/b/tes1-baa07.appspot.com/o/Profil%20Picture%2FCatIcon1.png?alt=media&token=59932303-aada-4d47-ba1b-dc09f32b35c8';
   String gambar2 =
@@ -78,7 +79,9 @@ class _ChangeAvatarState extends State<ChangeAvatar> {
                         children: <Widget>[
                           InkWell(
                               onTap: () {
+                                //jika login pakai akun google
                                 if (globals.currentimageemail == null) {
+                                  //jika menekan profil picture yang sedang dipakai
                                   if (globals.currentimagegoogle == gambar1) {
                                     Alert(
                                         context: context,
@@ -117,6 +120,7 @@ class _ChangeAvatarState extends State<ChangeAvatar> {
                                                 fontSize: 20),
                                           ),
                                           onPressed: () {
+                                            //koin kurang dari 100
                                             if (globals.currentgooglecoin <
                                                 100) {
                                               Alert(
@@ -144,16 +148,22 @@ class _ChangeAvatarState extends State<ChangeAvatar> {
                                                         })
                                                   ]).show();
                                             } else {
+                                              //koin lebih dari 100
+
+                                              //fungsi update profil picture user
                                               AuthProvider.updateUserimage(
                                                   globals.currentidaccount,
                                                   image: gambar1);
+                                                  //koin dikurang 100
                                               globals.currentgooglecoin =
                                                   (globals.currentgooglecoin -
                                                       100);
+                                                      //fungsi update coin 
                                               AuthProvider.updateUserscorecoin(
                                                   globals.currentidaccount,
                                                   coin: globals
                                                       .currentgooglecoin,score:globals.currentgooglescore);
+                                                      //mengubah tampilan profil picture
                                               if (globals.currentimageemail ==
                                                   null) {
                                                 globals.currentimagegoogle =
@@ -205,7 +215,9 @@ class _ChangeAvatarState extends State<ChangeAvatar> {
                                       ],
                                     ).show();
                                   }
-                                } else {
+                                }//login dengan email 
+                                else {
+                                  //jika menekan profil picture yang sedang dipakai
                                   if (globals.currentimageemail == gambar1) {
                                       Alert(
                                         context: context,
@@ -245,6 +257,7 @@ class _ChangeAvatarState extends State<ChangeAvatar> {
                                                 fontSize: 20),
                                           ),
                                           onPressed: () {
+                                            //koin kurang dari 100
                                             if (globals.currentemailcoin <
                                                 100) {
                                               Alert(
@@ -272,16 +285,22 @@ class _ChangeAvatarState extends State<ChangeAvatar> {
                                                         })
                                                   ]).show();
                                             } else {
+                                              //koin lebih dari 100
+
+                                              //fungsi update profil picture user
                                               AuthProvider.updateUserimage(
                                                   globals.currentidaccount,
                                                   image: gambar1);
                                               globals.currentemailcoin =
                                                   (globals.currentemailcoin -
                                                       100);
+                                              //fungsi update coin user
                                               AuthProvider.updateUserscorecoin(
                                                   globals.currentidaccount,
                                                   coin: globals
                                                       .currentemailcoin,score: globals.currentemailscore);
+
+                                              //mengubah tampilan profil picture
                                               if (globals.currentimageemail ==
                                                   null) {
                                                 globals.currentimagegoogle =

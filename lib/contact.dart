@@ -97,7 +97,7 @@ class _ContactScreenState extends State<ContactScreen> {
                                   color: Colors.blue)),
                           onTap: () {
                             launch(
-                                "https://www.instagram.com/math_wizard_/?hl=id");
+                                "https://www.instagram.com/mathwizard111/");
                           })
                     ],
                   ),
